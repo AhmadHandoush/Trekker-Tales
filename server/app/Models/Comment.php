@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Comment extends Model
 {
     use HasFactory;
-    protected $filalble=[
-        'trip_id',
+    protected $fillable=[
         'user_id',
-        'rating',
-        'content',
+        'post_id',
+        'comment',
     ];
-    public function trip(){
-        return $this->belongsTo(Trip::class);
+    public function post(){
+        return $this->belongsTo(Post::class);
     }
     public function user(){
         return $this->belongsTo(User::class);
