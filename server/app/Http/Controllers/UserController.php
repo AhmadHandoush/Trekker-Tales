@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,8 +30,22 @@ class UserController extends Controller
 
     }
     public function update_user(Request $req,$id){
+        $req->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
         $user=User::findOrFail($id);
-        if($user->hasFile('image'))
+        if($req->hasFile('profile_image')){
+            $file = $req->file('profile_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('/profile_pictures/'), $filename);
+        }
+        if (File::exists(public_path('/profile_pictures') . $user->user_image)) {
+            File::delete((public_path('/profile_pictures') . $user->user_image));
+        }
+
 
 
 
