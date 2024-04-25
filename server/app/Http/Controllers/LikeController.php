@@ -55,4 +55,8 @@ class LikeController extends Controller
 
 
     }
+    public function get_likes($id){
+        $likes=Like::where('post_id',$id)->count();
+        return response()->json(['status'=>'success',"likes"=>$likes]);
+    }
 }

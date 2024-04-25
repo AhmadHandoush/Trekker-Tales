@@ -61,6 +61,7 @@ Route::group(['middleware','isTeacher'],function (){
         Route::post('delete_comment/{id}',[CommentController::class,'delete']);
         Route::post('update_comment/{id}',[CommentController::class,'update']);
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
+        Route::get('likes/{id}',[LikeController::class,'get_likes']);
 
     });
 });
