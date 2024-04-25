@@ -27,5 +27,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
+Route::group(['middleware' => "isAdmin"], function () {
+    // some admin specific api
+});
+
 // Route::get('user/{userId}', [UserController::class,'get_user']);
 
+Route::group(["middleware" => "isUser"], function () {
+    Route::group(['middleware' => 'auth:api'], function () {
+        
+});
+
+// other users routes
+});
