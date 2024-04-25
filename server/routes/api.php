@@ -27,4 +27,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 
 });
-Route::get('/user/{userId}', [UserController::class,'get_user']);
+// Route::get('user/{userId}', [UserController::class,'get_user']);
+

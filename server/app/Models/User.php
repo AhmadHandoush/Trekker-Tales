@@ -60,17 +60,17 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function booking(){
-        return $this->hasMany(Booking::class);
-    }
-    public function review(){
-        return $this->hasMany(Review::class);
-    }
-    public function comments(){
-        return $this->hasMany(Comment::class);
-    }
-    public function likes(){
-        return $this->hasMany(Like::class);
-    }
+    // public function booking(){
+    //     return $this->hasMany(Booking::class);
+    // }
+    // public function review(){
+    //     return $this->hasMany(Review::class);
+    // }
+    // public function comments(){
+    //     return $this->hasMany(Comment::class);
+    // }
+    // public function likes(){
+    //     return $this->hasMany(Like::class);
+    // }
 
 }
