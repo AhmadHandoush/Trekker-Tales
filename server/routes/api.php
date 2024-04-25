@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,10 +39,10 @@ Route::group(["middleware" => "isUser"], function () {
 
 
 });
-
-
 });
 
 Route::group(['middleware','isTeacher'],function (){
+    Route::post('add',[PostController::class,'create_post']);
+    Route::get('posts',[PostController::class,'get_posts']);
 
 });

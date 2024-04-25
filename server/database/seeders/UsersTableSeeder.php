@@ -25,11 +25,11 @@ class UsersTableSeeder extends Seeder
     //     'latitude'=>13.5234,
     //     'user_image'=>'mira.png',
     //    ]);
-       User::create([
-        'name'=>'louna',
-        'email'=>'louna@gmail.com',
-        'password' => Hash::make('password'),
-        'role'=>'teacher',
-       ]);
+    //    User::create([
+    //     'name'=>'louna',
+    //     'email'=>'louna@gmail.com',
+    //     'password' => Hash::make('password'),
+    //     'role'=>'teacher',
+    //    ]);
     }
 }
