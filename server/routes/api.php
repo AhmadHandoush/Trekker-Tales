@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -37,21 +38,26 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('user/{userId}', [UserController::class,'get_user']);
         Route::post('update/{userId}', [UserController::class,'update_user']);
         Route::get('posts',[PostController::class,'get_posts']);
-        // Route::post('dislike/{id}',[LikeController::class,'dislike']);
+        Route::post('dislike/{id}',[LikeController::class,'dislike']);
+        Route::post('add_comment/{id}',[CommentController::class,'add_comment']);
+        Route::post('update_comment/{id}',[CommentController::class,'update']);
 
 
 
-});
+    });
 });
 
 Route::group(['middleware','isTeacher'],function (){
     Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('create',[PostController::class,'create']);
-    Route::get('posts',[PostController::class,'get_posts']);
-    Route::post('delete/{id}',[PostController::class,'delete']);
-    Route::post('update/{id}',[PostController::class,'update']);
-    Route::post('like/{id}',[LikeController::class,'like']);
-    Route::post('dislike/{id}',[LikeController::class,'dislike']);
+        Route::post('create',[PostController::class,'create']);
+        Route::get('posts',[PostController::class,'get_posts']);
+        Route::post('delete/{id}',[PostController::class,'delete']);
+        Route::post('update/{id}',[PostController::class,'update']);
+        Route::post('like/{id}',[LikeController::class,'like']);
+        Route::post('dislike/{id}',[LikeController::class,'dislike']);
+        Route::post('add_comment/{id}',[CommentController::class,'add_comment']);
+        Route::post('delete_comment/{id}',[CommentController::class,'delete']);
+        Route::post('update_comment/{id}',[CommentController::class,'update']);
 
     });
 });
