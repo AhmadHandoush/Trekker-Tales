@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ Route::group(['middleware','isTeacher'],function (){
     Route::get('posts',[PostController::class,'get_posts']);
     Route::post('delete/{id}',[PostController::class,'delete']);
     Route::post('update/{id}',[PostController::class,'update']);
+    Route::post('like/{id}',[LikeController::class,'like']);
 
     });
 });
