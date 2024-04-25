@@ -35,6 +35,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('user',[UserController::class,'user_data']);
         Route::get('user/{userId}', [UserController::class,'get_user']);
         Route::post('update/{userId}', [UserController::class,'update_user']);
+        Route::get('posts',[PostController::class,'get_posts']);
 
 
 
