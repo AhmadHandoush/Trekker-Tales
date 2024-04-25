@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 Route::group(['middleware' => "isAdmin"], function () {
     Route::get('/users',[UserController::class,'getAllUsers']);
+    Route::post('add_trip',[TripController::class,'store']);
 });
 
 

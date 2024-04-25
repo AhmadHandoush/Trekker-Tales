@@ -8,20 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Trip extends Model
 {
     use HasFactory;
-    protected $fillable= [
-        'name',
-        'destination',
-        'date',
-        'start_time',
-        'end_time',
-        'total_seats',
-        'available_seats',
-        'price',
-        'breakfast',
-        'lunch',
-        'dinner',
+    // protected $fillable= [
+    //     'name',
+    //     'destination',
+    //     'date',
+    //     'start_time',
+    //     'end_time',
+    //     'total_seats',
+    //     'available_seats',
+    //     'fees',
+    //     'breakfast',
+    //     'lunch',
+    //     'dinner',
 
-    ];
+    // ];
     public function location(){
         return $this->hasMany(Location::class,'trip_id');
     }
