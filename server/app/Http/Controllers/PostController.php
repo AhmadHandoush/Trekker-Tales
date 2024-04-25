@@ -9,30 +9,29 @@ class PostController extends Controller
 {
     public function create( Request $request){
 
+        // Validate the request
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'caption' => 'required|string',
+            'user_id' => 'required|exists:users,id' // Ensure the user_id exists in the users table
         ]);
 
 
-        if ($request->hasFile('image')) {
-            $uploadedFile = $request->file('image');
-            $extension = $uploadedFile->getClientOriginalExtension();
-            $imageName = time() . '.' . $extension;
-            $imagePath = $uploadedFile->storeAs('images', $imageName);
-        } else {
-            $imagePath = null;
-        }
-
+        $uploadedFile = $request->file('image');
+        $extension = $uploadedFile->getClientOriginalExtension();
+        $imageName = time() . '.' . $extension;
+        $imagePath = $uploadedFile->storeAs('images', $imageName);
 
         $post = new Post();
+        $post->caption = $request->caption;
         $post->image = $imagePath;
-        $post->caption= $request->caption;
-        $post->content = $request->content;
-
+        $post->user_id = $request->user_id;
         $post->save();
 
-        return back()->with('success', 'post added successfully.');
-
+        return response()->json([
+            'success' => true,
+            'message' => 'Post added successfully.'
+        ], 200);
     }
     function get_posts(){
         $posts=Post::all();
