@@ -15,15 +15,21 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
+    //    User::create([
+    //     'name'=>'mira',
+    //     'email'=>'mira@gmail.com',
+    //     'password' => Hash::make('password'),
+    //     'role'=>'teacher',
+    //     'phone'=>234567,
+    //     'longitude'=>12.55,
+    //     'latitude'=>13.5234,
+    //     'user_image'=>'mira.png',
+    //    ]);
        User::create([
-        'name'=>'mira',
-        'email'=>'mira@gmail.com',
+        'name'=>'louna',
+        'email'=>'louna@gmail.com',
         'password' => Hash::make('password'),
         'role'=>'teacher',
-        'phone'=>234567,
-        'longitude'=>122.55,
-        'latitude'=>132.5234,
-        'user_image'=>'mira.png',
        ]);
     }
 }
