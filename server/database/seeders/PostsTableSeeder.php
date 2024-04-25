@@ -14,9 +14,9 @@ class PostsTableSeeder extends Seeder
     public function run(): void
     {
         Post::create([
-            // 'caption'=>'ahmad is not here',
-            // 'image'=>'ahmad.png',
-            'user_id'=>7,
+            'caption'=>'mira is not here',
+            'image'=>'mira.png',
+            'user_id'=>5,
         ]);
     }
 }

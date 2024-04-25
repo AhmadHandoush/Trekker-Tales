@@ -42,7 +42,8 @@ Route::group(["middleware" => "isUser"], function () {
 });
 
 Route::group(['middleware','isTeacher'],function (){
-    Route::post('add',[PostController::class,'create_post']);
+    Route::post('create',[PostController::class,'create']);
     Route::get('posts',[PostController::class,'get_posts']);
+    Route::post('delete/{id}',[PostController::class,'delete']);
 
 });
