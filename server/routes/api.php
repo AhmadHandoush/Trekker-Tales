@@ -35,8 +35,12 @@ Route::group(['middleware' => "isAdmin"], function () {
 
 Route::group(["middleware" => "isUser"], function () {
     Route::group(['middleware' => 'auth:api'], function () {
-        
+
 });
 
 // other users routes
+});
+
+Route::group(['middleware','isTeacher'],function (){
+
 });
