@@ -42,7 +42,11 @@ class CommentController extends Controller
         $comment->update($req->all());
         return response()->json(['message'=>'comment updated successfully'],201);
 
+    }
+    public function get_comments($postId)
+    {
 
-
+        $comments = Comment::where('post_id', $postId)->get();
+        return response()->json(['comments' => $comments]);
     }
 }
