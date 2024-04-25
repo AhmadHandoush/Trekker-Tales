@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    function like(Request $req,$id){
+    function like($id){
         $userId=Auth::user()->id;
         $post=Post::find($id);
 
@@ -29,6 +29,29 @@ class LikeController extends Controller
             'message' => 'Post liked successfully.'
         ], 200);
 
+
+
+    }
+    function dislike($id){
+        $userId=Auth::user()->id;
+        $post= Post::find($id);
+        $like = Like::where('user_id', $userId)
+                    ->where('post_id', $post->id)
+                    ->first();
+
+        if (!$like) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You have not liked this post.'
+                ], 404);
+            }
+
+            $like->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Post unliked successfully.'
+            ], 200);
 
 
     }

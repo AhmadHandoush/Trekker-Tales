@@ -37,6 +37,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('user/{userId}', [UserController::class,'get_user']);
         Route::post('update/{userId}', [UserController::class,'update_user']);
         Route::get('posts',[PostController::class,'get_posts']);
+        // Route::post('dislike/{id}',[LikeController::class,'dislike']);
 
 
 
@@ -50,6 +51,7 @@ Route::group(['middleware','isTeacher'],function (){
     Route::post('delete/{id}',[PostController::class,'delete']);
     Route::post('update/{id}',[PostController::class,'update']);
     Route::post('like/{id}',[LikeController::class,'like']);
+    Route::post('dislike/{id}',[LikeController::class,'dislike']);
 
     });
 });
