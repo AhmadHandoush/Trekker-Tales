@@ -28,17 +28,20 @@ Route::controller(AuthController::class)->group(function () {
 
 });
 Route::group(['middleware' => "isAdmin"], function () {
-    // some admin specific api
+    Route::get('/users',[UserController::class,'getAllUsers']);
 });
 
-// Route::get('user/{userId}', [UserController::class,'get_user']);
 
 Route::group(["middleware" => "isUser"], function () {
     Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('user',[UserController::class,'user_data']);
+        Route::get('user/{userId}', [UserController::class,'get_user']);
+
+
 
 });
 
-// other users routes
+
 });
 
 Route::group(['middleware','isTeacher'],function (){

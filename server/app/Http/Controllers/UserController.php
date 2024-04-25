@@ -26,9 +26,7 @@ class UserController extends Controller
                 'message' => 'User not found.'
             ], 404);
         }
-        // $user = Auth::user(); // Retrieve authenticated user
 
-        // return response()->json(['user' => $user]);
     }
     public function update_user(Request $req,$id){
         $user=User::findOrFail($id);
@@ -41,5 +39,19 @@ class UserController extends Controller
         return response()->json($user);
 
     }
-    
+    function getAllUsers()
+    {
+        $users = User::all();
+
+        return response()->json([
+            "users" => $users
+        ]);
+    }
+    public function user_data(){
+        $user = Auth::user();
+        return response()->json([
+            "user" => $user
+        ]);
+    }
+
 }
