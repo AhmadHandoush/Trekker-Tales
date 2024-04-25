@@ -43,8 +43,12 @@ Route::group(["middleware" => "isUser"], function () {
 });
 
 Route::group(['middleware','isTeacher'],function (){
+    Route::group(['middleware' => 'auth:api'], function () {
     Route::post('create',[PostController::class,'create']);
     Route::get('posts',[PostController::class,'get_posts']);
     Route::post('delete/{id}',[PostController::class,'delete']);
+    Route::post('update/{id}',[PostController::class,'update']);
 
+    });
 });
+
