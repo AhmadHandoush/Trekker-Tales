@@ -32,6 +32,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('/users',[UserController::class,'getAllUsers']);
     Route::post('add_trip',[TripController::class,'store']);
     Route::get('get_teachers',[UserController::class,'get_teachers']);
+    Route::get('get_parents',[UserController::class,'get_parents']);
     Route::post('delete_user/{id}',[UserController::class,'delete_user']);
 });
 

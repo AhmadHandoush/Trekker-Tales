@@ -70,13 +70,18 @@ class UserController extends Controller
     }
     public function get_teachers(){
         $teachers=User::where('role','teacher')->get();
-        return response()->json(['comments' => $teachers]);
+        return response()->json(['teachers' => $teachers]);
 
     }
     public function delete_user($id){
         $user=User::findOrFail($id);
         $user->delete();
         return response()->json(['message'=>'user deleted successfully'],200);
+    }
+    public function get_parents(){
+        $parents=User::where('role','parent')->get();
+        return response()->json(['parents' => $parents]);
+
     }
 
 
