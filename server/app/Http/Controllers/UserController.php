@@ -73,5 +73,11 @@ class UserController extends Controller
         return response()->json(['comments' => $teachers]);
 
     }
+    public function delete_user($id){
+        $user=User::findOrFail($id);
+        $user->delete();
+        return response()->json(['message'=>'user deleted successfully'],200);
+    }
+
 
 }
