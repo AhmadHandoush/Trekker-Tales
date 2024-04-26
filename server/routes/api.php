@@ -31,6 +31,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::group(['middleware' => "isAdmin"], function () {
     Route::get('/users',[UserController::class,'getAllUsers']);
     Route::post('add_trip',[TripController::class,'store']);
+    Route::get('get_teachers',[UserController::class,'get_teachers']);
 });
 
 

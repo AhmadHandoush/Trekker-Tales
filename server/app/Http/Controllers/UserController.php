@@ -68,5 +68,10 @@ class UserController extends Controller
             "user" => $user
         ]);
     }
+    public function get_teachers(){
+        $teachers=User::where('role','teacher')->get();
+        return response()->json(['comments' => $teachers]);
+
+    }
 
 }
