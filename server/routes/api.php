@@ -44,6 +44,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::post('add_comment/{id}',[CommentController::class,'add_comment']);
         Route::post('update_comment/{id}',[CommentController::class,'update']);
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
+        Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
 
 
 
@@ -64,6 +65,7 @@ Route::group(['middleware','isTeacher'],function (){
         Route::post('update_comment/{id}',[CommentController::class,'update']);
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
         Route::get('likes/{id}',[LikeController::class,'get_likes']);
+        Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
 
     });
 });

@@ -54,8 +54,6 @@ class PostController extends Controller
 
         $post=Post::find($id);
 
-
-
         if(!$post){
             return response()->json([
                 'success' => false,
@@ -63,7 +61,6 @@ class PostController extends Controller
             ],404);
         }
         $post->caption = $request->caption;
-
         $post->save();
 
 
