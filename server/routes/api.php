@@ -41,6 +41,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::post('create_trip',[TripController::class,'store']);
     Route::get('get_trips',[TripController::class,'get_trips']);
     Route::get('get_reviews/{trip_id}',[ReviewController::class,'get_reviews']);
+    Route::get('average_rating/{trip_id}',[ReviewController::class,'average_rating']);
 });
 
 
