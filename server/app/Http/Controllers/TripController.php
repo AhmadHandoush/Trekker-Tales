@@ -45,8 +45,20 @@ class TripController extends Controller
 
         return response()->json(['message' => 'Trip created successfully', 'trip' => $trip], 201);
     }
-}
+    public function delete($id){
+        $trip= Trip::findOrFail($id);
+        $trip->delete();
+        return response()->json(['success'=>true,'message'=>'trip deleted successfully'],200);
 
+    }
+    public function get_trips(){
+        $trips = Trip::with('locations')->get();
+        return response()->json(['trips' => $trips], 200);
+
+    }
+
+
+}
 
 
 // 'name' => 'required|string',
@@ -62,3 +74,5 @@ class TripController extends Controller
 //             'dinner' => 'boolean',
 //             'description' => 'nullable|string',
 //             'trip_image' => 'nullable|string',
+
+
