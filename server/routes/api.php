@@ -34,6 +34,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_teachers',[UserController::class,'get_teachers']);
     Route::get('get_parents',[UserController::class,'get_parents']);
     Route::post('delete_user/{id}',[UserController::class,'delete_user']);
+    Route::post('update_user/{id}',[UserController::class,'update_user']);
 });
 
 

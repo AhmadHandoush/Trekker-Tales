@@ -29,31 +29,25 @@ class UserController extends Controller
         }
 
     }
-    // public function update_user(Request $req,$id){
-    //     $req->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255',
-    //         'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    //     ]);
-    //     $user=User::findOrFail($id);
-    //     if($req->hasFile('profile_image')){
-    //         $file = $req->file('profile_image');
-    //         $extension = $file->getClientOriginalExtension();
-    //         $filename = time() . '.' . $extension;
-    //         $file->move(public_path('/profile_pictures/'), $filename);
-    //     }
-    //     if (File::exists(public_path('/profile_pictures') . $user->user_image)) {
-    //         File::delete((public_path('/profile_pictures') . $user->user_image));
-    //     }
+    public function update_user(Request $req,$id){
+        $req->validate([
+            'user_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $user=User::findOrFail($id);
+        $userData = $req->all();
 
 
+        if ($req->hasFile('user_image')) {
+            $image = $req->file('user_image');
+            $imageName = $user->id.'_'.time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $user->image = '/images/'.$imageName;
+        }
+        $user->update($userData);
 
+        return response()->json(['message'=>'user updated succ'],200);
 
-    //     $user->update($req->all());
-
-    //     return response()->json($user);
-
-    // }
+    }
     function getAllUsers()
     {
         $users = User::all();
