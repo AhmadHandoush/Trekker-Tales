@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -54,6 +55,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
+        Route::post('add_review/{trip_id}',[ReviewController::class,'add_review']);
 
 
 
