@@ -2,21 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
+use App\Models\Location;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostsTableSeeder extends Seeder
+class LocationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        // Post::create([
-        //     'caption'=>'mira is not here',
-        //     'image'=>'mira.png',
-        //     'user_id'=>5,
-        // ]);
+       Location::create(
+        ['name'=>"jiita",'longitude'=>'33.94386917902692','latitude'=>'35.64130077448859'],
+
+       );
     }
 }
