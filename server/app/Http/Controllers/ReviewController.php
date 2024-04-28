@@ -25,4 +25,8 @@ class ReviewController extends Controller
 
         return response()->json(['success'=>true,'message'=>'review added successfully'],200);
     }
+    public function get_reviews($trip_id){
+        $reviews = Review::where('trip_id', $trip_id)->get();
+        return response()->json(['comments' => $reviews]);
+    }
 }

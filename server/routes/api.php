@@ -40,6 +40,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('locations',[LocationController::class,'get_locations']);
     Route::post('create_trip',[TripController::class,'store']);
     Route::get('get_trips',[TripController::class,'get_trips']);
+    Route::get('get_reviews/{trip_id}',[ReviewController::class,'get_reviews']);
 });
 
 
