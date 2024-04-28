@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_parents',[UserController::class,'get_parents']);
     Route::post('delete_user/{id}',[UserController::class,'delete_user']);
     Route::post('update_user/{id}',[UserController::class,'update_user']);
+    Route::get('locations',[LocationController::class,'get_locations']);
 });
 
 
