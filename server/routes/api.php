@@ -38,6 +38,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::post('update_user/{id}',[UserController::class,'update_user']);
     Route::get('locations',[LocationController::class,'get_locations']);
     Route::post('create_trip',[TripController::class,'store']);
+    Route::get('get_trips',[TripController::class,'get_trips']);
 });
 
 
@@ -52,6 +53,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::post('update_comment/{id}',[CommentController::class,'update']);
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
+        Route::get('get_active_trips',[TripController::class,'get_active_trips']);
 
 
 
@@ -73,6 +75,8 @@ Route::group(['middleware','isTeacher'],function (){
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
         Route::get('likes/{id}',[LikeController::class,'get_likes']);
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
+        Route::get('get_active_trips',[TripController::class,'get_active_trips']);
+
 
     });
 });

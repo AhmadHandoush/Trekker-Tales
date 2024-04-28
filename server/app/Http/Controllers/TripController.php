@@ -56,6 +56,12 @@ class TripController extends Controller
         return response()->json(['trips' => $trips], 200);
 
     }
+    public function get_active_trips(){
+
+        $trips = Trip::with('locations')->where('status', 'active')->get();
+
+        return response()->json(['trips' => $trips], 200);
+    }
 
 
 }
