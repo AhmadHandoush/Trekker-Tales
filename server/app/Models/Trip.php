@@ -22,8 +22,8 @@ class Trip extends Model
     //     'dinner',
 
     // ];
-    public function location(){
-        return $this->hasMany(Location::class,'trip_id');
+    public function locations(){
+        return $this->belongsToMany(Location::class);
     }
     public function booking(){
         return $this->hasMany(Booking::class,'trip_id');
