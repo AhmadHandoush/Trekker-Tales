@@ -37,6 +37,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::post('delete_user/{id}',[UserController::class,'delete_user']);
     Route::post('update_user/{id}',[UserController::class,'update_user']);
     Route::get('locations',[LocationController::class,'get_locations']);
+    Route::post('create_trip',[TripController::class,'store']);
 });
 
 
@@ -76,3 +77,33 @@ Route::group(['middleware','isTeacher'],function (){
     });
 });
 
+
+
+
+// {
+//     "name": "Trip 1",
+//     "description": "des 1",
+//     "start_time": "8:04:27",
+//     "end_time": "18:04:27",
+//     "date":"2024-04-03",
+//     "trip_image":"trip.png",
+//     "fees":"200",
+//     "total_seats":12,
+//     "lunch":"true",
+//     "breakfast":"false",
+//     "dinner":"false",
+
+
+//     "locations": [
+//         {
+//             "id": 1,
+//             "arrival_time": "09:00",
+//             "departure_time": "10:00"
+//         },
+//         {
+//             "id": 2,
+//             "arrival_time": "11:00",
+//             "departure_time": "12:00"
+//         }
+//     ]
+// }
