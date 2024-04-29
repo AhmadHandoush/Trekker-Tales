@@ -77,6 +77,11 @@ class UserController extends Controller
         return response()->json(['parents' => $parents]);
 
     }
+    public function get_users_number(){
+        $users=User::where('role','parent')->count();
+        return response()->json(['users_number' => $users]);
+
+    }
 
 
 }

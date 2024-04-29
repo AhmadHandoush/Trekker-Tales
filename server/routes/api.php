@@ -42,6 +42,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_trips',[TripController::class,'get_trips']);
     Route::get('get_reviews/{trip_id}',[ReviewController::class,'get_reviews']);
     Route::get('average_rating/{trip_id}',[ReviewController::class,'average_rating']);
+    Route::get('get_users_number',[UserController::class,'get_users_number']);
 });
 
 
