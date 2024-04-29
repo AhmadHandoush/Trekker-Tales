@@ -50,7 +50,7 @@ Route::group(["middleware" => "isUser"], function () {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('user',[UserController::class,'user_data']);
         Route::get('user/{userId}', [UserController::class,'get_user']);
-        Route::post('update/{userId}', [UserController::class,'update_user']);
+        Route::post('update_user',[UserController::class,'update_user']);
         Route::get('posts',[PostController::class,'get_posts']);
         Route::post('dislike/{id}',[LikeController::class,'dislike']);
         Route::post('add_comment/{id}',[CommentController::class,'add_comment']);
@@ -59,6 +59,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
         Route::post('add_review/{trip_id}',[ReviewController::class,'add_review']);
+
 
 
 

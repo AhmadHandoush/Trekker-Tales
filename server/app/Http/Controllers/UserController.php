@@ -6,6 +6,7 @@ use App\Models\User;
 use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -29,23 +30,21 @@ class UserController extends Controller
         }
 
     }
-    public function update_user(Request $req,$id){
-        $req->validate([
-            'user_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-        $user=User::findOrFail($id);
-        $userData = $req->all();
-
-
-        if ($req->hasFile('user_image')) {
-            $image = $req->file('user_image');
-            $imageName = $user->id.'_'.time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $user->image = '/images/'.$imageName;
+    public function update_user(Request $request){
+        $user = Auth::users();
+        
+        if ($request->hasFile('user_image')) {
+            if ($user->user_image) {
+                Storage::delete($user->user_image);
+            }
+            $imagePath = $request->file('user_image')->store('profile_images', 'public');
+            $request->merge(['user_image' => $imagePath]);
         }
-        $user->update($userData);
 
-        return response()->json(['message'=>'user updated succ'],200);
+
+        $user->update($request->all());
+
+        return response()->json(['message'=>$user],200);
 
     }
     function getAllUsers()
