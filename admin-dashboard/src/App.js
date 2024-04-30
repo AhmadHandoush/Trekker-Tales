@@ -4,8 +4,9 @@ import Trips from "./pages/trips";
 import Teachers from "./pages/teachers";
 import Users from "./pages/users";
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+
 import Login from "./pages/login";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
