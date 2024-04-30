@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import "../../styles/header.css";
+// import "../../styles/header.css";
 
 function Header() {
   const location = useLocation();

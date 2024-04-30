@@ -1,8 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
-import "../../styles/sidebar.css";
 import { IoIosHome } from "react-icons/io";
 import { FaBusAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
+import "./sidebar.css";
+import "../../styles/utilities.css";
 
 function Sidebar() {
   const location = useLocation();
@@ -15,7 +16,12 @@ function Sidebar() {
   }
   return (
     <aside>
-      <div className="logo"></div>
+      <div className="top">
+        <div className="logo">
+          {" "}
+          <img src="./Borcelle (3).png" alt="" />
+        </div>
+      </div>
       <div className="menu">
         <ul className="flex column ">
           <li>

@@ -6,7 +6,7 @@ import Users from "./pages/users";
 import Header from "./components/Header";
 
 import Login from "./pages/login";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (

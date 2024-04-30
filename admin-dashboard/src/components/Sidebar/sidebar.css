@@ -1,0 +1,15 @@
+:root {
+  --main-color: #e87a00;
+  --border-color: #ccc;
+  --bg-grey: #5a5a5a;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+aside {
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--main-color);
+}
+.logo {
+}

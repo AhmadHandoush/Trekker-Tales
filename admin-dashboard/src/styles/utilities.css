@@ -1,5 +1,5 @@
 :root {
-  --main-color: #0066b2;
+  --main-color: #e87a00;
   --border-color: #ccc;
   --bg-grey: #5a5a5a;
   --bg-white: #ffffff;
@@ -57,4 +57,7 @@ body {
 }
 .column {
   flex-direction: column;
+}
+.bg-primary {
+  background-color: var(--main-color);
 }
