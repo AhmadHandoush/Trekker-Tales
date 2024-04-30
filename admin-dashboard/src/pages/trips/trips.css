@@ -26,7 +26,7 @@
 }
 .trip-card h2 {
   position: absolute;
-  bottom: -24px;
+  bottom: 10px;
   color: white;
   z-index: 101;
   padding-left: 10px;
