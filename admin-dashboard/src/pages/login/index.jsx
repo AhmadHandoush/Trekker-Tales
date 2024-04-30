@@ -32,6 +32,7 @@ function Login() {
       const responseData = await response.json();
       console.log(responseData);
       if (responseData.user.role === "admin") {
+        localStorage.setItem("token", responseData.authorisation.token);
         navigate("/dashboard");
       }
     } catch (error) {
