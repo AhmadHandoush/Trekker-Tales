@@ -7,7 +7,6 @@ import "../../styles/utilities.css";
 import { HiOutlineLogout } from "react-icons/hi";
 
 function Sidebar() {
-  const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
 

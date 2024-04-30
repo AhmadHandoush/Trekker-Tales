@@ -21,6 +21,7 @@ aside {
   background-color: white;
   gap: 20px;
   padding-left: 10px;
+  padding-right: 5px;
 }
 .logo {
   width: 70px;
@@ -34,7 +35,7 @@ aside {
   max-height: 100%;
 }
 .top h3 {
-  font-size: 25px;
+  font-size: 24px;
 }
 .menu {
   padding: 20px 0;

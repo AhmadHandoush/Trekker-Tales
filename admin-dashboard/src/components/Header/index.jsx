@@ -18,7 +18,7 @@ function Header() {
         <input type="text" />
       </div>
       <div className="admin_image">
-        <img src="" alt="" />
+        <img src="./Friend.jpeg" alt="admin_image" className="s-image" />
       </div>
     </header>
   );
