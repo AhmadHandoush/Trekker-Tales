@@ -35,7 +35,7 @@ function Trips() {
   console.log(trips[0]);
   return (
     <div className="trips">
-      <div className="add-trip">
+      <div className="add-trip flex">
         <button>
           Add
           <IoMdAdd />

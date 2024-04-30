@@ -1,6 +1,32 @@
+:root {
+  --main-color: #e87a00;
+  --border-color: #ccc;
+  --bg-grey: #5a5a5a;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+
 .trips {
   padding: 2rem 100px;
 }
+.add-trip {
+  justify-content: flex-end;
+  margin: 20px 0;
+}
+.add-trip button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
 .all-trips {
   justify-content: space-between;
   flex-wrap: wrap;
@@ -8,7 +34,7 @@
 }
 .trip-card {
   width: 350px;
-  background-color: red;
+  background-color: green;
   position: relative;
   height: 200px;
   border-radius: 6px;
