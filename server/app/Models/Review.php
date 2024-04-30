@@ -15,7 +15,7 @@ class Review extends Model
         'content',
     ];
     public function trip(){
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Trip::class,'trip_id');
     }
     public function user(){
         return $this->belongsTo(User::class);
