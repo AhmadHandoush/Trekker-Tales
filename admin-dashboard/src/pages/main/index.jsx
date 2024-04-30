@@ -7,9 +7,11 @@ import Loader from "../../components/Loader";
 function Main() {
   const [tripsNumber, setTripsNumber] = useState(null);
   const [usersNumber, setUsersNumber] = useState(null);
+  const [highest, setHighest] = useState([]);
   const [teachersNumber, setTeachersNumber] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const token = localStorage.getItem("token");
   useEffect(() => {
     const getTrips = async () => {
@@ -81,6 +83,32 @@ function Main() {
       }
     };
     getTeachers();
+    const get_highest = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          "http://127.0.0.1:8000/api/get_highest_rated",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setHighest(data);
+        // console.log(data);
+        console.log(highest[0].trip);
+
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
+    };
+    get_highest();
   }, []);
   return (
     <div className="main">
@@ -101,9 +129,9 @@ function Main() {
       <section className="top-trips">
         <h2>Highest Rating Trips:</h2>
         <div className="top-trips-cards flex">
-          <TopCard />
-          <TopCard />
-          <TopCard />
+          {highest.map((trip) => (
+            <TopCard trip={trip.trip} key={trip.trip.id} />
+          ))}
         </div>
       </section>
     </div>

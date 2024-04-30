@@ -1,4 +1,5 @@
-function TopCard() {
+function TopCard({ trip }) {
+  const { name } = trip;
   return (
     <div className="top-card">
       <img
@@ -7,7 +8,7 @@ function TopCard() {
         className="s-image"
       />
       <div className="bottom"></div>
-      <h2>the best trip</h2>
+      <h2>{name}</h2>
     </div>
   );
 }
