@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-// import "../../styles/header.css";
+import "./header.css";
+import "../../styles/utilities.css";
 
 function Header() {
   const location = useLocation();
@@ -11,7 +12,16 @@ function Header() {
     return null;
   }
 
-  return <div>header</div>;
+  return (
+    <header className="flex">
+      <div className="search">
+        <input type="text" />
+      </div>
+      <div className="admin_image">
+        <img src="" alt="" />
+      </div>
+    </header>
+  );
 }
 
 export default Header;

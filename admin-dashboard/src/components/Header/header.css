@@ -1,0 +1,14 @@
+:root {
+  --main-color: #e87a00;
+  --border-color: #ccc;
+  --bg-grey: #5a5a5a;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+
+header {
+  justify-content: space-around;
+  background-color: #e87a00;
+  height: 80px;
+  width: 100%;
+}
