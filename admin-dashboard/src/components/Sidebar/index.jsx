@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { IoIosHome } from "react-icons/io";
 import { FaBusAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
@@ -7,6 +7,7 @@ import "../../styles/utilities.css";
 import { HiOutlineLogout } from "react-icons/hi";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
 
@@ -15,6 +16,11 @@ function Sidebar() {
   if (hideSidebar) {
     return null;
   }
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
   return (
     <aside className="flex column">
       <div className="top flex-items">
@@ -52,7 +58,7 @@ function Sidebar() {
           </li>
         </ul>
         <div className="logout">
-          <Link className="flex-items white">
+          <Link to={"/"} className="flex-items white" onClick={handleLogout}>
             <HiOutlineLogout />
             Logout
           </Link>
