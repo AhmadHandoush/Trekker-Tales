@@ -28,5 +28,15 @@
   color: black;
 }
 .top-trips {
-  margin-top: 3rem;
+  margin-top: 120px;
+}
+.top-trips h2 {
+  margin-bottom: 2rem;
+}
+.top-trips-cards {
+  justify-content: space-between;
+}
+.top-trips-cards .top-card {
+  width: 300px;
+  background-color: red;
 }
