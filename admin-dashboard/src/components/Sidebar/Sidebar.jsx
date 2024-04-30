@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "../styles/utilities.css";
+import "../../styles/sidebar.css";
 import { IoIosHome } from "react-icons/io";
 import { FaBusAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";

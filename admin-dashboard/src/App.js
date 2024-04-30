@@ -5,6 +5,7 @@ import Teachers from "./pages/teachers";
 import Users from "./pages/users";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Login from "./pages/login";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Header />
         <Sidebar />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Main />} />
           <Route path="/trips" element={<Trips />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/users" element={<Users />} />
