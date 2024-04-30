@@ -16,7 +16,7 @@
   border: 2px solid var(--main-color);
   padding: 20px;
   justify-content: center;
-  width: 20%;
+  width: 300px;
   gap: 10px;
 }
 .info-card h1 {
@@ -39,4 +39,25 @@
 .top-trips-cards .top-card {
   width: 300px;
   background-color: red;
+  position: relative;
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.top-card .bottom {
+  position: absolute;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 20%;
+  z-index: 100;
+  padding-left: 20px;
+}
+.top-card h2 {
+  position: absolute;
+  bottom: -24px;
+  color: white;
+  z-index: 101;
+  padding-left: 10px;
 }
