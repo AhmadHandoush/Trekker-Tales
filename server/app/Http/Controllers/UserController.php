@@ -32,7 +32,7 @@ class UserController extends Controller
     }
     public function update_user(Request $request){
         $user = Auth::users();
-        
+
         if ($request->hasFile('user_image')) {
             if ($user->user_image) {
                 Storage::delete($user->user_image);
@@ -81,6 +81,12 @@ class UserController extends Controller
         return response()->json(['users_number' => $users]);
 
     }
+    public function get_teachers_number(){
+        $users=User::where('role','teacher')->count();
+        return response()->json(['users_number' => $users]);
+
+    }
+
 
 
 }
