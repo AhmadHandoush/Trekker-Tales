@@ -36,3 +36,28 @@ aside {
 .top h3 {
   font-size: 25px;
 }
+.menu {
+  padding: 20px 0;
+}
+.menu ul {
+  gap: 30px;
+}
+.menu ul li {
+  display: flex;
+  height: 40px;
+  padding-left: 20px;
+  align-items: center;
+}
+ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+ul li a svg {
+  font-size: 34px;
+}
+ul li .active {
+}

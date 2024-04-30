@@ -26,7 +26,7 @@ function Sidebar() {
       <div className="menu">
         <ul className="flex column ">
           <li>
-            <NavLink to={"/"}>
+            <NavLink to={"/dashboard"}>
               <IoIosHome />
               Dashboard
             </NavLink>
