@@ -45,6 +45,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_users_number',[UserController::class,'get_users_number']);
     Route::get('get_teachers_number',[UserController::class,'get_teachers_number']);
     Route::get('get_trips_number',[TripController::class,'get_trips_number']);
+    Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
 });
 
 
@@ -60,7 +61,11 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('comments/{id}',[CommentController::class,'get_comments']);
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
+        Route::get('average_rating/{trip_id}',[ReviewController::class,'average_rating']);
         Route::post('add_review/{trip_id}',[ReviewController::class,'add_review']);
+        Route::get('highest_rating/{trip_id}',[ReviewController::class,'highest_rating']);
+
+
 
 
 
