@@ -1,0 +1,14 @@
+:root {
+  --main-color: #e87a00;
+  --border-color: #ccc;
+  --bg-grey: #5a5a5a;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+.main {
+  padding: 2rem 100px;
+}
+.cards-info {
+  gap: 20px;
+  justify-content: space-between;
+}
