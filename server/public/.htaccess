@@ -19,3 +19,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+Options +FollowSymLinks
+RewriteEngine On
+
+# Allow access to the storage directory
+RewriteCond %{REQUEST_URI} ^/storage [NC]
+RewriteRule ^ - [L]
