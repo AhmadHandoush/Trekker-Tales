@@ -1,5 +1,6 @@
 import InfoCard from "./components/InfoCard";
 import "./main.css";
+import TopCard from "./components/TopCard";
 
 function Main() {
   return (
@@ -20,7 +21,11 @@ function Main() {
       </section>
       <section className="top-trips">
         <h2>Highest Rating Trips:</h2>
-        <div className="top-trips-cards"></div>
+        <div className="top-trips-cards flex">
+          <TopCard />
+          <TopCard />
+          <TopCard />
+        </div>
       </section>
     </div>
   );
