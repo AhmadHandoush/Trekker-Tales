@@ -60,4 +60,25 @@ ul li a svg {
   font-size: 34px;
 }
 ul li .active {
+  color: black;
+}
+.menu {
+  height: 90vh;
+  justify-content: space-between;
+}
+.logout {
+  padding-left: 20px;
+}
+.logout a {
+  font-weight: bold;
+  font-size: 30px;
+  gap: 10px;
+}
+.logout a svg {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.logout:hover {
+  opacity: 0.5;
 }

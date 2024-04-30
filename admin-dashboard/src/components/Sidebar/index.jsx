@@ -1,9 +1,10 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoIosHome } from "react-icons/io";
 import { FaBusAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import "./sidebar.css";
 import "../../styles/utilities.css";
+import { HiOutlineLogout } from "react-icons/hi";
 
 function Sidebar() {
   const location = useLocation();
@@ -15,7 +16,7 @@ function Sidebar() {
     return null;
   }
   return (
-    <aside>
+    <aside className="flex column">
       <div className="top flex-items">
         <div className="logo">
           {" "}
@@ -23,7 +24,7 @@ function Sidebar() {
         </div>
         <h3 className="bold">Trekker Tales</h3>
       </div>
-      <div className="menu">
+      <div className="menu flex column">
         <ul className="flex column ">
           <li>
             <NavLink to={"/dashboard"}>
@@ -38,18 +39,24 @@ function Sidebar() {
             </NavLink>
           </li>
           <li>
-            <NavLink>
+            <NavLink to={"/teachers"}>
               <FaUsers />
               Teachers
             </NavLink>
           </li>
           <li>
-            <NavLink>
+            <NavLink to={"/users"}>
               <FaUsers />
               Users
             </NavLink>
           </li>
         </ul>
+        <div className="logout">
+          <Link className="flex-items white">
+            <HiOutlineLogout />
+            Logout
+          </Link>
+        </div>
       </div>
     </aside>
   );
