@@ -77,3 +77,10 @@ body {
 input::placeholder {
   color: #808080;
 }
+
+.App {
+  width: 100%;
+}
+.right {
+  width: 100%;
+}

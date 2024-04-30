@@ -14,17 +14,19 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div className=" basics flex">
-          {" "}
           <Sidebar />
-          <Header />
+
+          <div className=" right flex column">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/dashboard" element={<Main />} />
+              <Route path="/trips" element={<Trips />} />
+              <Route path="/teachers" element={<Teachers />} />
+              <Route path="/users" element={<Users />} />
+            </Routes>
+          </div>
         </div>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Main />} />
-          <Route path="/trips" element={<Trips />} />
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/users" element={<Users />} />
-        </Routes>
       </BrowserRouter>
     </div>
   );
