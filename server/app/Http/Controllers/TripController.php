@@ -14,8 +14,7 @@ class TripController extends Controller
             'name' => 'required|string',
             'destination' => 'required|string',
             'date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
+
             'total_seats' => 'required|integer',
             'available_seats' => 'required|integer',
             'fees' => 'required|numeric',

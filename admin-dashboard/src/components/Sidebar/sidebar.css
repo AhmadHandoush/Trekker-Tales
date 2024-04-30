@@ -17,7 +17,7 @@ aside {
 }
 
 .top {
-  height: 80px;
+  height: 70px;
   background-color: white;
   gap: 20px;
   padding-left: 10px;
@@ -35,7 +35,7 @@ aside {
   max-height: 100%;
 }
 .top h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 .menu {
   padding: 20px 0;
@@ -59,7 +59,7 @@ ul li a {
   gap: 10px;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
 }
 ul li a svg {
   font-size: 34px;
@@ -76,7 +76,7 @@ ul li .active {
 }
 .logout a {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 24px;
   gap: 10px;
 }
 .logout a svg {
