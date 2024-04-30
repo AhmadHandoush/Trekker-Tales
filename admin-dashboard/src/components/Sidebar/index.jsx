@@ -16,11 +16,12 @@ function Sidebar() {
   }
   return (
     <aside>
-      <div className="top">
+      <div className="top flex-items">
         <div className="logo">
           {" "}
           <img src="./Borcelle (3).png" alt="" />
         </div>
+        <h3 className="bold">Trekker Tales</h3>
       </div>
       <div className="menu">
         <ul className="flex column ">

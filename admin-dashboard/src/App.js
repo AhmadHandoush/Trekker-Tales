@@ -7,13 +7,17 @@ import Header from "./components/Header";
 
 import Login from "./pages/login";
 import Sidebar from "./components/Sidebar";
+import "./styles/utilities.css";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-        <Sidebar />
+        <div className=" basics flex">
+          {" "}
+          <Sidebar />
+          <Header />
+        </div>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Main />} />

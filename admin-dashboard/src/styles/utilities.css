@@ -61,3 +61,9 @@ body {
 .bg-primary {
   background-color: var(--main-color);
 }
+.white {
+  color: white;
+}
+.bold {
+  font-weight: bold;
+}
