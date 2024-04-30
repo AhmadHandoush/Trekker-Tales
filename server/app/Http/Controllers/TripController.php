@@ -62,6 +62,12 @@ class TripController extends Controller
         return response()->json(['trips' => $trips], 200);
     }
 
+    public function get_trips_number(){
+        $trips=Trip::all()->count();
+
+        return response()->json(['trips_number' => $trips], 200);
+    }
+
 
 }
 
