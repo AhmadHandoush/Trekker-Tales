@@ -41,6 +41,23 @@ function Trips() {
           <IoMdAdd />
         </button>
       </div>
+      <div className="filters flex-between">
+        <select name="" id="">
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+        </select>{" "}
+        <select name="" id="">
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+        </select>{" "}
+        <select name="" id="">
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+          <option value="name">ahmad</option>
+        </select>
+      </div>
       <section className="trips-sec">
         <div className="filter"></div>
         <div className="all-trips flex">
