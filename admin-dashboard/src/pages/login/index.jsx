@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import "./login.css";
@@ -30,15 +30,9 @@ function Login() {
       }
 
       const responseData = await response.json();
-      localStorage.setItem("user_id", JSON.stringify(responseData[0].id));
-      if (responseData[0].role === "passenger") {
-        navigate("/");
-      }
-      if (responseData[0].role === "manager") {
-        navigate("/Manager");
-      }
-      if (responseData[0].role === "admin") {
-        navigate("/admin");
+      console.log(responseData);
+      if (responseData.user.role === "admin") {
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Error:", error);
