@@ -1,10 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "../../styles/sidebar.css";
 import { IoIosHome } from "react-icons/io";
 import { FaBusAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 
 function Sidebar() {
+  const location = useLocation();
+  const { pathname } = location;
+
+  const hideSidebar = pathname === "/";
+
+  if (hideSidebar) {
+    return null;
+  }
   return (
     <aside>
       <div className="logo"></div>
