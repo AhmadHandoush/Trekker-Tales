@@ -83,7 +83,7 @@ class UserController extends Controller
     }
     public function get_teachers_number(){
         $users=User::where('role','teacher')->count();
-        return response()->json(['users_number' => $users]);
+        return response()->json(['teachers_number' => $users]);
 
     }
 

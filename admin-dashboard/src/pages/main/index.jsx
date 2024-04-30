@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 function Main() {
   const [tripsNumber, setTripsNumber] = useState(null);
   const [usersNumber, setUsersNumber] = useState(null);
+  const [teachersNumber, setTeachersNumber] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
@@ -57,6 +58,29 @@ function Main() {
       }
     };
     getUsers();
+    const getTeachers = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          "http://127.0.0.1:8000/api/get_teachers_number",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setTeachersNumber(data.teachers_number);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
+    };
+    getTeachers();
   }, []);
   return (
     <div className="main">
@@ -67,7 +91,7 @@ function Main() {
         </InfoCard>
         <InfoCard>
           <h2>Teachers</h2>
-          <h1>13</h1>
+          <h1>{isLoading ? <Loader /> : teachersNumber}</h1>
         </InfoCard>
         <InfoCard>
           <h2>Users</h2>
