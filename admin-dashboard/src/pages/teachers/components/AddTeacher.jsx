@@ -1,4 +1,38 @@
+import { useState } from "react";
+
 function AddTeacher({ setAdd }) {
+  const [error, setError] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      if (response.ok) {
+        console.log("succes");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setError(true);
+    }
+  };
+
   return (
     <div className="add-box center">
       <div className="close">

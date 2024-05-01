@@ -97,11 +97,11 @@
   z-index: 200000;
 }
 .add-box input {
-  padding: 5px 10px;
+  padding: 8px 10px;
   border-radius: 2px;
   border: none;
   outline: none;
-  border: 2px solid grey;
+  border: 1px solid grey;
 }
 .add-box form h2 {
   color: var(--main-color);
