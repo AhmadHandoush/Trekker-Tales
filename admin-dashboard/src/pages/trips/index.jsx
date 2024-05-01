@@ -3,6 +3,7 @@ import { IoMdAdd } from "react-icons/io";
 import TopCard from "../main/components/TopCard";
 import "./trips.css";
 import TripCard from "./components/TripCard";
+import Loader from "../../components/Loader";
 
 function Trips() {
   const [trips, setTrips] = useState([]);
@@ -43,14 +44,25 @@ function Trips() {
       </div>
       <div className="filters flex-between">
         <select name="" id="">
-          <option value="name">ahmad</option>
-          <option value="name">ahmad</option>
-          <option value="name">ahmad</option>
+          <option value="">Select a Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
         </select>{" "}
         <select name="" id="">
-          <option value="name">ahmad</option>
-          <option value="name">ahmad</option>
-          <option value="name">ahmad</option>
+          <option value="">Status</option>
+          <option value="1">Active</option>
+          <option value="2">Pending</option>
+          <option value="3">inactive</option>
         </select>{" "}
         <select name="" id="">
           <option value="name">ahmad</option>
@@ -61,9 +73,13 @@ function Trips() {
       <section className="trips-sec">
         <div className="filter"></div>
         <div className="all-trips flex">
-          {trips.map((trip, index) => (
-            <TripCard trip={trip} key={index} />
-          ))}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            trips.map((trip, index) => (
+              <TripCard trip={trip} key={index} isLoading={isLoading} />
+            ))
+          )}
         </div>
       </section>
     </div>

@@ -99,9 +99,6 @@ function Main() {
         }
         const data = await response.json();
         setHighest(data);
-        // console.log(data);
-        console.log(highest[0].trip);
-
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -129,9 +126,13 @@ function Main() {
       <section className="top-trips">
         <h2>Highest Rating Trips:</h2>
         <div className="top-trips-cards flex">
-          {highest.map((trip) => (
-            <TopCard trip={trip.trip} key={trip.trip.id} />
-          ))}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            highest.map((trip) => (
+              <TopCard trip={trip.trip} key={trip.trip.id} />
+            ))
+          )}
         </div>
       </section>
     </div>
