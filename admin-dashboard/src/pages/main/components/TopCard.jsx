@@ -11,8 +11,7 @@ function TopCard({ trip, average_rating }) {
         {rating}
       </div>
       <img
-        // src={`http://yourdomain.com/storage/images/${trip_image}`}
-        src="./360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"
+        src={`http://127.0.0.1:8000/images/${trip_image}`}
         alt={name}
         className="s-image"
       />
@@ -22,5 +21,7 @@ function TopCard({ trip, average_rating }) {
     </div>
   );
 }
-
+{
+  /* src="./360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg" */
+}
 export default TopCard;
