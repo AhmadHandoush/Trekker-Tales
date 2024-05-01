@@ -79,12 +79,12 @@ ul li .active {
 }
 .logout a {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   gap: 10px;
 }
 .logout a svg {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .logout:hover {
