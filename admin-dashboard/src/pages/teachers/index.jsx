@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import Teacher from "./components/Teacher";
 import "./teachers.css";
+import AddTeacher from "./components/AddTeacher";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
+  const [add, setAdd] = useState(false);
 
   useEffect(() => {
     const getTrips = async () => {
@@ -52,12 +54,16 @@ function Teachers() {
   };
   return (
     <div className="teachers">
+      {add && <div className="overlay"></div>}
       <div className="table">
         <div className="titles flex-between  flex-items">
           <h3>Username</h3>
           <h3>Email</h3>
           <h3 className="address">Address</h3>
-          <button className="add-teacher">Add +</button>
+          <button className="add-teacher" onClick={() => setAdd(true)}>
+            Add +
+          </button>
+          {add && <AddTeacher />}
         </div>
         <div className="second">
           <ul className="teachers-list flex column">
