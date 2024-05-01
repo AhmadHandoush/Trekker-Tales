@@ -1,12 +1,16 @@
 import { FaEdit } from "react-icons/fa";
 function Parent({ parent, handleDelete }) {
-  const { id, name, email, address } = parent;
+  const { id, name, email, address, user_image } = parent;
 
   return (
     <li className="user flex-between flex-items">
       <div className="name flex">
         <div className="image">
-          <img src="./Friend.jpeg" alt="name" className="s-image" />
+          <img
+            src={`http://127.0.0.1:8000/images/${user_image}`}
+            alt="name"
+            className="s-image"
+          />
         </div>
         <h2>{name}</h2>
       </div>
@@ -16,8 +20,6 @@ function Parent({ parent, handleDelete }) {
       <div className="address">
         <h4>Barsa Kura</h4>
       </div>
-
-      <FaEdit />
 
       <div className="delete">
         <button onClick={() => handleDelete(id)}>Delete</button>
