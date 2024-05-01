@@ -6,7 +6,7 @@ function TopCard({ trip, average_rating }) {
 
   return (
     <div className="top-card">
-      <div className="rating">
+      <div className="rating flex-items">
         <FaStar />
         {rating}
       </div>

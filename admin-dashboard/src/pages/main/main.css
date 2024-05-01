@@ -64,3 +64,19 @@
   z-index: 101;
   padding-left: 10px;
 }
+.top-card .rating {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: white;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  justify-content: center;
+}
+.top-card .rating svg {
+  color: #ffea00;
+}
