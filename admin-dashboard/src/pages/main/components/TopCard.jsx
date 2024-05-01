@@ -21,7 +21,5 @@ function TopCard({ trip, average_rating }) {
     </div>
   );
 }
-{
-  /* src="./360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg" */
-}
+
 export default TopCard;

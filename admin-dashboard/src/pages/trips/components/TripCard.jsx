@@ -2,7 +2,6 @@ import Loader from "../../../components/Loader";
 
 function TripCard({ trip, isLoading }) {
   const { name, trip_image } = trip;
-  console.log(trip_image);
 
   return (
     <div className="trip-card">

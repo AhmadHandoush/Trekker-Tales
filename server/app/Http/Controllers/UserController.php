@@ -51,20 +51,17 @@ class UserController extends Controller
 
     }
     public function update_user(Request $request){
-        $user = Auth::users();
+        $user = Auth::user();
 
         if ($request->hasFile('user_image')) {
-            if ($user->user_image) {
-                Storage::delete($user->user_image);
-            }
-            $imagePath = $request->file('user_image')->store('profile_images', 'public');
-            $request->merge(['user_image' => $imagePath]);
+            $image = $request->file('user_image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $user->user_image = $imageName;
         }
+        $user->update($request->except('user_image')); // Exclude the profile_picture field from the update
+        return response()->json(["message"=>"info updated successfully",$user]);
 
-
-        $user->update($request->all());
-
-        return response()->json(['message'=>$user],200);
 
     }
     function getAllUsers()
