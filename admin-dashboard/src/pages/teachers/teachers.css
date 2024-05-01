@@ -33,3 +33,29 @@
 .second {
   padding: 10px;
 }
+.teachers-list .edit svg {
+  font-size: 25px;
+}
+.name .image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.teachers-list {
+  gap: 20px;
+}
+
+.teachers-list .delete button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  padding: 5px 20px;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+}

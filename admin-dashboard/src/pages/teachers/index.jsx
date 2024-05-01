@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 function Teachers() {
   return (
     <div className="teachers">
-      <div className="titles flex-between">
+      <div className="titles flex-between  flex-items">
         <h3>Username</h3>
         <h3>Email</h3>
         <h3>Address</h3>
@@ -14,9 +14,9 @@ function Teachers() {
           <li className="user flex-between">
             <div className="name flex">
               <div className="image">
-                <img src="" alt="" className="s-image" />
-                <h2>Jhon Doe</h2>
+                <img src="./Friend.jpeg" alt="name" className="s-image" />
               </div>
+              <h2>Jhon Doe</h2>
             </div>
             <div className="email">
               <h4>example@gmail.com</h4>
@@ -34,7 +34,7 @@ function Teachers() {
           <li className="user flex-between">
             <div className="name">
               <div className="image">
-                <img src="" alt="" className="s-image" />
+                <img src="./Friend.jpeg" alt="name" className="s-image" />
                 <h2>Jhon Doe</h2>
               </div>
             </div>
@@ -52,7 +52,7 @@ function Teachers() {
           <li className="user flex-between">
             <div className="name">
               <div className="image">
-                <img src="" alt="" className="s-image" />
+                <img src="./Friend.jpeg" alt="name" className="s-image" />
                 <h2>Jhon Doe</h2>
               </div>
             </div>
@@ -70,7 +70,7 @@ function Teachers() {
           <li className="user flex-between">
             <div className="name">
               <div className="image">
-                <img src="" alt="" className="s-image" />
+                <img src="./Friend.jpeg" alt="name" className="s-image" />
                 <h2>Jhon Doe</h2>
               </div>
             </div>
