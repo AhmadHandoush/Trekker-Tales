@@ -3,95 +3,97 @@ import { FaEdit } from "react-icons/fa";
 function Teachers() {
   return (
     <div className="teachers">
-      <div className="titles flex-between  flex-items">
-        <h3>Username</h3>
-        <h3>Email</h3>
-        <h3>Address</h3>
-        <button className="add-teacher">Add +</button>
-      </div>
-      <div className="second">
-        <ul className="teachers-list flex column">
-          <li className="user flex-between flex-items">
-            <div className="name flex">
-              <div className="image">
-                <img src="./Friend.jpeg" alt="name" className="s-image" />
+      <div className="table">
+        <div className="titles flex-between  flex-items">
+          <h3>Username</h3>
+          <h3>Email</h3>
+          <h3 className="address">Address</h3>
+          <button className="add-teacher">Add +</button>
+        </div>
+        <div className="second">
+          <ul className="teachers-list flex column">
+            <li className="user flex-between flex-items">
+              <div className="name flex">
+                <div className="image">
+                  <img src="./Friend.jpeg" alt="name" className="s-image" />
+                </div>
+                <h2>Jhon Doe</h2>
               </div>
-              <h2>Jhon Doe</h2>
-            </div>
-            <div className="email">
-              <h4>example@gmail.com</h4>
-            </div>
-            <div className="address">
-              <h4>Barsa Kura</h4>
-            </div>
-
-            <FaEdit />
-
-            <div className="delete">
-              <button>Delete</button>
-            </div>
-          </li>
-          <li className="user flex-between flex-items">
-            <div className="name flex">
-              <div className="image">
-                <img src="./Friend.jpeg" alt="name" className="s-image" />
+              <div className="email">
+                <h4>example@gmail.com</h4>
               </div>
-              <h2>Jhon Doe</h2>
-            </div>
-            <div className="email">
-              <h4>example@gmail.com</h4>
-            </div>
-            <div className="address">
-              <h4>Barsa Kura</h4>
-            </div>
-
-            <FaEdit />
-
-            <div className="delete">
-              <button>Delete</button>
-            </div>
-          </li>
-          <li className="user flex-between flex-items">
-            <div className="name flex">
-              <div className="image">
-                <img src="./Friend.jpeg" alt="name" className="s-image" />
+              <div className="address">
+                <h4>Barsa Kura</h4>
               </div>
-              <h2>Jhon Doe</h2>
-            </div>
-            <div className="email">
-              <h4>example@gmail.com</h4>
-            </div>
-            <div className="address">
-              <h4>Barsa Kura</h4>
-            </div>
 
-            <FaEdit />
+              <FaEdit />
 
-            <div className="delete">
-              <button>Delete</button>
-            </div>
-          </li>
-          <li className="user flex-between flex-items">
-            <div className="name flex">
-              <div className="image">
-                <img src="./Friend.jpeg" alt="name" className="s-image" />
+              <div className="delete">
+                <button>Delete</button>
               </div>
-              <h2>Jhon Doe</h2>
-            </div>
-            <div className="email">
-              <h4>example@gmail.com</h4>
-            </div>
-            <div className="address">
-              <h4>Barsa Kura</h4>
-            </div>
+            </li>
+            <li className="user flex-between flex-items">
+              <div className="name flex">
+                <div className="image">
+                  <img src="./Friend.jpeg" alt="name" className="s-image" />
+                </div>
+                <h2>Jhon Doe</h2>
+              </div>
+              <div className="email">
+                <h4>example@gmail.com</h4>
+              </div>
+              <div className="address">
+                <h4>Barsa Kura</h4>
+              </div>
 
-            <FaEdit />
+              <FaEdit />
 
-            <div className="delete">
-              <button>Delete</button>
-            </div>
-          </li>
-        </ul>
+              <div className="delete">
+                <button>Delete</button>
+              </div>
+            </li>
+            <li className="user flex-between flex-items">
+              <div className="name flex">
+                <div className="image">
+                  <img src="./Friend.jpeg" alt="name" className="s-image" />
+                </div>
+                <h2>Jhon Doe</h2>
+              </div>
+              <div className="email">
+                <h4>example@gmail.com</h4>
+              </div>
+              <div className="address">
+                <h4>Barsa Kura</h4>
+              </div>
+
+              <FaEdit />
+
+              <div className="delete">
+                <button>Delete</button>
+              </div>
+            </li>
+            <li className="user flex-between flex-items">
+              <div className="name flex">
+                <div className="image">
+                  <img src="./Friend.jpeg" alt="name" className="s-image" />
+                </div>
+                <h2>Jhon Doe</h2>
+              </div>
+              <div className="email">
+                <h4>example@gmail.com</h4>
+              </div>
+              <div className="address">
+                <h4>Barsa Kura</h4>
+              </div>
+
+              <FaEdit />
+
+              <div className="delete">
+                <button>Delete</button>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

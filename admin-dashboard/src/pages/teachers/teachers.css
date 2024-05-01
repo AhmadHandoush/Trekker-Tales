@@ -7,15 +7,21 @@
 }
 .teachers {
   padding: 2rem 100px;
+}
+.table {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  background-color: #808080;
 }
 .titles {
-  background-color: var(--main-color);
+  background-color: #000;
   color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
+}
+.titles .address {
+  transform: translateX(-60px);
 }
 .titles button {
   display: flex;
@@ -29,6 +35,11 @@
   color: var(--main-color);
   border-radius: 10px;
   font-size: 20px;
+  cursor: pointer;
+}
+.titles button:hover {
+  color: white;
+  background-color: var(--main-color);
 }
 .second {
   padding: 10px;
@@ -48,6 +59,10 @@
 }
 .teachers-list {
   gap: 20px;
+}
+.teachers-list .delete button:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .teachers-list .delete button {
