@@ -11,7 +11,7 @@ function Teachers() {
       </div>
       <div className="second">
         <ul className="teachers-list flex column">
-          <li className="user flex-between">
+          <li className="user flex-between flex-items">
             <div className="name flex">
               <div className="image">
                 <img src="./Friend.jpeg" alt="name" className="s-image" />
@@ -24,19 +24,19 @@ function Teachers() {
             <div className="address">
               <h4>Barsa Kura</h4>
             </div>
-            <div className="edit">
-              <FaEdit />
-            </div>
+
+            <FaEdit />
+
             <div className="delete">
               <button>Delete</button>
             </div>
           </li>
-          <li className="user flex-between">
-            <div className="name">
+          <li className="user flex-between flex-items">
+            <div className="name flex">
               <div className="image">
                 <img src="./Friend.jpeg" alt="name" className="s-image" />
-                <h2>Jhon Doe</h2>
               </div>
+              <h2>Jhon Doe</h2>
             </div>
             <div className="email">
               <h4>example@gmail.com</h4>
@@ -44,17 +44,19 @@ function Teachers() {
             <div className="address">
               <h4>Barsa Kura</h4>
             </div>
-            <div className="update"></div>
+
+            <FaEdit />
+
             <div className="delete">
               <button>Delete</button>
             </div>
           </li>
-          <li className="user flex-between">
-            <div className="name">
+          <li className="user flex-between flex-items">
+            <div className="name flex">
               <div className="image">
                 <img src="./Friend.jpeg" alt="name" className="s-image" />
-                <h2>Jhon Doe</h2>
               </div>
+              <h2>Jhon Doe</h2>
             </div>
             <div className="email">
               <h4>example@gmail.com</h4>
@@ -62,17 +64,19 @@ function Teachers() {
             <div className="address">
               <h4>Barsa Kura</h4>
             </div>
-            <div className="update"></div>
+
+            <FaEdit />
+
             <div className="delete">
               <button>Delete</button>
             </div>
           </li>
-          <li className="user flex-between">
-            <div className="name">
+          <li className="user flex-between flex-items">
+            <div className="name flex">
               <div className="image">
                 <img src="./Friend.jpeg" alt="name" className="s-image" />
-                <h2>Jhon Doe</h2>
               </div>
+              <h2>Jhon Doe</h2>
             </div>
             <div className="email">
               <h4>example@gmail.com</h4>
@@ -80,7 +84,9 @@ function Teachers() {
             <div className="address">
               <h4>Barsa Kura</h4>
             </div>
-            <div className="update"></div>
+
+            <FaEdit />
+
             <div className="delete">
               <button>Delete</button>
             </div>
