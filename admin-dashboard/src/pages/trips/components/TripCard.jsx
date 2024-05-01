@@ -9,7 +9,8 @@ function TripCard({ trip, isLoading }) {
         <Loader />
       ) : (
         <img
-          src={`http://yourdomain.com/storage/images/${trip_image}`}
+          // src={`http://yourdomain.com/storage/images/${trip_image}`}
+          src="./shutterstock_585782942.jpg"
           alt={name}
           className="s-image"
         />

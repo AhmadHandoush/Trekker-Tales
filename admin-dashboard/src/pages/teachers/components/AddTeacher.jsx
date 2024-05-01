@@ -12,10 +12,9 @@ function AddTeacher({ setAdd }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/register", {
+      const response = await fetch("http://127.0.0.1:8000/api/add_teacher", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
@@ -28,7 +27,7 @@ function AddTeacher({ setAdd }) {
       const responseData = await response.json();
       console.log(responseData);
       if (response.ok) {
-        console.log("succes");
+        console.log("success");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -43,12 +42,13 @@ function AddTeacher({ setAdd }) {
       <div className="close">
         <span onClick={() => setAdd(false)}>X</span>
       </div>
-      <form className="flex column">
+      <form className="flex column" onS>
         <h2>Add Teacher</h2>
         <div className="input flex column">
           <label htmlFor="">Name:</label>
           <input
             type="text"
+            name="name"
             placeholder="Enter the teacher's name"
             value={formData.name}
             onChange={handleChange}
@@ -61,12 +61,14 @@ function AddTeacher({ setAdd }) {
             placeholder="Enter the teacher's email"
             value={formData.email}
             onChange={handleChange}
+            name="email"
           />
         </div>
         <div className="input flex column">
           <label htmlFor="">Password</label>
           <input
             type="password"
+            name="password"
             placeholder="Enter the teacher's password"
             value={formData.password}
             onChange={handleChange}

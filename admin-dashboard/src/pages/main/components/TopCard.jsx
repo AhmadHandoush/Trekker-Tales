@@ -3,7 +3,8 @@ function TopCard({ trip }) {
   return (
     <div className="top-card">
       <img
-        src={`http://yourdomain.com/storage/images/${trip_image}`}
+        // src={`http://yourdomain.com/storage/images/${trip_image}`}
+        src="./360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"
         alt={name}
         className="s-image"
       />
