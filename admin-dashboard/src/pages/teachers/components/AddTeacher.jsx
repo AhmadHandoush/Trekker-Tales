@@ -45,7 +45,7 @@ function AddTeacher({ setAdd }) {
       <form className="flex column" onS>
         <h2>Add Teacher</h2>
         <div className="input flex column">
-          <label htmlFor="">Name:</label>
+          <label htmlFor="">Name</label>
           <input
             type="text"
             name="name"
@@ -55,7 +55,7 @@ function AddTeacher({ setAdd }) {
           />
         </div>
         <div className="input flex column">
-          <label htmlFor="">Email:</label>
+          <label htmlFor="">Email</label>
           <input
             type="email"
             placeholder="Enter the teacher's email"

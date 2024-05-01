@@ -11,15 +11,16 @@
 .table {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #808080;
+  background-color: #f8f8f8;
 }
 .titles {
-  background-color: #000;
-  color: white;
+  background-color: var(--main-color);
+  color: black;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
 }
+
 .titles .address {
   transform: translateX(-60px);
 }
@@ -36,10 +37,12 @@
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
+  border: 1px solid var(--main-color);
 }
 .titles button:hover {
   color: white;
   background-color: var(--main-color);
+  border: 1px solid white;
 }
 .second {
   padding: 10px;
@@ -75,8 +78,8 @@
   padding: 5px 20px;
   background-color: var(--main-color);
   color: white;
-  border-radius: 10px;
-  font-size: 20px;
+  border-radius: 20px;
+  font-size: 16px;
 }
 
 /* add - box  */
@@ -95,6 +98,7 @@
   padding: 20px;
   background-color: white;
   z-index: 200000;
+  border-radius: 8px;
 }
 .add-box input {
   padding: 8px 10px;
@@ -140,4 +144,7 @@
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+.add-box .added:hover {
+  opacity: 0.6;
 }

@@ -57,9 +57,9 @@ function Teachers() {
       {add && <div className="overlay"></div>}
       <div className="table">
         <div className="titles flex-between  flex-items">
-          <h3>Username</h3>
-          <h3>Email</h3>
-          <h3 className="address">Address</h3>
+          <h2>Username</h2>
+          <h2>Email</h2>
+          <h2 className="address">Address</h2>
           <button className="add-teacher" onClick={() => setAdd(true)}>
             Add +
           </button>
