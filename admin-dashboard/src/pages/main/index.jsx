@@ -107,6 +107,7 @@ function Main() {
     };
     get_highest();
   }, []);
+  console.log(highest);
   return (
     <div className="main">
       <section className="cards-info flex">
@@ -130,7 +131,11 @@ function Main() {
             <Loader />
           ) : (
             highest.map((trip) => (
-              <TopCard trip={trip.trip} key={trip.trip.id} />
+              <TopCard
+                trip={trip.trip}
+                key={trip.trip.id}
+                average_rating={trip.average_rating}
+              />
             ))
           )}
         </div>

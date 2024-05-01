@@ -43,5 +43,5 @@ header {
 .search svg {
   font-weight: bold;
   font-size: 24px;
-  color: #808080;
+  color: var(--main-color);
 }
