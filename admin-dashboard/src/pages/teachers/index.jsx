@@ -29,8 +29,25 @@ function Teachers() {
     };
     getTrips();
   }, []);
-  const handleDelete = (id) => {
-    setTeachers(teachers.filter((item) => item.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/delete_user/${id}`,
+        {
+          method: "post",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.ok) {
+        setTeachers(teachers.filter((item) => item.id !== id));
+      } else {
+        console.log("failed to delete item");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
   return (
     <div className="teachers">
