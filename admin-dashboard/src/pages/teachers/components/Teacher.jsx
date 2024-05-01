@@ -1,6 +1,7 @@
 import { FaEdit } from "react-icons/fa";
-function Teacher({ teacher }) {
-  const { name, email, address } = teacher;
+function Teacher({ teacher, handleDelete }) {
+  const { id, name, email, address } = teacher;
+
   return (
     <li className="user flex-between flex-items">
       <div className="name flex">
@@ -19,7 +20,7 @@ function Teacher({ teacher }) {
       <FaEdit />
 
       <div className="delete">
-        <button>Delete</button>
+        <button onClick={() => handleDelete(id)}>Delete</button>
       </div>
     </li>
   );

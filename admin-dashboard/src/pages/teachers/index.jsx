@@ -29,6 +29,9 @@ function Teachers() {
     };
     getTrips();
   }, []);
+  const handleDelete = (id) => {
+    setTeachers(teachers.filter((item) => item.id !== id));
+  };
   return (
     <div className="teachers">
       <div className="table">
@@ -41,7 +44,11 @@ function Teachers() {
         <div className="second">
           <ul className="teachers-list flex column">
             {teachers.map((teacher, index) => (
-              <Teacher teacher={teacher} key={index} />
+              <Teacher
+                teacher={teacher}
+                key={index}
+                handleDelete={handleDelete}
+              />
             ))}
           </ul>
         </div>
