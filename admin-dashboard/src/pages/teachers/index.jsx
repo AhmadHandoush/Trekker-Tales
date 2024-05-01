@@ -7,6 +7,7 @@ function Teachers() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
+
   useEffect(() => {
     const getTrips = async () => {
       try {
