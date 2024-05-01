@@ -2,6 +2,8 @@ import { useState } from "react";
 
 function AddTeacher({ setAdd }) {
   const [error, setError] = useState(false);
+  const token = localStorage.getItem("token");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +16,7 @@ function AddTeacher({ setAdd }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -32,7 +35,9 @@ function AddTeacher({ setAdd }) {
       setError(true);
     }
   };
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <div className="add-box center">
       <div className="close">
@@ -42,15 +47,30 @@ function AddTeacher({ setAdd }) {
         <h2>Add Teacher</h2>
         <div className="input flex column">
           <label htmlFor="">Name:</label>
-          <input type="text" placeholder="Enter the teacher's name" />
+          <input
+            type="text"
+            placeholder="Enter the teacher's name"
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
         <div className="input flex column">
           <label htmlFor="">Email:</label>
-          <input type="email" placeholder="Enter the teacher's email" />
+          <input
+            type="email"
+            placeholder="Enter the teacher's email"
+            value={formData.email}
+            onChange={handleChange}
+          />
         </div>
         <div className="input flex column">
           <label htmlFor="">Password</label>
-          <input type="password" placeholder="Enter the teacher's password" />
+          <input
+            type="password"
+            placeholder="Enter the teacher's password"
+            value={formData.password}
+            onChange={handleChange}
+          />
         </div>
         <button type="submit" className="added">
           Add
