@@ -59,7 +59,7 @@ class UserController extends Controller
             $image->move(public_path('images'), $imageName);
             $user->user_image = $imageName;
         }
-        $user->update($request->except('user_image')); // Exclude the profile_picture field from the update
+        $user->update($request->except('user_image'));
         return response()->json(["message"=>"info updated successfully",$user]);
 
 
