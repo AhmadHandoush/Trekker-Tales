@@ -2,6 +2,7 @@ import Loader from "../../../components/Loader";
 
 function TripCard({ trip, isLoading }) {
   const { name, trip_image } = trip;
+  console.log(trip_image);
 
   return (
     <div className="trip-card">
@@ -9,8 +10,7 @@ function TripCard({ trip, isLoading }) {
         <Loader />
       ) : (
         <img
-          // src={`http://yourdomain.com/storage/images/${trip_image}`}
-          src="./shutterstock_585782942.jpg"
+          src={`http://127.0.0.1:8000/${trip_image}`}
           alt={name}
           className="s-image"
         />

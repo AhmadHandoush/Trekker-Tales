@@ -29,8 +29,13 @@ class TripController extends Controller
         if ($request->hasFile('trip_image')) {
             $image = $request->file('trip_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('images', $imageName);
-            $trip->trip_image = $imageName;
+            // $image->storeAs('images', $imageName);
+            // $trip->trip_image = $imageName;
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $imageName);
+
+            // Store the image path in the database
+            $trip->trip_image = 'images/' . $imageName;
         }
 
 

@@ -11,7 +11,7 @@ function TopCard({ trip, average_rating }) {
         {rating}
       </div>
       <img
-        src={`http://127.0.0.1:8000/storage/images/${trip_image}`}
+        src={`http://127.0.0.1:8000/${trip_image}`}
         alt={name}
         className="s-image"
       />
