@@ -1,7 +1,9 @@
+import "./teachers.css";
+import { FaEdit } from "react-icons/fa";
 function Teachers() {
   return (
     <div className="teachers">
-      <div className="titles">
+      <div className="titles flex-between">
         <h3>Username</h3>
         <h3>Email</h3>
         <h3>Address</h3>
@@ -10,7 +12,7 @@ function Teachers() {
       <div className="second">
         <ul className="teachers-list flex column">
           <li className="user flex-between">
-            <div className="name">
+            <div className="name flex">
               <div className="image">
                 <img src="" alt="" className="s-image" />
                 <h2>Jhon Doe</h2>
@@ -22,7 +24,9 @@ function Teachers() {
             <div className="address">
               <h4>Barsa Kura</h4>
             </div>
-            <div className="update"></div>
+            <div className="edit">
+              <FaEdit />
+            </div>
             <div className="delete">
               <button>Delete</button>
             </div>

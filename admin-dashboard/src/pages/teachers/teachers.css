@@ -5,3 +5,31 @@
   --bg-white: #ffffff;
   --bg-hover: #f7f7f7;
 }
+.teachers {
+  padding: 2rem 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.titles {
+  background-color: var(--main-color);
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+}
+.titles button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: white;
+  color: var(--main-color);
+  border-radius: 10px;
+  font-size: 20px;
+}
+.second {
+  padding: 10px;
+}

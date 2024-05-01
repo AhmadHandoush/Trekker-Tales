@@ -1,7 +1,7 @@
 function Teacher() {
   return (
     <li className="user flex-between">
-      <div className="name">
+      {/* <div className="name">
         <div className="image">
           <img src="" alt="" className="s-image" />
           <h2>Jhon Doe</h2>
@@ -16,7 +16,7 @@ function Teacher() {
       <div className="update"></div>
       <div className="delete">
         <button>Delete</button>
-      </div>
+      </div> */}
     </li>
   );
 }
