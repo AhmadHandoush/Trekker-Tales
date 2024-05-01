@@ -9,6 +9,9 @@ function Trips() {
   const [trips, setTrips] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [filteredData, setFilteredData] = useState(trips);
+  const [status, setStatus] = useState("");
   const token = localStorage.getItem("token");
   useEffect(() => {
     const getTrips = async () => {
@@ -33,7 +36,24 @@ function Trips() {
     };
     getTrips();
   }, []);
-  console.log(trips[0]);
+  const handleMonthChange = (e) => {
+    setSelectedMonth(e.target.value);
+  };
+
+  useEffect(() => {
+    let result = trips;
+    if (selectedMonth !== "") {
+      result = result.filter((item) => {
+        const month = new Date(item.date).getMonth() + 1;
+        return month.toString() === selectedMonth;
+      });
+    }
+    if (status !== "") {
+      result = result.filter((item) => item.status === status);
+    }
+    setFilteredData(result);
+  }, [selectedMonth, status]);
+
   return (
     <div className="trips">
       <div className="add-trip flex">
@@ -43,7 +63,12 @@ function Trips() {
         </button>
       </div>
       <div className="filters flex-between">
-        <select name="" id="">
+        <select
+          name=""
+          id=""
+          value={selectedMonth}
+          onChange={handleMonthChange}
+        >
           <option value="">Select a Month</option>
           <option value="1">January</option>
           <option value="2">February</option>
@@ -58,11 +83,11 @@ function Trips() {
           <option value="11">November</option>
           <option value="12">December</option>
         </select>{" "}
-        <select name="" id="">
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">Status</option>
-          <option value="1">Active</option>
-          <option value="2">Pending</option>
-          <option value="3">inactive</option>
+          <option value="active">Active</option>
+          <option value="pending">Pending</option>
+          <option value="inactive">inactive</option>
         </select>{" "}
         <select name="" id="">
           <option value="name">ahmad</option>
@@ -76,7 +101,7 @@ function Trips() {
           {isLoading ? (
             <Loader />
           ) : (
-            trips.map((trip, index) => (
+            filteredData.map((trip, index) => (
               <TripCard trip={trip} key={index} isLoading={isLoading} />
             ))
           )}
