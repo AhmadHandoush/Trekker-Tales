@@ -63,7 +63,7 @@ function Teachers() {
           <button className="add-teacher" onClick={() => setAdd(true)}>
             Add +
           </button>
-          {add && <AddTeacher />}
+          {add && <AddTeacher setAdd={setAdd} />}
         </div>
         <div className="second">
           <ul className="teachers-list flex column">

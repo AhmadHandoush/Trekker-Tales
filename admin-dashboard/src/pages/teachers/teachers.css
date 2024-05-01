@@ -86,25 +86,48 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 199;
+  z-index: 10000;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .add-box {
   width: 300px;
   padding: 20px;
-  background-color: red;
-  z-index: 202;
+  background-color: white;
+  z-index: 200000;
+}
+.add-box input {
+  padding: 5px 10px;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  border: 2px solid grey;
 }
 .add-box form h2 {
   color: var(--main-color);
   text-align: center;
+  font-weight: bold;
+  font-size: 24px;
 }
 .add-box form {
   gap: 20px;
 }
-
-.add-teacher {
+.add-box form label {
+  color: black;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
+.close span {
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+.add-box .added {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,8 +135,8 @@
   outline: none;
   font-weight: bold;
   padding: 10px 20px;
-  background-color: white;
-  color: var(--main-color);
+  background-color: var(--main-color);
+  color: white;
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
