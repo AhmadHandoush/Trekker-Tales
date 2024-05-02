@@ -80,7 +80,12 @@
   width: 100%;
   border-radius: 10px;
 }
-.single-right {
+.single-left {
   width: 40%;
   overflow: hidden;
+}
+.single-right {
+  width: 60%;
+  padding: 20px 20px;
+  gap: 20px;
 }
