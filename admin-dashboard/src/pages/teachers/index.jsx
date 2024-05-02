@@ -9,6 +9,7 @@ function Teachers() {
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
   const [add, setAdd] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     const getTrips = async () => {
@@ -72,6 +73,7 @@ function Teachers() {
                 teacher={teacher}
                 key={index}
                 handleDelete={handleDelete}
+                setUpdate={setUpdate}
               />
             ))}
           </ul>

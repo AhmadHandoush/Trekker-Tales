@@ -1,5 +1,5 @@
 import { FaEdit } from "react-icons/fa";
-function Teacher({ teacher, handleDelete }) {
+function Teacher({ teacher, handleDelete, setUpdate }) {
   const { id, name, email, address } = teacher;
 
   return (
@@ -17,7 +17,7 @@ function Teacher({ teacher, handleDelete }) {
         <h4>Barsa Kura</h4>
       </div>
 
-      <FaEdit />
+      <FaEdit onClick={() => setUpdate(true)} />
 
       <div className="delete">
         <button onClick={() => handleDelete(id)}>Delete</button>

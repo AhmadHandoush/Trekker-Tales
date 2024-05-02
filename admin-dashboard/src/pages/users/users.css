@@ -21,9 +21,6 @@
   padding: 10px;
 }
 
-.titles .address {
-  transform: translateX(-60px);
-}
 .titles button {
   display: flex;
   justify-content: center;
