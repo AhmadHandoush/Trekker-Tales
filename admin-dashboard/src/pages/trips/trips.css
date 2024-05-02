@@ -7,7 +7,8 @@
 }
 
 .trips {
-  padding: 2rem 100px;
+  padding: 2rem 100px 0px;
+  position: relative;
 }
 .add-trip {
   justify-content: flex-end;
@@ -120,6 +121,10 @@
   z-index: 1000001;
   background-color: white;
   gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .add-trip-box h2 {
   text-align: center;
@@ -135,4 +140,10 @@
 }
 .add-trip-box form label {
   font-weight: bold;
+}
+.add-trip-box form .input input {
+  padding: 5px;
+}
+.add-trip-box form textarea {
+  padding: 5px;
 }

@@ -14,9 +14,6 @@ const AddTrip = () => {
     available_seats: "",
     fees: "",
     description: "",
-    breakfast: false,
-    lunch: false,
-    dinner: false,
     trip_image: null,
     locations: [],
   });
@@ -79,122 +76,104 @@ const AddTrip = () => {
   };
 
   return (
-    <div className="add-trip-box center flex column">
+    <div className="add-trip-box  flex column">
       <h2>Add Trip</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <div className="flex column input">
+          <label htmlFor="">Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="Enter the Trip name"
           />
-        </label>
-        <label>
-          Destination:
+        </div>
+        <div className="flex column input">
+          <label> Destination</label>
           <input
             type="text"
             name="destination"
             value={formData.destination}
             onChange={handleChange}
+            placeholder="Enter the Trip destination"
           />
-        </label>
-        <label>
-          Date:
+        </div>
+        <div className="flex column input">
+          <label>Date</label>
           <input
             type="date"
             name="date"
             value={formData.date}
             onChange={handleChange}
+            placeholder="Enter the Trip date"
           />
-        </label>
-        <label>
-          Start Time:
+        </div>
+        <div className="flex column input">
+          <label>Start Time</label>
           <input
             type="time"
             name="start_time"
             value={formData.start_time}
             onChange={handleChange}
+            placeholder="Enter the Trip start time"
           />
-        </label>
-        <label>
-          End Time:
+        </div>
+        <div className="flex column input">
+          <label>End Time</label>
           <input
             type="time"
             name="end_time"
             value={formData.end_time}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Total Seats:
+        </div>
+        <div className="flex column input">
+          <label> Total Seats</label>
           <input
             type="number"
             name="total_seats"
             value={formData.total_seats}
             onChange={handleChange}
+            placeholder="Enter the total seats"
           />
-        </label>
-        <label>
-          Available Seats:
+        </div>
+        <div className="flex column input">
+          <label>Available Seats</label>
           <input
             type="number"
             name="available_seats"
             value={formData.available_seats}
             onChange={handleChange}
+            placeholder="Enter the available"
           />
-        </label>
-        <label>
-          Fees:
+        </div>
+        <div className="flex column input">
+          <label>Fees</label>
           <input
             type="number"
             name="fees"
             value={formData.fees}
             onChange={handleChange}
+            placeholder="Enter the trip fee"
           />
-        </label>
-        <label>
-          Description:
+        </div>
+        <div className="flex column input">
+          <label>Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
+            placeholder="Enter the Trip description"
           ></textarea>
-        </label>
-        <label>
-          Breakfast:
-          <input
-            type="checkbox"
-            name="breakfast"
-            checked={formData.breakfast}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Lunch:
-          <input
-            type="checkbox"
-            name="lunch"
-            checked={formData.lunch}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Dinner:
-          <input
-            type="checkbox"
-            name="dinner"
-            checked={formData.dinner}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Trip Image:
+        </div>
+
+        <div className="flex column input">
+          <label>Trip Image</label>
           <input type="file" name="trip_image" onChange={handleChange} />
-        </label>
-        <label>
-          Select Locations:
+        </div>
+        <div>
+          <label> Select Locations</label>
           <select
             name="selectedLocations"
             multiple
@@ -207,7 +186,7 @@ const AddTrip = () => {
               </option>
             ))}
           </select>
-        </label>
+        </div>
 
         <button type="submit">Submit</button>
       </form>
