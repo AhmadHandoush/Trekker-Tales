@@ -52,6 +52,12 @@ class TripController extends Controller
         return response()->json(['trips' => $trips], 200);
 
     }
+    public function get_trip($id){
+        $trip = Trip::with('locations')->find($id);
+        return response()->json($trip);
+
+
+    }
 
     public function get_active_trips(){
 
