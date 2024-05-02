@@ -24,6 +24,7 @@ function App() {
               <Route path="/trips" element={<Trips />} />
               <Route path="/teachers" element={<Teachers />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/tips/:id" element={<Users />} />
             </Routes>
           </div>
         </div>
