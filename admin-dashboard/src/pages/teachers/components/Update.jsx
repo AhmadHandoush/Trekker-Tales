@@ -1,24 +1,26 @@
 import { useState } from "react";
 
-function AddTeacher({ setAdd }) {
+function Update({ setUpdate }) {
   const [error, setError] = useState(false);
   const token = localStorage.getItem("token");
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/add_teacher", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/update_teacher_info/5`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to submit data");
@@ -40,10 +42,10 @@ function AddTeacher({ setAdd }) {
   return (
     <div className="add-box center">
       <div className="close">
-        <span onClick={() => setAdd(false)}>X</span>
+        <span onClick={() => setUpdate(false)}>X</span>
       </div>
-      <form className="flex column" onS>
-        <h2>Add Teacher</h2>
+      <form className="flex column" onSubmit={handleSubmit}>
+        <h2>Update</h2>
         <div className="input flex column">
           <label htmlFor="">Name</label>
           <input
@@ -64,22 +66,13 @@ function AddTeacher({ setAdd }) {
             name="email"
           />
         </div>
-        <div className="input flex column">
-          <label htmlFor="">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter the teacher's password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
+
         <button type="submit" className="added">
-          Add
+          Save
         </button>
       </form>
     </div>
   );
 }
 
-export default AddTeacher;
+export default Update;

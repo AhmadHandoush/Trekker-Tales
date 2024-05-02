@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Teacher from "./components/Teacher";
 import "./teachers.css";
 import AddTeacher from "./components/AddTeacher";
+import Update from "./components/Update";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
@@ -56,6 +57,7 @@ function Teachers() {
   return (
     <div className="teachers">
       {add && <div className="overlay"></div>}
+      {update && <div className="overlay"></div>}
       <div className="table">
         <div className="titles flex-between  flex-items">
           <h2>Username</h2>
@@ -65,6 +67,7 @@ function Teachers() {
             Add +
           </button>
           {add && <AddTeacher setAdd={setAdd} />}
+          {update && <Update setUpdate={setUpdate} />}
         </div>
         <div className="second">
           <ul className="teachers-list flex column">
