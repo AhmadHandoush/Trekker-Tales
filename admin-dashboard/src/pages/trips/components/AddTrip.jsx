@@ -58,10 +58,11 @@ const AddTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://your-laravel-api.com/api/trips", {
+      const response = await fetch("http://127.0.0.1:8000/api/add_trip", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -175,10 +176,10 @@ const AddTrip = () => {
         <div>
           <label> Select Locations</label>
           <select
-            name="selectedLocations"
+            name="locations"
             multiple
             value={formData.selectedLocations}
-            onChange={handleChange}
+            onChange={handleLocationChange}
           >
             {locations.map((location) => (
               <option key={location.id} value={location.id}>

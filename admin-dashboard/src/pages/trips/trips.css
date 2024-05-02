@@ -8,7 +8,6 @@
 
 .trips {
   padding: 2rem 100px 0px;
-  position: relative;
 }
 .add-trip {
   justify-content: flex-end;
@@ -124,7 +123,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -20%);
 }
 .add-trip-box h2 {
   text-align: center;
@@ -146,4 +145,6 @@
 }
 .add-trip-box form textarea {
   padding: 5px;
+}
+.add-trip-box select {
 }
