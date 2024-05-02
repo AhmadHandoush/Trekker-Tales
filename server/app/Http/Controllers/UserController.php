@@ -103,6 +103,13 @@ class UserController extends Controller
         return response()->json(['teachers_number' => $users]);
 
     }
+    public function update_teacher_info(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return response()->json(['messgae'=>'updated successfully',$user]);
+    }
 
 
 

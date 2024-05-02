@@ -10,7 +10,7 @@ function Trips() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState("");
-  const [filteredData, setFilteredData] = useState(trips);
+  const [filteredData, setFilteredData] = useState([]);
   const [status, setStatus] = useState("");
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -27,7 +27,7 @@ function Trips() {
         }
         const data = await response.json();
         setTrips(data.trips);
-
+        setFilteredData(data.trips);
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -48,6 +48,7 @@ function Trips() {
         return month.toString() === selectedMonth;
       });
     }
+
     if (status !== "") {
       result = result.filter((item) => item.status === status);
     }

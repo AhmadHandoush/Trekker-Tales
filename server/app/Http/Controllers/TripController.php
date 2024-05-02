@@ -29,36 +29,30 @@ class TripController extends Controller
         if ($request->hasFile('trip_image')) {
             $image = $request->file('trip_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            // $image->storeAs('images', $imageName);
-            // $trip->trip_image = $imageName;
             $destinationPath = public_path('/images');
             $image->move($destinationPath, $imageName);
-
-            // Store the image path in the database
             $trip->trip_image = 'images/' . $imageName;
         }
-
-
-
-
         $trip->save();
-
-
         $trip->locations()->attach($request->locations);
 
         return response()->json(['message' => 'Trip created successfully', 'trip' => $trip], 201);
     }
+
+
     public function delete($id){
         $trip= Trip::findOrFail($id);
         $trip->delete();
         return response()->json(['success'=>true,'message'=>'trip deleted successfully'],200);
 
     }
+
     public function get_trips(){
         $trips = Trip::with('locations')->get();
         return response()->json(['trips' => $trips], 200);
 
     }
+
     public function get_active_trips(){
 
         $trips = Trip::with('locations')->where('status', 'active')->get();

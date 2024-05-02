@@ -1,156 +1,157 @@
 :root {
-    --main-color: #e87a00;
-    --border-color: #ccc;
-    --bg-grey: #d3d3d3;
-    --bg-white: #ffffff;
-    --bg-hover: #f7f7f7;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  ::selection {
-    background-color: var(--main-color);
-    color: var(--bg-white);
-  }
-  .t-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .t-center {
-    text-align: center;
-  }
-  .flex {
-    display: flex;
-  }
-  .flex-items {
-    display: flex;
-    align-items: center;
-  }
-  .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .flex-between {
-    display: flex;
-    justify-content: space-between;
-  }
-  .column {
-    flex-direction: column;
-  }
-  .rounded {
-    border-radius: 6px;
-  }
-  ul {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-  }
-  body {
-    font-family: sans-serif;
-  }
-  .login {
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  .error {
-    color: red;
-  }
-  h6 {
-    margin-top: 20px;
-  }
-  h6 a {
-    text-decoration: underline;
-  }
-  .login .overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10;
-  }
-  
-  .login-card {
-    padding: 15px 30px;
-    background-color: var(--bg-white);
-    width: 25%;
-    position: relative;
-    z-index: 1000;
-  }
-  .login-card label {
-    margin-bottom: 5px;
-    display: block;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  .login-card .input {
-    display: flex;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .login-card .input input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 15px 5px;
-    background-color: #d9d9d9;
-  }
-  .login-card .input span {
-    background-color: var(--main-color);
-    padding: 10px;
-    font-weight: bold;
-    width: 50px;
-  }
-  .login-card .input span i {
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  form button {
-    padding: 10px 30px;
-    border: none;
-    outline: none;
-    font-weight: bold;
-  }
-  
-  .login-card h2 {
-    margin-bottom: 20px;
-    color: var(--main-color);
-    font-size: 40px;
-  }
-  
-  form button {
-    width: 60%;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: var(--main-color);
-    font-weight: bold;
-    font-size: 24px;
-    color: var(--bg-white);
-    cursor: pointer;
-  }
-  form .submit {
-    margin-bottom: 20px;
-  }
-  form .submit small {
-    height: 20px;
-  }
-  .login-card p span a {
-    font-weight: bold;
-    text-decoration: underline;
-    color: black;
-  }
-  
+  --main-color: #e87a00;
+  --border-color: #ccc;
+  --bg-grey: #d3d3d3;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background-color: var(--main-color);
+  color: var(--bg-white);
+}
+.t-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.t-center {
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+.flex-items {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  flex-direction: column;
+}
+.rounded {
+  border-radius: 6px;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: sans-serif;
+}
+.login {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.error {
+  color: red;
+}
+h6 {
+  margin-top: 20px;
+}
+h6 a {
+  text-decoration: underline;
+}
+.login .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.login-card {
+  padding: 15px 30px;
+  background-color: var(--bg-white);
+  width: 25%;
+  position: relative;
+  z-index: 1000;
+  border-radius: 8px;
+}
+.login-card label {
+  margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+}
+.login-card .input {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login-card .input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 15px 5px;
+  background-color: #d9d9d9;
+}
+.login-card .input span {
+  background-color: var(--main-color);
+  padding: 10px;
+  font-weight: bold;
+  width: 50px;
+}
+.login-card .input span i {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+form button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.login-card h2 {
+  margin-bottom: 20px;
+  color: var(--main-color);
+  font-size: 40px;
+}
+
+form button {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--main-color);
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--bg-white);
+  cursor: pointer;
+  border-radius: 6px;
+}
+form .submit {
+  margin-bottom: 20px;
+}
+form .submit small {
+  height: 20px;
+}
+.login-card p span a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+}
