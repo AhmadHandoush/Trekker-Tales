@@ -2,11 +2,10 @@ import Loader from "../../../components/Loader";
 import { Link } from "react-router-dom";
 
 function TripCard({ trip, isLoading }) {
-  const { name, trip_image } = trip;
+  const { name, trip_image, id } = trip;
 
   return (
-    <Link to={""}>
-      {" "}
+    <Link to={`/trips/${id}`}>
       <div className="trip-card">
         {isLoading ? (
           <Loader />

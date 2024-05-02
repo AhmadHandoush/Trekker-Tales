@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Login from "./pages/login";
 import Sidebar from "./components/Sidebar";
 import "./styles/utilities.css";
+import SingleTrip from "./pages/trips/components/SingleTrip";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
               <Route path="/trips" element={<Trips />} />
               <Route path="/teachers" element={<Teachers />} />
               <Route path="/users" element={<Users />} />
-              <Route path="/tips/:id" element={<Users />} />
+              <Route path="/trips/:id" element={<SingleTrip />} />
             </Routes>
           </div>
         </div>
