@@ -15,9 +15,6 @@ function SingleTrip() {
     date,
     start_time,
     end_time,
-    breakfast,
-    dinner,
-    lunch,
     fees,
     status,
     trip_image,
@@ -81,32 +78,20 @@ function SingleTrip() {
             <h4>{date}</h4>
           </div>
           <div className="flex-items flex-between">
-            <h5>Breakfast:</h5>
-            <h4>{breakfast}</h4>
-          </div>
-          <div className="flex-items flex-between">
-            <h5>Lunch:</h5>
-            <h4>{lunch}</h4>
-          </div>
-          <div className="flex-items flex-between">
-            <h5>Dinner:</h5>
-            <h4>{dinner}</h4>
-          </div>
-          <div className="flex-items flex-between">
             <h5>Fee:</h5>
             <h2>$ {parseInt(fees)}</h2>
           </div>{" "}
-          <div className="flex-items flex-between">
+          {/* <div className="flex-items flex-between">
             <h5>Locations:</h5>
             <h2>
               {locations.map((location) => (
                 <span>{location.name} </span>
               ))}
             </h2>
-          </div>
+          </div> */}
           <div className="flex-items flex-between">
             <h5>Description:</h5>
-            <h2>{description}</h2>
+            <p>{description}</p>
           </div>
           <div className="flex-items flex-between">
             <h5>Status:</h5>

@@ -22,9 +22,7 @@ class TripController extends Controller
         $trip->available_seats = $request->available_seats;
         $trip->fees = $request->fees;
         $trip->description = $request->description;
-        $trip->breakfast = $request->breakfast;
-        $trip->lunch = $request->lunch;
-        $trip->dinner = $request->dinner;
+        
 
         if ($request->hasFile('trip_image')) {
             $image = $request->file('trip_image');
