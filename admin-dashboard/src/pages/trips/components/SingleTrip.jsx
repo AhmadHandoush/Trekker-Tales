@@ -39,6 +39,7 @@ function SingleTrip() {
         }
         const data = await response.json();
         setData(data);
+        console.log(data);
 
         setIsLoading(false);
       } catch (error) {
@@ -106,6 +107,9 @@ function SingleTrip() {
           <div className="flex-items flex-between">
             <h5>Description:</h5>
             <h2>{description}</h2>
+          </div>
+          <div className="update-trip flex-center">
+            <button className="btn-update">Update</button>
           </div>
         </div>
       </div>
