@@ -39,6 +39,7 @@ function SingleTrip() {
         }
         const data = await response.json();
         setData(data);
+
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -50,9 +51,13 @@ function SingleTrip() {
     <div className="single ">
       <div className="info flex">
         <div className="single-right">
-          <img src={`http://127.0.0.1:8000/images/${trip_image}`} alt="" />
+          <img
+            src={`http://127.0.0.1:8000/${trip_image}`}
+            alt={name}
+            className="s-image"
+          />
         </div>
-        <div className="single-left"></div>
+        <div className="single-left flex column"></div>
       </div>
     </div>
   );
