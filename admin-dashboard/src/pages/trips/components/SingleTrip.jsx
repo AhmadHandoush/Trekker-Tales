@@ -108,6 +108,10 @@ function SingleTrip() {
             <h5>Description:</h5>
             <h2>{description}</h2>
           </div>
+          <div className="flex-items flex-between">
+            <h5>Status:</h5>
+            <h2>{status}</h2>
+          </div>
           <div className="update-trip flex-center">
             <button className="btn-update">Update</button>
           </div>

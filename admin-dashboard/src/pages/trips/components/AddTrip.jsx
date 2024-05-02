@@ -14,9 +14,10 @@ const AddTrip = () => {
     available_seats: "",
     fees: "",
     description: "",
-    breakfast: "",
-    lunch: "",
-    dinner: "",
+    breakfast: false,
+    lunch: false,
+    dinner: false,
+    trip_image: null,
     locations: [],
   });
 
@@ -57,48 +58,160 @@ const AddTrip = () => {
     setFormData({ ...formData, locations: selectedLocations });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch("http://your-laravel-api.com/api/trips", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error("Failed to create trip");
-  //     }
-  //     const data = await response.json();
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://your-laravel-api.com/api/trips", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to create trip");
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Input fields for trip details */}
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      {/* Other input fields go here */}
+    <div className="add-trip-box center flex column">
+      <h2>Add Trip</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Destination:
+          <input
+            type="text"
+            name="destination"
+            value={formData.destination}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Date:
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Start Time:
+          <input
+            type="time"
+            name="start_time"
+            value={formData.start_time}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          End Time:
+          <input
+            type="time"
+            name="end_time"
+            value={formData.end_time}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Total Seats:
+          <input
+            type="number"
+            name="total_seats"
+            value={formData.total_seats}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Available Seats:
+          <input
+            type="number"
+            name="available_seats"
+            value={formData.available_seats}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Fees:
+          <input
+            type="number"
+            name="fees"
+            value={formData.fees}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Description:
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          ></textarea>
+        </label>
+        <label>
+          Breakfast:
+          <input
+            type="checkbox"
+            name="breakfast"
+            checked={formData.breakfast}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Lunch:
+          <input
+            type="checkbox"
+            name="lunch"
+            checked={formData.lunch}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Dinner:
+          <input
+            type="checkbox"
+            name="dinner"
+            checked={formData.dinner}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Trip Image:
+          <input type="file" name="trip_image" onChange={handleChange} />
+        </label>
+        <label>
+          Select Locations:
+          <select
+            name="selectedLocations"
+            multiple
+            value={formData.selectedLocations}
+            onChange={handleChange}
+          >
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
+            ))}
+          </select>
+        </label>
 
-      {/* Location selection */}
-      <select multiple name="locations" onChange={handleLocationChange}>
-        {locations.map((location) => (
-          <option key={location.id} value={location.id}>
-            {location.name}
-          </option>
-        ))}
-      </select>
-
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

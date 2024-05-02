@@ -4,6 +4,7 @@ import TopCard from "../main/components/TopCard";
 import "./trips.css";
 import TripCard from "./components/TripCard";
 import Loader from "../../components/Loader";
+import AddTrip from "./components/AddTrip";
 
 function Trips() {
   const [trips, setTrips] = useState([]);
@@ -13,6 +14,7 @@ function Trips() {
   const [filteredData, setFilteredData] = useState([]);
   const [status, setStatus] = useState("");
   const token = localStorage.getItem("token");
+  const [add, setAdd] = useState(false);
   useEffect(() => {
     const getTrips = async () => {
       try {
@@ -57,8 +59,10 @@ function Trips() {
 
   return (
     <div className="trips">
+      {add && <div className="overlay"></div>}
+      {add && <AddTrip />}
       <div className="add-trip flex">
-        <button>
+        <button onClick={() => setAdd(true)}>
           Add
           <IoMdAdd />
         </button>
