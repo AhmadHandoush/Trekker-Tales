@@ -81,14 +81,14 @@ function SingleTrip() {
             <h5>Fee:</h5>
             <h2>$ {parseInt(fees)}</h2>
           </div>{" "}
-          {/* <div className="flex-items flex-between">
+          <div className="flex-items flex-between">
             <h5>Locations:</h5>
             <h2>
               {locations.map((location) => (
                 <span>{location.name} </span>
               ))}
             </h2>
-          </div> */}
+          </div>
           <div className="flex-items flex-between">
             <h5>Description:</h5>
             <p>{description}</p>
