@@ -9,6 +9,6 @@ const Home = () => {
   );
 };
 
-export default hHome;
+export default Home;
 
 const styles = StyleSheet.create({});
