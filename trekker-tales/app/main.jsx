@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 6,
     padding: 10,
+    marginBottom: 60,
   },
   btntext: {
     color: "white",
