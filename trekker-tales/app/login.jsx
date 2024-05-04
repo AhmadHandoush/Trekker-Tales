@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   passText: {
     fontSize: 14,
-    color: "#A5A6A9",
+    color: "black",
     padding: 10,
     marginLeft: 22,
   },
