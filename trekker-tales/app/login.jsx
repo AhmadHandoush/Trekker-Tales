@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import Topline from "../Components/topline";
 import Input from "../Components/input";
 import Button from "../Components/button";
+import OrWith from "../Components/orwith";
 
 const login = () => {
   return (
@@ -30,6 +31,7 @@ const login = () => {
             </Text>
           </Link>
         </Text>
+        <OrWith />
       </View>
     </View>
   );
