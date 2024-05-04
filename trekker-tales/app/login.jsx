@@ -21,6 +21,15 @@ const login = () => {
         <Input label={"Name"} placerholder={"Enter your email"} />
         <Input label={"Password"} placerholder={"Enter your password"} />
         <Button title="Login" />
+        <Text style={styles.passText}>
+          Don’t have an account?{" "}
+          <Link href={"/signup"}>
+            <Text style={{ color: "#E87A00", fontWeight: "bold" }}>
+              {" "}
+              Sign Up{" "}
+            </Text>
+          </Link>
+        </Text>
       </View>
     </View>
   );
@@ -53,8 +62,14 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     marginTop: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     fontWeight: "bold",
     fontSize: 26,
+  },
+  passText: {
+    fontSize: 14,
+    color: "#A5A6A9",
+    padding: 10,
+    marginLeft: 22,
   },
 });

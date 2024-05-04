@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
-    textAlign: "center",
-    paddingTop: "8%",
+    paddingTop: "4%",
+    alignSelf: "center",
+
+    verticalAlign: "top",
   },
 });
