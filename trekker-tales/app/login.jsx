@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
 import Input from "../Components/input";
+import Button from "../Components/button";
 
 const login = () => {
   return (
@@ -17,7 +18,9 @@ const login = () => {
         <Topline />
         <Text style={styles.title}>Login</Text>
 
-        <Input label={"Name"} placerholder={"Enter your name"} />
+        <Input label={"Name"} placerholder={"Enter your email"} />
+        <Input label={"Password"} placerholder={"Enter your password"} />
+        <Button title="Login" />
       </View>
     </View>
   );

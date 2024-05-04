@@ -3,7 +3,7 @@ import React from "react";
 
 const Input = ({ label, placerholder }) => {
   return (
-    <View>
+    <View style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 10 }}>
       <Text style={styles.label}>{label}</Text>
       <TextInput style={styles.input} placeholder={placerholder} />
     </View>
@@ -14,10 +14,9 @@ export default Input;
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
-
+    height: 45,
     borderWidth: 0,
-    borderRadius: 8,
+    borderRadius: 6,
     width: 325,
     padding: 10,
     borderWidth: 1,
@@ -26,5 +25,7 @@ const styles = StyleSheet.create({
   },
   label: {
     paddingVertical: "2%",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
