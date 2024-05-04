@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
+import Input from "../Components/input";
 
 const login = () => {
   return (
@@ -15,6 +16,8 @@ const login = () => {
       <View style={styles.login}>
         <Topline />
         <Text style={styles.title}>Login</Text>
+
+        <Input label={"Name"} placerholder={"Enter your name"} />
       </View>
     </View>
   );
