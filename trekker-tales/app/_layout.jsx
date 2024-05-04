@@ -1,21 +1,23 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 import { Stack } from "expo-router";
 
-export default function App() {
+const RootLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="login" />
       <Stack.Screen name="signup" />
     </Stack>
   );
-}
+};
+
+export default RootLayout;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
 });

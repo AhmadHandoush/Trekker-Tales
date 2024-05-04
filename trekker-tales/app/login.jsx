@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 const login = () => {
   return (
     <View style={styles.container}>
-      <Text>login</Text>
+      <Text className="text-3xl">login</Text>
       <Link href={"/signup"}>Go to signup</Link>
     </View>
   );
