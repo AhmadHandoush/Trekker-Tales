@@ -19,6 +19,8 @@ const Home = () => {
             placeholder="Search..."
             onChangeText={handleSearch}
             value={searchQuery}
+            caretHidden={false}
+            caretColor="red"
           />
           <Feather name="search" size={24} color="black" />
         </View>
@@ -51,6 +53,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginLeft: 20,
   },
-  search: {},
-  searchInput: {},
+  search: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 30,
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    alignItems: "center",
+    gap: 10,
+    backgroundColor: "white",
+    borderRadius: 40,
+    padding: 5,
+  },
+  searchInput: {
+    flex: 1,
+  },
 });
