@@ -39,19 +39,19 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    width: 326,
+    width: "70%",
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 20,
   },
   one: {
     width: "30%",
-    height: 2,
+    height: 1,
     backgroundColor: "#808080",
   },
   two: {
     width: "30%",
-    height: 2,
+    height: 1,
     backgroundColor: "#808080",
   },
   or: {

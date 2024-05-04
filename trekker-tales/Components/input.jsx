@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   label: {
-    paddingVertical: "2%",
+    paddingVertical: "1%",
     fontWeight: "bold",
     fontSize: 16,
   },

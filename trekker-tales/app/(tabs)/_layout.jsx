@@ -3,9 +3,9 @@ import React from "react";
 
 const TabsLayout = () => {
   return (
-    <View>
-      <Text>TabsLayout</Text>
-    </View>
+    <Tabs screenOptions={{ headerShown: false }}>
+      <
+    </Tabs>
   );
 };
 

@@ -19,7 +19,7 @@ const login = () => {
         <Topline />
         <Text style={styles.title}>Login</Text>
 
-        <Input label={"Name"} placerholder={"Enter your email"} />
+        <Input label={"Email"} placerholder={"Enter your email"} />
         <Input label={"Password"} placerholder={"Enter your password"} />
         <Button title="Login" />
         <Text style={styles.passText}>
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F0F0",
     width: "100%",
     height: "65%",
-    borderTopEndRadius: 20,
-    borderTopStartRadius: 20,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
   },
   title: {
     textAlign: "center",
