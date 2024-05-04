@@ -20,22 +20,22 @@ const TabsLayout = () => {
       setFocusedTab(routeName);
     }, [route])
   );
-  const getTabBarStyle = (name) => {
-    return focusedTab === name ? { color: "#007bff" } : { color: "#999898" };
-  };
+
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#E87A00",
+        tabBarInactiveTintColor: "#999898",
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
           tabBarLabel: "Home",
           title: "Home",
-          tabBarIcon: () => (
-            <AntDesign
-              name="home"
-              size={24}
-              color={focusedTab === "home" ? "#E87A00" : "#999898"}
-            />
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="home" size={24} color={color} />
           ),
         }}
       />
@@ -44,7 +44,9 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Profile",
           title: "Profile",
-          tabBarIcon: () => <AntDesign name="user" size={24} color="#999898" />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="user" size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -52,7 +54,9 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Trips",
           title: "Trips",
-          tabBarIcon: () => <AntDesign name="car" size={24} color="#999898" />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="car" size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -60,8 +64,8 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "notifications",
           title: "Notifications",
-          tabBarIcon: () => (
-            <AntDesign name="bells" size={24} color="#999898" fontSize={30} />
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="bells" size={24} color={color} fontSize={30} />
           ),
         }}
       />
@@ -70,8 +74,8 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "More",
           title: "More",
-          tabBarIcon: () => (
-            <AntDesign name="bars" size={24} color="#999898" fontSize={30} />
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="bars" size={24} color={color} fontSize={30} />
           ),
         }}
       />
