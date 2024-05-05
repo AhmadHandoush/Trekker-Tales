@@ -1,9 +1,19 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [focus, setFocus] = useState(false);
+  const handleFocus = () => {
+    setFocus(true);
+  };
 
   const handleSearch = (text) => {
     setSearchQuery(text);
@@ -12,18 +22,36 @@ const Home = () => {
     <View style={styles.home}>
       <View style={styles.top}>
         <Text style={styles.hi}>Hi Ahmad </Text>
-        <View style={styles.search}>
-          <Feather name="map-pin" size={24} color="black" />
+        <View style={[styles.search, focus && styles.focused]}>
+          <Feather name="map-pin" size={20} color="#E7E7E7" />
           <TextInput
             style={styles.searchInput}
             placeholder="Search..."
             onChangeText={handleSearch}
+            onFocus={handleFocus}
             value={searchQuery}
-            caretHidden={false}
-            caretColor="red"
+            selectionColor={"#E87A00"}
           />
-          <Feather name="search" size={24} color="black" />
+          <Feather name="search" size={20} color="#E7E7E7" />
         </View>
+      </View>
+      {/* .hero image  */}
+      <View style={styles.hero}>
+        <ImageBackground
+          source={require("../../../assets/hero.webp")}
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 20,
+            maxHeight: "100%",
+            maxWidth: "100%",
+            display: "flex",
+          }}
+        >
+          <Text style={styles.heroText}>
+            We are here to help you find the best trip for your children
+          </Text>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -36,7 +64,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
     flex: 1,
   },
   top: {
@@ -65,8 +92,29 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 40,
     padding: 5,
+    height: 40,
   },
   searchInput: {
     flex: 1,
+  },
+  focused: {
+    borderColor: "blue",
+  },
+  hero: {
+    width: "95%",
+    height: "30%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 20,
+    borderRadius: 20,
+    overflow: "hidden",
+
+    backgroundColor: "red",
+  },
+  heroText: {
+    color: "white",
+    marginLeft: 10,
+    marginTop: 150,
+    fontWeight: "bold",
   },
 });
