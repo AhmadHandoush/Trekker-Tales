@@ -301,13 +301,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
   },
-  pastimage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40, // Make the image circular
-    marginBottom: 5,
-  },
-  pastname: {
-    textAlign: "center",
-  },
 });
