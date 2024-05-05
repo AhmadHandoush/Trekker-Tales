@@ -47,13 +47,14 @@ const Home = () => {
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
-  const ListItem = ({ item }) => (
-    <View style={styles.item}>
+  const renderItem = ({ item }) => (
+    <View style={styles.card}>
       <Image source={item.trip_image} style={styles.image} />
-      <Text style={styles.text}>{item.name}</Text>
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.destination}>{item.destination}</Text>
+      {/* Add other information you want to display */}
     </View>
   );
-  const renderListItem = ({ item }) => <ListItem item={item} />;
   return (
     <View style={styles.home}>
       <View style={styles.top}>
@@ -99,10 +100,9 @@ const Home = () => {
         </View>
         <FlatList
           data={data.slice(0, 2)}
-          renderItem={renderListItem}
-          keyExtractor={(item) => item.id}
-          horizontal={true}
-          style={styles.flattop}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
         />
       </View>
     </View>
@@ -170,29 +170,43 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   toptrips: {
-    width: "95%",
+    width: "92%",
     marginRight: "auto",
     marginLeft: "auto",
     marginTop: 15,
   },
+
   topone: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  item: {
-    width: "200px",
-    height: "100px",
+  card: {
+    width: "45%",
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: "#fff",
     overflow: "hidden",
-    backgroundColor: "red",
+    display: "flex",
+    flexDirection: "column",
+    gap: 5,
+    height: 150,
+    elevation: 2,
   },
   image: {
     width: "100%",
-    height: "70%",
-    maxHeight: "100%",
-    maxWidth: "100%",
+    height: 100,
+    resizeMode: "cover",
+    marginBottom: 5,
   },
-  flattop: {
-    height: "200px",
+  name: {
+    paddingLeft: 8,
+    marginTop: -10,
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  destination: {
+    paddingLeft: 8,
+    marginTop: -5,
   },
 });
