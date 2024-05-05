@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,6 +53,15 @@ const Home = () => {
             We are here to help you find the best trip for your children
           </Text>
         </ImageBackground>
+      </View>
+      {/* top trips */}
+      <View style={styles.toptrips}>
+        <View style={styles.topone}>
+          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
+          <Link href="/" style={{ color: "#e87a00" }}>
+            See all
+          </Link>
+        </View>
       </View>
     </View>
   );
@@ -116,5 +126,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 150,
     fontWeight: "bold",
+  },
+  toptrips: {
+    width: "95%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 15,
+  },
+  topone: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
