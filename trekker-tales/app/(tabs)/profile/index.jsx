@@ -12,6 +12,36 @@ const Profile = () => {
     profile_image:
       "../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg",
   };
+  // const [taken, setTaken] = useState([]);
+  const trips = [
+    {
+      id: 1,
+      name: "Treepo",
+      date: "17-4-2024",
+      rating: "4.2",
+      fees: 40,
+      trip_image:
+        "../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg",
+    },
+    {
+      id: 2,
+      name: "Adventures",
+      date: "12-3-2024",
+      rating: "4.7",
+      fees: 70,
+      trip_image: "../../../assets/ChildrenAtAltitude.jpg",
+    },
+    {
+      id: 3,
+      name: "Treepo",
+      date: "17-4-2024",
+      rating: "4.2",
+      fees: 40,
+      trip_image:
+        "../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg",
+    },
+  ];
+
   const { name, email, phone, address, profile_image } = user;
   const update = () => {
     console.log("update");
@@ -56,6 +86,9 @@ const Profile = () => {
         <TouchableOpacity style={styles.button} onPress={update}>
           <MaterialIcons name="border-color" size={24} color="white" />
         </TouchableOpacity>
+        <View style={styles.taken}>
+          <Text style={styles.takentitle}>Taken Trips</Text>
+        </View>
       </View>
     </View>
   );
@@ -139,5 +172,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: "auto",
     marginRight: "auto",
+  },
+  taken: {
+    marginTop: 20,
+  },
+  takentitle: {
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
