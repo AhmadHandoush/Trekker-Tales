@@ -5,8 +5,10 @@ const TripCard = ({ trip, onPress }) => {
   return (
     <TouchableOpacity style={styles.card} onPress={() => onPress(trip)}>
       <Image source={trip.trip_image} style={styles.image} />
-      <Text style={styles.name}>{trip.name}</Text>
-      <Text style={styles.fee}>Fee: ${trip.fees}</Text>
+      <View style={styles.info}>
+        <Text style={styles.name}>{trip.name}</Text>
+        <Text style={styles.fee}>${trip.fees}</Text>
+      </View>
       <TouchableOpacity onPress={() => onPress(trip)}>
         <Text style={styles.viewMoreButton}>View More</Text>
       </TouchableOpacity>
@@ -33,5 +35,20 @@ const styles = StyleSheet.create({
   viewMoreButton: {
     color: "blue",
     marginTop: 5,
+  },
+  name: {
+    paddingLeft: 5,
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  fee: {
+    paddingLeft: 5,
+    fontWeight: "bold",
+  },
+  info: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    paddingRight: 5,
   },
 });
