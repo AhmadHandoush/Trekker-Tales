@@ -107,17 +107,17 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: 40,
   },
-  // singleinfo: {
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   gap: 20,
-  //   alignItems: "center",
-  // },
-  // all: {
-  //   width: "93%",
-  //   marginLeft: "auto",
-  //   marginRight: "auto",
-  // },
+  singleinfo: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+    alignItems: "center",
+  },
+  all: {
+    width: "93%",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
   text: {
     fontWeight: "bold",
   },
