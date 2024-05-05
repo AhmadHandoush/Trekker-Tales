@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   Image,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
@@ -56,56 +57,71 @@ const Home = () => {
     </View>
   );
   return (
-    <View style={styles.home}>
-      <View style={styles.top}>
-        <Text style={styles.hi}>Hi Ahmad </Text>
-        <View style={[styles.search, focus && styles.focused]}>
-          <Feather name="map-pin" size={20} color="#E7E7E7" />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search..."
-            onChangeText={handleSearch}
-            onFocus={handleFocus}
-            value={searchQuery}
-            selectionColor={"#E87A00"}
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.home}>
+        <View style={styles.top}>
+          <Text style={styles.hi}>Hi Ahmad </Text>
+          <View style={[styles.search, focus && styles.focused]}>
+            <Feather name="map-pin" size={20} color="#E7E7E7" />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search..."
+              onChangeText={handleSearch}
+              onFocus={handleFocus}
+              value={searchQuery}
+              selectionColor={"#E87A00"}
+            />
+            <Feather name="search" size={20} color="#E7E7E7" />
+          </View>
+        </View>
+        {/* .hero image  */}
+        <View style={styles.hero}>
+          <ImageBackground
+            source={require("../../../assets/hero.webp")}
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: 20,
+              maxHeight: "100%",
+              maxWidth: "100%",
+              display: "flex",
+            }}
+          >
+            <Text style={styles.heroText}>
+              We are here to help you find the best trip for your children
+            </Text>
+          </ImageBackground>
+        </View>
+        {/* top trips */}
+        <View style={styles.toptrips}>
+          <View style={styles.topone}>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
+            <Link href="/" style={{ color: "#e87a00" }}>
+              See all
+            </Link>
+          </View>
+          <FlatList
+            data={data.slice(0, 2)}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
           />
-          <Feather name="search" size={20} color="#E7E7E7" />
+        </View>
+
+        {/* .past trips  */}
+        <View style={styles.pasttrips}>
+          <View style={styles.topone}>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Past Trips</Text>
+            <Link href="/" style={{ color: "#e87a00" }}>
+              See all
+            </Link>
+          </View>
+        </View>
+        <View>
+          <Text>ahmad</Text>
         </View>
       </View>
-      {/* .hero image  */}
-      <View style={styles.hero}>
-        <ImageBackground
-          source={require("../../../assets/hero.webp")}
-          style={{
-            width: "100%",
-            height: "100%",
-            borderRadius: 20,
-            maxHeight: "100%",
-            maxWidth: "100%",
-            display: "flex",
-          }}
-        >
-          <Text style={styles.heroText}>
-            We are here to help you find the best trip for your children
-          </Text>
-        </ImageBackground>
-      </View>
-      {/* top trips */}
-      <View style={styles.toptrips}>
-        <View style={styles.topone}>
-          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
-          <Link href="/" style={{ color: "#e87a00" }}>
-            See all
-          </Link>
-        </View>
-        <FlatList
-          data={data.slice(0, 2)}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-        />
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -119,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   top: {
-    height: "25%",
+    height: 180,
     width: "100%",
     backgroundColor: "#E87A00",
     borderBottomEndRadius: 30,
@@ -154,7 +170,7 @@ const styles = StyleSheet.create({
   },
   hero: {
     width: "95%",
-    height: "30%",
+    height: 200,
     marginRight: "auto",
     marginLeft: "auto",
     marginTop: 20,
@@ -170,7 +186,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   toptrips: {
-    width: "92%",
+    width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
     marginTop: 15,
@@ -208,5 +224,11 @@ const styles = StyleSheet.create({
   destination: {
     paddingLeft: 8,
     marginTop: -5,
+  },
+  pasttrips: {
+    width: "93%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 15,
   },
 });
