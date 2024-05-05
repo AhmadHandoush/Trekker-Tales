@@ -21,7 +21,7 @@ const Home = () => {
   const data = [
     {
       id: "1",
-      name: "Jane",
+      name: "Jiita",
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
@@ -29,11 +29,11 @@ const Home = () => {
     },
     {
       id: "2",
-      name: "Jane",
+      name: "Bekaa",
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+      trip_image: require("../../../assets/2c198c89ac7b7758d4f5d91d1b453b70-saida.jpg"),
     },
     {
       id: "3",
@@ -41,7 +41,7 @@ const Home = () => {
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+      trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
     },
     {
       id: "4",
@@ -49,7 +49,7 @@ const Home = () => {
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+      trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
     },
     {
       id: "5",
@@ -57,7 +57,7 @@ const Home = () => {
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+      trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
     },
     {
       id: "6",
@@ -73,7 +73,7 @@ const Home = () => {
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+      trip_image: require("../../../assets/c687bc1f-05db-444d-a38b-fa6cfe3ef2c6-shutterstock_483865690.jpg"),
     },
     {
       id: "8",
