@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
   pastimage: {
     width: 60,
     height: 60,
-    borderRadius: 40, // Make the image circular
+    borderRadius: 40,
     marginBottom: 5,
   },
   pastname: {
