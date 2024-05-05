@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
@@ -28,8 +29,7 @@ const Profile = () => {
       date: "17-4-2024",
       rating: "4.2",
       fees: 40,
-      trip_image:
-        "../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg",
+      trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Profile = () => {
       date: "12-3-2024",
       rating: "4.7",
       fees: 70,
-      trip_image: "../../../assets/ChildrenAtAltitude.jpg",
+      trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
     },
     {
       id: 3,
@@ -45,8 +45,7 @@ const Profile = () => {
       date: "17-4-2024",
       rating: "4.2",
       fees: 40,
-      trip_image:
-        "../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg",
+      trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
     },
   ];
 
@@ -55,52 +54,55 @@ const Profile = () => {
     console.log("update");
   };
   return (
-    <View style={styles.profile}>
-      <View style={styles.top}>
-        <View style={styles.image}>
-          <Image
-            source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-            style={styles.img}
-          />
-        </View>
-      </View>
-      <View style={styles.all}>
-        <View style={styles.topinfo}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.email}>{email}</Text>
-        </View>
-        <View style={styles.info}>
-          <View style={styles.singleinfo}>
-            <MaterialCommunityIcons
-              name="email-outline"
-              size={32}
-              color="grey"
+    <View style={styles.container}>
+      <View style={styles.profile}>
+        <View style={styles.top}>
+          <View style={styles.image}>
+            <Image
+              source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
+              style={styles.img}
             />
-            <Text style={styles.text}>{email}</Text>
-          </View>
-          <View style={styles.singleinfo}>
-            <MaterialCommunityIcons name="phone" size={32} color="grey" />
-            <Text style={styles.text}>{phone}</Text>
-          </View>
-          <View style={styles.singleinfo}>
-            <MaterialCommunityIcons
-              name="map-marker-outline"
-              size={32}
-              color="grey"
-            />
-            <Text style={styles.text}>{address}</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} onPress={update}>
-          <MaterialIcons name="border-color" size={24} color="white" />
-        </TouchableOpacity>
-        <View style={styles.taken}>
-          <Text style={styles.takentitle}>Taken Trips</Text>
-          <FlatList
-            data={trips}
-            renderItem={({ item }) => <TakenTrip trip={item} />}
-            keyExtractor={(item) => item.id.toString()}
-          />
+        <View style={styles.all}>
+          <View style={styles.topinfo}>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.email}>{email}</Text>
+          </View>
+          <View style={styles.info}>
+            <View style={styles.singleinfo}>
+              <MaterialCommunityIcons
+                name="email-outline"
+                size={28}
+                color="grey"
+              />
+              <Text style={styles.text}>{email}</Text>
+            </View>
+            <View style={styles.singleinfo}>
+              <MaterialCommunityIcons name="phone" size={28} color="grey" />
+              <Text style={styles.text}>{phone}</Text>
+            </View>
+            <View style={styles.singleinfo}>
+              <MaterialCommunityIcons
+                name="map-marker-outline"
+                size={28}
+                color="grey"
+              />
+              <Text style={styles.text}>{address}</Text>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.button} onPress={update}>
+            <MaterialIcons name="border-color" size={24} color="white" />
+          </TouchableOpacity>
+          <View style={styles.taken}>
+            <Text style={styles.takentitle}>Taken Trips</Text>
+
+            <FlatList
+              data={trips}
+              renderItem={({ item }) => <TakenTrip trip={item} />}
+              keyExtractor={(item) => item.id.toString()}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -110,6 +112,10 @@ const Profile = () => {
 export default Profile;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
   profile: {
     backgroundColor: "white",
     display: "flex",
@@ -194,4 +200,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
+  scrollView: {},
 });

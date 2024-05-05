@@ -7,10 +7,7 @@ const TakenTrip = ({ trip }) => {
   return (
     <View style={styles.card}>
       <View style={styles.image}>
-        <Image
-          source={require("../assets/ChildrenAtAltitude.jpg")}
-          style={styles.img}
-        />
+        <Image source={trip_image} style={styles.img} />
       </View>
       <View style={styles.data}>
         <View style={styles.topline}>
