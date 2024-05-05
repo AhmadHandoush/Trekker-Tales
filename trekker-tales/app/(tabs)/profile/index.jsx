@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
@@ -13,6 +13,9 @@ const Profile = () => {
       "../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg",
   };
   const { name, email, phone, address, profile_image } = user;
+  const update = () => {
+    console.log("update");
+  };
   return (
     <View style={styles.profile}>
       <View style={styles.top}>
@@ -50,6 +53,10 @@ const Profile = () => {
             <Text style={styles.text}>{address}</Text>
           </View>
         </View>
+        <TouchableOpacity style={styles.button} onPress={update}>
+          <MaterialIcons name="edit" size={24} color="black" />
+          <Text style={styles.buttonText}>Edit</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
