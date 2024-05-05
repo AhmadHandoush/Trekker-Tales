@@ -4,6 +4,8 @@ import {
   Text,
   TextInput,
   View,
+  FlatList,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
@@ -15,10 +17,43 @@ const Home = () => {
   const handleFocus = () => {
     setFocus(true);
   };
+  const data = [
+    {
+      id: "1",
+      name: "Jane",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "2",
+      name: "Jane",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "3",
+      name: "Jane",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+  ];
 
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
+  const ListItem = ({ item }) => (
+    <View style={styles.item}>
+      <Image source={item.trip_image} style={styles.image} />
+      <Text style={styles.text}>{item.name}</Text>
+    </View>
+  );
+  const renderListItem = ({ item }) => <ListItem item={item} />;
   return (
     <View style={styles.home}>
       <View style={styles.top}>
@@ -62,6 +97,13 @@ const Home = () => {
             See all
           </Link>
         </View>
+        <FlatList
+          data={data.slice(0, 2)}
+          renderItem={renderListItem}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          style={styles.flattop}
+        />
       </View>
     </View>
   );
@@ -137,5 +179,20 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  item: {
+    width: "200px",
+    height: "100px",
+    overflow: "hidden",
+    backgroundColor: "red",
+  },
+  image: {
+    width: "100%",
+    height: "70%",
+    maxHeight: "100%",
+    maxWidth: "100%",
+  },
+  flattop: {
+    height: "200px",
   },
 });
