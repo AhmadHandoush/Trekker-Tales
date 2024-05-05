@@ -7,7 +7,10 @@ const TakenTrip = ({ trip }) => {
   return (
     <View style={styles.card}>
       <View style={styles.image}>
-        <Image source={trip_image} style={styles.img} />
+        <Image
+          source={require("../assets/ChildrenAtAltitude.jpg")}
+          style={styles.img}
+        />
       </View>
       <View style={styles.data}>
         <View style={styles.topline}>
@@ -35,16 +38,34 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     backgroundColor: "red",
+    marginBottom: 10,
+    borderRadius: 10,
   },
   data: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    flex: 1,
+    gap: 15,
   },
 
-  image: {},
-  img: {},
+  image: {
+    width: 100,
+    height: 100,
+    overflow: "hidden",
+    backgroundColor: "white",
+    borderRadius: 10,
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+  },
   topline: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  bottomline: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
