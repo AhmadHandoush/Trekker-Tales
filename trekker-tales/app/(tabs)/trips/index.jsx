@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import TripCard from "../../../Components/TripCard";
 
 const Trips = () => {
   const trips = [
@@ -76,14 +77,16 @@ const Trips = () => {
   ];
   return (
     <View>
-      <ScrollView
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
-      >
-        {trips.map((trip) => (
-          <TripCard key={trip.id} trip={trip} onPress={handleTripPress} />
-        ))}
+      <ScrollView>
+        <View style={styles.container}>
+          {trips.map((trip, index) => (
+            <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
+              <TripCard trip={trip} />
+            </View>
+          ))}
+        </View>
+        {/* {selectedTrip && <TripDetailsPage trip={selectedTrip} />} */}
       </ScrollView>
-      {/* {selectedTrip && <TripDetailsPage trip={selectedTrip} />} */}
     </View>
   );
 };
@@ -91,5 +94,13 @@ const Trips = () => {
 export default Trips;
 
 const styles = StyleSheet.create({
-  trips: {},
+  container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
 });
