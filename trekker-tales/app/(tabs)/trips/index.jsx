@@ -1,8 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
 import TripCard from "../../../Components/TripCard";
+import { Feather } from "@expo/vector-icons";
 
 const Trips = () => {
+  const [focus, setFocus] = useState(false);
   const trips = [
     {
       id: 1,
@@ -75,6 +77,9 @@ const Trips = () => {
       trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
     },
   ];
+  const handleSearch = (text) => {
+    setSearchQuery(text);
+  };
   return (
     <View style={styles.trips}>
       <View style={[styles.search, focus && styles.focused]}>
@@ -117,5 +122,22 @@ const styles = StyleSheet.create({
   },
   trips: {
     paddingTop: 60,
+  },
+  search: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 30,
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    alignItems: "center",
+    gap: 10,
+    backgroundColor: "white",
+    borderRadius: 40,
+    padding: 5,
+    height: 40,
+  },
+  searchInput: {
+    flex: 1,
   },
 });
