@@ -37,7 +37,63 @@ const Home = () => {
     },
     {
       id: "3",
+      name: "Chouf",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "4",
+      name: "Koura",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "5",
+      name: "Tripoli",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "6",
       name: "Jane",
+      destination: "Saida",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "7",
+      name: "Beirut",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "8",
+      name: "Jane",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "9",
+      name: "Jane",
+      destination: "Beirut",
+      description: "the best trip ever ",
+      date: "",
+      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+    },
+    {
+      id: "10",
+      name: "Beirut",
       destination: "Beirut",
       description: "the best trip ever ",
       date: "",
@@ -53,7 +109,12 @@ const Home = () => {
       <Image source={item.trip_image} style={styles.image} />
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.destination}>{item.destination}</Text>
-      {/* Add other information you want to display */}
+    </View>
+  );
+  const pastItem = ({ item }) => (
+    <View style={styles.pastcard}>
+      <Image source={item.trip_image} style={styles.pastimage} />
+      <Text style={styles.pastname}>{item.name}</Text>
     </View>
   );
   return (
@@ -118,7 +179,12 @@ const Home = () => {
           </View>
         </View>
         <View>
-          <Text>ahmad</Text>
+          <FlatList
+            data={data.slice(0, 7)}
+            renderItem={pastItem}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal={true}
+          />
         </View>
       </View>
     </ScrollView>
@@ -230,5 +296,18 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     marginLeft: "auto",
     marginTop: 15,
+  },
+  pastcard: {
+    alignItems: "center",
+    margin: 10,
+  },
+  pastimage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40, // Make the image circular
+    marginBottom: 5,
+  },
+  pastname: {
+    textAlign: "center",
   },
 });
