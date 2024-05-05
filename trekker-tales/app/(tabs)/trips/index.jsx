@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
   trips: {
     paddingTop: 60,
     backgroundColor: "white",
+    paddingBottom: 60,
   },
   search: {
     display: "flex",
