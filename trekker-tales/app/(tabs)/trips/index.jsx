@@ -2,11 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 const Trips = () => {
-  return (
-    <View>
-      <Text>Trips</Text>
-    </View>
-  );
+  return <View></View>;
 };
 
 export default Trips;
