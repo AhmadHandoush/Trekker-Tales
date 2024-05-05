@@ -5,6 +5,7 @@ import { Feather } from "@expo/vector-icons";
 
 const Trips = () => {
   const [focus, setFocus] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const trips = [
     {
       id: 1,
@@ -80,10 +81,13 @@ const Trips = () => {
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
+  const handleFocus = () => {
+    setFocus(true);
+  };
   return (
     <View style={styles.trips}>
       <View style={[styles.search, focus && styles.focused]}>
-        <Feather name="map-pin" size={20} color="#E7E7E7" />
+        <Feather name="map-pin" size={20} color="#E87A00" />
         <TextInput
           style={styles.searchInput}
           placeholder="Search..."
@@ -92,7 +96,7 @@ const Trips = () => {
           value={searchQuery}
           selectionColor={"#E87A00"}
         />
-        <Feather name="search" size={20} color="#E7E7E7" />
+        <Feather name="search" size={20} color="#E87A00" />
       </View>
       <ScrollView>
         <View style={styles.container}>
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
+    marginTop: 30,
   },
   row: {
     flexDirection: "row",
@@ -122,6 +127,7 @@ const styles = StyleSheet.create({
   },
   trips: {
     paddingTop: 60,
+    backgroundColor: "white",
   },
   search: {
     display: "flex",
@@ -133,6 +139,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
     backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "black",
     borderRadius: 40,
     padding: 5,
     height: 40,
