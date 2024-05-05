@@ -2,8 +2,10 @@ import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import TripCard from "../../../Components/TripCard";
 import { Feather } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const Trips = () => {
+  const router = useRouter();
   const [focus, setFocus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const trips = [
@@ -102,7 +104,12 @@ const Trips = () => {
         <View style={styles.container}>
           {trips.map((trip, index) => (
             <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
-              <TripCard trip={trip} />
+              <TripCard
+                trip={trip}
+                onPress={() => {
+                  router.push(`./single.jsx`);
+                }}
+              />
             </View>
           ))}
         </View>

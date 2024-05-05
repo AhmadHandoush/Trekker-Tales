@@ -1,8 +1,10 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import React from "react";
+import { useRouter } from "expo-router";
 
 const TripCard = ({ trip, onPress }) => {
+  const router = useRouter();
   return (
     <TouchableOpacity style={styles.card} onPress={() => onPress(trip)}>
       <Image source={trip.trip_image} style={styles.image} />
@@ -19,7 +21,7 @@ const TripCard = ({ trip, onPress }) => {
         />
         <Text style={styles.date}>{trip.date}</Text>
       </View>
-      <TouchableOpacity onPress={() => onPress(trip)} style={styles.more}>
+      <TouchableOpacity onPress={onPress} style={styles.more}>
         <Text style={styles.viewMoreButton}>View More</Text>
       </TouchableOpacity>
     </TouchableOpacity>
