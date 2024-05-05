@@ -74,19 +74,19 @@ const Profile = () => {
             <MaterialCommunityIcons
               name="email-outline"
               size={32}
-              color="black"
+              color="grey"
             />
             <Text style={styles.text}>{email}</Text>
           </View>
           <View style={styles.singleinfo}>
-            <MaterialCommunityIcons name="phone" size={32} color="black" />
+            <MaterialCommunityIcons name="phone" size={32} color="grey" />
             <Text style={styles.text}>{phone}</Text>
           </View>
           <View style={styles.singleinfo}>
             <MaterialCommunityIcons
               name="map-marker-outline"
               size={32}
-              color="black"
+              color="grey"
             />
             <Text style={styles.text}>{address}</Text>
           </View>
@@ -192,5 +192,6 @@ const styles = StyleSheet.create({
   takentitle: {
     fontWeight: "bold",
     fontSize: 18,
+    marginBottom: 10,
   },
 });

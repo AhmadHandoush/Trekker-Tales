@@ -14,15 +14,15 @@ const TakenTrip = ({ trip }) => {
       </View>
       <View style={styles.data}>
         <View style={styles.topline}>
-          <Text>{name}</Text>
+          <Text style={styles.name}>{name}</Text>
           <View style={styles.rate}>
             <MaterialIcons name="star" size={16} color="gold" />
-            <Text>{rating}</Text>
+            <Text style={styles.rating}>{rating}</Text>
           </View>
         </View>
         <View style={styles.bottomline}>
-          <Text>{date}</Text>
-          <Text>$ {fees}</Text>
+          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.fees}>${fees}</Text>
         </View>
       </View>
     </View>
@@ -37,14 +37,15 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 10,
-    backgroundColor: "red",
     marginBottom: 10,
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
   data: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     flex: 1,
     gap: 15,
   },
@@ -73,5 +74,20 @@ const styles = StyleSheet.create({
   rate: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  rating: {
+    fontWeight: "bold",
+  },
+  fees: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  date: {
+    fontWeight: "bold",
   },
 });
