@@ -74,7 +74,18 @@ const Trips = () => {
       trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
     },
   ];
-  return <View style={styles.trips}></View>;
+  return (
+    <View>
+      <ScrollView
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+      >
+        {trips.map((trip) => (
+          <TripCard key={trip.id} trip={trip} onPress={handleTripPress} />
+        ))}
+      </ScrollView>
+      {/* {selectedTrip && <TripDetailsPage trip={selectedTrip} />} */}
+    </View>
+  );
 };
 
 export default Trips;
