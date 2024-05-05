@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 30,
+    marginTop: 25,
   },
   row: {
     flexDirection: "row",
@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     padding: 5,
     height: 40,
+    marginBottom: 5,
   },
   searchInput: {
     flex: 1,
