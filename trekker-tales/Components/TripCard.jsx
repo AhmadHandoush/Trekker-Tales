@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import React from "react";
 
 const TripCard = ({ trip, onPress }) => {
@@ -9,7 +10,8 @@ const TripCard = ({ trip, onPress }) => {
         <Text style={styles.name}>{trip.name}</Text>
         <Text style={styles.fee}>${trip.fees}</Text>
       </View>
-      <TouchableOpacity onPress={() => onPress(trip)}>
+      <View style={styles.}></View>
+      <TouchableOpacity onPress={() => onPress(trip)} style={styles.more}>
         <Text style={styles.viewMoreButton}>View More</Text>
       </TouchableOpacity>
     </TouchableOpacity>
@@ -23,7 +25,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 1,
     borderColor: "gray",
-    borderRadius: 5,
+    borderRadius: 8,
+    overflow: "hidden",
     width: 170,
   },
   image: {
@@ -50,5 +53,24 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     paddingRight: 5,
+  },
+  more: {
+    margin: 5,
+    backgroundColor: "#E87A00",
+    padding: 5,
+    width: "50%",
+
+    borderRadius: 8,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  viewMoreButton: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  date: {
+    color: "black",
+    marginLeft: 5,
   },
 });
