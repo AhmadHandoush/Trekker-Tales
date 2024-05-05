@@ -10,7 +10,10 @@ const TripCard = ({ trip, onPress }) => {
         <Text style={styles.name}>{trip.name}</Text>
         <Text style={styles.fee}>${trip.fees}</Text>
       </View>
-      <View style={styles.}></View>
+      <View style={styles.datefill}>
+        <Icon name="calendar" size={20} color="black" />
+        <Text style={styles.date}>{trip.date}</Text>
+      </View>
       <TouchableOpacity onPress={() => onPress(trip)} style={styles.more}>
         <Text style={styles.viewMoreButton}>View More</Text>
       </TouchableOpacity>
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: "hidden",
     width: 170,
+  },
+  datefill: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 5,
+    margin: 5,
   },
   image: {
     width: "100%",
@@ -72,5 +81,7 @@ const styles = StyleSheet.create({
   date: {
     color: "black",
     marginLeft: 5,
+    fontWeight: "bold",
+    fontSize: 13,
   },
 });
