@@ -76,7 +76,19 @@ const Trips = () => {
     },
   ];
   return (
-    <View>
+    <View style={styles.trips}>
+      <View style={[styles.search, focus && styles.focused]}>
+        <Feather name="map-pin" size={20} color="#E7E7E7" />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          onChangeText={handleSearch}
+          onFocus={handleFocus}
+          value={searchQuery}
+          selectionColor={"#E87A00"}
+        />
+        <Feather name="search" size={20} color="#E7E7E7" />
+      </View>
       <ScrollView>
         <View style={styles.container}>
           {trips.map((trip, index) => (
@@ -102,5 +114,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+  },
+  trips: {
+    paddingTop: 60,
   },
 });

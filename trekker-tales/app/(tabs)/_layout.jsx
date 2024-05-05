@@ -39,16 +39,7 @@ const TabsLayout = () => {
           ),
         }}
       />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          tabBarLabel: "Profile",
-          title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="user" size={24} color={color} />
-          ),
-        }}
-      />
+
       <Tabs.Screen
         name="trips"
         options={{
@@ -56,6 +47,16 @@ const TabsLayout = () => {
           title: "Trips",
           tabBarIcon: ({ color }) => (
             <AntDesign name="car" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarLabel: "Profile",
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="user" size={24} color={color} />
           ),
         }}
       />
