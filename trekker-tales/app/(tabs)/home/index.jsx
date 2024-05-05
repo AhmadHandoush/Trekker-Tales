@@ -118,76 +118,74 @@ const Home = () => {
     </View>
   );
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.home}>
-        <View style={styles.top}>
-          <Text style={styles.hi}>Hi Ahmad </Text>
-          <View style={[styles.search, focus && styles.focused]}>
-            <Feather name="map-pin" size={20} color="#E7E7E7" />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search..."
-              onChangeText={handleSearch}
-              onFocus={handleFocus}
-              value={searchQuery}
-              selectionColor={"#E87A00"}
-            />
-            <Feather name="search" size={20} color="#E7E7E7" />
-          </View>
-        </View>
-        {/* .hero image  */}
-        <View style={styles.hero}>
-          <ImageBackground
-            source={require("../../../assets/hero.webp")}
-            style={{
-              width: "100%",
-              height: "100%",
-              borderRadius: 20,
-              maxHeight: "100%",
-              maxWidth: "100%",
-              display: "flex",
-            }}
-          >
-            <Text style={styles.heroText}>
-              We are here to help you find the best trip for your children
-            </Text>
-          </ImageBackground>
-        </View>
-        {/* top trips */}
-        <View style={styles.toptrips}>
-          <View style={styles.topone}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
-            <Link href="/" style={{ color: "#e87a00" }}>
-              See all
-            </Link>
-          </View>
-          <FlatList
-            data={data.slice(0, 2)}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
+    <View style={styles.home}>
+      <View style={styles.top}>
+        <Text style={styles.hi}>Hi Ahmad </Text>
+        <View style={[styles.search, focus && styles.focused]}>
+          <Feather name="map-pin" size={20} color="#E7E7E7" />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search..."
+            onChangeText={handleSearch}
+            onFocus={handleFocus}
+            value={searchQuery}
+            selectionColor={"#E87A00"}
           />
-        </View>
-
-        {/* .past trips  */}
-        <View style={styles.pasttrips}>
-          <View style={styles.topone}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Past Trips</Text>
-            <Link href="/" style={{ color: "#e87a00" }}>
-              See all
-            </Link>
-          </View>
-        </View>
-        <View>
-          <FlatList
-            data={data.slice(0, 7)}
-            renderItem={pastItem}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal={true}
-          />
+          <Feather name="search" size={20} color="#E7E7E7" />
         </View>
       </View>
-    </ScrollView>
+      {/* .hero image  */}
+      <View style={styles.hero}>
+        <ImageBackground
+          source={require("../../../assets/hero.webp")}
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 20,
+            maxHeight: "100%",
+            maxWidth: "100%",
+            display: "flex",
+          }}
+        >
+          <Text style={styles.heroText}>
+            We are here to help you find the best trip for your children
+          </Text>
+        </ImageBackground>
+      </View>
+      {/* top trips */}
+      <View style={styles.toptrips}>
+        <View style={styles.topone}>
+          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
+          <Link href="/" style={{ color: "#e87a00" }}>
+            See all
+          </Link>
+        </View>
+        <FlatList
+          data={data.slice(0, 2)}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+        />
+      </View>
+
+      {/* .past trips  */}
+      <View style={styles.pasttrips}>
+        <View style={styles.topone}>
+          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Past Trips</Text>
+          <Link href="/" style={{ color: "#e87a00" }}>
+            See all
+          </Link>
+        </View>
+      </View>
+      <View>
+        <FlatList
+          data={data.slice(0, 7)}
+          renderItem={pastItem}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal={true}
+        />
+      </View>
+    </View>
   );
 };
 
@@ -302,8 +300,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   pastimage: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 40, // Make the image circular
     marginBottom: 5,
   },
