@@ -54,8 +54,7 @@ const Profile = () => {
           </View>
         </View>
         <TouchableOpacity style={styles.button} onPress={update}>
-          <MaterialIcons name="edit" size={24} color="black" />
-          <Text style={styles.buttonText}>Edit</Text>
+          <MaterialIcons name="border-color" size={24} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -127,5 +126,18 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
+  },
+  button: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 20,
+    width: "60%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E87A00",
+    padding: 10,
+    borderRadius: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
