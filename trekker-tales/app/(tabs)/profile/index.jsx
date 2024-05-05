@@ -7,7 +7,7 @@ const Profile = () => {
   const user = {
     name: "Ahmad Handoush",
     email: "ahmadhandoush5@gmail.com",
-    phone: "81303288",
+    phone: "+961 81 303 288",
     address: "Koura",
     profile_image:
       "../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg",
@@ -23,12 +23,33 @@ const Profile = () => {
           />
         </View>
       </View>
-      <View style={styles.topinfo}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.email}>{email}</Text>
-      </View>
-      <View style={styles.info}>
-        <View></View>
+      <View style={styles.all}>
+        <View style={styles.topinfo}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
+        </View>
+        <View style={styles.info}>
+          <View style={styles.singleinfo}>
+            <MaterialCommunityIcons
+              name="email-outline"
+              size={32}
+              color="black"
+            />
+            <Text style={styles.text}>{email}</Text>
+          </View>
+          <View style={styles.singleinfo}>
+            <MaterialCommunityIcons name="phone" size={32} color="black" />
+            <Text style={styles.text}>{phone}</Text>
+          </View>
+          <View style={styles.singleinfo}>
+            <MaterialCommunityIcons
+              name="map-marker-outline"
+              size={32}
+              color="black"
+            />
+            <Text style={styles.text}>{address}</Text>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -79,5 +100,25 @@ const styles = StyleSheet.create({
   },
   email: {
     textAlign: "center",
+  },
+  info: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 10,
+    marginTop: 40,
+  },
+  // singleinfo: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   gap: 20,
+  //   alignItems: "center",
+  // },
+  // all: {
+  //   width: "93%",
+  //   marginLeft: "auto",
+  //   marginRight: "auto",
+  // },
+  text: {
+    fontWeight: "bold",
   },
 });
