@@ -1,6 +1,14 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import TakenTrip from "../../../Components/takenTrip";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
@@ -88,6 +96,11 @@ const Profile = () => {
         </TouchableOpacity>
         <View style={styles.taken}>
           <Text style={styles.takentitle}>Taken Trips</Text>
+          <FlatList
+            data={trips}
+            renderItem={({ item }) => <TakenTrip trip={item} />}
+            keyExtractor={(item) => item.id.toString()}
+          />
         </View>
       </View>
     </View>
