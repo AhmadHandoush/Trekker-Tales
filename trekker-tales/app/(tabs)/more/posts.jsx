@@ -73,9 +73,12 @@ const Posts = () => {
   return (
     <View style={styles.postsPage}>
       <View style={styles.add}>
-        <Image
-          source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-        />
+        <View style={styles.img}>
+          <Image
+            source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
+            style={styles.image}
+          />
+        </View>
         <View style={styles.input}>
           <TextInput
             style={styles.input}
@@ -97,4 +100,16 @@ const Posts = () => {
 
 export default Posts;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  postsPage: {
+    paddingTop: 60,
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+  },
+  add: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+});
