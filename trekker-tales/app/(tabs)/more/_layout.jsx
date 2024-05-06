@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Stack } from "expo-router";
 
 const _layout = () => {
   return (
-    <View>
-      <Text>_layout</Text>
-    </View>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: "white",
+      }}
+    >
+      <Stack.Screen name="posts" />
+      {/* <Stack.Screen name="single" /> */}
+    </Stack>
   );
 };
 
