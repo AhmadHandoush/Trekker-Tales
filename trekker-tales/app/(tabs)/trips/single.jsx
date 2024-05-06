@@ -12,6 +12,7 @@ import BookCard from "../../../Components/bookcard";
 
 const SignleTrip = () => {
   const [book, setBook] = useState(false);
+  const [mesage, setMessage] = useState("");
   const tripData = {
     id: 25,
     name: "Treepo",
@@ -149,6 +150,9 @@ const SignleTrip = () => {
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.message}>
+          <Text>You booking successfully completed</Text>
+        </View>
         {book && <BookCard setBook={setBook} />}
       </View>
     </ScrollView>
@@ -284,5 +288,18 @@ const styles = StyleSheet.create({
     top: 0,
     backgroundColor: "rgba(0,0,0,0.7)",
     zIndex: 1000,
+  },
+  mesage: {
+    position: "absolute",
+    zIndex: 20000,
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "white",
+    borderRadius: 6,
+    padding: 20,
+    top: "50%",
+    left: "50%",
+    transform: [{ translateX: -150 }],
   },
 });

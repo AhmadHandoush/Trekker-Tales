@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const BookCard = ({ setBook }) => {
+const BookCard = ({ setBook, setMessage }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
@@ -22,7 +22,11 @@ const BookCard = ({ setBook }) => {
       });
 
       if (response.ok) {
-        Alert.alert("Success", "booking done");
+        setBook(false);
+        setMessage("You booking successfully completed");
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
       } else {
         Alert.alert("Error", "Failed to send data");
       }
