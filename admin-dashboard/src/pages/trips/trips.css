@@ -114,6 +114,7 @@
 
 /* add trip  */
 .add-trip-box {
+  border: 1px solid var(--main-color);
   width: 40%;
   border-radius: 6px;
   padding: 10px 20px 20px;
