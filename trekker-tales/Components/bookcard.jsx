@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 
 const BookCard = () => {
@@ -32,7 +39,17 @@ const BookCard = () => {
         value={inputValue}
         style={styles.input}
       />
-      <Button title="Book" onPress={handleSubmit} style={styles.book} />
+      <TouchableOpacity onPress={handleSubmit} style={styles.book}>
+        <Text
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            fontSize: 18,
+          }}
+        >
+          Book
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -55,5 +72,16 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "#808080",
+    height: 40,
+  },
+  book: {
+    backgroundColor: "#E87A00",
+    padding: 10,
+    borderRadius: 5,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
