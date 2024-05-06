@@ -60,10 +60,17 @@ body {
 }
 .login {
   height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  background: linear-gradient(to right, #e87a00, black);
 }
+.right-image {
+  height: 100%;
+  width: 50%;
+}
+.right-image img {
+  width: 100%;
+  height: 100%;
+}
+
 .error {
   color: red;
 }
@@ -82,14 +89,25 @@ h6 a {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
 }
+.rights {
+  width: 50%;
+}
+.loging {
+  width: 70%;
+  background-color: white;
+  height: 70%;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
 .login-card {
   padding: 15px 30px;
   background-color: var(--bg-white);
-  width: 25%;
+  width: 80%;
   position: relative;
   z-index: 1000;
   border-radius: 8px;
+  height: fit-content;
 }
 .login-card label {
   margin-bottom: 5px;
@@ -137,12 +155,15 @@ form button {
   width: 60%;
   margin-right: auto;
   margin-left: auto;
-  background-color: var(--main-color);
+  background: linear-gradient(to right, #e87a00, black);
   font-weight: bold;
   font-size: 24px;
   color: var(--bg-white);
   cursor: pointer;
   border-radius: 6px;
+}
+form button:hover {
+  opacity: 0.7;
 }
 form .submit {
   margin-bottom: 20px;
