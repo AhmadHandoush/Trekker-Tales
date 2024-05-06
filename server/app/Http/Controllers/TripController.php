@@ -22,7 +22,7 @@ class TripController extends Controller
         $trip->available_seats = $request->available_seats;
         $trip->fees = $request->fees;
         $trip->description = $request->description;
-        
+
 
         if ($request->hasFile('trip_image')) {
             $image = $request->file('trip_image');
@@ -68,6 +68,13 @@ class TripController extends Controller
         $trips=Trip::all()->count();
 
         return response()->json(['trips_number' => $trips], 200);
+    }
+    public function update(Request $req, $id){
+        $trip = Trip::findOrFail($id);
+        $trip->status = 'inactive';
+        $trip->save();
+        return response()->json(['message'=>'Trip updated successfully'],201);
+
     }
 }
 

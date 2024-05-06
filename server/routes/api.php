@@ -51,6 +51,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_teachers_number',[UserController::class,'get_teachers_number']);
     Route::get('get_trips_number',[TripController::class,'get_trips_number']);
     Route::post('update_teacher_info/{teacher_id}',[UserController::class,'update_teacher_info']);
+    Route::post('update_trip_status/{id}',[TripController::class,'update']);
 
 });
 
