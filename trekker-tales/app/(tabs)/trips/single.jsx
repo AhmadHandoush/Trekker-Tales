@@ -148,7 +148,6 @@ const SignleTrip = () => {
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity>
         </View>
-        <View></View>
       </View>
     </ScrollView>
   );
