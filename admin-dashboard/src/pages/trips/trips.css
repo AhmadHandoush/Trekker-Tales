@@ -7,7 +7,8 @@
 }
 
 .trips {
-  padding: 2rem 100px 0px;
+  padding: 2rem 100px 20px;
+  /* position: relative; */
 }
 .add-trip {
   justify-content: flex-end;
@@ -122,7 +123,7 @@
   background-color: white;
   gap: 20px;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -20%);
 }
@@ -148,4 +149,17 @@
   padding: 5px;
 }
 .add-trip-box select {
+}
+.message {
+  background-color: "green";
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message span {
+  color: white;
+  font-weight: bold;
+  font-size: 16;
 }

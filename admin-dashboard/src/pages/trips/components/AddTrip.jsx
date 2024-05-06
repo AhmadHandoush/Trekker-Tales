@@ -103,6 +103,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter the Trip name"
+            required
           />
         </div>
         <div className="flex column input">
@@ -113,6 +114,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.destination}
             onChange={handleChange}
             placeholder="Enter the Trip destination"
+            required
           />
         </div>
         <div className="flex column input">
@@ -123,6 +125,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.date}
             onChange={handleChange}
             placeholder="Enter the Trip date"
+            required
           />
         </div>
         <div className="flex column input">
@@ -133,6 +136,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.start_time}
             onChange={handleChange}
             placeholder="Enter the Trip start time"
+            required
           />
         </div>
         <div className="flex column input">
@@ -142,6 +146,7 @@ const AddTrip = ({ setAdd }) => {
             name="end_time"
             value={formData.end_time}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="flex column input">
@@ -152,6 +157,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.total_seats}
             onChange={handleChange}
             placeholder="Enter the total seats"
+            required
           />
         </div>
         <div className="flex column input">
@@ -162,6 +168,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.available_seats}
             onChange={handleChange}
             placeholder="Enter the available"
+            required
           />
         </div>
         <div className="flex column input">
@@ -172,6 +179,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.fees}
             onChange={handleChange}
             placeholder="Enter the trip fee"
+            required
           />
         </div>
         <div className="flex column input">
@@ -181,6 +189,7 @@ const AddTrip = ({ setAdd }) => {
             value={formData.description}
             onChange={handleChange}
             placeholder="Enter the Trip description"
+            required
           ></textarea>
         </div>
 
@@ -195,6 +204,7 @@ const AddTrip = ({ setAdd }) => {
             multiple
             value={formData.selectedLocations}
             onChange={handleLocationChange}
+            required
           >
             {locations.map((location) => (
               <option key={location.id} value={location.id}>

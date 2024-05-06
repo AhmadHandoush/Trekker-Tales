@@ -5,6 +5,7 @@ import "./trips.css";
 import TripCard from "./components/TripCard";
 import Loader from "../../components/Loader";
 import AddTrip from "./components/AddTrip";
+import SuccessMessage from "./components/SuccessMessage";
 
 function Trips() {
   const [trips, setTrips] = useState([]);
@@ -15,6 +16,7 @@ function Trips() {
   const [status, setStatus] = useState("");
   const token = localStorage.getItem("token");
   const [add, setAdd] = useState(false);
+  const [success, setSuccess] = useState(true);
   useEffect(() => {
     const getTrips = async () => {
       try {
@@ -59,7 +61,8 @@ function Trips() {
 
   return (
     <>
-      {/* {add && <div className="overlay"></div>} */}
+      {success && <SuccessMessage />}
+
       <div className="trips">
         {add && <AddTrip setAdd={setAdd} />}
         <div className="add-trip flex">
