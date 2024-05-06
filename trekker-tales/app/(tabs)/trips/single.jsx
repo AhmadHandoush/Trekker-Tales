@@ -137,6 +137,14 @@ const SignleTrip = () => {
             <Text style={styles.hintname}>Hint:</Text> You can bring some
             chocolate with you.
           </Text>
+          <TouchableOpacity
+            onPress={() => {
+              router.push(`/trips/single`);
+            }}
+            style={styles.book}
+          >
+            <Text style={styles.viewmap}>Book Now</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -247,5 +255,12 @@ const styles = StyleSheet.create({
   },
   hintname: {
     fontWeight: "bold",
+  },
+  book: {
+    backgroundColor: "red",
+    marginTop: 20,
+    marginBottom: 20,
+    width: "50%",
+    m,
   },
 });
