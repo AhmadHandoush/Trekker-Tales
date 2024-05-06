@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LocationController;
@@ -55,7 +56,8 @@ Route::group(['middleware' => "isAdmin"], function () {
 
 
 Route::group(["middleware" => "isUser"], function () {
-    Route::group(['middleware' => 'auth:api'], function () {
+    // Route::group(['middleware' => 'auth:api'], function () {
+
         Route::get('user',[UserController::class,'user_data']);
         Route::get('user/{userId}', [UserController::class,'get_user']);
         Route::post('update_user',[UserController::class,'update_user']);
@@ -70,17 +72,20 @@ Route::group(["middleware" => "isUser"], function () {
         Route::post('add_review/{trip_id}',[ReviewController::class,'add_review']);
         // Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
         // Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
+        Route::post('add_book/{trip_id}',[BookController::class,'add_book']);
 
 
 
 
 
 
-    });
+    // });
+
 });
 
 Route::group(['middleware','isTeacher'],function (){
-    Route::group(['middleware' => 'auth:api'], function () {
+    // Route::group(['middleware' => 'auth:api'], function () {
+
         Route::post('create',[PostController::class,'create']);
         Route::get('posts',[PostController::class,'get_posts']);
         Route::get('user',[UserController::class,'user_data']);
@@ -97,5 +102,8 @@ Route::group(['middleware','isTeacher'],function (){
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
 
 
-    });
+    // });
 });
+
+
+// Route::group(['middleware' => 'auth:api'], function () {
