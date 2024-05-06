@@ -40,6 +40,20 @@ const SignleTrip = () => {
           departure_time: null,
         },
       },
+      {
+        id: 2,
+        name: "Baalbek",
+        longitude: "33.5600000",
+        latitude: "35.3700000",
+        created_at: "2024-04-28T09:43:06.000000Z",
+        updated_at: "2024-04-28T09:43:06.000000Z",
+        pivot: {
+          trip_id: 25,
+          location_id: 1,
+          arrival_time: null,
+          departure_time: null,
+        },
+      },
     ],
   };
   const {
@@ -108,6 +122,12 @@ const SignleTrip = () => {
               {available_seats}/{total_seats}
             </Text>
           </View>
+        </View>
+        <View style={styles.locations}>
+          <Text>Places to visit </Text>
+          {locations.map((location) => (
+            <Text key={location.id}>{location.name} </Text>
+          ))}
         </View>
       </View>
     </View>
@@ -194,4 +214,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#E87A00",
   },
+  locations: {},
 });
