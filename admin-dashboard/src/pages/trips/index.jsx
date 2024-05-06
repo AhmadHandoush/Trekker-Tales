@@ -98,11 +98,6 @@ function Trips() {
             <option value="pending">Pending</option>
             <option value="inactive">inactive</option>
           </select>{" "}
-          <select name="" id="">
-            <option value="name">ahmad</option>
-            <option value="name">ahmad</option>
-            <option value="name">ahmad</option>
-          </select>
         </div>
         <section className="trips-sec">
           <div className="filter"></div>
