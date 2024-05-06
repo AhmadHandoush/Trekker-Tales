@@ -20,7 +20,7 @@ const SignleTrip = () => {
     start_time: "07:57:57",
     end_time: "17:57:57",
     total_seats: 24,
-    available_seats: 24,
+    available_seats: 16,
     fees: "223.00",
     created_at: "2024-05-01T21:14:21.000000Z",
     updated_at: "2024-05-01T21:14:21.000000Z",
@@ -50,7 +50,7 @@ const SignleTrip = () => {
     trip_image,
     start_time,
     end_time,
-    totoal_seats,
+    total_seats,
     available_seats,
     fees,
     locations,
@@ -97,6 +97,12 @@ const SignleTrip = () => {
           <View style={styles.singledata}>
             <Text style={styles.prop}>Date:</Text>
             <Text>{date}</Text>
+          </View>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Available_seats:</Text>
+            <Text>
+              {available_seats}/{total_seats}
+            </Text>
           </View>
         </View>
       </View>
