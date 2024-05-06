@@ -1,4 +1,10 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 
 const SignleTrip = () => {
@@ -8,8 +14,7 @@ const SignleTrip = () => {
     destination: "destination",
     description:
       "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast amd lunch",
-    trip_image:
-      "../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg",
+    trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
     date: "2024-05-08",
     start_time: "07:57:57",
     end_time: "17:57:57",
@@ -52,7 +57,16 @@ const SignleTrip = () => {
   return (
     <View style={styles.single}>
       <View style={styles.hero}>
-        <ImageBackground source={require("")}></ImageBackground>
+        <ImageBackground source={trip_image} style={styles.image}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push(`/trips/single`);
+            }}
+            style={styles.more}
+          >
+            <Text style={styles.viewMoreButton}>View More</Text>
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -60,4 +74,20 @@ const SignleTrip = () => {
 
 export default SignleTrip;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  single: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    paddingTop: 100,
+  },
+  hero: {
+    height: 200,
+    width: "100%",
+    backgroundColor: "red",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+});

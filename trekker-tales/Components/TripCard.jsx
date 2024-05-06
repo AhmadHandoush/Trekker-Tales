@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 const TripCard = ({ trip, onPress }) => {
   const router = useRouter();
   return (
-    <TouchableOpacity style={styles.card} onPress={() => onPress(trip)}>
+    <View style={styles.card} onPress={() => onPress(trip)}>
       <Image source={trip.trip_image} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.name}>{trip.name}</Text>
@@ -24,7 +24,7 @@ const TripCard = ({ trip, onPress }) => {
       <TouchableOpacity onPress={onPress} style={styles.more}>
         <Text style={styles.viewMoreButton}>View More</Text>
       </TouchableOpacity>
-    </TouchableOpacity>
+    </View>
   );
 };
 
