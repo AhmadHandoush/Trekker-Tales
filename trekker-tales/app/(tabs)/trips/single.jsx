@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 const SignleTrip = () => {
   const tripData = {
     id: 25,
-    name: "capture",
+    name: "Treepo",
     destination: "destination",
     description:
       "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
@@ -82,8 +82,8 @@ const SignleTrip = () => {
         </View>
         <View>
           <Text style={styles.description}>{description}</Text>
-          <View>
-            <Text>Date:</Text>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Date:</Text>
             <Text>{date}</Text>
           </View>
         </View>
@@ -156,5 +156,17 @@ const styles = StyleSheet.create({
   },
   description: {
     marginTop: 20,
+  },
+  singledata: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 30,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  prop: {
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
