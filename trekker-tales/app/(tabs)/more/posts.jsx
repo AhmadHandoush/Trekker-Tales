@@ -102,7 +102,7 @@ const Posts = () => {
                 name="camera"
                 size={20}
                 color="#808080"
-                style={styles.arrow}
+                style={styles.camera}
               />
             </TouchableOpacity>
           </View>
@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
     width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
+    flex: 1,
   },
 
   postsPage: {
@@ -139,9 +140,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   img: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     overflow: "hidden",
   },
   image: {
@@ -149,8 +150,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   input: {
-    borderWidth: 2,
-    borderColor: "#E87A00",
+    borderWidth: 1,
+    borderColor: "#808080",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -158,10 +159,11 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    height: 50,
+    height: 40,
     borderRadius: 20,
     justifyContent: "space-between",
   },
+
   btnAdd: {
     backgroundColor: "#E87A00",
     padding: 4,
@@ -177,5 +179,12 @@ const styles = StyleSheet.create({
   btnText: {
     fontWeight: "bold",
     color: "white",
+  },
+  fileInputButton: {
+    fontSize: 40,
+  },
+  camera: {
+    fontSize: 20,
+    color: "green",
   },
 });
