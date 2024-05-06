@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 const SignleTrip = () => {
@@ -8,7 +8,8 @@ const SignleTrip = () => {
     destination: "destination",
     description:
       "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast amd lunch",
-    trip_image: "images/1714598061.jpg",
+    trip_image:
+      "../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg",
     date: "2024-05-08",
     start_time: "07:57:57",
     end_time: "17:57:57",
@@ -35,9 +36,24 @@ const SignleTrip = () => {
       },
     ],
   };
+  const {
+    name,
+    destination,
+    description,
+    date,
+    trip_image,
+    start_time,
+    end_time,
+    totoal_seats,
+    available_seats,
+    fees,
+    locations,
+  } = tripData;
   return (
-    <View>
-      <Text>AHmad</Text>
+    <View style={styles.single}>
+      <View style={styles.hero}>
+        <ImageBackground source={require("")}></ImageBackground>
+      </View>
     </View>
   );
 };

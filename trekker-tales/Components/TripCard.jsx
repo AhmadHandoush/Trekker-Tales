@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 150,
     marginBottom: 10,
-    borderTopEndRadius: 5,
-    borderTopStartRadius: 5,
   },
   viewMoreButton: {
     color: "blue",
