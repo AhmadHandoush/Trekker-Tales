@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TripCard from "../../../Components/TripCard";
 import { Feather } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import Back from "../../../Components/back";
 
 const Trips = () => {
   const router = useRouter();
@@ -88,6 +89,8 @@ const Trips = () => {
   };
   return (
     <View style={styles.trips}>
+      <Back title="Trips" />
+
       <View style={[styles.search, focus && styles.focused]}>
         <Feather name="map-pin" size={20} color="#E87A00" />
         <TextInput
@@ -137,6 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 60,
   },
+
   search: {
     display: "flex",
     flexDirection: "row",

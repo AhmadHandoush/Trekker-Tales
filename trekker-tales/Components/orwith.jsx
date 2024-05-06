@@ -57,5 +57,7 @@ const styles = StyleSheet.create({
   or: {
     marginLeft: 10,
     marginRight: 10,
+    fontWeight: "bold",
+    color: "#808080",
   },
 });
