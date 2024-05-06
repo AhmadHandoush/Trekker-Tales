@@ -134,7 +134,8 @@ const SignleTrip = () => {
             ))}
           </View>
           <Text styele={styles.hint}>
-            Hint: You can bring some chocolate with you
+            <Text style={styles.hintname}>Hint:</Text> You can bring some
+            chocolate with you.
           </Text>
         </View>
       </View>
@@ -227,6 +228,7 @@ const styles = StyleSheet.create({
   },
   locations: {
     marginTop: 20,
+    marginBottom: 20,
   },
   loctitle: {
     fontWeight: "bold",
@@ -238,6 +240,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   hint: {
-    marginTop: 20,
+    marginTop: 30,
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+  },
+  hintname: {
+    fontWeight: "bold",
   },
 });
