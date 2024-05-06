@@ -12,11 +12,6 @@ class Booking extends Model
         'trip_id',
         'user_id',
         'child_name',
-        'paid',
-        'card_number',
-        'name_on_card',
-        'expiry_date',
-        'cvv',
     ];
     public function trip(){
         return $this->belongsTo(Trip::class);
