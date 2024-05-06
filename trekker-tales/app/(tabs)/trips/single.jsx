@@ -75,6 +75,10 @@ const SignleTrip = () => {
           </TouchableOpacity>
         </ImageBackground>
       </View>
+      <View style={styles.important}>
+        <Text>{name}</Text>
+        <Text>${fees}</Text>
+      </View>
     </View>
   );
 };
