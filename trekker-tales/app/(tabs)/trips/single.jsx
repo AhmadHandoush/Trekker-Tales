@@ -1,5 +1,6 @@
 import {
   ImageBackground,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -70,73 +71,83 @@ const SignleTrip = () => {
     locations,
   } = tripData;
   return (
-    <View style={styles.single}>
-      <View style={styles.hero}>
-        <ImageBackground source={trip_image} style={styles.image}>
-          <TouchableOpacity
-            onPress={() => {
-              router.push(`/trips/single`);
-            }}
-            style={styles.more}
-          >
-            <Text style={styles.viewmap}>View on map</Text>
-            <Icon
-              name="arrow-right"
-              size={20}
-              color="#808080"
-              style={styles.arrow}
-            />
-          </TouchableOpacity>
-        </ImageBackground>
+    <ScrollView style={styles.scroll}>
+      <View style={styles.single}>
+        <View style={styles.hero}>
+          <ImageBackground source={trip_image} style={styles.image}>
+            <TouchableOpacity
+              onPress={() => {
+                router.push(`/trips/single`);
+              }}
+              style={styles.more}
+            >
+              <Text style={styles.viewmap}>View on map</Text>
+              <Icon
+                name="arrow-right"
+                size={20}
+                color="#808080"
+                style={styles.arrow}
+              />
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
+        <View style={styles.second}>
+          <View style={styles.important}>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.fee}>${parseInt(fees)}</Text>
+          </View>
+          <View>
+            <Text style={styles.description}>{description}</Text>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>Destination:</Text>
+              <Text style={styles.destination}>{destination}</Text>
+            </View>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>Date:</Text>
+              <Text>{date}</Text>
+            </View>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>Start_time:</Text>
+              <Text>{start_time}</Text>
+            </View>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>End_time:</Text>
+              <Text>{end_time}</Text>
+            </View>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>Date:</Text>
+              <Text>{date}</Text>
+            </View>
+            <View style={styles.singledata}>
+              <Text style={styles.prop}>Available_seats:</Text>
+              <Text>
+                {available_seats}/{total_seats}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.locations}>
+            <Text style={styles.loctitle}>Places to visit </Text>
+            {locations.map((location) => (
+              <Text key={location.id} style={styles.locname}>
+                {location.name}{" "}
+              </Text>
+            ))}
+          </View>
+          <Text styele={styles.hint}>
+            Hint: You can bring some chocolate with you
+          </Text>
+        </View>
       </View>
-      <View style={styles.second}>
-        <View style={styles.important}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.fee}>${parseInt(fees)}</Text>
-        </View>
-        <View>
-          <Text style={styles.description}>{description}</Text>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>Destination:</Text>
-            <Text style={styles.destination}>{destination}</Text>
-          </View>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>Date:</Text>
-            <Text>{date}</Text>
-          </View>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>Start_time:</Text>
-            <Text>{start_time}</Text>
-          </View>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>End_time:</Text>
-            <Text>{end_time}</Text>
-          </View>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>Date:</Text>
-            <Text>{date}</Text>
-          </View>
-          <View style={styles.singledata}>
-            <Text style={styles.prop}>Available_seats:</Text>
-            <Text>
-              {available_seats}/{total_seats}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.locations}>
-          <Text>Places to visit </Text>
-          {locations.map((location) => (
-            <Text key={location.id}>{location.name} </Text>
-          ))}
-        </View>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
 export default SignleTrip;
 
 const styles = StyleSheet.create({
+  scroll: {
+    flex: 1,
+  },
   single: {
     display: "flex",
     flex: 1,
@@ -203,7 +214,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 30,
+    justifyContent: "space-between",
     marginTop: 10,
   },
   prop: {
@@ -214,5 +225,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#E87A00",
   },
-  locations: {},
+  locations: {
+    marginTop: 20,
+  },
+  loctitle: {
+    fontWeight: "bold",
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  locname: {
+    marginBottom: 5,
+    fontSize: 18,
+  },
+  hint: {
+    marginTop: 20,
+  },
 });

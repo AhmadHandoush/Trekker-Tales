@@ -6,6 +6,7 @@ function SingleTrip() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [ok, setOk] = useState(false);
   const token = localStorage.getItem("token");
   const {
     name,
@@ -36,6 +37,7 @@ function SingleTrip() {
         }
         const data = await response.json();
         setData(data);
+        setOk(true);
         console.log(data);
 
         setIsLoading(false);
@@ -84,9 +86,8 @@ function SingleTrip() {
           <div className="flex-items flex-between">
             <h5>Locations:</h5>
             <h2>
-              {locations.map((location) => (
-                <span>{location.name} </span>
-              ))}
+              {setOk &&
+                locations.map((location) => <span>{location.name} </span>)}
             </h2>
           </div>
           <div className="flex-items flex-between">
