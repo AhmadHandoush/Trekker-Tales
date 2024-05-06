@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     flexDirection: "column",
-    paddingTop: 50,
+    paddingTop: 20,
   },
   hero: {
     height: 300,
@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    padding: 10,
+    padding: 8,
     backgroundColor: "#E87A00",
     width: "50%",
-    borderRadius: 10,
+    borderRadius: 8,
     marginBottom: 20,
   },
   viewmap: {
