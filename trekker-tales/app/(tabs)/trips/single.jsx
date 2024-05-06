@@ -80,6 +80,9 @@ const SignleTrip = () => {
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.fee}>${parseInt(fees)}</Text>
         </View>
+        <View>
+          <Text>{description}</Text>
+        </View>
       </View>
     </View>
   );
