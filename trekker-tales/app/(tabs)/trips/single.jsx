@@ -14,7 +14,7 @@ const SignleTrip = () => {
     name: "capture",
     destination: "destination",
     description:
-      "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast amd lunch",
+      "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
     trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
     date: "2024-05-08",
     start_time: "07:57:57",
@@ -81,7 +81,11 @@ const SignleTrip = () => {
           <Text style={styles.fee}>${parseInt(fees)}</Text>
         </View>
         <View>
-          <Text>{description}</Text>
+          <Text style={styles.description}>{description}</Text>
+          <View>
+            <Text>Date:</Text>
+            <Text>{date}</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -149,5 +153,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 22,
     color: "#E87A00",
+  },
+  description: {
+    marginTop: 20,
   },
 });
