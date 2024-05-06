@@ -86,6 +86,18 @@ const SignleTrip = () => {
             <Text style={styles.prop}>Date:</Text>
             <Text>{date}</Text>
           </View>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Start_time:</Text>
+            <Text>{start_time}</Text>
+          </View>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Date:</Text>
+            <Text>{date}</Text>
+          </View>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Date:</Text>
+            <Text>{date}</Text>
+          </View>
         </View>
       </View>
     </View>
