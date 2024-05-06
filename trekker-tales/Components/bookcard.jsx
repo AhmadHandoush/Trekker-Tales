@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
 
 const BookCard = () => {
   const [inputValue, setInputValue] = useState("");
@@ -30,8 +30,9 @@ const BookCard = () => {
         placeholder="Please enter your child's name"
         onChangeText={setInputValue}
         value={inputValue}
+        style={styles.input}
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      <Button title="Book" onPress={handleSubmit} style={styles.book} />
     </View>
   );
 };
@@ -50,5 +51,9 @@ const styles = StyleSheet.create({
     padding: 20,
     top: "50%",
     left: "50%",
+    transform: [{ translateX: -150 }],
+  },
+  input: {
+    marginBottom: 10,
   },
 });

@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import BookCard from "../../../Components/bookcard";
 
 const SignleTrip = () => {
   const [book, setBook] = useState(false);
@@ -73,7 +74,7 @@ const SignleTrip = () => {
   } = tripData;
   return (
     <ScrollView style={styles.scroll}>
-      <View style={styles.overlay}></View>
+      {book && <View style={styles.overlay}></View>}
       <View style={styles.single}>
         <View style={styles.hero}>
           <ImageBackground source={trip_image} style={styles.image}>
@@ -141,13 +142,14 @@ const SignleTrip = () => {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              router.push(`/trips/single`);
+              setBook(true);
             }}
             style={styles.book}
           >
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity>
         </View>
+        {book && <BookCard />}
       </View>
     </ScrollView>
   );
