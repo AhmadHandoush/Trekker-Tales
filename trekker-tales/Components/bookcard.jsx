@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const BookCard = () => {
+const BookCard = ({ book }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
@@ -33,6 +33,7 @@ const BookCard = () => {
   };
   return (
     <View style={styles.box}>
+      <Text style={styles.close}>X</Text>
       <TextInput
         placeholder="Please enter your child's name"
         onChangeText={setInputValue}
