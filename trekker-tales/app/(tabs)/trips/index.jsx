@@ -116,7 +116,6 @@ const Trips = () => {
             </View>
           ))}
         </View>
-        {/* {selectedTrip && <TripDetailsPage trip={selectedTrip} />} */}
       </ScrollView>
     </View>
   );
