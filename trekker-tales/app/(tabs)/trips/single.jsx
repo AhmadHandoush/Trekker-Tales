@@ -73,8 +73,8 @@ const SignleTrip = () => {
   } = tripData;
   return (
     <ScrollView style={styles.scroll}>
+      <View style={styles.overlay}></View>
       <View style={styles.single}>
-        <View style={styles.overlay}></View>
         <View style={styles.hero}>
           <ImageBackground source={trip_image} style={styles.image}>
             <TouchableOpacity
@@ -148,6 +148,7 @@ const SignleTrip = () => {
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity>
         </View>
+        <View></View>
       </View>
     </ScrollView>
   );
@@ -158,13 +159,13 @@ export default SignleTrip;
 const styles = StyleSheet.create({
   scroll: {
     flex: 1,
+    position: "relative",
   },
   single: {
     display: "flex",
     flex: 1,
     flexDirection: "column",
     paddingTop: 20,
-    position: "relative",
   },
   hero: {
     height: 300,
@@ -262,7 +263,6 @@ const styles = StyleSheet.create({
   book: {
     backgroundColor: "red",
     marginTop: 20,
-    marginBottom: 20,
     width: "50%",
     marginLeft: "auto",
     marginRight: "auto",
