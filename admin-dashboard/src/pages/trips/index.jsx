@@ -6,6 +6,7 @@ import TripCard from "./components/TripCard";
 import Loader from "../../components/Loader";
 import AddTrip from "./components/AddTrip";
 import SuccessMessage from "./components/SuccessMessage";
+import { FaFilter } from "react-icons/fa";
 
 function Trips() {
   const [trips, setTrips] = useState([]);
@@ -72,6 +73,7 @@ function Trips() {
           </button>
         </div>
         <div className="filters flex-between">
+          <div className="fill flex ">Filter<FaFilter /></div>
           <select
             name=""
             id=""

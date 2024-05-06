@@ -22,7 +22,11 @@ function Header() {
         <IoSearch />
       </div>
       <div className="admin_image">
-        <img src="./Friend.jpeg" alt="admin_image" className="s-image" />
+        <img
+          src="./WhatsApp Image 2024-03-24 at 11.03.54 PM.jpeg"
+          alt="admin_image"
+          className="s-image"
+        />
       </div>
     </header>
   );
