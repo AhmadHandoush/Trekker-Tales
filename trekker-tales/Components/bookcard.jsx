@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const bookcard = () => {
+const BookCard = () => {
   return (
-    <View>
-      <Text>bookcard</Text>
+    <View style={styles.box}>
+      <TextInput
+        placeholder="Enter data"
+        onChangeText={setInputValue}
+        value={inputValue}
+      />
+      <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
 };
 
-export default bookcard;
+export default BookCard;
 
 const styles = StyleSheet.create({});

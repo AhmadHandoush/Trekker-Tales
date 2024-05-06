@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     paddingTop: 20,
+    paddingBottom: 20,
   },
   hero: {
     height: 300,
