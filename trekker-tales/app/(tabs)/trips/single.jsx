@@ -6,6 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const SignleTrip = () => {
   const tripData = {
@@ -64,7 +65,13 @@ const SignleTrip = () => {
             }}
             style={styles.more}
           >
-            <Text style={styles.viewMoreButton}>View More</Text>
+            <Text style={styles.viewmap}>View on map</Text>
+            <Icon
+              name="arrow-right"
+              size={20}
+              color="#808080"
+              style={styles.arrow}
+            />
           </TouchableOpacity>
         </ImageBackground>
       </View>
@@ -79,15 +86,38 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     flexDirection: "column",
-    paddingTop: 100,
+    paddingTop: 50,
   },
   hero: {
-    height: 200,
+    height: 300,
     width: "100%",
     backgroundColor: "red",
   },
   image: {
     width: "100%",
     height: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  more: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 10,
+    backgroundColor: "#E87A00",
+    width: "50%",
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  viewmap: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  arrow: {
+    color: "white",
+    fontSize: 18,
   },
 });
