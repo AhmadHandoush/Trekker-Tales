@@ -91,8 +91,8 @@ const SignleTrip = () => {
             <Text>{start_time}</Text>
           </View>
           <View style={styles.singledata}>
-            <Text style={styles.prop}>Date:</Text>
-            <Text>{date}</Text>
+            <Text style={styles.prop}>End_time:</Text>
+            <Text>{end_time}</Text>
           </View>
           <View style={styles.singledata}>
             <Text style={styles.prop}>Date:</Text>
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 30,
-    marginBottom: 10,
     marginTop: 10,
   },
   prop: {
