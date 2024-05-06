@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import BookCard from "../../../Components/bookcard";
+import Back from "../../../Components/back";
 
 const SignleTrip = () => {
   const [book, setBook] = useState(false);
@@ -76,6 +77,7 @@ const SignleTrip = () => {
   } = tripData;
   return (
     <ScrollView style={styles.scroll}>
+      <Back />
       {book && <View style={styles.overlay}></View>}
       <View style={styles.single}>
         <View style={styles.hero}>
