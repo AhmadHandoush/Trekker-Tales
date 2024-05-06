@@ -33,7 +33,7 @@ const BookCard = ({ setBook }) => {
   };
   return (
     <View style={styles.box}>
-      <TouchableOpacity style={styles.closebtn}>
+      <TouchableOpacity style={styles.closebtn} onPress={() => setBook(false)}>
         <Text style={styles.close}>X</Text>
       </TouchableOpacity>
       <TextInput
@@ -41,6 +41,7 @@ const BookCard = ({ setBook }) => {
         onChangeText={setInputValue}
         value={inputValue}
         style={styles.input}
+        selectionColor={"#E87A00"}
       />
       <TouchableOpacity onPress={handleSubmit} style={styles.book}>
         <Text
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   closebtn: {
-    padding: 5,
+    padding: 1,
     height: 40,
     width: 40,
     borderRadius: 20,
-    backgroundColor: "#E87A00",
+    backgroundColor: "black",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

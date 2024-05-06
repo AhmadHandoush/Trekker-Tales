@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     height: "100%",
     left: 0,
     top: 0,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.7)",
     zIndex: 1000,
   },
 });
