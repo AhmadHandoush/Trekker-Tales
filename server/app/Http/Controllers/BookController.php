@@ -31,4 +31,13 @@ class BookController extends Controller
 
         return response()->json(['success'=>true,'message'=>'booking completed'],200);
     }
+    public function get_children($id){
+
+        $bookings = Booking::where('trip_id', $id)->get();
+        $childNames = $bookings->pluck('child_name');
+
+        return response()->json(['child_names' => $childNames]);
+
+
+    }
 }

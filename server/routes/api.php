@@ -56,7 +56,6 @@ Route::group(['middleware' => "isAdmin"], function () {
 
 
 Route::group(["middleware" => "isUser"], function () {
-    // Route::group(['middleware' => 'auth:api'], function () {
 
         Route::get('user',[UserController::class,'user_data']);
         Route::get('user/{userId}', [UserController::class,'get_user']);
@@ -79,12 +78,11 @@ Route::group(["middleware" => "isUser"], function () {
 
 
 
-    // });
+
 
 });
 
 Route::group(['middleware','isTeacher'],function (){
-    // Route::group(['middleware' => 'auth:api'], function () {
 
         Route::post('create',[PostController::class,'create']);
         Route::get('posts',[PostController::class,'get_posts']);
@@ -100,9 +98,10 @@ Route::group(['middleware','isTeacher'],function (){
         Route::get('likes/{id}',[LikeController::class,'get_likes']);
         Route::get('comments_number/{id}',[CommentController::class,'get_comments_number']);
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
+        Route::get('get_children/{trip_id}',[BookController::class,'get_children']);
 
 
-    // });
+
 });
 
 
