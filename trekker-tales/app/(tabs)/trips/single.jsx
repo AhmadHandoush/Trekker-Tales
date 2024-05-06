@@ -75,9 +75,11 @@ const SignleTrip = () => {
           </TouchableOpacity>
         </ImageBackground>
       </View>
-      <View style={styles.important}>
-        <Text>{name}</Text>
-        <Text>${fees}</Text>
+      <View style={styles.second}>
+        <View style={styles.important}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.fee}>${parseInt(fees)}</Text>
+        </View>
       </View>
     </View>
   );
@@ -123,5 +125,26 @@ const styles = StyleSheet.create({
   arrow: {
     color: "white",
     fontSize: 18,
+  },
+  second: {
+    width: "93%",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  important: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    alignItems: "center",
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 22,
+  },
+  fee: {
+    fontWeight: "bold",
+    fontSize: 22,
+    color: "#E87A00",
   },
 });
