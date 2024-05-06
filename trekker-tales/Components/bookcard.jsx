@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ setBook }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
@@ -33,7 +33,9 @@ const BookCard = ({ book }) => {
   };
   return (
     <View style={styles.box}>
-      <Text style={styles.close}>X</Text>
+      <TouchableOpacity style={styles.closebtn}>
+        <Text style={styles.close}>X</Text>
+      </TouchableOpacity>
       <TextInput
         placeholder="Please enter your child's name"
         onChangeText={setInputValue}
@@ -84,5 +86,23 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  closebtn: {
+    padding: 5,
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    backgroundColor: "#E87A00",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: -20,
+    right: -10,
+  },
+  close: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "white",
   },
 });

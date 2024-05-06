@@ -149,7 +149,7 @@ const SignleTrip = () => {
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity>
         </View>
-        {book && <BookCard book={book} />}
+        {book && <BookCard setBook={setBook} />}
       </View>
     </ScrollView>
   );
