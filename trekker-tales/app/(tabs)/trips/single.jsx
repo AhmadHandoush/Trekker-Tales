@@ -12,7 +12,7 @@ const SignleTrip = () => {
   const tripData = {
     id: 25,
     name: "Treepo",
-    destination: "destination",
+    destination: "South Lebanon",
     description:
       "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
     trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
@@ -82,6 +82,10 @@ const SignleTrip = () => {
         </View>
         <View>
           <Text style={styles.description}>{description}</Text>
+          <View style={styles.singledata}>
+            <Text style={styles.prop}>Destination:</Text>
+            <Text style={styles.destination}>{destination}</Text>
+          </View>
           <View style={styles.singledata}>
             <Text style={styles.prop}>Date:</Text>
             <Text>{date}</Text>
@@ -185,5 +189,9 @@ const styles = StyleSheet.create({
   prop: {
     fontWeight: "bold",
     fontSize: 16,
+  },
+  destination: {
+    fontWeight: "bold",
+    color: "#E87A00",
   },
 });
