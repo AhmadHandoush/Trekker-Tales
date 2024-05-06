@@ -13,6 +13,7 @@ import BookCard from "../../../Components/bookcard";
 const SignleTrip = () => {
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
+
   const tripData = {
     id: 25,
     name: "Treepo",
