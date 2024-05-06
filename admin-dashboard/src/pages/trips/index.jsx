@@ -60,7 +60,7 @@ function Trips() {
   return (
     <div className="trips">
       {add && <div className="overlay"></div>}
-      {add && <AddTrip />}
+      {add && <AddTrip setAdd={setAdd} />}
       <div className="add-trip flex">
         <button onClick={() => setAdd(true)}>
           Add

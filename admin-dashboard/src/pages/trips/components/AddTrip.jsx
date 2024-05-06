@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AddTrip = () => {
+const AddTrip = ({ setAdd }) => {
   const token = localStorage.getItem("token");
   const [locations, setLocations] = useState([]);
 
@@ -89,6 +89,10 @@ const AddTrip = () => {
 
   return (
     <div className="add-trip-box  flex column">
+      <div className="close">
+        {" "}
+        <span onClick={() => setAdd(false)}>X</span>
+      </div>
       <h2>Add Trip</h2>
       <form onSubmit={handleSubmit}>
         <div className="flex column input">
