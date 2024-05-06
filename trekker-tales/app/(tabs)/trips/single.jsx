@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const SignleTrip = () => {
+  const [book, setBook] = useState(false);
   const tripData = {
     id: 25,
     name: "Treepo",
@@ -73,6 +74,7 @@ const SignleTrip = () => {
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.single}>
+        <View style={styles.overlay}></View>
         <View style={styles.hero}>
           <ImageBackground source={trip_image} style={styles.image}>
             <TouchableOpacity
@@ -162,6 +164,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     paddingTop: 20,
+    position: "relative",
   },
   hero: {
     height: 300,
@@ -270,5 +273,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontWeight: "bold",
     backgroundColor: "#E87A00",
+  },
+  overlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    left: 0,
+    top: 0,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    zIndex: 1000,
   },
 });
