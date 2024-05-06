@@ -1,5 +1,6 @@
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -71,38 +72,49 @@ const Posts = () => {
   };
 
   return (
-    <View style={styles.postsPage}>
-      <View style={styles.add}>
-        <View style={styles.img}>
-          <Image
-            source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-            style={styles.image}
-          />
-        </View>
-        <View style={styles.input}>
-          <TextInput
-            style={styles.input}
-            placeholder="Add Trip Post"
-            onChangeText={setText}
-            value={text}
-          />
-          <TouchableOpacity style={styles.btnAdd}>
-            <Text style={styles.btnText}>Add</Text>
+    <ScrollView style={styles.scroll}>
+      <View style={styles.postsPage}>
+        <View style={styles.add}>
+          <View style={styles.img}>
+            <Image
+              source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
+              style={styles.image}
+            />
+          </View>
+          <View style={styles.input}>
+            <TextInput
+              style={styles.input}
+              placeholder="Add Trip Post"
+              onChangeText={setText}
+              value={text}
+            />
+            <TouchableOpacity style={styles.btnAdd}>
+              <Text style={styles.btnText}>Add</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.fileInputButton} onPress={pickImage}>
+            <Icon
+              name="camera"
+              size={20}
+              color="#808080"
+              style={styles.arrow}
+            />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.fileInputButton} onPress={pickImage}>
-          <Icon name="camera" size={20} color="#808080" style={styles.arrow} />
-        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 export default Posts;
 
 const styles = StyleSheet.create({
+  scroll: {
+    flex: 1,
+    position: "relative",
+  },
   postsPage: {
-    paddingTop: 60,
+    paddingTop: 100,
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
@@ -111,5 +123,17 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
+    width: "100%",
+  },
+  img: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    overflow: "hidden",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });
