@@ -74,32 +74,38 @@ const Posts = () => {
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.postsPage}>
-        <View style={styles.add}>
-          <View style={styles.img}>
-            <Image
-              source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-              style={styles.image}
-            />
-          </View>
-          <View style={styles.input}>
-            <TextInput
-              style={styles.input}
-              placeholder="Add Trip Post"
-              onChangeText={setText}
-              value={text}
-            />
-            <TouchableOpacity style={styles.btnAdd}>
-              <Text style={styles.btnText}>Add</Text>
+        <View style={styles.data}>
+          <View style={styles.add}>
+            <View style={styles.img}>
+              <Image
+                source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
+                style={styles.image}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.inputfield}
+                placeholder="Add Trip Post"
+                onChangeText={setText}
+                value={text}
+                selectionColor={"#E87A00"}
+              />
+              <TouchableOpacity style={styles.btnAdd}>
+                <Text style={styles.btnText}>Add</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              style={styles.fileInputButton}
+              onPress={pickImage}
+            >
+              <Icon
+                name="camera"
+                size={20}
+                color="#808080"
+                style={styles.arrow}
+              />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.fileInputButton} onPress={pickImage}>
-            <Icon
-              name="camera"
-              size={20}
-              color="#808080"
-              style={styles.arrow}
-            />
-          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -113,6 +119,12 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
   },
+  data: {
+    width: "93%",
+    marginRight: "auto",
+    marginLeft: "auto",
+  },
+
   postsPage: {
     paddingTop: 100,
     backgroundColor: "white",
@@ -135,5 +147,35 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: "#E87A00",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    height: 50,
+    borderRadius: 20,
+    justifyContent: "space-between",
+  },
+  btnAdd: {
+    backgroundColor: "#E87A00",
+    padding: 4,
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    height: 30,
+    width: 55,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btnText: {
+    fontWeight: "bold",
+    color: "white",
   },
 });
