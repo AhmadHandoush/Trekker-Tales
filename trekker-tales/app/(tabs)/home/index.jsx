@@ -18,6 +18,7 @@ const Home = () => {
   const handleFocus = () => {
     setFocus(true);
   };
+  // const [data, setData] = useState([]);
   const data = [
     {
       id: "1",

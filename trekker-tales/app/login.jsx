@@ -17,7 +17,7 @@ import OrWith from "../Components/orwith";
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const handleLogin = () => {
     const userData = {
@@ -25,7 +25,7 @@ const login = () => {
       password: password,
     };
 
-    fetch("http://127.0.0.1:8000/api/login", {
+    fetch("http://192.168.0.106:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,11 +39,11 @@ const login = () => {
         return response.json();
       })
       .then((data) => {
-        // Alert.alert("Signup Successful", "You have successfully signed up.");
+        Alert.alert("Signup Successful", "You have successfully signed up.");
         setSuccess(true);
       })
       .catch((error) => {
-        // Alert.alert("login Error", error.message);
+        Alert.alert("login Error", error.message);
         setError(error.message);
       });
   };
@@ -80,7 +80,7 @@ const login = () => {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
-        {error && <Text>{error}</Text>}
+        {error && <Text style={styles.error}>{error}</Text>}
         <Text style={styles.passText}>
           Don’t have an account?{" "}
           <Link href={"/signup"}>
@@ -90,9 +90,7 @@ const login = () => {
             </Text>
           </Link>
         </Text>
-        {success && (
-          <Text style={styles.success}>Account creaated Successfully...</Text>
-        )}
+        {success && <Text style={styles.success}>Login Successfully...</Text>}
         <OrWith />
       </View>
     </View>
@@ -176,6 +174,10 @@ const styles = StyleSheet.create({
   },
   success: {
     color: "green",
+    marginLeft: 30,
+  },
+  error: {
+    color: "red",
     marginLeft: 30,
   },
 });

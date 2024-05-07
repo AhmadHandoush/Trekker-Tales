@@ -27,8 +27,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-
-    fetch("http://127.0.0.1:8000/api/register", {
+    fetch("http://192.168.0.106:8000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,12 +41,13 @@ const Signup = () => {
         return response.json();
       })
       .then((data) => {
-        // Alert.alert("Signup Successful", "You have successfully signed up.");
+        Alert.alert("Signup Successful", "You have successfully signed up.");
         setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
       })
       .catch((error) => {
-        Alert.alert("Signup Error", error.message);
-        setError(error);
+        // Alert.alert("Signup Error", error.message);
+        setError(error.message);
       });
   };
   return (
@@ -68,7 +68,7 @@ const Signup = () => {
           <TextInput
             style={styles.input}
             placeholder="Enter your name"
-            onChangeText={setName}
+            onChangeText={(text) => setName(text)}
             value={name}
           />
         </View>
@@ -79,7 +79,7 @@ const Signup = () => {
           <TextInput
             style={styles.input}
             placeholder="Enter your email"
-            onChangeText={setEmail}
+            onChangeText={(text) => setEmail(text)}
             value={email}
             keyboardType="email-address"
           />
@@ -91,7 +91,7 @@ const Signup = () => {
           <TextInput
             style={styles.input}
             placeholder="Enter your password"
-            onChangeText={setPassword}
+            onChangeText={(text) => setPassword(text)}
             value={password}
             secureTextEntry={true}
           />
@@ -112,7 +112,7 @@ const Signup = () => {
           </Link>
         </Text>
         {success && (
-          <Text style={styles.success}>Account creaated Successfully...</Text>
+          <Text style={styles.success}>Account created Successfully...</Text>
         )}
         <Link href={"/(tabs)/home"}>
           <Text style={{ color: "#E87A00", fontWeight: "bold" }}> Home </Text>
