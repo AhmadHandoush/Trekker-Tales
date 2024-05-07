@@ -24,13 +24,10 @@ const Post = ({ post }) => {
           <Text style={styles.time}>minutes</Text>
         </View>
       </View>
-      <Image
-        source={require("../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-        style={styles.postImage}
-      />
+      <Image source={image} style={styles.postImage} />
       <View style={styles.info}>
-        <Text> 10 likes</Text>
-        <Text> 12 comments</Text>
+        <Text style={styles.likes}> 10 likes</Text>
+        <Text style={styles.comments}> 12 comments</Text>
       </View>
       <View>
         <TouchableOpacity>
@@ -97,5 +94,18 @@ const styles = StyleSheet.create({
   postImage: {
     width: "100%",
     height: 250,
+  },
+  info: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingRight: 10,
+    paddingTop: 5,
+  },
+  likes: {
+    color: "#808080",
+  },
+  comments: {
+    color: "#808080",
   },
 });
