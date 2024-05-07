@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Post = ({ post }) => {
   const { caption, image, created_at } = post;
@@ -29,9 +30,13 @@ const Post = ({ post }) => {
         <Text style={styles.likes}> 10 likes</Text>
         <Text style={styles.comments}> 12 comments</Text>
       </View>
-      <View>
+      <View style={styles.bottom}>
         <TouchableOpacity>
-          <Text>ok</Text>
+          <MaterialCommunityIcons
+            name="heart-outline"
+            size={32}
+            color="black"
+          />
         </TouchableOpacity>
         <View>
           <TextInput
@@ -107,5 +112,14 @@ const styles = StyleSheet.create({
   },
   comments: {
     color: "#808080",
+  },
+  heart: {},
+  bottom: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingRight: 5,
+    paddingLeft: 5,
   },
 });
