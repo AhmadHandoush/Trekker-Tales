@@ -13,6 +13,24 @@ const Post = () => {
           <Text>minutes</Text>
         </View>
       </View>
+      <Image />
+      <View style={styles.info}>
+        <Text> 10 likes</Text>
+        <Text> 12 comments</Text>
+      </View>
+      <View>
+        <TouchableOpacity></TouchableOpacity>
+        <View>
+          <TextInput
+            placeholder="Please enter your child's name"
+            onChangeText={setInputValue}
+            value={inputValue}
+            style={styles.input}
+            selectionColor={"#E87A00"}
+          />
+          <TouchableOpacity></TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
