@@ -23,7 +23,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         Booking::created(function ($book) {
             AdminNotification::insert([
-                "child_name" => $book->child_nmae,
+                "child_name" => $book->child_name,
                 "trip_id" => $book->trip_id,
                 "created_at" => now(),
                 "updated_at" => now()
