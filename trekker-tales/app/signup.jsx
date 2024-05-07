@@ -10,9 +10,9 @@ import {
 import React, { useState } from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
-import Input from "../Components/input";
-import Button from "../Components/button";
-import OrWith from "../Components/orwith";
+// import Input from "../Components/input";
+// import Button from "../Components/button";
+// import OrWith from "../Components/orwith";
 
 const Signup = () => {
   const [name, setName] = useState("");

@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+import React, { useState } from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
 import Input from "../Components/input";
@@ -7,6 +15,38 @@ import Button from "../Components/button";
 import OrWith from "../Components/orwith";
 
 const login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(true);
+  const [error, setError] = useState("");
+  const handleLogin = () => {
+    const userData = {
+      email: email,
+      password: password,
+    };
+
+    fetch("http://127.0.0.1:8000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("login failed");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Alert.alert("Signup Successful", "You have successfully signed up.");
+        setSuccess(true);
+      })
+      .catch((error) => {
+        // Alert.alert("login Error", error.message);
+        setError(error.message);
+      });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -18,10 +58,29 @@ const login = () => {
       <View style={styles.login}>
         <Topline />
         <Text style={styles.title}>Login</Text>
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your email"
+          onChangeText={setEmail}
+          value={email}
+          keyboardType="email-address"
+          required
+        />
+        <Text style={styles.label}>password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your password"
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry={true}
+          required
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
 
-        <Input label={"Email"} placerholder={"Enter your email"} />
-        <Input label={"Password"} placerholder={"Enter your password"} />
-        <Button title="Login" />
+        {error && <Text>{error}</Text>}
         <Text style={styles.passText}>
           Don’t have an account?{" "}
           <Link href={"/signup"}>
@@ -31,6 +90,9 @@ const login = () => {
             </Text>
           </Link>
         </Text>
+        {success && (
+          <Text style={styles.success}>Account creaated Successfully...</Text>
+        )}
         <OrWith />
       </View>
     </View>
@@ -47,6 +109,44 @@ const styles = StyleSheet.create({
     justifyContent: "center",
 
     flex: 1,
+  },
+  login: {
+    paddingLeft: 10,
+  },
+  input: {
+    height: 45,
+    borderWidth: 0,
+    borderRadius: 6,
+    width: 325,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#FFE1E4",
+    backgroundColor: "white",
+    marginLeft: 30,
+  },
+  button: {
+    width: 325,
+    height: 48,
+    borderRadius: 10,
+    backgroundColor: "#E87A00",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    paddingTop: "4%",
+    alignSelf: "center",
+
+    verticalAlign: "top",
+  },
+  label: {
+    paddingVertical: "1%",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginLeft: 30,
   },
   logo: {
     display: "flex",
@@ -73,5 +173,9 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 10,
     marginLeft: 22,
+  },
+  success: {
+    color: "green",
+    marginLeft: 30,
   },
 });
