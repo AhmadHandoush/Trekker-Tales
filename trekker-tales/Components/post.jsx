@@ -38,16 +38,16 @@ const Post = ({ post }) => {
             color="black"
           />
         </TouchableOpacity>
-        <View>
+        <View style={styles.addComment}>
           <TextInput
-            placeholder="Please enter your child's name"
+            placeholder="Add a comment"
             // onChangeText={setInputValue}
             // value={inputValue}
             style={styles.input}
             selectionColor={"#E87A00"}
           />
-          <TouchableOpacity>
-            <Text>ok</Text>
+          <TouchableOpacity style={styles.submit}>
+            <Text style={styles.adding}>Add</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -121,5 +121,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingRight: 5,
     paddingLeft: 5,
+    marginTop: 10,
+  },
+  addComment: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+
+    borderWidth: 1,
+    borderColor: "#e87a00",
+    borderRadius: 10,
+    padding: 5,
+
+    paddingRight: 5,
+    paddingLeft: 10,
+    width: 260,
+    justifyContent: "space-between",
+  },
+  input: {
+    flex: 1,
+    height: 30,
+  },
+  submit: {
+    backgroundColor: "#e87a00",
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 10,
+  },
+  adding: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
