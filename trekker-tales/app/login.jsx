@@ -39,12 +39,11 @@ const login = () => {
         return response.json();
       })
       .then((data) => {
-        Alert.alert("Signup Successful", "You have successfully signed up.");
         setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
       })
       .catch((error) => {
-        Alert.alert("login Error", error.message);
-        setError(error.message);
+        setError("Credentials Error");
       });
   };
   return (
