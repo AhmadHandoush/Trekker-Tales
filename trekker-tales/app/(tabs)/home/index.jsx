@@ -8,17 +8,22 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
+  const navigation = useNavigation();
   const handleFocus = () => {
     setFocus(true);
   };
   // const [data, setData] = useState([]);
+  const [top, setTop] = useState([]);
+  const [ok, setOk] = useState(false);
   const data = [
     {
       id: "1",
@@ -101,13 +106,46 @@ const Home = () => {
       trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
     },
   ];
+  // const [top, setTop] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(
+            "http://192.168.0.106:8000/api/get_highest_rated",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setTop(data);
+          setOk(true);
+        } else {
+          navigation.navigate("Login");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  });
 
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.trip_image} style={styles.image} />
+      <Image
+        source={`http://192.168.0.106:8000/${item.trip_image}`}
+        style={styles.image}
+      />
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.destination}>{item.destination}</Text>
     </View>
@@ -135,6 +173,7 @@ const Home = () => {
           <Feather name="search" size={20} color="#E7E7E7" />
         </View>
       </View>
+      {data && <Text>{data.map((item) => item.name)}</Text>}
       {/* .hero image  */}
       <View style={styles.hero}>
         <ImageBackground
@@ -162,9 +201,9 @@ const Home = () => {
           </Link>
         </View>
         <FlatList
-          data={data.slice(0, 2)}
+          data={top.slice(0, 2)}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
+          // keyExtractor={(item) => item.id.toString()}
           numColumns={2}
         />
       </View>

@@ -73,6 +73,7 @@ Route::group(["middleware" => "isUser"], function () {
         // Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
         // Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
         Route::post('add_book/{trip_id}',[BookController::class,'add_book']);
+        Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
 
 
 

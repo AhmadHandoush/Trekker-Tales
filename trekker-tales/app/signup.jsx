@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
+import { useNavigation } from "@react-navigation/native";
 // import Input from "../Components/input";
 // import Button from "../Components/button";
 // import OrWith from "../Components/orwith";
@@ -20,6 +21,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const navigation = useNavigation();
 
   const handleSignup = () => {
     const userData = {
@@ -41,12 +43,11 @@ const Signup = () => {
         return response.json();
       })
       .then((data) => {
-        Alert.alert("Signup Successful", "You have successfully signed up.");
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
+        navigation.navigate("login");
       })
       .catch((error) => {
-        // Alert.alert("Signup Error", error.message);
         setError(error.message);
       });
   };

@@ -13,12 +13,15 @@ import Topline from "../Components/topline";
 import Input from "../Components/input";
 import Button from "../Components/button";
 import OrWith from "../Components/orwith";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const navigation = useNavigation();
   const handleLogin = () => {
     const userData = {
       email: email,
@@ -41,6 +44,8 @@ const login = () => {
       .then((data) => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
+
+        AsyncStorage.setItem("token", data.authorisation.token);
       })
       .catch((error) => {
         setError("Credentials Error");
