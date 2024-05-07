@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Post from "../../../Components/post";
 
 const Posts = () => {
   const [text, setText] = useState("");
@@ -137,7 +138,11 @@ const Posts = () => {
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.posts}></View>
+          <View style={styles.posts}>
+            {posts.map((post) => (
+              <Post post={post} />
+            ))}
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -218,5 +223,10 @@ const styles = StyleSheet.create({
   camera: {
     fontSize: 20,
     color: "green",
+  },
+  posts: {
+    paddingTop: 20,
+    display: "flex",
+    gap: 10,
   },
 });
