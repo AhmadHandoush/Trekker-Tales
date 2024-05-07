@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\AdminNotification;
+use App\Models\Booking;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -11,7 +13,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 
     /**
@@ -19,6 +21,13 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Booking::created(function ($book) {
+            AdminNotification::insert([
+                "child_name" => $book->child_nmae,
+                "trip_id" => $book->trip_id,
+                "created_at" => now(),
+                "updated_at" => now()
+            ]);
+        });
     }
 }

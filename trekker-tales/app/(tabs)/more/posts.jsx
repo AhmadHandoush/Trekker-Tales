@@ -13,6 +13,36 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const Posts = () => {
   const [text, setText] = useState("");
+  const posts = [
+    {
+      id: 1,
+      caption: "the best trip",
+      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+      user_id: 12,
+      created_at: "2024-04-25T12:30:08.000000Z",
+    },
+    {
+      id: 2,
+      caption: "the best trip",
+      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+      user_id: 12,
+      created_at: "2024-04-25T12:30:08.000000Z",
+    },
+    {
+      id: 3,
+      caption: "the best trip",
+      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+      user_id: 12,
+      created_at: "2024-04-25T12:30:08.000000Z",
+    },
+    {
+      id: 4,
+      caption: "the best trip",
+      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+      user_id: 12,
+      created_at: "2024-04-25T12:30:08.000000Z",
+    },
+  ];
   //   const user = {
   //     id: 22,
   //     name: "louna",
@@ -35,7 +65,7 @@ const Posts = () => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setImage(result);
     }
   };
@@ -89,6 +119,7 @@ const Posts = () => {
                 onChangeText={setText}
                 value={text}
                 selectionColor={"#E87A00"}
+                required
               />
               <TouchableOpacity style={styles.btnAdd}>
                 <Text style={styles.btnText}>Add</Text>
@@ -106,6 +137,7 @@ const Posts = () => {
               />
             </TouchableOpacity>
           </View>
+          <View style={styles.posts}></View>
         </View>
       </View>
     </ScrollView>
