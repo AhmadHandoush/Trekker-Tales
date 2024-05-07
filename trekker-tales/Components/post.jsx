@@ -24,7 +24,10 @@ const Post = ({ post }) => {
           <Text style={styles.time}>minutes</Text>
         </View>
       </View>
-      <Image />
+      <Image
+        source={require("../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
+        style={styles.postImage}
+      />
       <View style={styles.info}>
         <Text> 10 likes</Text>
         <Text> 12 comments</Text>
@@ -56,13 +59,17 @@ const styles = StyleSheet.create({
   post: {
     borderWidth: 1,
     borderColor: "#707070",
-    padding: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderRadius: 6,
   },
 
   top: {
     display: "flex",
     flexDirection: "row",
     gap: 10,
+    marginBottom: 5,
+    marginLeft: 5,
   },
   img: {
     width: 40,
@@ -86,5 +93,9 @@ const styles = StyleSheet.create({
   time: {
     color: "#808080",
     fontSize: 12,
+  },
+  postImage: {
+    width: "100%",
+    height: 250,
   },
 });
