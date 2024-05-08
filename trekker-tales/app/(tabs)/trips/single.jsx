@@ -82,7 +82,7 @@ const SignleTrip = () => {
       <View style={styles.single}>
         <View style={styles.hero}>
           <ImageBackground source={trip_image} style={styles.image}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 router.push(`/trips/single`);
               }}
@@ -95,7 +95,7 @@ const SignleTrip = () => {
                 color="#808080"
                 style={styles.arrow}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </ImageBackground>
         </View>
         <View style={styles.second}>
@@ -104,7 +104,6 @@ const SignleTrip = () => {
             <Text style={styles.fee}>${parseInt(fees)}</Text>
           </View>
           <View>
-            <Text style={styles.description}>{description}</Text>
             <View style={styles.singledata}>
               <Text style={styles.prop}>Destination:</Text>
               <Text style={styles.destination}>{destination}</Text>
@@ -114,23 +113,21 @@ const SignleTrip = () => {
               <Text>{date}</Text>
             </View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Start_time:</Text>
+              <Text style={styles.prop}>Start-time:</Text>
               <Text>{start_time}</Text>
             </View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>End_time:</Text>
+              <Text style={styles.prop}>End-time:</Text>
               <Text>{end_time}</Text>
             </View>
+
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Date:</Text>
-              <Text>{date}</Text>
-            </View>
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>Available_seats:</Text>
+              <Text style={styles.prop}>Available-seats:</Text>
               <Text>
                 {available_seats}/{total_seats}
               </Text>
             </View>
+            <Text style={styles.description}>{description}</Text>
           </View>
           <View style={styles.locations}>
             <Text style={styles.loctitle}>Places to visit </Text>
@@ -247,10 +244,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
-  destination: {
-    fontWeight: "bold",
-    color: "#E87A00",
-  },
+  destination: {},
   locations: {
     marginTop: 20,
     marginBottom: 20,
@@ -286,6 +280,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontWeight: "bold",
     backgroundColor: "#E87A00",
+    bottom: 0,
+    position: "fixed",
   },
   overlay: {
     position: "absolute",

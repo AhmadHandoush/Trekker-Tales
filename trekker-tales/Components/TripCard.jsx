@@ -61,17 +61,19 @@ const styles = StyleSheet.create({
   name: {
     paddingLeft: 5,
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
   },
   fee: {
     paddingLeft: 5,
     fontWeight: "bold",
+    fontSize: 16,
   },
   info: {
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "row",
     paddingRight: 5,
+    alignItems: "center",
   },
   more: {
     margin: 5,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   date: {
     color: "black",
     marginLeft: 5,
-    fontWeight: "bold",
+
     fontSize: 13,
   },
 });
