@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 
 const ReceivedMessage = () => {
@@ -9,6 +9,9 @@ const ReceivedMessage = () => {
           source={require("../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
           style={styles.image}
         />
+      </View>
+      <View style={styles.msg}>
+        <Text style={styles.message}></Text>
       </View>
     </View>
   );
