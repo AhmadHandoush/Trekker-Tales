@@ -78,7 +78,7 @@ const Signup = () => {
         <Topline />
         <Text style={styles.title}>Sign Up</Text>
         <View
-          style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 10 }}
+          style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 5 }}
         >
           <Text style={styles.label}>Name</Text>
           <TextInput
@@ -89,7 +89,7 @@ const Signup = () => {
           />
         </View>
         <View
-          style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 10 }}
+          style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 5 }}
         >
           <Text style={styles.label}>Email</Text>
           <TextInput
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   label: {
     paddingVertical: "1%",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
   },
   button: {
     width: 325,

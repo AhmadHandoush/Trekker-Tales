@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
+import { Link } from "expo-router";
 
 const Posts = () => {
   const [text, setText] = useState("");
@@ -76,8 +77,8 @@ const Posts = () => {
       formData.append("text", text);
       formData.append("image", {
         uri: image.uri,
-        type: "image/jpeg", // adjust the type according to your image format
-        name: "image.jpg", // you can adjust the file name as needed
+        type: "image/jpeg",
+        name: "image.jpg",
       });
 
       const response = await fetch("YOUR_BACKEND_URL", {
@@ -92,9 +93,8 @@ const Posts = () => {
         throw new Error("Failed to submit data");
       }
 
-      // Handle successful submission
       console.log("Data submitted successfully!");
-      // Reset form fields
+
       setText("");
       setImage(null);
     } catch (error) {
@@ -105,6 +105,9 @@ const Posts = () => {
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.postsPage}>
+        <Link href={"/chats"}>
+          <Text style={{ color: "#E87A00", fontWeight: "bold" }}> Chat </Text>
+        </Link>
         <View style={styles.data}>
           <View style={styles.add}>
             <View style={styles.img}>

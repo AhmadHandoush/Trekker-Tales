@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   label: {
     paddingVertical: "1%",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 30,
   },
   logo: {
