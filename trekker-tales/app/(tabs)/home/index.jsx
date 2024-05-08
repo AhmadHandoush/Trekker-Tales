@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
@@ -17,7 +18,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+
   const handleFocus = () => {
     setFocus(true);
   };
@@ -126,6 +129,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
@@ -144,8 +148,10 @@ const Home = () => {
 
           setTop(data);
           setOk(true);
+          setLoading(false);
         } else {
           navigation.navigate("Login");
+          setLoading(true);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -210,20 +216,24 @@ const Home = () => {
         </ImageBackground>
       </View>
       {/* top trips */}
-      <View style={styles.toptrips}>
-        <View style={styles.topone}>
-          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
-          <Link href="/" style={{ color: "#e87a00" }}>
-            See all
-          </Link>
+      {loading ? (
+        <ActivityIndicator size="large" color="#e87a00" />
+      ) : (
+        <View style={styles.toptrips}>
+          <View style={styles.topone}>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
+            <Link href="/" style={{ color: "#e87a00" }}>
+              See all
+            </Link>
+          </View>
+          <FlatList
+            data={top.slice(0, 2)}
+            renderItem={renderItem}
+            // keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+          />
         </View>
-        <FlatList
-          data={top.slice(0, 2)}
-          renderItem={renderItem}
-          // keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-        />
-      </View>
+      )}
 
       {/* .past trips  */}
       <View style={styles.pasttrips}>
