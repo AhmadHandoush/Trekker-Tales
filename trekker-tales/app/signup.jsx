@@ -7,10 +7,11 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import Topline from "../Components/topline";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import Input from "../Components/input";
 // import Button from "../Components/button";
 // import OrWith from "../Components/orwith";
@@ -22,6 +23,20 @@ const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const navigation = useNavigation();
+  useEffect(() => {
+    const clearLocalStorage = async () => {
+      try {
+        await AsyncStorage.clear();
+        console.log("Local storage cleared successfully!");
+      } catch (error) {
+        console.error("Error clearing local storage:", error);
+      }
+    };
+
+    clearLocalStorage();
+
+    return () => {};
+  }, []);
 
   const handleSignup = () => {
     const userData = {
@@ -29,7 +44,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    fetch("http://192.168.0.106:8000/api/register", {
+    fetch("http://192.168.1.12:8000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

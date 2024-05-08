@@ -28,7 +28,7 @@ const login = () => {
       password: password,
     };
 
-    fetch("http://192.168.0.106:8000/api/login", {
+    fetch("http://192.168.1.12:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -108,6 +108,23 @@ const Home = () => {
   ];
   // const [top, setTop] = useState([]);
   useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token !== null) {
+          console.log("Token found:", token);
+        } else {
+          navigation.navigate("../../login.jsx");
+        }
+      } catch (error) {
+        console.error("Error checking token:", error);
+      }
+    };
+
+    checkToken();
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const token = await AsyncStorage.getItem("token");
@@ -173,7 +190,7 @@ const Home = () => {
           <Feather name="search" size={20} color="#E7E7E7" />
         </View>
       </View>
-      {data && <Text>{data.map((item) => item.name)}</Text>}
+      {top && <Text>{top.map((item) => item.name)}</Text>}
       {/* .hero image  */}
       <View style={styles.hero}>
         <ImageBackground
