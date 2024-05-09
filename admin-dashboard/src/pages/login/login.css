@@ -93,6 +93,10 @@ h6 a {
   width: 50%;
   background-color: black;
   height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 150px;
+  padding-top: 50px;
 }
 .loging {
   width: 70%;
@@ -101,10 +105,17 @@ h6 a {
   border-radius: 10px;
   overflow: hidden;
 }
-
+.rights .title {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+}
+.rights .title span {
+  color: var(--main-color);
+}
 .login-card {
   padding: 15px 30px;
-  background-color: var(--bg-white);
+  /* background-color: var(--bg-white); */
   width: 50%;
   position: relative;
   z-index: 1000;
@@ -127,7 +138,7 @@ h6 a {
   border: none;
   outline: none;
   padding: 15px 5px;
-  background-color: #d9d9d9;
+  background-color: white;
 }
 .login-card .input span {
   background-color: var(--main-color);
@@ -149,7 +160,7 @@ form button {
 
 .login-card h2 {
   margin-bottom: 20px;
-  color: var(--main-color);
+  color: white;
   font-size: 40px;
 }
 

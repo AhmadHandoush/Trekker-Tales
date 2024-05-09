@@ -24,9 +24,11 @@ const Home = () => {
   const handleFocus = () => {
     setFocus(true);
   };
-  // const [data, setData] = useState([]);
+
   const [top, setTop] = useState([]);
-  const [ok, setOk] = useState(false);
+
+  const [trips, setTrips] = useState([]);
+
   const data = [
     {
       id: "1",
@@ -109,7 +111,7 @@ const Home = () => {
       trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
     },
   ];
-  // const [top, setTop] = useState([]);
+
   useEffect(() => {
     const checkToken = async () => {
       try {
@@ -147,10 +149,8 @@ const Home = () => {
           const data = await response.json();
 
           setTop(data);
-          setOk(true);
           setLoading(false);
         } else {
-          navigation.navigate("Login");
           setLoading(true);
         }
       } catch (error) {
@@ -158,7 +158,36 @@ const Home = () => {
       }
     };
     fetchData();
-  });
+    const fetchTrips = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(
+            "http://192.168.1.16:8000/api/get_trips",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setTrips(data.trips);
+
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchTrips();
+  }, []);
 
   const handleSearch = (text) => {
     setSearchQuery(text);
@@ -166,11 +195,11 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.1.16:8000/${item.trip_image}` }}
+        source={{ uri: `http://192.168.1.16:8000/${item.trip.trip_image}` }}
         style={styles.image}
       />
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.destination}>{item.destination}</Text>
+      <Text style={styles.name}>Ahmad</Text>
+      <Text style={styles.destination}>{item.trip.destination}</Text>
     </View>
   );
   const pastItem = ({ item }) => (
@@ -196,7 +225,8 @@ const Home = () => {
           <Feather name="search" size={20} color="#E7E7E7" />
         </View>
       </View>
-      {top && <Text>{top.map((item) => item.name)}</Text>}
+      {/* {ok && <Text>{ok}</Text>} */}
+      {/* {top && <Text>{top.map((item) => item.name)}</Text>} */}
       {/* .hero image  */}
       <View style={styles.hero}>
         <ImageBackground
@@ -224,12 +254,17 @@ const Home = () => {
             See all
           </Link>
         </View>
-        <FlatList
-          data={data.slice(0, 2)}
-          renderItem={renderItem}
-          // keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-        />
+        {loading ? (
+          <ActivityIndicator size="large" color="#e87a00" />
+        ) : (
+          <FlatList
+            data={top.slice(0, 2)}
+            renderItem={renderItem}
+            // keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+          />
+        )}
+        {top && top.map((t) => <Text>{t.trip.name}</Text>)}
       </View>
 
       {/* .past trips  */}
@@ -243,7 +278,7 @@ const Home = () => {
       </View>
       <View>
         <FlatList
-          data={data.slice(0, 7)}
+          data={trips.slice(0, 7)}
           renderItem={pastItem}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
@@ -332,6 +367,7 @@ const styles = StyleSheet.create({
   card: {
     width: "45%",
     margin: 10,
+    marginBottom: 5,
     borderRadius: 10,
     backgroundColor: "#fff",
     overflow: "hidden",
@@ -361,7 +397,7 @@ const styles = StyleSheet.create({
     width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
-    marginTop: 15,
+    marginTop: 5,
   },
   pastcard: {
     alignItems: "center",

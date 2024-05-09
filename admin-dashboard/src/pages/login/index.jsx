@@ -44,9 +44,13 @@ function Login() {
   return (
     <div className="login flex-center">
       <div className="right-image">
-        <img src="./ai-generated-7857125_640.webp" alt="hero" />
+        <img src="./pexels-laup-10541175.jpg" alt="hero" />
       </div>
-      <div className="rights flex-center">
+      <div className="rights  column">
+        <h2 className="title">
+          {" "}
+          Welcome to <span>Trekker Tales</span>{" "}
+        </h2>
         <div className="login-card flex column">
           <div className="top-title flex-center">
             <h2>Login</h2>
