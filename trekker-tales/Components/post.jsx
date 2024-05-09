@@ -6,13 +6,35 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Post = ({ post }) => {
-  const { caption, image, created_at } = post;
+  const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
-  const [likes, setLikes] = useState(10);
+  const [likes, setLikes] = useState(0);
+  const handleAddComment = async () => {
+    try {
+      const response = await fetch(
+        `http://192.168.0.103:8000/add_comment/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ comment }),
+        }
+      );
+      const data = await response.json();
+
+      console.log("Comment added:", data);
+
+      setComment("");
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+
   return (
     <View style={styles.post}>
       <View style={styles.top}>
@@ -48,7 +70,7 @@ const Post = ({ post }) => {
             style={styles.input}
             selectionColor={"#E87A00"}
           />
-          <TouchableOpacity style={styles.submit}>
+          <TouchableOpacity style={styles.submit} onPress={handleAddComment}>
             <Text style={styles.adding}>Add</Text>
           </TouchableOpacity>
         </View>
