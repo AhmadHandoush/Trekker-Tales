@@ -1,4 +1,11 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import TripCard from "../../../Components/TripCard";
 import { Feather } from "@expo/vector-icons";
@@ -11,7 +18,9 @@ const Trips = () => {
   const [focus, setFocus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [trips, setTrips] = useState([]);
+  const [filteredTrips, setFilteredTrips] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchTrips = async () => {
       setLoading(true);
@@ -30,9 +39,7 @@ const Trips = () => {
             throw new Error("Failed to fetch data");
           }
           const data = await response.json();
-
           setTrips(data.trips);
-
           setLoading(false);
         } else {
           setLoading(true);
@@ -43,88 +50,25 @@ const Trips = () => {
     };
     fetchTrips();
   }, []);
-  // const trips = [
-  //   {
-  //     id: 1,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Adventures",
-  //     date: "12-3-2024",
-  //     fees: 70,
-  //     trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: 10,
-  //     name: "Treepo",
-  //     date: "17-4-2024",
-  //     fees: 40,
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  // ];
+
+  useEffect(() => {
+    const filtered = trips.filter((trip) =>
+      trip.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredTrips(filtered);
+  }, [searchQuery, trips]);
+
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
+
   const handleFocus = () => {
     setFocus(true);
   };
+
   return (
     <View style={styles.trips}>
       <Back title="Trips" />
-
       <View style={[styles.search, focus && styles.focused]}>
         <Feather name="map-pin" size={20} color="#d7d7d7" />
         <TextInput
@@ -137,20 +81,24 @@ const Trips = () => {
         />
         <Feather name="search" size={20} color="#d7d7d7" />
       </View>
-      <ScrollView>
-        <View style={styles.container}>
-          {trips.map((trip, index) => (
-            <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
-              <TripCard
-                trip={trip}
-                onPress={() => {
-                  router.push(`/trips/single`);
-                }}
-              />
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      {loading ? (
+        <ActivityIndicator animating={loading} size="medium" color="#E87A00" />
+      ) : (
+        <ScrollView>
+          <View style={styles.container}>
+            {filteredTrips.map((trip, index) => (
+              <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
+                <TripCard
+                  trip={trip}
+                  onPress={() => {
+                    router.push(`/trips/single`);
+                  }}
+                />
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -173,7 +121,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 60,
   },
-
   search: {
     display: "flex",
     flexDirection: "row",
@@ -195,6 +142,6 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    color: "#d7d7d7",
+    color: "black",
   },
 });

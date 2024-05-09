@@ -142,6 +142,7 @@ const Home = () => {
             onFocus={handleFocus}
             value={searchQuery}
             selectionColor={"#E87A00"}
+            placeholderTextColor="#333"
           />
           <Feather name="search" size={20} color="#E7E7E7" />
         </View>
@@ -248,7 +249,6 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    color: "#333",
   },
   focused: {
     borderColor: "blue",
