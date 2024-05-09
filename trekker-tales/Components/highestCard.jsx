@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const HighestCard = ({ item }) => {
   return (
@@ -12,11 +13,22 @@ const HighestCard = ({ item }) => {
         />
       </View>
       <View style={styles.info}>
-        <Text style={styles.name}> Treepo</Text>
-        <Text style={styles.date}> date</Text>
+        <View style={styles.important}>
+          <Text style={styles.name}> Treepo</Text>
+          <Text style={styles.fee}> $200</Text>
+        </View>
+        <View style={styles.datesec}>
+          <Icon
+            name="calendar"
+            size={20}
+            color="#808080"
+            style={styles.dateicon}
+          />
+          <Text style={styles.date}>13-4-2024</Text>
+        </View>
       </View>
       <View style={styles.rating}>
-        <Ionicons name="star" size={32} color="gold" />
+        <Ionicons name="star" size={16} color="gold" />
         <Text style={styles.rate}>3.5</Text>
       </View>
     </View>
@@ -33,14 +45,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: 170,
     elevation: 2,
-    height: 200,
+
     position: "relative",
   },
   img: {
-    height: "60%",
+    height: 120,
     width: "100%",
     borderRadius: 8,
     overflow: "hidden",
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   image: {
     width: "100%",
@@ -48,11 +62,20 @@ const styles = StyleSheet.create({
   },
   info: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
+
     paddingLeft: 5,
     paddingRight: 5,
+
+    marginBottom: 5,
+    marginTop: 5,
+  },
+  important: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 5,
   },
   rating: {
     position: "absolute",
@@ -62,8 +85,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 5,
     alignItems: "center",
+    backgroundColor: "rgba(50, 50, 50, 0.5)",
+    padding: 2,
   },
   rate: {
     color: "white",
+    fontWeight: "bold",
+  },
+  fee: {
+    fontWeight: "bold",
+    fontSize: 14,
+    color: "#e87A00",
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+  datesec: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingLeft: 5,
+  },
+  dateicon: {
+    fontSize: 14,
+  },
+  date: {
+    fontSize: 14,
   },
 });
