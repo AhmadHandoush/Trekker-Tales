@@ -56,10 +56,7 @@ const styles = StyleSheet.create({
     height: 150,
     marginBottom: 10,
   },
-  viewMoreButton: {
-    color: "blue",
-    marginTop: 5,
-  },
+
   name: {
     paddingLeft: 5,
     fontWeight: "bold",
@@ -69,6 +66,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     fontWeight: "bold",
     fontSize: 16,
+    color: "#E87A00",
   },
   info: {
     display: "flex",
@@ -78,10 +76,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  viewMoreButton: {
-    color: "white",
-    fontWeight: "bold",
-  },
   date: {
     color: "black",
     marginLeft: 5,

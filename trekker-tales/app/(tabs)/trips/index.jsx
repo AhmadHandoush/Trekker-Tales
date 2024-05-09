@@ -92,7 +92,7 @@ const Trips = () => {
       <Back title="Trips" />
 
       <View style={[styles.search, focus && styles.focused]}>
-        <Feather name="map-pin" size={20} color="#E87A00" />
+        <Feather name="map-pin" size={20} color="#d7d7d7" />
         <TextInput
           style={styles.searchInput}
           placeholder="Search..."
@@ -101,7 +101,7 @@ const Trips = () => {
           value={searchQuery}
           selectionColor={"#E87A00"}
         />
-        <Feather name="search" size={20} color="#E87A00" />
+        <Feather name="search" size={20} color="#d7d7d7" />
       </View>
       <ScrollView>
         <View style={styles.container}>
@@ -151,13 +151,16 @@ const styles = StyleSheet.create({
     gap: 10,
     backgroundColor: "white",
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#d7d7d7",
     borderRadius: 40,
     padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     height: 40,
     marginBottom: 5,
   },
   searchInput: {
     flex: 1,
+    color: "#d7d7d7",
   },
 });
