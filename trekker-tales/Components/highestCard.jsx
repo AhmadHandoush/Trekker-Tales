@@ -53,5 +53,13 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingRight: 5,
   },
-  rating: {},
+  rating: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    display: "flex",
+    flexDirection: "row",
+    gap: 5,
+  },
+  rate: {},
 });
