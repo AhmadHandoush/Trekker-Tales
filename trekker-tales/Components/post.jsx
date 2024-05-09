@@ -8,12 +8,14 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Post = ({ post }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
   const handleAddComment = async () => {
+    const token = await AsyncStorage.getItem("token");
     try {
       const response = await fetch(
         `http://192.168.0.103:8000/add_comment/${id}`,
@@ -21,6 +23,7 @@ const Post = ({ post }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ comment }),
         }
@@ -32,6 +35,26 @@ const Post = ({ post }) => {
       setComment("");
     } catch (error) {
       console.error("Error adding comment:", error);
+    }
+  };
+  const handleLikePost = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const response = await fetch(`http://192.168.0.103:8000/like/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ postId: post.id }),
+      });
+      const data = await response.json();
+
+      console.log("Post liked:", data);
+
+      setLikes(likes + 1);
+    } catch (error) {
+      console.error("Error liking post:", error);
     }
   };
 
@@ -55,7 +78,7 @@ const Post = ({ post }) => {
         <Text style={styles.comments}> 12 comments</Text>
       </View>
       <View style={styles.bottom}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleLikePost}>
           <MaterialCommunityIcons
             name="heart-outline"
             size={32}
