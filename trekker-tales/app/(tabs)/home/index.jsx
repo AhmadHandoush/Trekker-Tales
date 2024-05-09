@@ -166,7 +166,7 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={`http://192.168.0.106:8000/${item.trip_image}`}
+        source={{ uri: `http://192.168.1.16:8000/${item.trip_image}` }}
         style={styles.image}
       />
       <Text style={styles.name}>{item.name}</Text>
@@ -182,7 +182,7 @@ const Home = () => {
   return (
     <View style={styles.home}>
       <View style={styles.top}>
-        <Text style={styles.hi}>Hi Ahmad </Text>
+        <Text style={styles.hi}>Hi, Ahmad </Text>
         <View style={[styles.search, focus && styles.focused]}>
           <Feather name="map-pin" size={20} color="#E7E7E7" />
           <TextInput
@@ -289,9 +289,12 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     padding: 5,
     height: 40,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   searchInput: {
     flex: 1,
+    color: "#333",
   },
   focused: {
     borderColor: "blue",
@@ -310,8 +313,9 @@ const styles = StyleSheet.create({
   heroText: {
     color: "white",
     marginLeft: 10,
-    marginTop: 150,
+    marginTop: 120,
     fontWeight: "bold",
+    fontSize: 20,
   },
   toptrips: {
     width: "93%",
