@@ -17,9 +17,15 @@ const Post = ({ post }) => {
   const [commentsCount, setCommentsCount] = useState(0);
   useEffect(() => {
     const get_likes = async () => {
+      const token = await AsyncStorage.getItem("token");
       try {
         const response = await fetch(
-          `http://192.168.0.103:8000/get_likes/${id}`
+          `http://192.168.0.103:8000/get_likes/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const data = await response.json();
 
@@ -29,7 +35,25 @@ const Post = ({ post }) => {
       }
     };
     get_likes();
-    fetchCommentsCount();
+    const get_comments_number = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(
+          `http://192.168.0.103:8000/get_comments_number/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        setCommentsCount(data.commentsCount);
+      } catch (error) {
+        console.error("Error fetching comments count:", error);
+      }
+    };
+    get_comments_number();
   }, []);
 
   const handleAddComment = async () => {
