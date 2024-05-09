@@ -12,14 +12,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { useNavigation } from "@react-navigation/native";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   const handleFocus = () => {
     setFocus(true);
@@ -29,88 +28,6 @@ const Home = () => {
 
   const [trips, setTrips] = useState([]);
   const [hamada, setHamada] = useState("");
-  // const data = [
-  //   {
-  //     id: "1",
-  //     name: "Jiita",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Bekaa",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/2c198c89ac7b7758d4f5d91d1b453b70-saida.jpg"),
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Chouf",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //   },
-  //   {
-  //     id: "4",
-  //     name: "Koura",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-  //   },
-  //   {
-  //     id: "5",
-  //     name: "Tripoli",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
-  //   },
-  //   {
-  //     id: "6",
-  //     name: "Jane",
-  //     destination: "Saida",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-  //   },
-  //   {
-  //     id: "7",
-  //     name: "Beirut",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/c687bc1f-05db-444d-a38b-fa6cfe3ef2c6-shutterstock_483865690.jpg"),
-  //   },
-  //   {
-  //     id: "8",
-  //     name: "Jane",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-  //   },
-  //   {
-  //     id: "9",
-  //     name: "Jane",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-  //   },
-  //   {
-  //     id: "10",
-  //     name: "Beirut",
-  //     destination: "Beirut",
-  //     description: "the best trip ever ",
-  //     date: "",
-  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-  //   },
-  // ];
 
   useEffect(() => {
     const checkToken = async () => {
@@ -229,9 +146,7 @@ const Home = () => {
           <Feather name="search" size={20} color="#E7E7E7" />
         </View>
       </View>
-      {/* {ok && <Text>{ok}</Text>} */}
-      {/* {top && <Text>{top.map((item) => item.name)}</Text>} */}
-      {/* .hero image  */}
+
       <View style={styles.hero}>
         <ImageBackground
           source={require("../../../assets/hero.webp")}
