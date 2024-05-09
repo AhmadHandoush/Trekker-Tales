@@ -41,12 +41,12 @@ const All = () => {
     fetchData();
   }, []);
   return (
-    <View>
-      {loading ? (
-        <Text>Loading...</Text>
-      ) : (
-        trips.map((trip) => <TripCard key={trip.id} trip={trip} />)
-      )}
+    <View style={styles.container}>
+      {trips.map((trip, index) => (
+        <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
+          <TripCard trip={trip} />
+        </View>
+      ))}
     </View>
   );
 };
