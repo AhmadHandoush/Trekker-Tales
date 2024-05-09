@@ -204,7 +204,10 @@ const Home = () => {
   );
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
-      <Image source={item.trip_image} style={styles.pastimage} />
+      <Image
+        source={{ uri: `http://192.168.1.16:8000/${item.trip_image}` }}
+        style={styles.pastimage}
+      />
       <Text style={styles.pastname}>{item.name}</Text>
     </View>
   );
