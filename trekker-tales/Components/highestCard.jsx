@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 5,
     paddingRight: 5,
+    alignItems: "center",
   },
   rating: {
     position: "absolute",
@@ -60,6 +61,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 5,
+    alignItems: "center",
   },
-  rate: {},
+  rate: {
+    color: "white",
+  },
 });
