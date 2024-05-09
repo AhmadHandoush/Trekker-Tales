@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -14,6 +14,31 @@ const Post = ({ post }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
+  // useEffect(() => {
+  //   const get_likes = async () => {
+  //     try {
+  //       const response = await fetch("YOUR_LIKES_API_ENDPOINT");
+  //       const data = await response.json();
+
+  //       setLikes(data.likes);
+  //     } catch (error) {
+  //       console.error("Error fetching likes:", error);
+  //     }
+  //   };
+  //   fetchLikes();
+  //   const get_comments = async () => {
+  //     try {
+  //       const response = await fetch("YOUR_COMMENTS_COUNT_API_ENDPOINT");
+  //       const data = await response.json();
+
+  //       setCommentsCount(data.commentsCount);
+  //     } catch (error) {
+  //       console.error("Error fetching comments count:", error);
+  //     }
+  //   };
+
+  //   get_comments();
+  // }, []);
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -37,7 +62,7 @@ const Post = ({ post }) => {
       console.error("Error adding comment:", error);
     }
   };
-  const handleLikePost = async () => {
+  const handleAddLike = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
       const response = await fetch(`http://192.168.0.103:8000/like/${id}`, {
@@ -74,11 +99,11 @@ const Post = ({ post }) => {
       </View>
       <Image source={image} style={styles.postImage} />
       <View style={styles.info}>
-        <Text style={styles.likes}> 10 likes</Text>
+        <Text style={styles.likes}> {likes} likes</Text>
         <Text style={styles.comments}> 12 comments</Text>
       </View>
       <View style={styles.bottom}>
-        <TouchableOpacity onPress={handleLikePost}>
+        <TouchableOpacity onPress={handleAddLike}>
           <MaterialCommunityIcons
             name="heart-outline"
             size={32}
