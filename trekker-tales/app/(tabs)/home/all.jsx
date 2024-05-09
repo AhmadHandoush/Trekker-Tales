@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TripCard from "../../../Components/TripCard";
+import Back from "../../../Components/back";
 
 const All = () => {
   const [trips, setTrips] = useState([]);
@@ -41,16 +42,33 @@ const All = () => {
     fetchData();
   }, []);
   return (
-    <View style={styles.container}>
-      {trips.map((trip, index) => (
-        <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
-          <TripCard trip={trip} />
+    <>
+      <Back title={"Past Trips"} />
+
+      <ScrollView>
+        <View style={styles.container}>
+          {trips.map((trip, index) => (
+            <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
+              <TripCard trip={trip} />
+            </View>
+          ))}
         </View>
-      ))}
-    </View>
+      </ScrollView>
+    </>
   );
 };
 
 export default All;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 100,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+});
