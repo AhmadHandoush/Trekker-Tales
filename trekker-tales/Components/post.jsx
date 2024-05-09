@@ -14,31 +14,8 @@ const Post = ({ post }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
-  // useEffect(() => {
-  //   const get_likes = async () => {
-  //     try {
-  //       const response = await fetch("YOUR_LIKES_API_ENDPOINT");
-  //       const data = await response.json();
+  const [commentsCount, setCommentsCount] = useState(0);
 
-  //       setLikes(data.likes);
-  //     } catch (error) {
-  //       console.error("Error fetching likes:", error);
-  //     }
-  //   };
-  //   fetchLikes();
-  //   const get_comments = async () => {
-  //     try {
-  //       const response = await fetch("YOUR_COMMENTS_COUNT_API_ENDPOINT");
-  //       const data = await response.json();
-
-  //       setCommentsCount(data.commentsCount);
-  //     } catch (error) {
-  //       console.error("Error fetching comments count:", error);
-  //     }
-  //   };
-
-  //   get_comments();
-  // }, []);
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -58,6 +35,7 @@ const Post = ({ post }) => {
       console.log("Comment added:", data);
 
       setComment("");
+      setCommentsCount(commentsCount + 1);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
