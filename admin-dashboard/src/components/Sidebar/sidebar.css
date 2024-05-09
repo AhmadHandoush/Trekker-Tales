@@ -90,3 +90,11 @@ ul li .active {
 .logout:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 767px) {
+  aside {
+    position: absolute;
+    top: 0;
+    left: -300px;
+  }
+}
