@@ -116,15 +116,17 @@ const styles = StyleSheet.create({
   },
   login: {
     paddingLeft: 10,
+    backgroundColor: "F2F0F0",
   },
   input: {
     height: 45,
-    borderWidth: 0,
+    color: "#333",
+
     borderRadius: 6,
     width: 325,
     padding: 10,
     borderWidth: 1,
-    borderColor: "#FFE1E4",
+    borderColor: "white",
     backgroundColor: "white",
     marginLeft: 30,
   },
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
   },
   label: {
     paddingVertical: "1%",
-    fontWeight: "bold",
+
     fontSize: 14,
     marginLeft: 30,
   },

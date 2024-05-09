@@ -130,9 +130,9 @@ const Signup = () => {
         {success && (
           <Text style={styles.success}>Account created Successfully...</Text>
         )}
-        <Link href={"/(tabs)/home"}>
+        {/* <Link href={"/(tabs)/home"}>
           <Text style={{ color: "#E87A00", fontWeight: "bold" }}> Home </Text>
-        </Link>
+        </Link> */}
       </View>
     </View>
   );
@@ -186,12 +186,12 @@ const styles = StyleSheet.create({
     width: 325,
     padding: 10,
     borderWidth: 1,
-    borderColor: "#FFE1E4",
+    borderColor: "white",
     backgroundColor: "white",
   },
   label: {
     paddingVertical: "1%",
-    fontWeight: "bold",
+
     fontSize: 14,
   },
   button: {
