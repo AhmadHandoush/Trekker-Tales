@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import HighestCard from "../../../Components/highestCard";
 
 const Highest = () => {
   const [top, setTop] = useState([]);
@@ -37,8 +38,8 @@ const Highest = () => {
   }, []);
   return (
     <View style={styles.highest}>
-      {top.map((d) => (
-        <Text key={d.id}>{d.trip.name}</Text>
+      {top.map((item) => (
+        <HighestCard item={item} key={item.trip.id} />
       ))}
       <Text>Ahmad</Text>
     </View>
