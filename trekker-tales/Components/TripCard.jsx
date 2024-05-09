@@ -11,7 +11,7 @@ const TripCard = ({ trip, onPress }) => {
         <Image source={trip.trip_image} style={styles.image} />
         <View style={styles.info}>
           <Text style={styles.name}>{trip.name}</Text>
-          <Text style={styles.fee}>${trip.fees}</Text>
+          <Text style={styles.fee}>${parseInt(trip.fees)}</Text>
         </View>
         <View style={styles.datefill}>
           <Icon
@@ -22,9 +22,6 @@ const TripCard = ({ trip, onPress }) => {
           />
           <Text style={styles.date}>{trip.date}</Text>
         </View>
-        {/* <TouchableOpacity onPress={onPress} style={styles.more}>
-        <Text style={styles.viewMoreButton}>View More</Text>
-      </TouchableOpacity> */}
       </View>
     </TouchableOpacity>
   );

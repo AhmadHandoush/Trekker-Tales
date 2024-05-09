@@ -170,11 +170,11 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingBottom: 5,
+    position: "relative",
   },
 
   scroll: {
     flex: 1,
-    position: "relative",
   },
   single: {
     display: "flex",
@@ -274,7 +274,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   book: {
-    backgroundColor: "red",
     marginTop: 20,
     width: "50%",
     marginLeft: "auto",
