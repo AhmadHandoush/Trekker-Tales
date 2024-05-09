@@ -12,6 +12,7 @@ const _layout = () => {
     >
       <Stack.Screen name="index" />
       <Stack.Screen name="highest" />
+      <Stack.Screen name="all" />
     </Stack>
   );
 };
