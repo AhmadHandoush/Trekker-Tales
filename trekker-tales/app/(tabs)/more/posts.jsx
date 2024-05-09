@@ -11,10 +11,12 @@ import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
-import { Link } from "expo-router";
+// import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 const Posts = () => {
   const [text, setText] = useState("");
+  const router = useRouter();
   const posts = [
     {
       id: 1,
@@ -105,9 +107,14 @@ const Posts = () => {
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.postsPage}>
-        <Link href={"/chats"}>
-          <Text style={{ color: "#E87A00", fontWeight: "bold" }}> Chat </Text>
-        </Link>
+        <TouchableOpacity
+          onPress={() => {
+            router.push(`/`);
+          }}
+        >
+          <Text>Chats</Text>
+        </TouchableOpacity>
+
         <View style={styles.data}>
           <View style={styles.add}>
             <View style={styles.img}>

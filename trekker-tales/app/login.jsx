@@ -13,22 +13,23 @@ import Topline from "../Components/topline";
 import Input from "../Components/input";
 import Button from "../Components/button";
 import OrWith from "../Components/orwith";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { useRouter } from "expo-router";
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const navigation = useNavigation();
+  const router = useRouter();
+  // const navigation = useNavigation();
   const handleLogin = () => {
     const userData = {
       email: email,
       password: password,
     };
 
-    fetch("http://192.168.1.12:8000/api/login", {
+    fetch("http://192.168.1.16:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,6 +45,7 @@ const login = () => {
       .then((data) => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
+        setTimeout(() => router.push("/(tabs)/home"), 1000);
 
         AsyncStorage.setItem("token", data.authorisation.token);
       })

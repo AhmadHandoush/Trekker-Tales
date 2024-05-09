@@ -44,7 +44,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    fetch("http://192.168.1.12:8000/api/register", {
+    fetch("http://192.168.1.16:8000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const Signup = () => {
       .then((data) => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
-        navigation.navigate("login");
+        setTimeout(() => navigation.navigate("login"), 3000);
       })
       .catch((error) => {
         setError(error.message);

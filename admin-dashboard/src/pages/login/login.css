@@ -60,7 +60,7 @@ body {
 }
 .login {
   height: 100vh;
-  background: linear-gradient(to right, #e87a00, black);
+  padding: 0;
 }
 .right-image {
   height: 100%;
@@ -91,6 +91,8 @@ h6 a {
 }
 .rights {
   width: 50%;
+  background-color: black;
+  height: 100%;
 }
 .loging {
   width: 70%;
@@ -103,7 +105,7 @@ h6 a {
 .login-card {
   padding: 15px 30px;
   background-color: var(--bg-white);
-  width: 80%;
+  width: 50%;
   position: relative;
   z-index: 1000;
   border-radius: 8px;
@@ -112,8 +114,8 @@ h6 a {
 .login-card label {
   margin-bottom: 5px;
   display: block;
-  font-weight: bold;
-  font-size: 18px;
+
+  font-size: 14px;
 }
 .login-card .input {
   display: flex;
@@ -163,7 +165,7 @@ form button {
   border-radius: 6px;
 }
 .login form button {
-  background: linear-gradient(to right, #e87a00, black);
+  background-color: var(--main-color);
 }
 
 form button:hover {

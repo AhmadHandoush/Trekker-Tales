@@ -216,24 +216,21 @@ const Home = () => {
         </ImageBackground>
       </View>
       {/* top trips */}
-      {loading ? (
-        <ActivityIndicator size="large" color="#e87a00" />
-      ) : (
-        <View style={styles.toptrips}>
-          <View style={styles.topone}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
-            <Link href="/" style={{ color: "#e87a00" }}>
-              See all
-            </Link>
-          </View>
-          <FlatList
-            data={top.slice(0, 2)}
-            renderItem={renderItem}
-            // keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
-          />
+
+      <View style={styles.toptrips}>
+        <View style={styles.topone}>
+          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
+          <Link href="/" style={{ color: "#e87a00" }}>
+            See all
+          </Link>
         </View>
-      )}
+        <FlatList
+          data={data.slice(0, 2)}
+          renderItem={renderItem}
+          // keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+        />
+      </View>
 
       {/* .past trips  */}
       <View style={styles.pasttrips}>

@@ -43,52 +43,50 @@ function Login() {
 
   return (
     <div className="login flex-center">
-      <div className="loging flex">
-        <div className="right-image">
-          <img src="./hero.webp" alt="hero" />
-        </div>
-        <div className="rights flex-center">
-          <div className="login-card flex column">
-            <div className="top-title flex-center">
-              <h2>Login</h2>
-            </div>
-
-            <form onSubmit={handleSubmit}>
-              <label>Email</label>
-
-              <div className="input">
-                <span className="flex-center">
-                  <i className="fa-solid fa-envelope"></i>
-                </span>
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <label>Password</label>
-              <div className="input">
-                <span className="flex-center">
-                  <i className="fa-solid fa-lock"></i>
-                </span>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="submit flex column">
-                <button type="submite">Login</button>
-              </div>
-              {error && <small className="error">Credentials Errors!</small>}
-            </form>
+      <div className="right-image">
+        <img src="./ai-generated-7857125_640.webp" alt="hero" />
+      </div>
+      <div className="rights flex-center">
+        <div className="login-card flex column">
+          <div className="top-title flex-center">
+            <h2>Login</h2>
           </div>
+
+          <form onSubmit={handleSubmit}>
+            <label>Email</label>
+
+            <div className="input">
+              <span className="flex-center">
+                <i className="fa-solid fa-envelope"></i>
+              </span>
+              <input
+                type="text"
+                placeholder="Enter your email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <label>Password</label>
+            <div className="input">
+              <span className="flex-center">
+                <i className="fa-solid fa-lock"></i>
+              </span>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="submit flex column">
+              <button type="submite">Login</button>
+            </div>
+            {error && <small className="error">Credentials Errors!</small>}
+          </form>
         </div>
       </div>
     </div>
