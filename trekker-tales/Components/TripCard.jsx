@@ -9,7 +9,7 @@ const TripCard = ({ trip, onPress }) => {
     <TouchableOpacity onPress={onPress} style={styles.more}>
       <View style={styles.card} onPress={() => onPress(trip)}>
         <Image
-          source={{ uri: `http://192.168.1.16:8000/${trip_image}` }}
+          source={{ uri: `http://192.168.1.16:8000/${trip.trip_image}` }}
           style={styles.image}
         />
         <View style={styles.info}>
