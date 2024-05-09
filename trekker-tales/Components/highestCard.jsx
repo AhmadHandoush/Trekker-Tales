@@ -8,14 +8,14 @@ const HighestCard = ({ item }) => {
     <View style={styles.card}>
       <View style={styles.img}>
         <Image
-          source={require("../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
+          source={{ uri: `http://192.168.0.103:8000/${item.trip.trip_image}` }}
           style={styles.image}
         />
       </View>
       <View style={styles.info}>
         <View style={styles.important}>
-          <Text style={styles.name}> Treepo</Text>
-          <Text style={styles.fee}> $200</Text>
+          <Text style={styles.name}> {item.trip.name}</Text>
+          <Text style={styles.fee}> ${parseInt(item.trip.fees)}</Text>
         </View>
         <View style={styles.datesec}>
           <Icon
@@ -24,12 +24,14 @@ const HighestCard = ({ item }) => {
             color="#808080"
             style={styles.dateicon}
           />
-          <Text style={styles.date}>13-4-2024</Text>
+          <Text style={styles.date}>{item.trip.date}</Text>
         </View>
       </View>
       <View style={styles.rating}>
         <Ionicons name="star" size={16} color="gold" />
-        <Text style={styles.rate}>3.5</Text>
+        <Text style={styles.rate}>
+          {parseFloat(item.average_rating).toFixed(1)}
+        </Text>
       </View>
     </View>
   );
@@ -83,9 +85,10 @@ const styles = StyleSheet.create({
     right: 10,
     display: "flex",
     flexDirection: "row",
+    borderRadius: 5,
     gap: 5,
     alignItems: "center",
-    backgroundColor: "rgba(50, 50, 50, 0.5)",
+    backgroundColor: "rgba(50, 50, 50, 0.3)",
     padding: 2,
   },
   rate: {
