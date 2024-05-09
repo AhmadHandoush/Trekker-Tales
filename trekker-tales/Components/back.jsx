@@ -11,7 +11,7 @@ const Back = ({ title }) => {
   return (
     <View style={styles.btn}>
       <TouchableOpacity onPress={goBack}>
-        <MaterialIcons name="keyboard-arrow-left" size={40} color="black" />
+        <MaterialIcons name="keyboard-arrow-left" size={35} color="black" />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
     </View>
@@ -24,12 +24,13 @@ const styles = StyleSheet.create({
   btn: {
     position: "absolute",
     top: 40,
-    left: 10,
+    left: 5,
     zIndex: 1,
     display: "flex",
     flexDirection: "row",
-    gap: 120,
+    gap: 100,
     alignItems: "center",
+    width: "100%",
   },
   title: {
     fontWeight: "bold",

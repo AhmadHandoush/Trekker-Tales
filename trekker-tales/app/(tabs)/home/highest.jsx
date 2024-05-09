@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HighestCard from "../../../Components/highestCard";
+import Back from "../../../Components/back";
 
 const Highest = () => {
   const [top, setTop] = useState([]);
@@ -38,6 +39,7 @@ const Highest = () => {
   }, []);
   return (
     <View style={styles.highest}>
+      <Back title={"Highest Rated"} />
       {top.map((item, index) => (
         <View key={item.trip.id} style={index % 2 === 0 ? styles.row : null}>
           <HighestCard item={item} />
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
   highest: {
     display: "flex",
     flex: 1,
-    marginTop: 50,
+    paddingTop: 100,
     width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
