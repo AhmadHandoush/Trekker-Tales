@@ -41,7 +41,13 @@ const All = () => {
     fetchData();
   }, []);
   return (
-  
+    <View>
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : (
+        trips.map((trip) => <TripCard key={trip.id} trip={trip} />)
+      )}
+    </View>
   );
 };
 
