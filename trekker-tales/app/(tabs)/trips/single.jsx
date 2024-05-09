@@ -76,87 +76,102 @@ const SignleTrip = () => {
     locations,
   } = tripData;
   return (
-    <ScrollView style={styles.scroll}>
-      <Back />
-      {book && <View style={styles.overlay}></View>}
-      <View style={styles.single}>
-        <View style={styles.hero}>
-          <ImageBackground
-            source={trip_image}
-            style={styles.image}
-          ></ImageBackground>
-        </View>
-        <View style={styles.second}>
-          <View style={styles.important}>
-            <Text style={styles.name}>{name}</Text>
-            <Text style={styles.fee}>${parseInt(fees)}</Text>
+    <View style={styles.page}>
+      <ScrollView style={styles.scroll}>
+        <Back />
+        {book && <View style={styles.overlay}></View>}
+        <View style={styles.single}>
+          <View style={styles.hero}>
+            <ImageBackground
+              source={trip_image}
+              style={styles.image}
+            ></ImageBackground>
           </View>
-          <View>
-            <Text style={styles.overview}>Overview</Text>
-            <Text style={styles.description}>{description}</Text>
-          </View>
-          <View>
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>Destination</Text>
-              <Text style={styles.destination}>{destination}</Text>
+          <View style={styles.second}>
+            <View style={styles.important}>
+              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.fee}>${parseInt(fees)}</Text>
             </View>
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>Date</Text>
-              <Text>{date}</Text>
+            <View>
+              <Text style={styles.overview}>Overview</Text>
+              <Text style={styles.description}>{description}</Text>
             </View>
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>Start-time</Text>
-              <Text>{start_time}</Text>
-            </View>
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>End-time</Text>
-              <Text>{end_time}</Text>
-            </View>
+            <View>
+              <View style={styles.singledata}>
+                <Text style={styles.prop}>Destination</Text>
+                <Text style={styles.destination}>{destination}</Text>
+              </View>
+              <View style={styles.singledata}>
+                <Text style={styles.prop}>Date</Text>
+                <Text>{date}</Text>
+              </View>
+              <View style={styles.singledata}>
+                <Text style={styles.prop}>Start-time</Text>
+                <Text>{start_time}</Text>
+              </View>
+              <View style={styles.singledata}>
+                <Text style={styles.prop}>End-time</Text>
+                <Text>{end_time}</Text>
+              </View>
 
-            <View style={styles.singledata}>
-              <Text style={styles.prop}>Available-seats</Text>
-              <Text>
-                {available_seats}/{total_seats}
-              </Text>
+              <View style={styles.singledata}>
+                <Text style={styles.prop}>Available-seats</Text>
+                <Text>
+                  {available_seats}/{total_seats}
+                </Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.locations}>
-            <Text style={styles.loctitle}>Places to visit </Text>
-            {locations.map((location) => (
-              <Text key={location.id} style={styles.locname}>
-                {location.name}{" "}
-              </Text>
-            ))}
-          </View>
-          <Text styele={styles.hint}>
-            <Text style={styles.hintname}>Hint:</Text> You can bring some
-            chocolate with you.
-          </Text>
-          <TouchableOpacity
+            <View style={styles.locations}>
+              <Text style={styles.loctitle}>Places to visit </Text>
+              {locations.map((location) => (
+                <Text key={location.id} style={styles.locname}>
+                  {location.name}{" "}
+                </Text>
+              ))}
+            </View>
+            <Text styele={styles.hint}>
+              <Text style={styles.hintname}>Hint:</Text> You can bring some
+              chocolate with you.
+            </Text>
+            {/* <TouchableOpacity
             onPress={() => {
               setBook(true);
             }}
             style={styles.book}
           >
             <Text style={styles.viewmap}>Book Now</Text>
-          </TouchableOpacity>
-        </View>
-        {message && (
-          <View style={styles.message}>
-            <Text style={styles.msgText}>
-              You booking successfully completed
-            </Text>
+          </TouchableOpacity> */}
           </View>
-        )}
-        {book && <BookCard setBook={setBook} />}
-      </View>
-    </ScrollView>
+          {message && (
+            <View style={styles.message}>
+              <Text style={styles.msgText}>
+                You booking successfully completed
+              </Text>
+            </View>
+          )}
+          {book && <BookCard setBook={setBook} />}
+        </View>
+      </ScrollView>
+      <TouchableOpacity
+        onPress={() => {
+          setBook(true);
+        }}
+        style={styles.book}
+      >
+        <Text style={styles.viewmap}>Book Now</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 export default SignleTrip;
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    paddingBottom: 5,
+  },
+
   scroll: {
     flex: 1,
     position: "relative",
