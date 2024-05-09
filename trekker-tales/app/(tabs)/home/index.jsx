@@ -19,6 +19,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState();
 
   const handleFocus = () => {
     setFocus(true);
@@ -28,6 +29,33 @@ const Home = () => {
 
   const [trips, setTrips] = useState([]);
   const [hamada, setHamada] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch("http://192.168.0.103:8000/api/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setUser(data.user);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const checkToken = async () => {
@@ -132,7 +160,7 @@ const Home = () => {
   return (
     <View style={styles.home}>
       <View style={styles.top}>
-        <Text style={styles.hi}>Hi, Ahmad </Text>
+        <Text style={styles.hi}>Hi, {user.name}</Text>
         <View style={[styles.search, focus && styles.focused]}>
           <Feather name="map-pin" size={20} color="#E7E7E7" />
           <TextInput

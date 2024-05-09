@@ -71,7 +71,7 @@ const Profile = () => {
     },
   ];
 
-  const { name, email, phone, address, profile_image } = user;
+  const { name, email, phone, address, user_image } = user;
   const update = () => {
     console.log("update");
   };
