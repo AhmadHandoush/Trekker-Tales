@@ -81,22 +81,10 @@ const SignleTrip = () => {
       {book && <View style={styles.overlay}></View>}
       <View style={styles.single}>
         <View style={styles.hero}>
-          <ImageBackground source={trip_image} style={styles.image}>
-            {/* <TouchableOpacity
-              onPress={() => {
-                router.push(`/trips/single`);
-              }}
-              style={styles.more}
-            >
-              <Text style={styles.viewmap}>View on map</Text>
-              <Icon
-                name="arrow-right"
-                size={20}
-                color="#808080"
-                style={styles.arrow}
-              />
-            </TouchableOpacity> */}
-          </ImageBackground>
+          <ImageBackground
+            source={trip_image}
+            style={styles.image}
+          ></ImageBackground>
         </View>
         <View style={styles.second}>
           <View style={styles.important}>
@@ -104,30 +92,33 @@ const SignleTrip = () => {
             <Text style={styles.fee}>${parseInt(fees)}</Text>
           </View>
           <View>
+            <Text style={styles.overview}>Overview</Text>
+            <Text style={styles.description}>{description}</Text>
+          </View>
+          <View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Destination:</Text>
+              <Text style={styles.prop}>Destination</Text>
               <Text style={styles.destination}>{destination}</Text>
             </View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Date:</Text>
+              <Text style={styles.prop}>Date</Text>
               <Text>{date}</Text>
             </View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Start-time:</Text>
+              <Text style={styles.prop}>Start-time</Text>
               <Text>{start_time}</Text>
             </View>
             <View style={styles.singledata}>
-              <Text style={styles.prop}>End-time:</Text>
+              <Text style={styles.prop}>End-time</Text>
               <Text>{end_time}</Text>
             </View>
 
             <View style={styles.singledata}>
-              <Text style={styles.prop}>Available-seats:</Text>
+              <Text style={styles.prop}>Available-seats</Text>
               <Text>
                 {available_seats}/{total_seats}
               </Text>
             </View>
-            <Text style={styles.description}>{description}</Text>
           </View>
           <View style={styles.locations}>
             <Text style={styles.loctitle}>Places to visit </Text>
@@ -189,17 +180,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  more: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    padding: 8,
-    backgroundColor: "#E87A00",
-    width: "50%",
-    borderRadius: 8,
-    marginBottom: 20,
+  overview: {
+    fontWeight: "bold",
+    fontSize: 16,
   },
+
   viewmap: {
     color: "white",
     fontWeight: "bold",
@@ -216,18 +201,24 @@ const styles = StyleSheet.create({
   },
   important: {
     display: "flex",
+    position: "absolute",
+    top: -50,
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 10,
     alignItems: "center",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
   },
   name: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 30,
+    color: "white",
   },
   fee: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 30,
     color: "#E87A00",
   },
   description: {
