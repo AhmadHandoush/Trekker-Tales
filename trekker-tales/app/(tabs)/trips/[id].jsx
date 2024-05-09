@@ -143,7 +143,7 @@ const SingleTrip = () => {
               </Text>
             </View>
           )}
-          {book && <BookCard setBook={setBook} />}
+          {book && <BookCard setBook={setBook} id={id} />}
         </View>
       </ScrollView>
       <TouchableOpacity

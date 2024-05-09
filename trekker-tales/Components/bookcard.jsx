@@ -7,23 +7,29 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const BookCard = ({ setBook, setMessage }) => {
+const BookCard = ({ setBook, setMessage, id }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
+    const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch("http:://00000", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: inputValue }),
-      });
+      const response = await fetch(
+        `http://192.168.0.103:8000/api/add_book/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ child_name: inputValue }),
+        }
+      );
 
       if (response.ok) {
         setBook(false);
-        setMessage("You booking successfully completed");
+        setMessage("Your booking successfully completed");
         setTimeout(() => {
           setMessage("");
         }, 3000);
@@ -46,6 +52,7 @@ const BookCard = ({ setBook, setMessage }) => {
         value={inputValue}
         style={styles.input}
         selectionColor={"#E87A00"}
+        required
       />
       <TouchableOpacity onPress={handleSubmit} style={styles.book}>
         <Text
