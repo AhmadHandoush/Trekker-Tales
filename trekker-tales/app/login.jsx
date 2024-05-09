@@ -72,6 +72,7 @@ const login = () => {
           value={email}
           keyboardType="email-address"
           required
+          selectionColor={"#E87A00"}
         />
         <Text style={styles.label}>password</Text>
         <TextInput
@@ -81,6 +82,7 @@ const login = () => {
           value={password}
           secureTextEntry={true}
           required
+          selectionColor={"#E87A00"}
         />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>

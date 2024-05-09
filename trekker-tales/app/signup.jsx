@@ -86,6 +86,7 @@ const Signup = () => {
             placeholder="Enter your name"
             onChangeText={(text) => setName(text)}
             value={name}
+            selectionColor={"#E87A00"}
           />
         </View>
         <View
@@ -98,6 +99,7 @@ const Signup = () => {
             onChangeText={(text) => setEmail(text)}
             value={email}
             keyboardType="email-address"
+            selectionColor={"#E87A00"}
           />
         </View>
         <View
@@ -110,6 +112,7 @@ const Signup = () => {
             onChangeText={(text) => setPassword(text)}
             value={password}
             secureTextEntry={true}
+            selectionColor={"#E87A00"}
           />
         </View>
 
