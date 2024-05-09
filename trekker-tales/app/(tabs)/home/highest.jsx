@@ -36,8 +36,11 @@ const Highest = () => {
     fetchData();
   }, []);
   return (
-    <View>
-      <Text>Highest</Text>
+    <View style={styles.highest}>
+      {top.map((d) => (
+        <Text key={d.id}>hamda</Text>
+      ))}
+      <Text>Ahmad</Text>
     </View>
   );
 };
