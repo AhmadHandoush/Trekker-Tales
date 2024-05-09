@@ -7,7 +7,7 @@ const TripCard = ({ trip, onPress }) => {
   const router = useRouter();
   return (
     <TouchableOpacity onPress={onPress} style={styles.more}>
-      <View style={styles.card} onPress={() => onPress(trip)}>
+      <View style={styles.card}>
         <Image
           source={{ uri: `http://192.168.1.16:8000/${trip.trip_image}` }}
           style={styles.image}

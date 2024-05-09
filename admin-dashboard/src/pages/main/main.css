@@ -11,6 +11,7 @@
 .cards-info {
   gap: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .info-card {
   border: 2px solid black;
@@ -39,6 +40,7 @@
 }
 .top-trips-cards {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .top-trips-cards .top-card {
   width: 300px;
@@ -80,4 +82,15 @@
 }
 .top-card .rating svg {
   color: #ffea00;
+}
+
+@media screen and (max-width: 767px) {
+  .top-trips-cards {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .cards-info {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

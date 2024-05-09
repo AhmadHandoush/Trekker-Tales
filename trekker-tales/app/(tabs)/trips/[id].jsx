@@ -6,18 +6,49 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import BookCard from "../../../Components/bookcard";
 import Back from "../../../Components/back";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignleTrip = () => {
+const SingleTrip = () => {
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { id } = useLocalSearchParams();
   const [tripData, setTripData] = useState();
+  useEffect(() => {
+    const fetchTrips = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(
+            `http://192.168.1.16:8000/api/get_trip/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+          setTripData(data);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchTrips();
+  }, []);
 
   // const tripData = {
   //   id: 25,
@@ -169,7 +200,7 @@ const SignleTrip = () => {
   );
 };
 
-export default SignleTrip;
+export default SingleTrip;
 
 const styles = StyleSheet.create({
   page: {

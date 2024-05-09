@@ -18,7 +18,7 @@ function Main() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          "http://127.0.0.1:8000/api/get_trips_number",
+          "http://192.168.1.16:8000/api/get_trips_number",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ function Main() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          "http://127.0.0.1:8000/api/get_users_number",
+          "http://192.168.1.16:8000/api/get_users_number",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ function Main() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          "http://127.0.0.1:8000/api/get_teachers_number",
+          "http://192.168.1.16:8000/api/get_teachers_number",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -87,7 +87,7 @@ function Main() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          "http://127.0.0.1:8000/api/get_highest_rated",
+          "http://192.168.1.16:8000/api/get_highest_rated",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -99,6 +99,7 @@ function Main() {
         }
         const data = await response.json();
         setHighest(data);
+        console.log(data);
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -107,7 +108,7 @@ function Main() {
     };
     get_highest();
   }, []);
-  console.log(highest);
+
   return (
     <div className="main">
       <section className="cards-info flex">

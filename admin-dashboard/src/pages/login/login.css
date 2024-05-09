@@ -116,7 +116,7 @@ h6 a {
 .login-card {
   padding: 15px 30px;
   /* background-color: var(--bg-white); */
-  width: 50%;
+  width: 400px;
   position: relative;
   z-index: 1000;
   border-radius: 8px;
@@ -125,13 +125,13 @@ h6 a {
 .login-card label {
   margin-bottom: 5px;
   display: block;
-
+  color: "white";
   font-size: 14px;
 }
 .login-card .input {
   display: flex;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .login-card .input input {
   width: 100%;
@@ -139,6 +139,9 @@ h6 a {
   outline: none;
   padding: 15px 5px;
   background-color: white;
+}
+.login-card form label {
+  color: white;
 }
 .login-card .input span {
   background-color: var(--main-color);
@@ -192,4 +195,25 @@ form .submit small {
   font-weight: bold;
   text-decoration: underline;
   color: black;
+}
+
+/* media queries  */
+@media only screen and (max-width: 768px) {
+  .right-image {
+    display: none;
+  }
+  .rights {
+    width: 100%;
+  }
+  .rights .login-card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+  .rights .title {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+  }
 }
