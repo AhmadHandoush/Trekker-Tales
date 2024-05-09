@@ -15,6 +15,22 @@ const Post = ({ post }) => {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
   const [commentsCount, setCommentsCount] = useState(0);
+  useEffect(() => {
+    const get_likes = async () => {
+      try {
+        const response = await fetch(
+          `http://192.168.0.103:8000/get_likes/${id}`
+        );
+        const data = await response.json();
+
+        setLikes(data.likes);
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+    get_likes();
+    fetchCommentsCount();
+  }, []);
 
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
