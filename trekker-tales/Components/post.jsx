@@ -11,6 +11,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Post = ({ post }) => {
   const { caption, image, created_at } = post;
+  const [comment, setComment] = useState("");
+  const [likes, setLikes] = useState(10);
   return (
     <View style={styles.post}>
       <View style={styles.top}>
