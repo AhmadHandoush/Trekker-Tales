@@ -91,7 +91,7 @@ const Trips = () => {
                 <TripCard
                   trip={trip}
                   onPress={() => {
-                    router.push(`/trips/single`);
+                    router.push(`/trips/${trip.id}`);
                   }}
                 />
               </View>

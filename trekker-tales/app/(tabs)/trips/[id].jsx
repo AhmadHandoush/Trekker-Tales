@@ -10,58 +10,63 @@ import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import BookCard from "../../../Components/bookcard";
 import Back from "../../../Components/back";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
 const SignleTrip = () => {
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
+  const router = useRouter();
+  const { id } = useLocalSearchParams();
+  const [tripData, setTripData] = useState();
 
-  const tripData = {
-    id: 25,
-    name: "Treepo",
-    destination: "South Lebanon",
-    description:
-      "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
-    trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-    date: "2024-05-08",
-    start_time: "07:57:57",
-    end_time: "17:57:57",
-    total_seats: 24,
-    available_seats: 16,
-    fees: "223.00",
-    created_at: "2024-05-01T21:14:21.000000Z",
-    updated_at: "2024-05-01T21:14:21.000000Z",
-    status: "active",
-    locations: [
-      {
-        id: 1,
-        name: "saida",
-        longitude: "33.5600000",
-        latitude: "35.3700000",
-        created_at: "2024-04-28T09:43:06.000000Z",
-        updated_at: "2024-04-28T09:43:06.000000Z",
-        pivot: {
-          trip_id: 25,
-          location_id: 1,
-          arrival_time: null,
-          departure_time: null,
-        },
-      },
-      {
-        id: 2,
-        name: "Baalbek",
-        longitude: "33.5600000",
-        latitude: "35.3700000",
-        created_at: "2024-04-28T09:43:06.000000Z",
-        updated_at: "2024-04-28T09:43:06.000000Z",
-        pivot: {
-          trip_id: 25,
-          location_id: 1,
-          arrival_time: null,
-          departure_time: null,
-        },
-      },
-    ],
-  };
+  // const tripData = {
+  //   id: 25,
+  //   name: "Treepo",
+  //   destination: "South Lebanon",
+  //   description:
+  //     "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
+  //   trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //   date: "2024-05-08",
+  //   start_time: "07:57:57",
+  //   end_time: "17:57:57",
+  //   total_seats: 24,
+  //   available_seats: 16,
+  //   fees: "223.00",
+  //   created_at: "2024-05-01T21:14:21.000000Z",
+  //   updated_at: "2024-05-01T21:14:21.000000Z",
+  //   status: "active",
+  //   locations: [
+  //     {
+  //       id: 1,
+  //       name: "saida",
+  //       longitude: "33.5600000",
+  //       latitude: "35.3700000",
+  //       created_at: "2024-04-28T09:43:06.000000Z",
+  //       updated_at: "2024-04-28T09:43:06.000000Z",
+  //       pivot: {
+  //         trip_id: 25,
+  //         location_id: 1,
+  //         arrival_time: null,
+  //         departure_time: null,
+  //       },
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Baalbek",
+  //       longitude: "33.5600000",
+  //       latitude: "35.3700000",
+  //       created_at: "2024-04-28T09:43:06.000000Z",
+  //       updated_at: "2024-04-28T09:43:06.000000Z",
+  //       pivot: {
+  //         trip_id: 25,
+  //         location_id: 1,
+  //         arrival_time: null,
+  //         departure_time: null,
+  //       },
+  //     },
+  //   ],
+  // };
+
   const {
     name,
     destination,
