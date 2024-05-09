@@ -43,7 +43,6 @@ const Highest = () => {
           <HighestCard item={item} />
         </View>
       ))}
-      <Text>Ahmad</Text>
     </View>
   );
 };
@@ -55,8 +54,16 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     marginTop: 50,
-    width: "93%",
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    backgroundColor: "white",
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
 });
