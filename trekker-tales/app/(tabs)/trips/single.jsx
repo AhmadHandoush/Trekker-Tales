@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   overview: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 20,
   },
 
   viewmap: {
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     color: "#E87A00",
   },
   description: {
-    marginTop: 20,
+    marginTop: 5,
   },
   singledata: {
     display: "flex",
