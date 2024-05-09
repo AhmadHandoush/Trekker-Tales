@@ -32,8 +32,6 @@ const Post = ({ post }) => {
       );
       const data = await response.json();
 
-      console.log("Comment added:", data);
-
       setComment("");
       setCommentsCount(commentsCount + 1);
     } catch (error) {
@@ -52,8 +50,6 @@ const Post = ({ post }) => {
         body: JSON.stringify({ postId: post.id }),
       });
       const data = await response.json();
-
-      console.log("Post liked:", data);
 
       setLikes(likes + 1);
     } catch (error) {
@@ -78,7 +74,7 @@ const Post = ({ post }) => {
       <Image source={image} style={styles.postImage} />
       <View style={styles.info}>
         <Text style={styles.likes}> {likes} likes</Text>
-        <Text style={styles.comments}> 12 comments</Text>
+        <Text style={styles.comments}> {commentsCount} comments</Text>
       </View>
       <View style={styles.bottom}>
         <TouchableOpacity onPress={handleAddLike}>
