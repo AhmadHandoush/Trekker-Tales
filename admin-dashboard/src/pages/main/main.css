@@ -93,4 +93,7 @@
     flex-direction: column;
     gap: 20px;
   }
+  .main {
+    padding: 20px 0;
+  }
 }
