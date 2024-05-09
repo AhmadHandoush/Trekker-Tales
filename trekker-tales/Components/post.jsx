@@ -60,7 +60,7 @@ export default Post;
 const styles = StyleSheet.create({
   post: {
     borderWidth: 1,
-    borderColor: "#707070",
+    borderColor: "#d7d7d7",
     paddingTop: 5,
     paddingBottom: 5,
     borderRadius: 6,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     borderWidth: 1,
-    borderColor: "#e87a00",
+    borderColor: "#d7d7d7",
     borderRadius: 10,
     padding: 5,
 

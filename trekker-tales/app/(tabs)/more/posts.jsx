@@ -107,14 +107,6 @@ const Posts = () => {
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.postsPage}>
-        <TouchableOpacity
-          onPress={() => {
-            router.push(`/`);
-          }}
-        >
-          <Text>Chats</Text>
-        </TouchableOpacity>
-
         <View style={styles.data}>
           <View style={styles.add}>
             <View style={styles.img}>
@@ -198,7 +190,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#808080",
+    borderColor: "#d7d7d7",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -232,7 +224,7 @@ const styles = StyleSheet.create({
   },
   camera: {
     fontSize: 20,
-    color: "green",
+    color: "#808080",
   },
   posts: {
     paddingTop: 20,
