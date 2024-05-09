@@ -170,7 +170,7 @@ const Home = () => {
       <View style={styles.toptrips}>
         <View style={styles.topone}>
           <Text style={{ fontWeight: "bold", fontSize: 18 }}>Top Trips</Text>
-          <Link href="/" style={{ color: "#e87a00" }}>
+          <Link href="/(tabs)/home/highest" style={{ color: "#e87a00" }}>
             See all
           </Link>
         </View>
