@@ -38,8 +38,10 @@ const Highest = () => {
   }, []);
   return (
     <View style={styles.highest}>
-      {top.map((item) => (
-        <HighestCard item={item} key={item.trip.id} />
+      {top.map((item, index) => (
+        <View key={item.trip.id} style={index % 2 === 0 ? styles.row : null}>
+          <HighestCard item={item} />
+        </View>
       ))}
       <Text>Ahmad</Text>
     </View>
