@@ -28,89 +28,89 @@ const Home = () => {
   const [top, setTop] = useState([]);
 
   const [trips, setTrips] = useState([]);
-
-  const data = [
-    {
-      id: "1",
-      name: "Jiita",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-    },
-    {
-      id: "2",
-      name: "Bekaa",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/2c198c89ac7b7758d4f5d91d1b453b70-saida.jpg"),
-    },
-    {
-      id: "3",
-      name: "Chouf",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-    },
-    {
-      id: "4",
-      name: "Koura",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-    },
-    {
-      id: "5",
-      name: "Tripoli",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
-    },
-    {
-      id: "6",
-      name: "Jane",
-      destination: "Saida",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-    },
-    {
-      id: "7",
-      name: "Beirut",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/c687bc1f-05db-444d-a38b-fa6cfe3ef2c6-shutterstock_483865690.jpg"),
-    },
-    {
-      id: "8",
-      name: "Jane",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-    },
-    {
-      id: "9",
-      name: "Jane",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-    },
-    {
-      id: "10",
-      name: "Beirut",
-      destination: "Beirut",
-      description: "the best trip ever ",
-      date: "",
-      trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
-    },
-  ];
+  const [hamada, setHamada] = useState("");
+  // const data = [
+  //   {
+  //     id: "1",
+  //     name: "Jiita",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Bekaa",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/2c198c89ac7b7758d4f5d91d1b453b70-saida.jpg"),
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Chouf",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "Koura",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "Tripoli",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
+  //   },
+  //   {
+  //     id: "6",
+  //     name: "Jane",
+  //     destination: "Saida",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+  //   },
+  //   {
+  //     id: "7",
+  //     name: "Beirut",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/c687bc1f-05db-444d-a38b-fa6cfe3ef2c6-shutterstock_483865690.jpg"),
+  //   },
+  //   {
+  //     id: "8",
+  //     name: "Jane",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+  //   },
+  //   {
+  //     id: "9",
+  //     name: "Jane",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+  //   },
+  //   {
+  //     id: "10",
+  //     name: "Beirut",
+  //     destination: "Beirut",
+  //     description: "the best trip ever ",
+  //     date: "",
+  //     trip_image: require("../../../assets/friends-3542235_1280-1024x658.jpg"),
+  //   },
+  // ];
 
   useEffect(() => {
     const checkToken = async () => {
@@ -136,7 +136,7 @@ const Home = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.0.106:8000/api/get_highest_rated",
+            "http://192.168.1.16:8000/api/get_highest_rated",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -150,6 +150,7 @@ const Home = () => {
 
           setTop(data);
           setLoading(false);
+          setHamada("hell owe are here ");
         } else {
           setLoading(true);
         }
@@ -198,7 +199,7 @@ const Home = () => {
         source={{ uri: `http://192.168.1.16:8000/${item.trip.trip_image}` }}
         style={styles.image}
       />
-      <Text style={styles.name}>Ahmad</Text>
+      <Text style={styles.name}>{item.trip.name}</Text>
       <Text style={styles.destination}>{item.trip.destination}</Text>
     </View>
   );
@@ -267,13 +268,13 @@ const Home = () => {
             numColumns={2}
           />
         )}
-        {top && top.map((t) => <Text>{t.trip.name}</Text>)}
       </View>
 
       {/* .past trips  */}
       <View style={styles.pasttrips}>
         <View style={styles.topone}>
           <Text style={{ fontWeight: "bold", fontSize: 18 }}>Past Trips</Text>
+
           <Link href="/" style={{ color: "#e87a00" }}>
             See all
           </Link>
@@ -400,7 +401,7 @@ const styles = StyleSheet.create({
     width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
-    marginTop: 5,
+    marginTop: 26,
   },
   pastcard: {
     alignItems: "center",
