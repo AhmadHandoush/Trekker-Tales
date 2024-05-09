@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const highest = () => {
+const Highest = () => {
   return (
     <View>
-      <Text>highest</Text>
+      <Text>Highest</Text>
     </View>
   );
 };
 
-export default highest;
+export default Highest;
 
 const styles = StyleSheet.create({});
