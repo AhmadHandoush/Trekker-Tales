@@ -38,7 +38,7 @@ const Highest = () => {
   return (
     <View style={styles.highest}>
       {top.map((d) => (
-        <Text key={d.id}>hamda</Text>
+        <Text key={d.id}>{d.trip.name}</Text>
       ))}
       <Text>Ahmad</Text>
     </View>
@@ -47,4 +47,13 @@ const Highest = () => {
 
 export default Highest;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  highest: {
+    display: "flex",
+    flex: 1,
+    marginTop: 50,
+    width: "93%",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+});
