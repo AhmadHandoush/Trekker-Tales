@@ -1,4 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TripCard from "../../../Components/TripCard";
@@ -42,7 +48,7 @@ const All = () => {
     fetchData();
   }, []);
   return (
-    <>
+    <View style={styles.page}>
       <Back title={"Past Trips"} />
 
       <ScrollView>
@@ -54,7 +60,7 @@ const All = () => {
           ))}
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 };
 
@@ -70,5 +76,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+  },
+  page: {
+    backgroundColor: "white",
   },
 });
