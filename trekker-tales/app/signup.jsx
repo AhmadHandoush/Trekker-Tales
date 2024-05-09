@@ -44,7 +44,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    fetch("http://192.168.1.16:8000/api/register", {
+    fetch("http://192.168.0.103:8000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

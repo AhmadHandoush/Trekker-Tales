@@ -12,14 +12,17 @@ import BookCard from "../../../Components/bookcard";
 import Back from "../../../Components/back";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import TripCard from "../../../Components/TripCard";
 
 const SingleTrip = () => {
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  // const [ok, setOk] = useState("");
+
   const router = useRouter();
   const { id } = useLocalSearchParams();
-  const [tripData, setTripData] = useState();
+  const [tripData, setTripData] = useState({});
   useEffect(() => {
     const fetchTrips = async () => {
       setLoading(true);
@@ -27,7 +30,7 @@ const SingleTrip = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            `http://192.168.1.16:8000/api/get_trip/${id}`,
+            `http://192.168.0.103:8000/api/get_trip/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -50,67 +53,18 @@ const SingleTrip = () => {
     fetchTrips();
   }, []);
 
-  // const tripData = {
-  //   id: 25,
-  //   name: "Treepo",
-  //   destination: "South Lebanon",
-  //   description:
-  //     "The trip will be all over the tourists places in bekaa and saida and also it includes breakfast and lunch, all of your children will be in a good hands.",
-  //   trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //   date: "2024-05-08",
-  //   start_time: "07:57:57",
-  //   end_time: "17:57:57",
-  //   total_seats: 24,
-  //   available_seats: 16,
-  //   fees: "223.00",
-  //   created_at: "2024-05-01T21:14:21.000000Z",
-  //   updated_at: "2024-05-01T21:14:21.000000Z",
-  //   status: "active",
-  //   locations: [
-  //     {
-  //       id: 1,
-  //       name: "saida",
-  //       longitude: "33.5600000",
-  //       latitude: "35.3700000",
-  //       created_at: "2024-04-28T09:43:06.000000Z",
-  //       updated_at: "2024-04-28T09:43:06.000000Z",
-  //       pivot: {
-  //         trip_id: 25,
-  //         location_id: 1,
-  //         arrival_time: null,
-  //         departure_time: null,
-  //       },
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Baalbek",
-  //       longitude: "33.5600000",
-  //       latitude: "35.3700000",
-  //       created_at: "2024-04-28T09:43:06.000000Z",
-  //       updated_at: "2024-04-28T09:43:06.000000Z",
-  //       pivot: {
-  //         trip_id: 25,
-  //         location_id: 1,
-  //         arrival_time: null,
-  //         departure_time: null,
-  //       },
-  //     },
-  //   ],
-  // };
-
-  const {
-    name,
-    destination,
-    description,
-    date,
-    trip_image,
-    start_time,
-    end_time,
-    total_seats,
-    available_seats,
-    fees,
-    locations,
-  } = tripData;
+  // const {
+  //   destination,
+  //   description,
+  //   date,
+  //   trip_image,
+  //   start_time,
+  //   end_time,
+  //   total_seats,
+  //   available_seats,
+  //   fees,
+  //   locations,
+  // } = tripData;
   return (
     <View style={styles.page}>
       <ScrollView style={styles.scroll}>
@@ -119,52 +73,56 @@ const SingleTrip = () => {
         <View style={styles.single}>
           <View style={styles.hero}>
             <ImageBackground
-              source={trip_image}
+              source={{
+                uri: `http://192.168.0.103:8000/${tripData.trip_image}`,
+              }}
               style={styles.image}
             ></ImageBackground>
           </View>
           <View style={styles.second}>
             <View style={styles.important}>
-              <Text style={styles.name}>{name}</Text>
-              <Text style={styles.fee}>${parseInt(fees)}</Text>
+              <Text style={styles.name}>{tripData.name}</Text>
+              <Text style={styles.fee}>${parseInt(tripData.fees)}</Text>
             </View>
             <View>
               <Text style={styles.overview}>Overview</Text>
-              <Text style={styles.description}>{description}</Text>
+              <Text style={styles.description}>{tripData.description}</Text>
             </View>
             <View>
               <View style={styles.singledata}>
                 <Text style={styles.prop}>Destination</Text>
-                <Text style={styles.destination}>{destination}</Text>
+                <Text style={styles.destination}>{tripData.destination}</Text>
               </View>
               <View style={styles.singledata}>
                 <Text style={styles.prop}>Date</Text>
-                <Text>{date}</Text>
+                <Text>{tripData.date}</Text>
               </View>
               <View style={styles.singledata}>
                 <Text style={styles.prop}>Start-time</Text>
-                <Text>{start_time}</Text>
+                <Text>{tripData.start_time}</Text>
               </View>
               <View style={styles.singledata}>
                 <Text style={styles.prop}>End-time</Text>
-                <Text>{end_time}</Text>
+                <Text>{tripData.end_time}</Text>
               </View>
 
               <View style={styles.singledata}>
                 <Text style={styles.prop}>Available-seats</Text>
                 <Text>
-                  {available_seats}/{total_seats}
+                  {tripData.available_seats}/{tripData.total_seats}
                 </Text>
               </View>
             </View>
-            <View style={styles.locations}>
-              <Text style={styles.loctitle}>Places to visit </Text>
-              {locations.map((location) => (
-                <Text key={location.id} style={styles.locname}>
-                  {location.name}{" "}
-                </Text>
-              ))}
-            </View>
+            {/* {tripData && (
+              <View style={styles.locations}>
+                <Text style={styles.loctitle}>Places to visit </Text>
+                {tripData.locations.map((location) => (
+                  <Text key={location.id} style={styles.locname}>
+                    {location.name}
+                  </Text>
+                ))}
+              </View>
+            )} */}
             <Text styele={styles.hint}>
               <Text style={styles.hintname}>Hint:</Text> You can bring some
               chocolate with you.
@@ -197,6 +155,7 @@ const SingleTrip = () => {
         <Text style={styles.viewmap}>Book Now</Text>
       </TouchableOpacity>
     </View>
+    // <View>{tripData && <Text>{tripData.name}</Text>}</View>
   );
 };
 

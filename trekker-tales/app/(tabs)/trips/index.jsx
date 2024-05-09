@@ -28,7 +28,7 @@ const Trips = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.1.16:8000/api/get_trips",
+            "http://192.168.0.103:8000/api/get_trips",
             {
               headers: {
                 Authorization: `Bearer ${token}`,

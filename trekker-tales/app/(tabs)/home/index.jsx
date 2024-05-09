@@ -53,7 +53,7 @@ const Home = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.1.16:8000/api/get_highest_rated",
+            "http://192.168.0.103:8000/api/get_highest_rated",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ const Home = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.1.16:8000/api/get_trips",
+            "http://192.168.0.103:8000/api/get_trips",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.1.16:8000/${item.trip.trip_image}` }}
+        source={{ uri: `http://192.168.0.103:8000/${item.trip.trip_image}` }}
         style={styles.image}
       />
       <Text style={styles.name}>{item.trip.name}</Text>
@@ -123,7 +123,7 @@ const Home = () => {
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
       <Image
-        source={{ uri: `http://192.168.1.16:8000/${item.trip_image}` }}
+        source={{ uri: `http://192.168.0.103:8000/${item.trip_image}` }}
         style={styles.pastimage}
       />
       <Text style={styles.pastname}>{item.name}</Text>

@@ -70,7 +70,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('get_active_trips',[TripController::class,'get_active_trips']);
         Route::get('average_rating/{trip_id}',[ReviewController::class,'average_rating']);
         Route::post('add_review/{trip_id}',[ReviewController::class,'add_review']);
-        // Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
+        Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
         // Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
         Route::post('add_book/{trip_id}',[BookController::class,'add_book']);
         // Route::get('get_highest_rated',[ReviewController::class,'get_highest_rated']);
