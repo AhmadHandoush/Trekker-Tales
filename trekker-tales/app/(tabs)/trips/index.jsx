@@ -121,13 +121,17 @@ const Trips = () => {
           style={[styles.button, !showMyTrips && styles.activeButton]}
           onPress={toggleView}
         >
-          <Text style={styles.buttonText}>All</Text>
+          <Text style={[styles.buttonText, !showMyTrips && styles.color]}>
+            All
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, showMyTrips && styles.activeButton]}
           onPress={toggleView}
         >
-          <Text style={styles.buttonText}>My Trips</Text>
+          <Text style={[styles.buttonText, showMyTrips && styles.color]}>
+            My Trips
+          </Text>
         </TouchableOpacity>
       </View>
       <Back title="Trips" />
@@ -189,6 +193,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 25,
+  },
+  color: {
+    color: "white",
   },
   row: {
     flexDirection: "row",
