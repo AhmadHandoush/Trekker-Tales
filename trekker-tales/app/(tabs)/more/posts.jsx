@@ -20,6 +20,7 @@ const Posts = () => {
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -173,7 +174,7 @@ const Posts = () => {
           </View>
           <View style={styles.posts}>
             {posts.map((post, index) => (
-              <Post post={post} key={index} />
+              <Post post={post} key={index} setSuccess={setSuccess} />
             ))}
           </View>
         </View>

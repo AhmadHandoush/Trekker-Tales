@@ -10,12 +10,12 @@ import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Post = ({ post }) => {
+const Post = ({ post, setSuccess }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
+
   const [commentsCount, setCommentsCount] = useState(0);
-  const
 
   useEffect(() => {
     const get_likes = async () => {
@@ -75,6 +75,7 @@ const Post = ({ post }) => {
       const data = await response.json();
 
       setComment("");
+      setSuccess("comment added successfully");
       setCommentsCount(commentsCount + 1);
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -132,8 +133,8 @@ const Post = ({ post }) => {
         <View style={styles.addComment}>
           <TextInput
             placeholder="Add a comment"
-            // onChangeText={setInputValue}
-            // value={inputValue}
+            onChangeText={setComment}
+            value={comment}
             style={styles.input}
             selectionColor={"#E87A00"}
           />
