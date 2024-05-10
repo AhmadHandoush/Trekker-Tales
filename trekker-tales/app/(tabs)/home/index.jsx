@@ -20,6 +20,7 @@ const Home = () => {
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState();
+  const [ok, setOK] = useState("");
 
   const handleFocus = () => {
     setFocus(true);
@@ -35,7 +36,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch("http://192.168.0.103:8000/api/user", {
+          const response = await fetch("http://192.168.0.102:8000/api/user", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -44,6 +45,7 @@ const Home = () => {
             throw new Error("Failed to fetch data");
           }
           const data = await response.json();
+          setOK("ahamd");
 
           setUser(data.user);
           setLoading(false);
@@ -81,7 +83,7 @@ const Home = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.0.103:8000/api/get_highest_rated",
+            "http://192.168.0.102:8000/api/get_highest_rated",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -110,7 +112,7 @@ const Home = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.0.103:8000/api/get_trips",
+            "http://192.168.0.102:8000/api/get_trips",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -141,7 +143,7 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.0.103:8000/${item.trip.trip_image}` }}
+        source={{ uri: `http://192.168.0.102:8000/${item.trip.trip_image}` }}
         style={styles.image}
       />
       <Text style={styles.name}>{item.trip.name}</Text>
@@ -151,7 +153,7 @@ const Home = () => {
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
       <Image
-        source={{ uri: `http://192.168.0.103:8000/${item.trip_image}` }}
+        source={{ uri: `http://192.168.0.102:8000/${item.trip_image}` }}
         style={styles.pastimage}
       />
       <Text style={styles.pastname}>{item.name}</Text>
@@ -160,7 +162,7 @@ const Home = () => {
   return (
     <View style={styles.home}>
       <View style={styles.top}>
-        <Text style={styles.hi}>Hi, {user.name}</Text>
+        <Text style={styles.hi}>Hi, {user && user.name}</Text>
         <View style={[styles.search, focus && styles.focused]}>
           <Feather name="map-pin" size={20} color="#E7E7E7" />
           <TextInput

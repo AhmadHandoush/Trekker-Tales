@@ -8,7 +8,7 @@ const HighestCard = ({ item }) => {
     <View style={styles.card}>
       <View style={styles.img}>
         <Image
-          source={{ uri: `http://192.168.0.103:8000/${item.trip.trip_image}` }}
+          source={{ uri: `http://192.168.0.102:8000/${item.trip.trip_image}` }}
           style={styles.image}
         />
       </View>

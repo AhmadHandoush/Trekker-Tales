@@ -16,7 +16,7 @@ const BookCard = ({ setBook, setMessage, id }) => {
     const token = await AsyncStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://192.168.0.103:8000/api/add_book/${id}`,
+        `http://192.168.0.102:8000/api/add_book/${id}`,
         {
           method: "POST",
           headers: {

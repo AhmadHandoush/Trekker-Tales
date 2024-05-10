@@ -14,7 +14,7 @@ const Highest = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.0.103:8000/api/get_highest_rated",
+            "http://192.168.0.102:8000/api/get_highest_rated",
             {
               headers: {
                 Authorization: `Bearer ${token}`,

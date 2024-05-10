@@ -30,7 +30,7 @@ const SingleTrip = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            `http://192.168.0.103:8000/api/get_trip/${id}`,
+            `http://192.168.0.102:8000/api/get_trip/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
