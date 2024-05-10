@@ -109,7 +109,7 @@ const Post = ({ post }) => {
         </View>
         <View style={styles.proinfo}>
           <Text style={styles.name}>Ahmad </Text>
-          <Text style={styles.time}>minutes</Text>
+          <Text style={styles.time}>{created_at.slice(0, 10)}</Text>
         </View>
       </View>
       <Text style={styles.caption}>{caption}</Text>

@@ -132,7 +132,7 @@ const Profile = () => {
 
               <ScrollView style={styles.scroll}>
                 {trips.map((trip) => (
-                  <TakenTrip trip={trip} />
+                  <TakenTrip trip={trip} key={trip.id} />
                 ))}
               </ScrollView>
             </View>
