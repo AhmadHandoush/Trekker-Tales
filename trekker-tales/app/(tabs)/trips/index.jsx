@@ -157,7 +157,7 @@ const Trips = () => {
             color="#E87A00"
           />
         ) : (
-          <ScrollView>
+          <ScrollView style={styles.scroll}>
             <View style={styles.myTripsView}>
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
               {myTripsData.map((item, index) => (
@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 25,
+    backgroundColor: "white",
   },
   color: {
     color: "white",
@@ -206,6 +207,10 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     backgroundColor: "white",
     paddingBottom: 60,
+  },
+  scroll: {
+    backgroundColor: "white",
+    height: "100%",
   },
   search: {
     display: "flex",
