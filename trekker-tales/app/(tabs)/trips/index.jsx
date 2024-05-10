@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import TripCard from "../../../Components/TripCard";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { Feather } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import Back from "../../../Components/back";
@@ -153,7 +154,7 @@ const Trips = () => {
         ) : (
           <ScrollView>
             <View style={styles.myTripsView}>
-              <Text>My Trips Data:</Text>
+              <Text style={styles.mineTitle}>Upcoming Trips</Text>
               {myTripsData.map((item, index) => (
                 <View style={styles.mine} key={index}>
                   <View style={styles.mineimg}>
@@ -162,9 +163,17 @@ const Trips = () => {
                       source={require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
                     />
                   </View>
-                  <View>
+                  <View style={styles.mineinfo}>
                     <Text style={styles.mineName}>{item.trip.name}</Text>
-                    <Text style={styles.mineDate}>{item.trip.date}</Text>
+                    <Text style={styles.mineDate}>
+                      <Icon
+                        name="calendar"
+                        size={12}
+                        color="#808080"
+                        style={styles.dateicon}
+                      />{" "}
+                      {item.trip.date}
+                    </Text>
                   </View>
                 </View>
               ))}
@@ -259,13 +268,15 @@ const styles = StyleSheet.create({
   },
   mine: {
     width: "100%",
-    height: 120,
+    height: 100,
     display: "flex",
     flexDirection: "row",
     gap: 10,
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "red",
+    elevation: 2,
+    backgroundColor: "white",
+
     marginBottom: 10,
     borderRadius: 8,
     overflow: "hidden",
@@ -279,6 +290,19 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  mineName: {},
-  mineDate: {},
+  mineName: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#e87a00",
+  },
+
+  mineTitle: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  mineinfo: {
+    display: "flex",
+    justifyContent: "space-around",
+  },
 });
