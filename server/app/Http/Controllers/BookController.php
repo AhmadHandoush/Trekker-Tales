@@ -40,4 +40,13 @@ class BookController extends Controller
 
 
     }
+
+    // get all the trips the a user booked
+    public function getBookingsByUser()
+    {
+        $userId = Auth::id();
+        $bookings = Booking::where('user_id', $userId)->with('trip')->get();
+
+        return response()->json($bookings);
+    }
 }

@@ -22,7 +22,8 @@ const Trips = () => {
   const [filteredTrips, setFilteredTrips] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMyTrips, setShowMyTrips] = useState(false);
-  const [myTrips, setMyTrips] = useState([]);
+  const [myTripsData, setMyTripsData] = useState([]);
+  const [myTripsLoading, setMyTripsLoading] = useState(false);
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -62,11 +63,34 @@ const Trips = () => {
   }, [searchQuery, trips]);
 
   useEffect(() => {
-    // Assuming you have a way to fetch user's trips based on some identifier
-    // Here I'm just filtering trips randomly as an example
-    const userTrips = trips.filter((trip) => trip.owner === "user");
-    setMyTrips(userTrips);
-  }, [trips]);
+    if (showMyTrips) {
+      setMyTripsLoading(true);
+      // Fetch data from another API for "My Trips" view
+      fetchMyTripsData()
+        .then((data) => {
+          setMyTripsData(data);
+          setMyTripsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching My Trips data:", error);
+          setMyTripsLoading(false);
+        });
+    }
+  }, [showMyTrips]);
+
+  const fetchMyTripsData = async () => {
+    try {
+      // Fetch data from another API
+      const response = await fetch("https://api.example.com/my-trips");
+      if (!response.ok) {
+        throw new Error("Failed to fetch My Trips data");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
 
   const handleSearch = (text) => {
     setSearchQuery(text);
@@ -112,20 +136,22 @@ const Trips = () => {
       {loading ? (
         <ActivityIndicator animating={loading} size="medium" color="#E87A00" />
       ) : showMyTrips ? (
-        <ScrollView>
-          <View style={styles.container}>
-            {myTrips.map((trip, index) => (
-              <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
-                <TripCard
-                  trip={trip}
-                  onPress={() => {
-                    router.push(`/trips/${trip.id}`);
-                  }}
-                />
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+        myTripsLoading ? (
+          <ActivityIndicator
+            animating={myTripsLoading}
+            size="medium"
+            color="#E87A00"
+          />
+        ) : (
+          <ScrollView>
+            <View style={styles.myTripsView}>
+              <Text>My Trips Data:</Text>
+              {myTripsData.map((item, index) => (
+                <Text key={index}>{item.name}</Text>
+              ))}
+            </View>
+          </ScrollView>
+        )
       ) : (
         <ScrollView>
           <View style={styles.container}>
@@ -160,7 +186,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   trips: {
-    paddingTop: 60,
+    paddingTop: 80,
     backgroundColor: "white",
     paddingBottom: 60,
   },
@@ -189,7 +215,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     paddingHorizontal: 20,
     marginBottom: 20,
   },
@@ -201,8 +227,16 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: "#555",
+    fontWeight: "bold",
   },
   activeButton: {
     backgroundColor: "#E87A00",
+    color: "white",
+  },
+  myTripsView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
   },
 });
