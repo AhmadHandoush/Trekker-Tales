@@ -6,6 +6,7 @@ import {
   View,
   ActivityIndicator,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import TripCard from "../../../Components/TripCard";
@@ -154,7 +155,17 @@ const Trips = () => {
             <View style={styles.myTripsView}>
               <Text>My Trips Data:</Text>
               {myTripsData.map((item, index) => (
-                <Text key={index}>{item.name}</Text>
+                <View style={styles.mine} key={index}>
+                  <View style={styles.mineimg}>
+                    <Image
+                      source={require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.mineName}>{item.trip.name}</Text>
+                    <Text style={styles.mineDate}>{item.trip.date}</Text>
+                  </View>
+                </View>
               ))}
             </View>
           </ScrollView>
@@ -246,4 +257,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
+  mine: {
+    width: 250,
+    height: 150,
+    display,
+  },
+  mineimg: {
+    height: "100%",
+  },
+  mineName: {},
+  mineDate: {},
 });
