@@ -130,11 +130,11 @@ const Profile = () => {
             <View style={styles.taken}>
               <Text style={styles.takentitle}>Taken Trips</Text>
 
-              <FlatList
-                data={trips}
-                renderItem={({ item }) => <TakenTrip trip={item} />}
-                keyExtractor={(item) => item.id.toString()}
-              />
+              <ScrollView style={styles.scroll}>
+                {trips.map((trip) => (
+                  <TakenTrip trip={trip} />
+                ))}
+              </ScrollView>
             </View>
           </View>
         </View>
@@ -155,6 +155,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     flex: 1,
+  },
+  scroll: {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
   },
   top: {
     height: 180,

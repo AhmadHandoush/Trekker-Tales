@@ -15,46 +15,47 @@ const Post = ({ post }) => {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
   const [commentsCount, setCommentsCount] = useState(0);
-  useEffect(() => {
-    const get_likes = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(
-          `http://192.168.0.103:8000/get_likes/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const data = await response.json();
 
-        setLikes(data.likes);
-      } catch (error) {
-        console.error("Error fetching likes:", error);
-      }
-    };
-    get_likes();
-    const get_comments_number = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(
-          `http://192.168.0.103:8000/get_comments_number/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const data = await response.json();
+  // useEffect(() => {
+  //   const get_likes = async () => {
+  //     const token = await AsyncStorage.getItem("token");
+  //     try {
+  //       const response = await fetch(
+  //         `http://192.168.0.103:8000/get_likes/${id}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
+  //       const data = await response.json();
 
-        setCommentsCount(data.commentsCount);
-      } catch (error) {
-        console.error("Error fetching comments count:", error);
-      }
-    };
-    get_comments_number();
-  }, []);
+  //       setLikes(data.likes);
+  //     } catch (error) {
+  //       console.error("Error fetching likes:", error);
+  //     }
+  //   };
+  //   get_likes();
+  //   const get_comments_number = async () => {
+  //     const token = await AsyncStorage.getItem("token");
+  //     try {
+  //       const response = await fetch(
+  //         `http://192.168.0.103:8000/get_comments_number/${id}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
+  //       const data = await response.json();
+
+  //       setCommentsCount(data.commentsCount);
+  //     } catch (error) {
+  //       console.error("Error fetching comments count:", error);
+  //     }
+  //   };
+  //   get_comments_number();
+  // }, []);
 
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
@@ -111,7 +112,11 @@ const Post = ({ post }) => {
           <Text style={styles.time}>minutes</Text>
         </View>
       </View>
-      <Image source={image} style={styles.postImage} />
+      <Text style={styles.caption}>{caption}</Text>
+      <Image
+        source={{ uri: `http://192.168.0.102:8000/${image}` }}
+        style={styles.postImage}
+      />
       <View style={styles.info}>
         <Text style={styles.likes}> {likes} likes</Text>
         <Text style={styles.comments}> {commentsCount} comments</Text>
@@ -158,6 +163,9 @@ const styles = StyleSheet.create({
     gap: 10,
     marginBottom: 5,
     marginLeft: 5,
+  },
+  caption: {
+    marginLeft: 10,
   },
   img: {
     width: 40,

@@ -160,6 +160,7 @@ const Trips = () => {
           <ScrollView style={styles.scroll}>
             <View style={styles.myTripsView}>
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
+              {!myTripsData && <Text> You didn't book any trip... </Text>}
               {myTripsData.map((item, index) => (
                 <MyTrip item={item} key={index} />
               ))}

@@ -7,46 +7,77 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
 // import { Link } from "expo-router";
 import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Posts = () => {
   const [text, setText] = useState("");
   const router = useRouter();
-  const posts = [
-    {
-      id: 1,
-      caption: "the best trip",
-      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-      user_id: 12,
-      created_at: "2024-04-25T12:30:08.000000Z",
-    },
-    {
-      id: 2,
-      caption: "the best trip",
-      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-      user_id: 12,
-      created_at: "2024-04-25T12:30:08.000000Z",
-    },
-    {
-      id: 3,
-      caption: "the best trip",
-      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-      user_id: 12,
-      created_at: "2024-04-25T12:30:08.000000Z",
-    },
-    {
-      id: 4,
-      caption: "the best trip",
-      image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-      user_id: 12,
-      created_at: "2024-04-25T12:30:08.000000Z",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchTrips = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(`http://192.168.0.102:8000/api/posts`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+          setPosts(data);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchTrips();
+  }, []);
+
+  // const posts = [
+  //   {
+  //     id: 1,
+  //     caption: "the best trip",
+  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //     user_id: 12,
+  //     created_at: "2024-04-25T12:30:08.000000Z",
+  //   },
+  //   {
+  //     id: 2,
+  //     caption: "the best trip",
+  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //     user_id: 12,
+  //     created_at: "2024-04-25T12:30:08.000000Z",
+  //   },
+  //   {
+  //     id: 3,
+  //     caption: "the best trip",
+  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //     user_id: 12,
+  //     created_at: "2024-04-25T12:30:08.000000Z",
+  //   },
+  //   {
+  //     id: 4,
+  //     caption: "the best trip",
+  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
+  //     user_id: 12,
+  //     created_at: "2024-04-25T12:30:08.000000Z",
+  //   },
+  // ];
   //   const user = {
   //     id: 22,
   //     name: "louna",
@@ -141,8 +172,8 @@ const Posts = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.posts}>
-            {posts.map((post) => (
-              <Post post={post} />
+            {posts.map((post, index) => (
+              <Post post={post} key={index} />
             ))}
           </View>
         </View>

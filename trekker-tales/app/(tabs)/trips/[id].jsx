@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   hero: {
     height: 300,
     width: "100%",
-    backgroundColor: "red",
+    backgroundColor: "#d7d7d7",
   },
   image: {
     width: "100%",
