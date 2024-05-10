@@ -78,56 +78,60 @@ const Profile = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.profile}>
-        <View style={styles.top}>
-          <View style={styles.image}>
-            <Image
-              source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-              style={styles.img}
-            />
-          </View>
-        </View>
-        <View style={styles.all}>
-          <View style={styles.topinfo}>
-            <Text style={styles.name}>{user.name}</Text>
-            <Text style={styles.email}>{email}</Text>
-          </View>
-          <View style={styles.info}>
-            <View style={styles.singleinfo}>
-              <MaterialCommunityIcons
-                name="email-outline"
-                size={28}
-                color="grey"
+      {user && (
+        <View style={styles.profile}>
+          <View style={styles.top}>
+            <View style={styles.image}>
+              <Image
+                source={{
+                  uri: `http://192.168.0.102:8000/images/${user.user_image}`,
+                }}
+                style={styles.img}
               />
-              <Text style={styles.text}>{email}</Text>
-            </View>
-            <View style={styles.singleinfo}>
-              <MaterialCommunityIcons name="phone" size={28} color="grey" />
-              <Text style={styles.text}>{phone}</Text>
-            </View>
-            <View style={styles.singleinfo}>
-              <MaterialCommunityIcons
-                name="map-marker-outline"
-                size={28}
-                color="grey"
-              />
-              <Text style={styles.text}>{address}</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.button} onPress={update}>
-            <MaterialIcons name="border-color" size={24} color="white" />
-          </TouchableOpacity>
-          <View style={styles.taken}>
-            <Text style={styles.takentitle}>Taken Trips</Text>
+          <View style={styles.all}>
+            <View style={styles.topinfo}>
+              <Text style={styles.name}>{user.name}</Text>
+              <Text style={styles.email}>{email}</Text>
+            </View>
+            <View style={styles.info}>
+              <View style={styles.singleinfo}>
+                <MaterialCommunityIcons
+                  name="email-outline"
+                  size={28}
+                  color="grey"
+                />
+                <Text style={styles.text}>{email}</Text>
+              </View>
+              <View style={styles.singleinfo}>
+                <MaterialCommunityIcons name="phone" size={28} color="grey" />
+                <Text style={styles.text}>{user.phone}</Text>
+              </View>
+              <View style={styles.singleinfo}>
+                <MaterialCommunityIcons
+                  name="map-marker-outline"
+                  size={28}
+                  color="grey"
+                />
+                <Text style={styles.text}>{address}</Text>
+              </View>
+            </View>
+            <TouchableOpacity style={styles.button} onPress={update}>
+              <MaterialIcons name="border-color" size={24} color="white" />
+            </TouchableOpacity>
+            <View style={styles.taken}>
+              <Text style={styles.takentitle}>Taken Trips</Text>
 
-            <FlatList
-              data={trips}
-              renderItem={({ item }) => <TakenTrip trip={item} />}
-              keyExtractor={(item) => item.id.toString()}
-            />
+              <FlatList
+                data={trips}
+                renderItem={({ item }) => <TakenTrip trip={item} />}
+                keyExtractor={(item) => item.id.toString()}
+              />
+            </View>
           </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };
