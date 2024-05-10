@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import TakenTrip from "../../../Components/takenTrip";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
@@ -21,7 +22,7 @@ const Profile = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch("http://192.168.0.103:8000/api/user", {
+          const response = await fetch("http://192.168.0.102:8000/api/user", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -31,7 +32,7 @@ const Profile = () => {
           }
           const data = await response.json();
 
-          setUser(data);
+          setUser(data.user);
           setLoading(false);
         } else {
           setLoading(true);
@@ -88,7 +89,7 @@ const Profile = () => {
         </View>
         <View style={styles.all}>
           <View style={styles.topinfo}>
-            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.name}>{user.name}</Text>
             <Text style={styles.email}>{email}</Text>
           </View>
           <View style={styles.info}>

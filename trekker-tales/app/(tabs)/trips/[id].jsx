@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   ImageBackground,
   ScrollView,
   StyleSheet,
@@ -67,67 +68,70 @@ const SingleTrip = () => {
   // } = tripData;
   return (
     <View style={styles.page}>
-      <ScrollView style={styles.scroll}>
-        <Back />
-        {book && <View style={styles.overlay}></View>}
-        <View style={styles.single}>
-          <View style={styles.hero}>
-            <ImageBackground
-              source={{
-                uri: `http://192.168.0.103:8000/${tripData.trip_image}`,
-              }}
-              style={styles.image}
-            ></ImageBackground>
-          </View>
-          <View style={styles.second}>
-            <View style={styles.important}>
-              <Text style={styles.name}>{tripData.name}</Text>
-              <Text style={styles.fee}>${parseInt(tripData.fees)}</Text>
+      {loading ? (
+        <ActivityIndicator size="large" color="#e87a00" />
+      ) : (
+        <ScrollView style={styles.scroll}>
+          <Back />
+          {book && <View style={styles.overlay}></View>}
+          <View style={styles.single}>
+            <View style={styles.hero}>
+              <ImageBackground
+                source={{
+                  uri: `http://192.168.0.103:8000/${tripData.trip_image}`,
+                }}
+                style={styles.image}
+              ></ImageBackground>
             </View>
-            <View>
-              <Text style={styles.overview}>Overview</Text>
-              <Text style={styles.description}>{tripData.description}</Text>
-            </View>
-            <View>
-              <View style={styles.singledata}>
-                <Text style={styles.prop}>Destination</Text>
-                <Text style={styles.destination}>{tripData.destination}</Text>
+            <View style={styles.second}>
+              <View style={styles.important}>
+                <Text style={styles.name}>{tripData.name}</Text>
+                <Text style={styles.fee}>${parseInt(tripData.fees)}</Text>
               </View>
-              <View style={styles.singledata}>
-                <Text style={styles.prop}>Date</Text>
-                <Text>{tripData.date}</Text>
+              <View>
+                <Text style={styles.overview}>Overview</Text>
+                <Text style={styles.description}>{tripData.description}</Text>
               </View>
-              <View style={styles.singledata}>
-                <Text style={styles.prop}>Start-time</Text>
-                <Text>{tripData.start_time}</Text>
-              </View>
-              <View style={styles.singledata}>
-                <Text style={styles.prop}>End-time</Text>
-                <Text>{tripData.end_time}</Text>
-              </View>
+              <View>
+                <View style={styles.singledata}>
+                  <Text style={styles.prop}>Destination</Text>
+                  <Text style={styles.destination}>{tripData.destination}</Text>
+                </View>
+                <View style={styles.singledata}>
+                  <Text style={styles.prop}>Date</Text>
+                  <Text>{tripData.date}</Text>
+                </View>
+                <View style={styles.singledata}>
+                  <Text style={styles.prop}>Start-time</Text>
+                  <Text>{tripData.start_time}</Text>
+                </View>
+                <View style={styles.singledata}>
+                  <Text style={styles.prop}>End-time</Text>
+                  <Text>{tripData.end_time}</Text>
+                </View>
 
-              <View style={styles.singledata}>
-                <Text style={styles.prop}>Available-seats</Text>
-                <Text>
-                  {tripData.available_seats}/{tripData.total_seats}
-                </Text>
-              </View>
-            </View>
-            {/* {tripData && (
-              <View style={styles.locations}>
-                <Text style={styles.loctitle}>Places to visit </Text>
-                {tripData.locations.map((location) => (
-                  <Text key={location.id} style={styles.locname}>
-                    {location.name}
+                <View style={styles.singledata}>
+                  <Text style={styles.prop}>Available-seats</Text>
+                  <Text>
+                    {tripData.available_seats}/{tripData.total_seats}
                   </Text>
-                ))}
+                </View>
               </View>
-            )} */}
-            <Text styele={styles.hint}>
-              <Text style={styles.hintname}>Hint:</Text> You can bring some
-              chocolate with you.
-            </Text>
-            {/* <TouchableOpacity
+              {/* {tripData && (
+                <View style={styles.locations}>
+                  <Text style={styles.loctitle}>Places to visit </Text>
+                  {tripData.locations.map((location) => (
+                    <Text key={location.id} style={styles.locname}>
+                      {location.name}
+                    </Text>
+                  ))}
+                </View>
+              )} */}
+              <Text styele={styles.hint}>
+                <Text style={styles.hintname}>Hint:</Text> You can bring some
+                chocolate with you.
+              </Text>
+              {/* <TouchableOpacity
             onPress={() => {
               setBook(true);
             }}
@@ -135,17 +139,18 @@ const SingleTrip = () => {
           >
             <Text style={styles.viewmap}>Book Now</Text>
           </TouchableOpacity> */}
-          </View>
-          {message && (
-            <View style={styles.message}>
-              <Text style={styles.msgText}>
-                You booking successfully completed
-              </Text>
             </View>
-          )}
-          {book && <BookCard setBook={setBook} id={id} />}
-        </View>
-      </ScrollView>
+            {message && (
+              <View style={styles.message}>
+                <Text style={styles.msgText}>
+                  You booking successfully completed
+                </Text>
+              </View>
+            )}
+            {book && <BookCard setBook={setBook} id={id} />}
+          </View>
+        </ScrollView>
+      )}
       <TouchableOpacity
         onPress={() => {
           setBook(true);
