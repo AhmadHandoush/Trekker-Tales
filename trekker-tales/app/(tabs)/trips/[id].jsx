@@ -147,7 +147,9 @@ const SingleTrip = () => {
                 </Text>
               </View>
             )}
-            {book && <BookCard setBook={setBook} id={id} />}
+            {book && (
+              <BookCard setBook={setBook} id={id} setMessage={setMessage} />
+            )}
           </View>
         </ScrollView>
       )}
