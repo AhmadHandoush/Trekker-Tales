@@ -5,6 +5,7 @@ import {
   TextInput,
   View,
   ActivityIndicator,
+  TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import TripCard from "../../../Components/TripCard";
@@ -20,6 +21,8 @@ const Trips = () => {
   const [trips, setTrips] = useState([]);
   const [filteredTrips, setFilteredTrips] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showMyTrips, setShowMyTrips] = useState(false);
+  const [myTrips, setMyTrips] = useState([]);
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -58,6 +61,13 @@ const Trips = () => {
     setFilteredTrips(filtered);
   }, [searchQuery, trips]);
 
+  useEffect(() => {
+    // Assuming you have a way to fetch user's trips based on some identifier
+    // Here I'm just filtering trips randomly as an example
+    const userTrips = trips.filter((trip) => trip.owner === "user");
+    setMyTrips(userTrips);
+  }, [trips]);
+
   const handleSearch = (text) => {
     setSearchQuery(text);
   };
@@ -66,8 +76,26 @@ const Trips = () => {
     setFocus(true);
   };
 
+  const toggleView = () => {
+    setShowMyTrips(!showMyTrips);
+  };
+
   return (
     <View style={styles.trips}>
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={[styles.button, !showMyTrips && styles.activeButton]}
+          onPress={toggleView}
+        >
+          <Text style={styles.buttonText}>All</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, showMyTrips && styles.activeButton]}
+          onPress={toggleView}
+        >
+          <Text style={styles.buttonText}>My Trips</Text>
+        </TouchableOpacity>
+      </View>
       <Back title="Trips" />
       <View style={[styles.search, focus && styles.focused]}>
         <Feather name="map-pin" size={20} color="#d7d7d7" />
@@ -83,6 +111,21 @@ const Trips = () => {
       </View>
       {loading ? (
         <ActivityIndicator animating={loading} size="medium" color="#E87A00" />
+      ) : showMyTrips ? (
+        <ScrollView>
+          <View style={styles.container}>
+            {myTrips.map((trip, index) => (
+              <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
+                <TripCard
+                  trip={trip}
+                  onPress={() => {
+                    router.push(`/trips/${trip.id}`);
+                  }}
+                />
+              </View>
+            ))}
+          </View>
+        </ScrollView>
       ) : (
         <ScrollView>
           <View style={styles.container}>
@@ -143,5 +186,23 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     color: "black",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  button: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: "#555",
+  },
+  activeButton: {
+    backgroundColor: "#E87A00",
   },
 });

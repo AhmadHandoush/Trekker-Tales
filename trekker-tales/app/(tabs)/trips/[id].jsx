@@ -24,6 +24,19 @@ const SingleTrip = () => {
   const router = useRouter();
   const { id } = useLocalSearchParams();
   const [tripData, setTripData] = useState({});
+  const defaultData = {
+    name: "",
+    destination: "",
+    description: "",
+    date: "",
+    trip_image: "",
+    start_time: "",
+    end_time: "",
+    total_seats: "",
+    available_seats: "",
+    fees: "",
+    locations: [],
+  };
   useEffect(() => {
     const fetchTrips = async () => {
       setLoading(true);
@@ -54,18 +67,19 @@ const SingleTrip = () => {
     fetchTrips();
   }, []);
 
-  // const {
-  //   destination,
-  //   description,
-  //   date,
-  //   trip_image,
-  //   start_time,
-  //   end_time,
-  //   total_seats,
-  //   available_seats,
-  //   fees,
-  //   locations,
-  // } = tripData;
+  const {
+    name,
+    destination,
+    description,
+    date,
+    trip_image,
+    start_time,
+    end_time,
+    total_seats,
+    available_seats,
+    fees,
+    locations,
+  } = tripData || defaultData;
   return (
     <View style={styles.page}>
       {loading ? (
@@ -85,48 +99,48 @@ const SingleTrip = () => {
             </View>
             <View style={styles.second}>
               <View style={styles.important}>
-                <Text style={styles.name}>{tripData.name}</Text>
-                <Text style={styles.fee}>${parseInt(tripData.fees)}</Text>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.fee}>${parseInt(fees)}</Text>
               </View>
               <View>
                 <Text style={styles.overview}>Overview</Text>
-                <Text style={styles.description}>{tripData.description}</Text>
+                <Text style={styles.description}>{description}</Text>
               </View>
               <View>
                 <View style={styles.singledata}>
                   <Text style={styles.prop}>Destination</Text>
-                  <Text style={styles.destination}>{tripData.destination}</Text>
+                  <Text style={styles.destination}>{destination}</Text>
                 </View>
                 <View style={styles.singledata}>
                   <Text style={styles.prop}>Date</Text>
-                  <Text>{tripData.date}</Text>
+                  <Text>{date}</Text>
                 </View>
                 <View style={styles.singledata}>
                   <Text style={styles.prop}>Start-time</Text>
-                  <Text>{tripData.start_time}</Text>
+                  <Text>{start_time}</Text>
                 </View>
                 <View style={styles.singledata}>
                   <Text style={styles.prop}>End-time</Text>
-                  <Text>{tripData.end_time}</Text>
+                  <Text>{end_time}</Text>
                 </View>
 
                 <View style={styles.singledata}>
                   <Text style={styles.prop}>Available-seats</Text>
                   <Text>
-                    {tripData.available_seats}/{tripData.total_seats}
+                    {available_seats}/{total_seats}
                   </Text>
                 </View>
               </View>
-              {tripData && (
+              {/* {tripData && (
                 <View style={styles.locations}>
                   <Text style={styles.loctitle}>Places to visit </Text>
-                  {tripData.locations.map((location) => (
+                  {locations.map((location) => (
                     <Text key={location.id} style={styles.locname}>
                       {location.name}
                     </Text>
                   ))}
                 </View>
-              )}
+              )} */}
               <Text styele={styles.hint}>
                 <Text style={styles.hintname}>Hint:</Text> You can bring some
                 chocolate with you.
