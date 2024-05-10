@@ -65,8 +65,8 @@ const Trips = () => {
   useEffect(() => {
     if (showMyTrips) {
       setMyTripsLoading(true);
-      // Fetch data from another API for "My Trips" view
-      fetchMyTripsData()
+
+      get_mytrips()
         .then((data) => {
           setMyTripsData(data);
           setMyTripsLoading(false);
@@ -78,10 +78,17 @@ const Trips = () => {
     }
   }, [showMyTrips]);
 
-  const fetchMyTripsData = async () => {
+  const get_mytrips = async () => {
+    const token = await AsyncStorage.getItem("token");
     try {
-      // Fetch data from another API
-      const response = await fetch("https://api.example.com/my-trips");
+      const response = await fetch(
+        "http://192.168.0.102:8000/api/getBookingsByUser",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch My Trips data");
       }
