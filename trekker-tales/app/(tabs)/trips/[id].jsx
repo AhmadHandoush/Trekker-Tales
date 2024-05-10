@@ -117,7 +117,7 @@ const SingleTrip = () => {
                   </Text>
                 </View>
               </View>
-              {/* {tripData && (
+              {tripData && (
                 <View style={styles.locations}>
                   <Text style={styles.loctitle}>Places to visit </Text>
                   {tripData.locations.map((location) => (
@@ -126,7 +126,7 @@ const SingleTrip = () => {
                     </Text>
                   ))}
                 </View>
-              )} */}
+              )}
               <Text styele={styles.hint}>
                 <Text style={styles.hintname}>Hint:</Text> You can bring some
                 chocolate with you.

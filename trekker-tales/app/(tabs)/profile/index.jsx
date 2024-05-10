@@ -16,6 +16,13 @@ const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const defaultUser = {
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    user_image: "",
+  };
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -72,7 +79,7 @@ const Profile = () => {
     },
   ];
 
-  const { name, email, phone, address, user_image } = user;
+  const { name, email, phone, address, user_image } = user || defaultUser;
   const update = () => {
     console.log("update");
   };

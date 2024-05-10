@@ -25,7 +25,7 @@ function SingleTrip() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `http://127.0.0.1:8000/api/get_trip/${id}`,
+          `http://192.168.0.102:8000/api/get_trip/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ function SingleTrip() {
         <div className="info flex">
           <div className="single-left">
             <img
-              src={`http://127.0.0.1:8000/${trip_image}`}
+              src={`http://192.168.0.102:8000/${trip_image}`}
               alt={name}
               className="s-image"
             />

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const AddTrip = ({ setAdd }) => {
   const token = localStorage.getItem("token");
   const [locations, setLocations] = useState([]);
+  const [success, setSuccess] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +23,7 @@ const AddTrip = ({ setAdd }) => {
     const fetchLocations = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/get_locations",
+          "http://192.168.0.102:8000/api/get_locations",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -70,7 +71,7 @@ const AddTrip = ({ setAdd }) => {
       }
     });
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/add_trip", {
+      const response = await fetch("http://192.168.0.102:8000/api/add_trip", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -82,6 +83,20 @@ const AddTrip = ({ setAdd }) => {
       }
       const data = await response.json();
       console.log(data);
+      setFormData({
+        name: "",
+        destination: "",
+        date: "",
+        start_time: "",
+        end_time: "",
+        total_seats: "",
+        available_seats: "",
+        fees: "",
+        description: "",
+        trip_image: null,
+        locations: [],
+      });
+      setSuccess("Trip Created Successfully");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -213,6 +228,7 @@ const AddTrip = ({ setAdd }) => {
             ))}
           </select>
         </div>
+        {success && <p className="success-created">{success}</p>}
 
         <button type="submit">Submit</button>
       </form>

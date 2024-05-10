@@ -173,3 +173,6 @@
   font-weight: bold;
   font-size: 16;
 }
+.success-created {
+  color: green;
+}

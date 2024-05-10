@@ -11,7 +11,7 @@ function TripCard({ trip, isLoading }) {
           <Loader />
         ) : (
           <img
-            src={`http://127.0.0.1:8000/${trip_image}`}
+            src={`http://192.168.0.102:8000/${trip_image}`}
             alt={name}
             className="s-image"
           />
