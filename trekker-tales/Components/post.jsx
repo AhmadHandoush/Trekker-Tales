@@ -15,53 +15,54 @@ const Post = ({ post }) => {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
   const [commentsCount, setCommentsCount] = useState(0);
+  const
 
-  // useEffect(() => {
-  //   const get_likes = async () => {
-  //     const token = await AsyncStorage.getItem("token");
-  //     try {
-  //       const response = await fetch(
-  //         `http://192.168.0.103:8000/get_likes/${id}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       const data = await response.json();
+  useEffect(() => {
+    const get_likes = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(
+          `http://192.168.0.102:8000/api/likes/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
 
-  //       setLikes(data.likes);
-  //     } catch (error) {
-  //       console.error("Error fetching likes:", error);
-  //     }
-  //   };
-  //   get_likes();
-  //   const get_comments_number = async () => {
-  //     const token = await AsyncStorage.getItem("token");
-  //     try {
-  //       const response = await fetch(
-  //         `http://192.168.0.103:8000/get_comments_number/${id}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       const data = await response.json();
+        setLikes(data.likes);
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+    get_likes();
+    const get_comments_number = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(
+          `http://192.168.0.102:8000/api/comments_number/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
 
-  //       setCommentsCount(data.commentsCount);
-  //     } catch (error) {
-  //       console.error("Error fetching comments count:", error);
-  //     }
-  //   };
-  //   get_comments_number();
-  // }, []);
+        setCommentsCount(data.comments);
+      } catch (error) {
+        console.error("Error fetching comments count:", error);
+      }
+    };
+    get_comments_number();
+  }, []);
 
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://192.168.0.103:8000/add_comment/${id}`,
+        `http://192.168.0.102:8000/api/add_comment/${id}`,
         {
           method: "POST",
           headers: {
@@ -82,10 +83,9 @@ const Post = ({ post }) => {
   const handleAddLike = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
-      const response = await fetch(`http://192.168.0.103:8000/like/${id}`, {
+      const response = await fetch(`http://192.168.0.102:8000/api/like/${id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ postId: post.id }),
