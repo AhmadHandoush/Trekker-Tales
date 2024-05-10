@@ -158,6 +158,7 @@ const Trips = () => {
                 <View style={styles.mine} key={index}>
                   <View style={styles.mineimg}>
                     <Image
+                      style={styles.mineimage}
                       source={require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
                     />
                   </View>
@@ -258,13 +259,20 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   mine: {
-    width: 250,
+    width: 100,
     height: 150,
-    display,
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   mineimg: {
     height: "100%",
+    width: "30%",
+    overflow: "hidden",
   },
+  mineimage: {},
   mineName: {},
   mineDate: {},
 });
