@@ -1,9 +1,19 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import useBaseUrl from "./base_url";
+import { Link } from "expo-router";
 
 const MyTrip = ({ item }) => {
+  const currentDate = new Date();
+  const [current, setCurrent] = useState(true);
+  const tripDate = new Date(item.trip.date);
+  useEffect(() => {
+    if (tripDate == currentDate) {
+      setCurrent(true);
+    }
+  }, []);
+
   const baseUrl = useBaseUrl();
   return (
     <View style={styles.mine}>
@@ -24,6 +34,11 @@ const MyTrip = ({ item }) => {
           />{" "}
           {item.trip.date}
         </Text>
+        {current && (
+          <Link href="/(tabs)/home/mine" style={{ color: "#e87a00" }}>
+            Go Live Now
+          </Link>
+        )}
       </View>
     </View>
   );
