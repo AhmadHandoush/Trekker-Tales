@@ -17,6 +17,7 @@ import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
+import Back from "../../../Components/back";
 
 const Posts = () => {
   const [caption, setCaption] = useState("");
@@ -168,6 +169,7 @@ const Posts = () => {
   };
   return (
     <ScrollView style={styles.scroll}>
+      <Back title="Posts" />
       <View style={styles.postsPage}>
         <View style={styles.data}>
           <View style={styles.add}>

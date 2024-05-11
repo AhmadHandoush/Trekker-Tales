@@ -17,6 +17,7 @@ import AsyncStorage, {
 import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
+import Back from "../../../Components/back";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
@@ -79,6 +80,7 @@ const Profile = () => {
   return (
     <>
       {edit && <View style={styles.overlay}></View>}
+      <Back title="Profile" />
 
       <ScrollView style={styles.page}>
         <View style={styles.container}>
