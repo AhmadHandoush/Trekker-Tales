@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   ScrollView,
   StyleSheet,
@@ -14,7 +15,7 @@ import Post from "../../../Components/post";
 // import { Link } from "expo-router";
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
 
 const Posts = () => {
@@ -53,51 +54,49 @@ const Posts = () => {
   }, []);
 
   const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: false,
+      allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
 
-    if (!result.canceled) {
-      setImage(result);
+    if (!result.cancelled) {
+      setImage(result.uri);
     }
   };
-  const handleSubmit = async () => {
-    if (!caption) {
-      Alert.alert("Error", "Please enter some text");
-      return;
-    }
 
+  const handleSubmit = async () => {
+    console.log(image);
+    console.log(caption);
     try {
+      const token = await AsyncStorage.getItem("token");
       const formData = new FormData();
       formData.append("caption", caption);
       formData.append("image", {
-        uri: image.uri,
-        type: image.type,
-        name: image.fileName || `photo-${Date.now()}.jpg`,
+        uri: image,
+        name: "image.jpg",
+        type: "image/jpeg",
       });
 
-      const response = await fetch("your-backend-endpoint", {
-        method: "POST",
-        body: formData,
+      const response = await axios.post(`${BASE_URL}/api/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      if (response.ok) {
-        Alert.alert("Success", "Trip post added successfully");
-
-        setText("");
-        setImage(null);
-      } else {
-        Alert.alert("Error", "Failed to add trip post");
-      }
+      // Handle response
+      console.log("Response:", response.data);
+      // Optionally, show a success message
+      setCaption("");
+      Alert.alert("Image Uploaded Successfully");
     } catch (error) {
-      console.error("Error:", error);
-      Alert.alert("Error", "Something went wrong. Please try again later");
+      console.error("Error uploading image:", error);
+      // Optionally, show an error message
+      Alert.alert("Error Uploading Image");
     }
   };
-
   return (
     <ScrollView style={styles.scroll}>
       <View style={styles.postsPage}>
@@ -118,7 +117,7 @@ const Posts = () => {
                 selectionColor={"#E87A00"}
                 required
               />
-              <TouchableOpacity style={styles.btnAdd}>
+              <TouchableOpacity style={styles.btnAdd} onPress={handleSubmit}>
                 <Text style={styles.btnText}>Add</Text>
               </TouchableOpacity>
             </View>
