@@ -76,60 +76,70 @@ const Profile = () => {
     console.log("Ahmad");
   };
   return (
-    <ScrollView style={styles.page}>
+    <>
       {edit && <View style={styles.overlay}></View>}
-      <View style={styles.container}>
-        {user && (
-          <View style={styles.profile}>
-            <View style={styles.top}>
-              <TouchableOpacity style={styles.btnLogout} onPress={handleLogout}>
-                <Text style={styles.logout}>Log Out</Text>
-              </TouchableOpacity>
-              <View style={styles.image}>
-                <Image
-                  source={{
-                    uri: `${BASE_URL}/images/${user.user_image}`,
-                  }}
-                  style={styles.img}
-                />
+
+      <ScrollView style={styles.page}>
+        <View style={styles.container}>
+          {user && (
+            <View style={styles.profile}>
+              <View style={styles.top}>
+                <TouchableOpacity
+                  style={styles.btnLogout}
+                  onPress={handleLogout}
+                >
+                  <Text style={styles.logout}>Log Out</Text>
+                </TouchableOpacity>
+                <View style={styles.image}>
+                  <Image
+                    source={{
+                      uri: `${BASE_URL}/images/${user.user_image}`,
+                    }}
+                    style={styles.img}
+                  />
+                </View>
+              </View>
+              <View style={styles.all}>
+                <View style={styles.topinfo}>
+                  <Text style={styles.name}>{user.name}</Text>
+                  <Text style={styles.email}>{email}</Text>
+                </View>
+                <View style={styles.info}>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="email-outline"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{email}</Text>
+                  </View>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="phone"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{user.phone}</Text>
+                  </View>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="map-marker-outline"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{address}</Text>
+                  </View>
+                </View>
+                <TouchableOpacity style={styles.button} onPress={handleEdit}>
+                  <MaterialIcons name="border-color" size={24} color="white" />
+                </TouchableOpacity>
               </View>
             </View>
-            <View style={styles.all}>
-              <View style={styles.topinfo}>
-                <Text style={styles.name}>{user.name}</Text>
-                <Text style={styles.email}>{email}</Text>
-              </View>
-              <View style={styles.info}>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons
-                    name="email-outline"
-                    size={28}
-                    color="grey"
-                  />
-                  <Text style={styles.text}>{email}</Text>
-                </View>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons name="phone" size={28} color="grey" />
-                  <Text style={styles.text}>{user.phone}</Text>
-                </View>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons
-                    name="map-marker-outline"
-                    size={28}
-                    color="grey"
-                  />
-                  <Text style={styles.text}>{address}</Text>
-                </View>
-              </View>
-              <TouchableOpacity style={styles.button} onPress={handleEdit}>
-                <MaterialIcons name="border-color" size={24} color="white" />
-              </TouchableOpacity>
-            </View>
-          </View>
-        )}
-      </View>
+          )}
+        </View>
+      </ScrollView>
       <EditProfile handleEdit={handleEdit} />
-    </ScrollView>
+    </>
   );
 };
 
