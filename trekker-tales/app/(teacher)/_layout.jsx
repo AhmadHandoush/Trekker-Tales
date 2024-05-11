@@ -30,23 +30,23 @@ const TabsLayout = () => {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="chat"
         options={{
-          tabBarLabel: "Home",
-          title: "Home",
+          tabBarLabel: "Chat",
+          title: "Chat",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="home" size={24} color={color} />
+            <AntDesign name="message" size={24} color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="trips"
+        name="posts"
         options={{
-          tabBarLabel: "Trips",
-          title: "Trips",
+          tabBarLabel: "Posts",
+          title: "Posts",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="car" size={24} color={color} />
+            <AntDesign name="calendar" size={24} color={color} />
           ),
         }}
       />

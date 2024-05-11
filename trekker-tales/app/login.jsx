@@ -48,7 +48,11 @@ const login = () => {
       .then((data) => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
-        setTimeout(() => router.push("/(tabs)/home"), 1000);
+        if (data.user.role == "teacher") {
+          setTimeout(() => router.push("/(teacher)/home"), 1000);
+        } else {
+          setTimeout(() => router.push("/(tabs)/home"), 1000);
+        }
 
         AsyncStorage.setItem("token", data.authorisation.token);
       })
