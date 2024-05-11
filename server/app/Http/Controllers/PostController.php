@@ -22,18 +22,20 @@ class PostController extends Controller
         ]);
         $user = Auth::user();
 
+        if($request ->hasFile('image')){
 
-        $uploadedFile = $request->file('image');
-        $extension = $uploadedFile->getClientOriginalExtension();
-        $imageName = time() . '.' . $extension;
-        $imagePath = $uploadedFile->storeAs('images', $imageName);
+            $uploadedFile = $request->file('image');
+            $extension = $uploadedFile->getClientOriginalExtension();
+            $imageName = time() . '.' . $extension;
+            $uploadedFile ->move(public_path('images'),$imageName);
 
-        $post = new Post();
-        $post->caption = $request->caption;
-        $post->image = $imagePath;
-        $post->user_id = $user->id;
-        $post->save();
+            $post = new Post();
+            $post->caption = $request->caption;
+            $post->image = $imageName;
+            $post->user_id = $user->id;
+            $post->save();
 
+        }
         return response()->json([
             'success' => true,
             'message' => 'Post added successfully.'

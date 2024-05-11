@@ -75,6 +75,10 @@ const Posts = () => {
 
   const handleSubmit = async () => {
     const token = await AsyncStorage.getItem("token");
+    if (!caption || !image) {
+      Alert.alert("Image and caption are required");
+      return;
+    }
     try {
       const formData = new FormData();
       formData.append("image", {
@@ -139,9 +143,11 @@ const Posts = () => {
               <Post post={post} key={index} setSuccess={setSuccess} />
             ))}
           </View>
-          <View style={styles.success}>
-            <Text style={styles.successText}>Post Added Successfully </Text>
-          </View>
+          {success && (
+            <View style={styles.success}>
+              <Text style={styles.successText}>Post Added Successfully </Text>
+            </View>
+          )}
         </View>
       </View>
     </ScrollView>
