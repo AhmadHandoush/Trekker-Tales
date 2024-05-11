@@ -181,6 +181,23 @@ const styles = StyleSheet.create({
     borderBottomStartRadius: 30,
     position: "relative",
   },
+  btnLogout: {
+    position: "absolute",
+    right: 10,
+    top: 30,
+    backgroundColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 5,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderRadius: 10,
+  },
+  logout: {
+    color: "#e87a00",
+    fontWeight: "bold",
+  },
   image: {
     position: "absolute",
     bottom: "-30%",
@@ -250,10 +267,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 10,
-  },
-  logout: {
-    fontWeight: "bold",
-    color: "white",
-    fontSize: 18,
   },
 });
