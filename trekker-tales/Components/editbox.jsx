@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
 import { BASE_URL } from "../app/utils/constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const EditProfile = ({ setEdit, setSuccess }) => {
   const [name, setName] = useState("");
@@ -63,6 +64,7 @@ const EditProfile = ({ setEdit, setSuccess }) => {
         }
       );
       setSuccess(true);
+      setEdit(false);
       setTimeout(() => setSuccess(false), 2000);
 
       console.log("Response:", response.data);

@@ -139,7 +139,7 @@ const Profile = () => {
           )}
         </View>
       </ScrollView>
-      {edit && <EditProfile setEdit={setEdit} />}
+      {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
       {success && (
         <View style={styles.success}>
           <Text style={styles.successText}>Data updated successfully</Text>
