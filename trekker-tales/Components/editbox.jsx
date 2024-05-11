@@ -44,7 +44,17 @@ const EditProfile = () => {
 export default EditProfile;
 
 const styles = StyleSheet.create({
-  edit: {},
+  edit: {
+    position: "absolute",
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "white",
+    padding: 10,
+    display: "flex",
+    flexDirection: "column",
+    gap: 5,
+  },
   btn_close: {},
   close_text: {},
   title: {},
