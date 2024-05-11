@@ -26,6 +26,7 @@ const Profile = () => {
   const [edit, setEdit] = useState(false);
   const router = useRouter();
   const [success, setSuccess] = useState(false);
+
   const defaultUser = {
     name: "",
     email: "",
@@ -33,6 +34,22 @@ const Profile = () => {
     address: "",
     user_image: "",
   };
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (!token) {
+          return <Redirect href={"../../login"} />;
+        }
+      } catch (error) {
+        console.error("Error checking token:", error);
+      }
+    };
+
+    checkToken();
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -69,7 +86,7 @@ const Profile = () => {
     const token = await AsyncStorage.getItem("token");
     try {
       await AsyncStorage.clear();
-      router.push("../../login");
+      router.replace("../../login");
     } catch (error) {
       console.error("Error clearing local storage:", error);
     }
@@ -196,7 +213,7 @@ const styles = StyleSheet.create({
   btnLogout: {
     position: "absolute",
     right: 10,
-    top: 30,
+    top: 50,
     backgroundColor: "white",
     display: "flex",
     justifyContent: "center",

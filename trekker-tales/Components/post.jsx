@@ -11,7 +11,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
 
-const Post = ({ post, setSuccess }) => {
+const Post = ({ post, setSuccesscomment }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
@@ -96,7 +96,10 @@ const Post = ({ post, setSuccess }) => {
       const data = await response.json();
 
       setComment("");
-      setSuccess("comment added successfully");
+      setSuccesscomment(true);
+      setTimeout(() => {
+        setSuccesscomment(false);
+      }, 2000);
       setCommentsCount(commentsCount + 1);
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -114,9 +117,22 @@ const Post = ({ post, setSuccess }) => {
       });
       const data = await response.json();
 
-      setLikes(likes + 1);
+      if (response.ok) {
+        setLikes(likes + (data.liked ? 1 : -1));
+        if (!data.liked) {
+          await fetch(`${BASE_URL}/api/dislike/${id}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ postId: post.id }),
+          });
+        }
+      } else {
+        console.error("Failed to like/dislike post");
+      }
     } catch (error) {
-      console.error("Error liking post:", error);
+      console.error("Error liking/disliking post:", error);
     }
   };
 

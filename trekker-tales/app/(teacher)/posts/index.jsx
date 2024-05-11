@@ -13,7 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
 // import { Link } from "expo-router";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
@@ -25,8 +25,23 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [successComment, setSuccesscomment] = useState(false);
   const [image, setImage] = useState(null);
   const [profile, setProfile] = useState(null);
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (!token) {
+          return <Redirect href={"../../login"} />;
+        }
+      } catch (error) {
+        console.error("Error checking token:", error);
+      }
+    };
+
+    checkToken();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -208,7 +223,11 @@ const Posts = () => {
           </View>
           <View style={styles.posts}>
             {posts.map((post, index) => (
-              <Post post={post} key={index} setSuccess={setSuccess} />
+              <Post
+                post={post}
+                key={index}
+                setSuccesscomment={setSuccesscomment}
+              />
             ))}
           </View>
           {success && (
@@ -217,6 +236,11 @@ const Posts = () => {
             </View>
           )}
         </View>
+        {successComment && (
+          <View style={styles.success}>
+            <Text style={styles.successText}>Comment Added Successfully </Text>
+          </View>
+        )}
       </View>
     </ScrollView>
   );
