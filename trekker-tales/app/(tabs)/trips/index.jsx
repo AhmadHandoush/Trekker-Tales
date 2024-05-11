@@ -16,10 +16,9 @@ import { useRouter } from "expo-router";
 import Back from "../../../Components/back";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MyTrip from "../../../Components/mytrip";
-import useBaseUrl from "../../../Components/base_url";
+import { BASE_URL } from "../../utils/constants";
 
 const Trips = () => {
-  const baseUrl = useBaseUrl();
   const router = useRouter();
   const [focus, setFocus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,8 +26,83 @@ const Trips = () => {
   const [filteredTrips, setFilteredTrips] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMyTrips, setShowMyTrips] = useState(false);
-  const [myTripsData, setMyTripsData] = useState([]);
+  const [myTripsData, setMyTripsData] = useState(initial);
   const [myTripsLoading, setMyTripsLoading] = useState(false);
+  const initial = [
+    {
+      id: 14,
+      trip_id: 25,
+      user_id: 28,
+      child_name: "Vanessa",
+      created_at: "2024-05-10T09:46:56.000000Z",
+      updated_at: "2024-05-10T09:46:56.000000Z",
+      trip: {
+        id: 25,
+        name: "capture",
+        destination: "destination",
+        description: "1",
+        trip_image: "images/1714598061.jpg",
+        date: "2024-05-11",
+        start_time: "07:57:57",
+        end_time: "17:57:57",
+        total_seats: 24,
+        available_seats: 22,
+        fees: "223.00",
+        created_at: "2024-05-01T21:14:21.000000Z",
+        updated_at: "2024-05-10T09:46:56.000000Z",
+        status: "active",
+      },
+    },
+    {
+      id: 15,
+      trip_id: 28,
+      user_id: 28,
+      child_name: "Vanessa",
+      created_at: "2024-05-10T09:48:58.000000Z",
+      updated_at: "2024-05-10T09:48:58.000000Z",
+      trip: {
+        id: 28,
+        name: "Beirut",
+        destination: "destination",
+        description: "1",
+        trip_image: "images/1714598560.jpg",
+        date: "2024-05-08",
+        start_time: "07:57:57",
+        end_time: "17:57:57",
+        total_seats: 24,
+        available_seats: 23,
+        fees: "223.00",
+        created_at: "2024-05-01T21:22:40.000000Z",
+        updated_at: "2024-05-10T09:48:58.000000Z",
+        status: "active",
+      },
+    },
+    {
+      id: 16,
+      trip_id: 44,
+      user_id: 28,
+      child_name: "Kousay",
+      created_at: "2024-05-10T15:50:34.000000Z",
+      updated_at: "2024-05-10T15:50:34.000000Z",
+      trip: {
+        id: 44,
+        name: "Adventure",
+        destination: "South Lebanon",
+        description:
+          "Visit some tourists places and get a perfect weekend with getting lunch On Rouche",
+        trip_image: "images/1715335433.jpg",
+        date: "2024-06-05",
+        start_time: "11:57:00",
+        end_time: "16:57:00",
+        total_seats: 22,
+        available_seats: 21,
+        fees: "30.00",
+        created_at: "2024-05-10T10:03:53.000000Z",
+        updated_at: "2024-05-10T15:50:34.000000Z",
+        status: "active",
+      },
+    },
+  ];
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -36,14 +110,11 @@ const Trips = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(
-            `${baseUrl}/api/get_trips`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await fetch(`${BASE_URL}/api/get_trips`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
@@ -86,18 +157,16 @@ const Trips = () => {
   const get_mytrips = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch(
-        `${baseUrl}/api/getBookingsByUser`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/getBookingsByUser`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch My Trips data");
       }
       const data = await response.json();
+      setMyTripsData(data);
       return data;
     } catch (error) {
       throw error;
@@ -162,7 +231,7 @@ const Trips = () => {
           <ScrollView style={styles.scroll}>
             <View style={styles.myTripsView}>
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
-              {!myTripsData && <Text> You didn't book any trip... </Text>}
+              {!myTripsData && <Text> You didn't book any trip yet</Text>}
               {myTripsData.map((item, index) => (
                 <MyTrip item={item} key={index} />
               ))}

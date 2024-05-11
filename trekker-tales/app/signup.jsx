@@ -12,33 +12,32 @@ import { Link } from "expo-router";
 import Topline from "../Components/topline";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { BASE_URL } from "./utils/constants";
 // import Input from "../Components/input";
 // import Button from "../Components/button";
 // import OrWith from "../Components/orwith";
-import useBaseUrl from "../Components/base_url";
 
 const Signup = () => {
-  const baseUrl = useBaseUrl();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const navigation = useNavigation();
-  useEffect(() => {
-    const clearLocalStorage = async () => {
-      try {
-        await AsyncStorage.clear();
-        console.log("Local storage cleared successfully!");
-      } catch (error) {
-        console.error("Error clearing local storage:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const clearLocalStorage = async () => {
+  //     try {
+  //       await AsyncStorage.clear();
+  //       console.log("Local storage cleared successfully!");
+  //     } catch (error) {
+  //       console.error("Error clearing local storage:", error);
+  //     }
+  //   };
 
-    clearLocalStorage();
+  //   clearLocalStorage();
 
-    return () => {};
-  }, []);
+  //   return () => {};
+  // }, []);
 
   const handleSignup = () => {
     const userData = {
@@ -46,7 +45,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    fetch(`${baseUrl}/api/register`, {
+    fetch(`${BASE_URL}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

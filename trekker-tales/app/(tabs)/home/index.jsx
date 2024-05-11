@@ -12,12 +12,11 @@ import {
 import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import useBaseUrl from "../../../Components/base_url";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { BASE_URL } from "../../utils/constants";
 
 const Home = () => {
-  const baseUrl = useBaseUrl();
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,7 +37,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(`http://192.168.0.103:8000/api/user`, {
+          const response = await fetch(`${BASE_URL}/api/user`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -84,7 +83,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(`${baseUrl}/api/get_highest_rated`, {
+          const response = await fetch(`${BASE_URL}/api/get_highest_rated`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -110,7 +109,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(`${baseUrl}/api/get_trips`, {
+          const response = await fetch(`${BASE_URL}/api/get_trips`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -139,7 +138,7 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={{ uri: `${baseUrl}/${item.trip.trip_image}` }}
+        source={{ uri: `${BASE_URL}/${item.trip.trip_image}` }}
         style={styles.image}
       />
       <Text style={styles.name}>{item.trip.name}</Text>
@@ -149,7 +148,7 @@ const Home = () => {
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
       <Image
-        source={{ uri: `${baseUrl}/${item.trip_image}` }}
+        source={{ uri: `${BASE_URL}/${item.trip_image}` }}
         style={styles.pastimage}
       />
       <Text style={styles.pastname}>{item.name}</Text>

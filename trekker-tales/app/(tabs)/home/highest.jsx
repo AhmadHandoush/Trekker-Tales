@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HighestCard from "../../../Components/highestCard";
 import Back from "../../../Components/back";
-import useBaseUrl from "../../../Components/base_url";
+
+import { BASE_URL } from "../../utils/constants";
 const Highest = () => {
-  const baseUrl = useBaseUrl();
+  
   const [top, setTop] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -15,7 +16,7 @@ const Highest = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            `${baseUrl}/api/get_highest_rated`,
+            `${BASE_URL}/api/get_highest_rated`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

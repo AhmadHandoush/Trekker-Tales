@@ -1,26 +1,26 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import useBaseUrl from "./base_url";
+
 import { Link } from "expo-router";
+import { BASE_URL } from "../app/utils/constants";
 
 const MyTrip = ({ item }) => {
   const currentDate = new Date();
-  const [current, setCurrent] = useState(true);
   const tripDate = new Date(item.trip.date);
+  const [current, setCurrent] = useState(false);
   useEffect(() => {
-    if (tripDate == currentDate) {
+    if (tripDate.toDateString() === currentDate.toDateString()) {
       setCurrent(true);
     }
   }, []);
 
-  const baseUrl = useBaseUrl();
   return (
     <View style={styles.mine}>
       <View style={styles.mineimg}>
         <Image
           style={styles.mineimage}
-          source={{ uri: `${baseUrl}/${item.trip.trip_image}` }}
+          source={{ uri: `${BASE_URL}/${item.trip.trip_image}` }}
         />
       </View>
       <View style={styles.mineinfo}>
@@ -35,10 +35,14 @@ const MyTrip = ({ item }) => {
           {item.trip.date}
         </Text>
         {current && (
-          <Link href="/(tabs)/home/mine" style={{ color: "#e87a00" }}>
-            Go Live Now
-          </Link>
+          <Text>
+            Active Now{" "}
+            <Link href="/(tabs)/home/mine" style={{ color: "#e87a00" }}>
+              Go Live
+            </Link>
+          </Text>
         )}
+        {/* <Text>{currentDate}</Text> */}
       </View>
     </View>
   );

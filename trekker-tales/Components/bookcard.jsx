@@ -8,25 +8,21 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useBaseUrl from "./base_url";
+import { BASE_URL } from "../app/utils/constants";
 const BookCard = ({ setBook, setMessage, id }) => {
-  const baseUrl = useBaseUrl();
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch(
-        `${baseUrl}/api/add_book/${id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ child_name: inputValue }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/add_book/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ child_name: inputValue }),
+      });
 
       if (response.ok) {
         setBook(false);

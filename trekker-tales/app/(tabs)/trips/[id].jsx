@@ -13,11 +13,11 @@ import BookCard from "../../../Components/bookcard";
 import Back from "../../../Components/back";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useBaseUrl from "../../../Components/base_url";
 import TripCard from "../../../Components/TripCard";
+import { BASE_URL } from "../../utils/constants";
 
 const SingleTrip = () => {
-  const baseUrl = useBaseUrl();
+
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ const SingleTrip = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            `http://192.168.0.102:8000/api/get_trip/${id}`,
+            `${BASE_URL}/api/get_trip/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

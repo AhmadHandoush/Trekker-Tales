@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import TakenTrip from "../../../Components/takenTrip";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { BASE_URL } from "../../utils/constants";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
@@ -29,7 +30,7 @@ const Profile = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch("http://192.168.0.102:8000/api/user", {
+          const response = await fetch(`${BASE_URL}/api/user`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -83,63 +84,69 @@ const Profile = () => {
   const update = () => {
     console.log("update");
   };
+  const handleCLear = () => {};
   return (
-    <View style={styles.container}>
-      {user && (
-        <View style={styles.profile}>
-          <View style={styles.top}>
-            <View style={styles.image}>
-              <Image
-                source={{
-                  uri: `http://192.168.0.102:8000/images/${user.user_image}`,
-                }}
-                style={styles.img}
-              />
-            </View>
-          </View>
-          <View style={styles.all}>
-            <View style={styles.topinfo}>
-              <Text style={styles.name}>{user.name}</Text>
-              <Text style={styles.email}>{email}</Text>
-            </View>
-            <View style={styles.info}>
-              <View style={styles.singleinfo}>
-                <MaterialCommunityIcons
-                  name="email-outline"
-                  size={28}
-                  color="grey"
+    <ScrollView>
+      <View style={styles.container}>
+        {user && (
+          <View style={styles.profile}>
+            <View style={styles.top}>
+              <View style={styles.image}>
+                <Image
+                  source={{
+                    uri: `${BASE_URL}/images/${user.user_image}`,
+                  }}
+                  style={styles.img}
                 />
-                <Text style={styles.text}>{email}</Text>
-              </View>
-              <View style={styles.singleinfo}>
-                <MaterialCommunityIcons name="phone" size={28} color="grey" />
-                <Text style={styles.text}>{user.phone}</Text>
-              </View>
-              <View style={styles.singleinfo}>
-                <MaterialCommunityIcons
-                  name="map-marker-outline"
-                  size={28}
-                  color="grey"
-                />
-                <Text style={styles.text}>{address}</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={update}>
-              <MaterialIcons name="border-color" size={24} color="white" />
-            </TouchableOpacity>
-            <View style={styles.taken}>
-              <Text style={styles.takentitle}>Taken Trips</Text>
+            <View style={styles.all}>
+              <View style={styles.topinfo}>
+                <Text style={styles.name}>{user.name}</Text>
+                <Text style={styles.email}>{email}</Text>
+              </View>
+              <View style={styles.info}>
+                <View style={styles.singleinfo}>
+                  <MaterialCommunityIcons
+                    name="email-outline"
+                    size={28}
+                    color="grey"
+                  />
+                  <Text style={styles.text}>{email}</Text>
+                </View>
+                <View style={styles.singleinfo}>
+                  <MaterialCommunityIcons name="phone" size={28} color="grey" />
+                  <Text style={styles.text}>{user.phone}</Text>
+                </View>
+                <View style={styles.singleinfo}>
+                  <MaterialCommunityIcons
+                    name="map-marker-outline"
+                    size={28}
+                    color="grey"
+                  />
+                  <Text style={styles.text}>{address}</Text>
+                </View>
+              </View>
+              <TouchableOpacity style={styles.button} onPress={update}>
+                <MaterialIcons name="border-color" size={24} color="white" />
+              </TouchableOpacity>
+              <View style={styles.taken}>
+                <Text style={styles.takentitle}>Taken Trips</Text>
 
-              <ScrollView style={styles.scroll}>
-                {trips.map((trip) => (
-                  <TakenTrip trip={trip} key={trip.id} />
-                ))}
-              </ScrollView>
+                <ScrollView style={styles.scroll}>
+                  {trips.map((trip) => (
+                    <TakenTrip trip={trip} key={trip.id} />
+                  ))}
+                </ScrollView>
+              </View>
             </View>
           </View>
-        </View>
-      )}
-    </View>
+        )}
+        <TouchableOpacity style={styles.button} onPress={handleCLear}>
+          <Text style={styles.logout}>Log Out</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -149,6 +156,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    paddingBottom: 20,
   },
   profile: {
     backgroundColor: "white",
@@ -239,5 +247,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
-  scrollView: {},
+  logout: {
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 18,
+  },
 });

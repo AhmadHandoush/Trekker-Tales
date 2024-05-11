@@ -14,7 +14,8 @@ import Post from "../../../Components/post";
 // import { Link } from "expo-router";
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useBaseUrl from "../../../Components/base_url";
+
+import { BASE_URL } from "../../utils/constants";
 
 const Posts = () => {
   const [text, setText] = useState("");
@@ -22,7 +23,6 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
-  const baseUrl = useBaseUrl();
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -30,7 +30,7 @@ const Posts = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(`${baseUrl}/api/posts`, {
+          const response = await fetch(`${BASE_URL}/api/posts`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

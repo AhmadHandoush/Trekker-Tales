@@ -15,11 +15,10 @@ import Button from "../Components/button";
 import OrWith from "../Components/orwith";
 // import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useURL from "../Components/base_url";
 import { useRouter } from "expo-router";
-import useBaseUrl from "../Components/base_url";
+import { BASE_URL } from "./utils/constants";
+
 const login = () => {
-  const baseUrl = useBaseUrl();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
@@ -32,7 +31,7 @@ const login = () => {
       password: password,
     };
 
-    fetch(`${baseUrl}/api/login`, {
+    fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +46,7 @@ const login = () => {
       })
       .then((data) => {
         setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000);
+        setTimeout(() => setSuccess(false), 2000);
         if (data.user.role == "teacher") {
           setTimeout(() => router.push("/(teacher)/home"), 1000);
         } else {

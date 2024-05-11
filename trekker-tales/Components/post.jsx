@@ -9,13 +9,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useBaseUrl from "../Components/base_url";
+import { BASE_URL } from "../app/utils/constants";
 
 const Post = ({ post, setSuccess }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
-  const baseUrl = useBaseUrl();
+ 
 
   const [commentsCount, setCommentsCount] = useState(0);
 
@@ -57,7 +57,7 @@ const Post = ({ post, setSuccess }) => {
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch(`${baseUrl}/api/add_comment/${id}`, {
+      const response = await fetch(`${BASE_URL}/api/add_comment/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

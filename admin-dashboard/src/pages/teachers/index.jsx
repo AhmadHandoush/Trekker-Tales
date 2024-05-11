@@ -3,8 +3,10 @@ import Teacher from "./components/Teacher";
 import "./teachers.css";
 import AddTeacher from "./components/AddTeacher";
 import Update from "./components/Update";
+import Base_url from "../../components/Base_url";
 
 function Teachers() {
+  const Base_URL = Base_url();
   const [teachers, setTeachers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -16,14 +18,11 @@ function Teachers() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_teachers",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_teachers`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -39,15 +38,12 @@ function Teachers() {
   }, []);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/delete_user/${id}`,
-        {
-          method: "post",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${Base_URL}/api/delete_user/${id}`, {
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.ok) {
         setTeachers(teachers.filter((item) => item.id !== id));
       } else {

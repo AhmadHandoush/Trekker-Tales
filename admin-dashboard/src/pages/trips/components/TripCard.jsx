@@ -1,8 +1,10 @@
+import Base_url from "../../../components/Base_url";
 import Loader from "../../../components/Loader";
 import { Link } from "react-router-dom";
 
 function TripCard({ trip, isLoading }) {
   const { name, trip_image, id } = trip;
+  const Base_URL = Base_url();
 
   return (
     <Link to={`/trips/${id}`}>
@@ -11,7 +13,7 @@ function TripCard({ trip, isLoading }) {
           <Loader />
         ) : (
           <img
-            src={`http://192.168.0.102:8000/${trip_image}`}
+            src={`${Base_URL}/${trip_image}`}
             alt={name}
             className="s-image"
           />

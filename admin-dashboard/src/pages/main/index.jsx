@@ -3,8 +3,10 @@ import "./main.css";
 import TopCard from "./components/TopCard";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
+import Base_url from "../../components/Base_url";
 
 function Main() {
+  const Base_URL = Base_url();
   const [tripsNumber, setTripsNumber] = useState(null);
   const [usersNumber, setUsersNumber] = useState(null);
   const [highest, setHighest] = useState([]);
@@ -17,14 +19,11 @@ function Main() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_trips_number",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_trips_number`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -40,14 +39,11 @@ function Main() {
     const getUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_users_number",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_users_number`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -63,14 +59,11 @@ function Main() {
     const getTeachers = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_teachers_number",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_teachers_number`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -86,14 +79,11 @@ function Main() {
     const get_highest = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_highest_rated",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_highest_rated`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }

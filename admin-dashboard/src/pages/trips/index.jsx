@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 import AddTrip from "./components/AddTrip";
 import SuccessMessage from "./components/SuccessMessage";
 import { FaFilter } from "react-icons/fa";
+import Base_url from "../../components/Base_url";
 
 function Trips() {
   const [trips, setTrips] = useState([]);
@@ -18,18 +19,16 @@ function Trips() {
   const token = localStorage.getItem("token");
   const [add, setAdd] = useState(false);
   const [success, setSuccess] = useState(true);
+  const Base_URL = Base_url();
   useEffect(() => {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.0.102:8000/api/get_trips",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${Base_URL}/api/get_trips`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }

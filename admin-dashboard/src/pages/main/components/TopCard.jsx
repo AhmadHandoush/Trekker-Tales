@@ -1,8 +1,10 @@
 import { FaStar } from "react-icons/fa6";
+import Base_url from "../../../components/Base_url";
 
 function TopCard({ trip, average_rating }) {
   const { name, trip_image } = trip;
   let rating = parseFloat(average_rating).toFixed(1);
+  const Base_URL = Base_url();
 
   return (
     <div className="top-card">
@@ -11,7 +13,7 @@ function TopCard({ trip, average_rating }) {
         {rating}
       </div>
       <img
-        src={{ uri: `http://192.168.1.16:8000/${trip_image}` }}
+        src={{ uri: `${Base_URL}/images/${trip.trip_image}` }}
         alt={name}
         className="s-image"
       />
