@@ -12,10 +12,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import useBaseUrl from "../../../Components/base_url";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
+  const baseUrl = useBaseUrl();
   const [searchQuery, setSearchQuery] = useState("");
   const [focus, setFocus] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,7 +38,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch("http://192.168.0.102:8000/api/user", {
+          const response = await fetch(`${baseUrl}/api/user`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -82,14 +84,11 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(
-            "http://192.168.0.102:8000/api/get_highest_rated",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await fetch(` ${baseUrl}/api/get_highest_rated`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
@@ -111,14 +110,11 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(
-            "http://192.168.0.102:8000/api/get_trips",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await fetch(`${baseUrl}/api/get_trips`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
@@ -143,7 +139,7 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.0.102:8000/${item.trip.trip_image}` }}
+        source={{ uri: `${baseUrl}/${item.trip.trip_image}` }}
         style={styles.image}
       />
       <Text style={styles.name}>{item.trip.name}</Text>
@@ -153,7 +149,7 @@ const Home = () => {
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
       <Image
-        source={{ uri: `http://192.168.0.102:8000/${item.trip_image}` }}
+        source={{ uri: `${baseUrl}/${item.trip_image}` }}
         style={styles.pastimage}
       />
       <Text style={styles.pastname}>{item.name}</Text>

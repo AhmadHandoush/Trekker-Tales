@@ -9,9 +9,11 @@ import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TripCard from "../../../Components/TripCard";
 import Back from "../../../Components/back";
-
+import useBaseUrl from "../../../Components/base_url";
 const All = () => {
-  const [trips, setTrips] = useState([]);
+  const [trips, setTrips] = useS;
+  const baseUrl = useBaseUrl();
+  tate([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
@@ -19,14 +21,11 @@ const All = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(
-            "http://192.168.0.102:8000/api/get_trips",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await fetch(`${baseUrl}/api/get_trips`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }

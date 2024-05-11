@@ -16,8 +16,10 @@ import { useRouter } from "expo-router";
 import Back from "../../../Components/back";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MyTrip from "../../../Components/mytrip";
+import useBaseUrl from "../../../Components/base_url";
 
 const Trips = () => {
+  const baseUrl = useBaseUrl();
   const router = useRouter();
   const [focus, setFocus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,7 +37,7 @@ const Trips = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
           const response = await fetch(
-            "http://192.168.0.102:8000/api/get_trips",
+            `${baseUrl}/api/get_trips`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -85,7 +87,7 @@ const Trips = () => {
     const token = await AsyncStorage.getItem("token");
     try {
       const response = await fetch(
-        "http://192.168.0.102:8000/api/getBookingsByUser",
+        `${baseUrl}/api/getBookingsByUser`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

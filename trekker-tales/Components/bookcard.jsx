@@ -8,15 +8,16 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import useBaseUrl from "./base_url";
 const BookCard = ({ setBook, setMessage, id }) => {
+  const baseUrl = useBaseUrl();
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://192.168.0.102:8000/api/add_book/${id}`,
+        `${baseUrl}/api/add_book/${id}`,
         {
           method: "POST",
           headers: {

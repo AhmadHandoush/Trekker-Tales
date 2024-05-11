@@ -9,11 +9,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import useBaseUrl from "../Components/base_url";
 
 const Post = ({ post, setSuccess }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
+  const baseUrl = useBaseUrl();
 
   const [commentsCount, setCommentsCount] = useState(0);
 
@@ -21,14 +23,11 @@ const Post = ({ post, setSuccess }) => {
     const get_likes = async () => {
       const token = await AsyncStorage.getItem("token");
       try {
-        const response = await fetch(
-          `http://192.168.0.102:8000/api/likes/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${baseUrl}/api/likes/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
 
         setLikes(data.likes);
@@ -40,14 +39,11 @@ const Post = ({ post, setSuccess }) => {
     const get_comments_number = async () => {
       const token = await AsyncStorage.getItem("token");
       try {
-        const response = await fetch(
-          `http://192.168.0.102:8000/api/comments_number/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${baseUrl}/api/comments_number/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
 
         setCommentsCount(data.comments);
@@ -61,17 +57,14 @@ const Post = ({ post, setSuccess }) => {
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch(
-        `http://192.168.0.102:8000/api/add_comment/${id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ comment }),
-        }
-      );
+      const response = await fetch(`${baseUrl}/api/add_comment/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ comment }),
+      });
       const data = await response.json();
 
       setComment("");
@@ -84,7 +77,7 @@ const Post = ({ post, setSuccess }) => {
   const handleAddLike = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
-      const response = await fetch(`http://192.168.0.102:8000/api/like/${id}`, {
+      const response = await fetch(`${baseUrl}/api/like/${id}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -114,10 +107,7 @@ const Post = ({ post, setSuccess }) => {
         </View>
       </View>
       <Text style={styles.caption}>{caption}</Text>
-      <Image
-        source={{ uri: `http://192.168.0.102:8000/${image}` }}
-        style={styles.postImage}
-      />
+      <Image source={{ uri: `${baseUrl}/${image}` }} style={styles.postImage} />
       <View style={styles.info}>
         <Text style={styles.likes}> {likes} likes</Text>
         <Text style={styles.comments}> {commentsCount} comments</Text>

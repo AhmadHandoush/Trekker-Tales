@@ -17,8 +17,9 @@ import OrWith from "../Components/orwith";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useURL from "../Components/base_url";
 import { useRouter } from "expo-router";
-const Base_URL = "http://192.168.0.103:8000";
+import useBaseUrl from "../Components/base_url";
 const login = () => {
+  const baseUrl = useBaseUrl();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
@@ -31,7 +32,7 @@ const login = () => {
       password: password,
     };
 
-    fetch(`${Base_URL}/api/login`, {
+    fetch(`${baseUrl}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

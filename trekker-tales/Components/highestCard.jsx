@@ -2,13 +2,16 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
+import useBaseUrl from "./base_url";
 
 const HighestCard = ({ item }) => {
+  const baseUrl = useBaseUrl();
+
   return (
     <View style={styles.card}>
       <View style={styles.img}>
         <Image
-          source={{ uri: `http://192.168.0.102:8000/${item.trip.trip_image}` }}
+          source={{ uri: `${baseUrl}/${item.trip.trip_image}` }}
           style={styles.image}
         />
       </View>

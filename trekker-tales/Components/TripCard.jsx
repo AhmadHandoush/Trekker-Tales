@@ -2,14 +2,16 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import React from "react";
 import { useRouter } from "expo-router";
-
+import useBaseUrl from "./base_url";
 const TripCard = ({ trip, onPress }) => {
   const router = useRouter();
+  const baseUrl = useBaseUrl();
+
   return (
     <TouchableOpacity onPress={onPress} style={styles.more}>
       <View style={styles.card}>
         <Image
-          source={{ uri: `http://192.168.0.102:8000/${trip.trip_image}` }}
+          source={{ uri: `${baseUrl}/${trip.trip_image}` }}
           style={styles.image}
         />
         <View style={styles.info}>

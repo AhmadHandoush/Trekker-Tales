@@ -15,8 +15,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // import Input from "../Components/input";
 // import Button from "../Components/button";
 // import OrWith from "../Components/orwith";
+import useBaseUrl from "../Components/base_url";
 
 const Signup = () => {
+  const baseUrl = useBaseUrl();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +46,7 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    fetch("http://192.168.0.102:8000/api/register", {
+    fetch(`${baseUrl}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
