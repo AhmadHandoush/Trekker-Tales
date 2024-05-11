@@ -23,7 +23,7 @@ const Posts = () => {
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState(false);
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -90,12 +90,12 @@ const Posts = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 2000);
 
       console.log("Response:", response.data);
-      // Handle success, reset form, etc.
     } catch (error) {
       console.error("Error:", error);
-      // Handle error
     }
   };
   return (
@@ -139,6 +139,9 @@ const Posts = () => {
               <Post post={post} key={index} setSuccess={setSuccess} />
             ))}
           </View>
+          <View style={styles.success}>
+            <Text style={styles.successText}>Post Added Successfully </Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -152,11 +155,29 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
   },
+  success: {
+    position: "absolute",
+    width: "60%",
+    padding: 5,
+    display: "flex",
+    justifyContent: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+    marginLeft: 80,
+    borderRadius: 8,
+    top: "20%",
+  },
+  successText: {
+    color: "green",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   data: {
     width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
     flex: 1,
+    position: "relative",
   },
 
   postsPage: {
