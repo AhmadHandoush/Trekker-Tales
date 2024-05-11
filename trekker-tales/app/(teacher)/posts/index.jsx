@@ -54,6 +54,12 @@ const Posts = () => {
   }, []);
 
   const pickImage = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access the media library is required!");
+      return;
+    }
+
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -61,23 +67,22 @@ const Posts = () => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      setImage(result.uri);
+    if (!result.canceled) {
+      const selectedUri = result.assets[0].uri;
+      setImage(selectedUri);
     }
   };
 
   const handleSubmit = async () => {
-    console.log(image);
-    console.log(caption);
+    const token = await AsyncStorage.getItem("token");
     try {
-      const token = await AsyncStorage.getItem("token");
       const formData = new FormData();
-      formData.append("caption", caption);
       formData.append("image", {
         uri: image,
-        name: "image.jpg",
         type: "image/jpeg",
+        name: "photo.jpg",
       });
+      formData.append("caption", caption);
 
       const response = await axios.post(`${BASE_URL}/api/create`, formData, {
         headers: {
@@ -86,15 +91,11 @@ const Posts = () => {
         },
       });
 
-      // Handle response
       console.log("Response:", response.data);
-      // Optionally, show a success message
-      setCaption("");
-      Alert.alert("Image Uploaded Successfully");
+      // Handle success, reset form, etc.
     } catch (error) {
-      console.error("Error uploading image:", error);
-      // Optionally, show an error message
-      Alert.alert("Error Uploading Image");
+      console.error("Error:", error);
+      // Handle error
     }
   };
   return (
