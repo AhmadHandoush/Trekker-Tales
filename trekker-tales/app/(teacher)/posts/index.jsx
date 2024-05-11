@@ -25,6 +25,70 @@ const Posts = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [image, setImage] = useState(null);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(`${BASE_URL}/api/user`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setProfile(data.user);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const get_likes = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(`${BASE_URL}/api/likes/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        setLikes(data.likes);
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+    get_likes();
+    const get_comments_number = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(`${BASE_URL}/api/comments_number/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        setCommentsCount(data.comments);
+      } catch (error) {
+        console.error("Error fetching comments count:", error);
+      }
+    };
+    get_comments_number();
+  }, []);
 
   useEffect(() => {
     const get_posts = async () => {
@@ -108,10 +172,12 @@ const Posts = () => {
         <View style={styles.data}>
           <View style={styles.add}>
             <View style={styles.img}>
-              <Image
-                source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-                style={styles.image}
-              />
+              {profile && (
+                <Image
+                  source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
+                  style={styles.image}
+                />
+              )}
             </View>
             <View style={styles.input}>
               <TextInput

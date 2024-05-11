@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  TextInput,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
@@ -69,8 +70,11 @@ const Profile = () => {
       console.error("Error clearing local storage:", error);
     }
   };
+  const handleEdit = () => {
+    console.log("Ahmad");
+  };
   return (
-    <ScrollView>
+    <ScrollView style={styles.page}>
       <View style={styles.container}>
         {user && (
           <View style={styles.profile}>
@@ -120,6 +124,41 @@ const Profile = () => {
             </View>
           </View>
         )}
+        <View>
+          <TouchableOpacity>
+            <Text>X</Text>
+          </TouchableOpacity>
+          <Text> Edit Profile</Text>
+          <View>
+            <TextInput
+              style={styles.inputfield}
+              placeholder="Add Trip Post"
+              // onChangeText={setCaption}
+              // value={caption}
+              selectionColor={"#E87A00"}
+              required
+            />
+            <TextInput
+              style={styles.inputfield}
+              placeholder="Add Trip Post"
+              // onChangeText={setCaption}
+              // value={caption}
+              selectionColor={"#E87A00"}
+              required
+            />
+            <TextInput
+              style={styles.inputfield}
+              placeholder="Add Trip Post"
+              // onChangeText={setCaption}
+              // value={caption}
+              selectionColor={"#E87A00"}
+              required
+            />
+            <TouchableOpacity onPress={handleEdit}>
+              <Text>Save</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
@@ -128,6 +167,9 @@ const Profile = () => {
 export default Profile;
 
 const styles = StyleSheet.create({
+  page: {
+    backgroundColor: "white",
+  },
   container: {
     flex: 1,
     backgroundColor: "white",
