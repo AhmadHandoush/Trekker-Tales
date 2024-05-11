@@ -185,67 +185,71 @@ const Posts = () => {
     }
   };
   return (
-    <ScrollView style={styles.scroll}>
-      <Back title="Posts" />
-      <View style={styles.postsPage}>
-        <View style={styles.data}>
-          <View style={styles.add}>
-            <View style={styles.img}>
-              {profile && (
-                <Image
-                  source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
-                  style={styles.image}
+    <>
+      <ScrollView style={styles.scroll}>
+        <Back title="Posts" />
+        <View style={styles.postsPage}>
+          <View style={styles.data}>
+            <View style={styles.add}>
+              <View style={styles.img}>
+                {profile && (
+                  <Image
+                    source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
+                    style={styles.image}
+                  />
+                )}
+              </View>
+              <View style={styles.input}>
+                <TextInput
+                  style={styles.inputfield}
+                  placeholder="Add Trip Post"
+                  onChangeText={setCaption}
+                  value={caption}
+                  selectionColor={"#E87A00"}
+                  required
                 />
-              )}
-            </View>
-            <View style={styles.input}>
-              <TextInput
-                style={styles.inputfield}
-                placeholder="Add Trip Post"
-                onChangeText={setCaption}
-                value={caption}
-                selectionColor={"#E87A00"}
-                required
-              />
-              <TouchableOpacity style={styles.btnAdd} onPress={handleSubmit}>
-                <Text style={styles.btnText}>Add</Text>
+                <TouchableOpacity style={styles.btnAdd} onPress={handleSubmit}>
+                  <Text style={styles.btnText}>Add</Text>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity
+                style={styles.fileInputButton}
+                onPress={pickImage}
+              >
+                <Icon
+                  name="camera"
+                  size={20}
+                  color="#808080"
+                  style={styles.camera}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={styles.fileInputButton}
-              onPress={pickImage}
-            >
-              <Icon
-                name="camera"
-                size={20}
-                color="#808080"
-                style={styles.camera}
-              />
-            </TouchableOpacity>
+            <View style={styles.posts}>
+              {posts.map((post, index) => (
+                <Post
+                  post={post}
+                  key={index}
+                  setSuccesscomment={setSuccesscomment}
+                />
+              ))}
+            </View>
+            {success && (
+              <View style={styles.success}>
+                <Text style={styles.successText}>Post Added Successfully </Text>
+              </View>
+            )}
           </View>
-          <View style={styles.posts}>
-            {posts.map((post, index) => (
-              <Post
-                post={post}
-                key={index}
-                setSuccesscomment={setSuccesscomment}
-              />
-            ))}
-          </View>
-          {success && (
+          {successComment && (
             <View style={styles.success}>
-              <Text style={styles.successText}>Post Added Successfully </Text>
+              <Text style={styles.successText}>
+                Comment Added Successfully{" "}
+              </Text>
             </View>
           )}
         </View>
-        {successComment && (
-          <View style={styles.success}>
-            <Text style={styles.successText}>Comment Added Successfully </Text>
-          </View>
-        )}
-      </View>
+      </ScrollView>
       <ShowComments />
-    </ScrollView>
+    </>
   );
 };
 
