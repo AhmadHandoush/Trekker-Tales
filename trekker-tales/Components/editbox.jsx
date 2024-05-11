@@ -19,7 +19,7 @@ const EditProfile = ({ handleEdit }) => {
       <View>
         <TextInput
           style={styles.inputfield}
-          placeholder="Add Trip Post"
+          placeholder="Add your NEW name"
           // onChangeText={setCaption}
           // value={caption}
           selectionColor={"#E87A00"}
@@ -28,7 +28,7 @@ const EditProfile = ({ handleEdit }) => {
         />
         <TextInput
           style={styles.inputfield}
-          placeholder="Add Trip Post"
+          placeholder="Add your NEW number"
           // onChangeText={setCaption}
           // value={caption}
           selectionColor={"#E87A00"}
@@ -37,13 +37,14 @@ const EditProfile = ({ handleEdit }) => {
         />
         <TextInput
           style={styles.inputfield}
-          placeholder="Add Trip Post"
+          placeholder="Add your NEW address"
           // onChangeText={setCaption}
           // value={caption}
           selectionColor={"#E87A00"}
           required
           placeholderTextColor="#808080"
         />
+        <TouchableOpacity></TouchableOpacity>
         <TouchableOpacity onPress={handleEdit} style={styles.btn_save}>
           <Text style={styles.save_text}>Save</Text>
         </TouchableOpacity>
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 18,
+    marginBottom: 10,
   },
   inputfield: {
     padding: 5,
@@ -108,6 +110,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  btn_save: {},
-  save_text: {},
+  btn_save: {
+    backgroundColor: "#e87a00",
+    padding: 5,
+    width: "50%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 10,
+    borderRadius: 6,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  save_text: {
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 18,
+  },
 });
