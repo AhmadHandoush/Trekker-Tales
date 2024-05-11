@@ -1,7 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 
-const EditProfile = () => {
+const EditProfile = ({ handleEdit }) => {
   return (
     <View style={styles.edit}>
       <TouchableOpacity style={styles.btn_close}>
@@ -54,6 +60,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 5,
+    top: "50%",
+    left: "50%",
+    transform: [{ translateX: -50 }, { translateY: -50 }],
   },
   btn_close: {},
   close_text: {},

@@ -16,12 +16,13 @@ import AsyncStorage, {
 } from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
+import EditProfile from "../../../Components/editbox";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(true);
   const router = useRouter();
   const defaultUser = {
     name: "",
@@ -76,6 +77,7 @@ const Profile = () => {
   };
   return (
     <ScrollView style={styles.page}>
+      {edit && <View style={styles.overlay}></View>}
       <View style={styles.container}>
         {user && (
           <View style={styles.profile}>
@@ -119,13 +121,14 @@ const Profile = () => {
                   <Text style={styles.text}>{address}</Text>
                 </View>
               </View>
-              <TouchableOpacity style={styles.button} onPress={update}>
+              <TouchableOpacity style={styles.button} onPress={handleEdit}>
                 <MaterialIcons name="border-color" size={24} color="white" />
               </TouchableOpacity>
             </View>
           </View>
         )}
       </View>
+      <EditProfile handleEdit={handleEdit} />
     </ScrollView>
   );
 };
@@ -135,6 +138,7 @@ export default Profile;
 const styles = StyleSheet.create({
   page: {
     backgroundColor: "white",
+    position: "relative",
   },
   container: {
     flex: 1,
@@ -152,6 +156,15 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     display: "flex",
     flexDirection: "column",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    zIndex: 1000,
   },
 
   top: {
