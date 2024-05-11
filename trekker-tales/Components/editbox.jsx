@@ -5,9 +5,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 const EditProfile = ({ handleEdit }) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [image, setImage] = useState("");
   return (
     <View style={styles.edit}>
       <View style={styles.closesection}>
@@ -20,8 +24,8 @@ const EditProfile = ({ handleEdit }) => {
         <TextInput
           style={styles.inputfield}
           placeholder="Add your NEW name"
-          // onChangeText={setCaption}
-          // value={caption}
+          onChangeText={setName}
+          value={name}
           selectionColor={"#E87A00"}
           required
           placeholderTextColor="#808080"
@@ -29,8 +33,8 @@ const EditProfile = ({ handleEdit }) => {
         <TextInput
           style={styles.inputfield}
           placeholder="Add your NEW number"
-          // onChangeText={setCaption}
-          // value={caption}
+          onChangeText={setPhone}
+          value={phone}
           selectionColor={"#E87A00"}
           required
           placeholderTextColor="#808080"
@@ -38,13 +42,15 @@ const EditProfile = ({ handleEdit }) => {
         <TextInput
           style={styles.inputfield}
           placeholder="Add your NEW address"
-          // onChangeText={setCaption}
-          // value={caption}
+          onChangeText={setAddress}
+          value={address}
           selectionColor={"#E87A00"}
           required
           placeholderTextColor="#808080"
         />
-        <TouchableOpacity></TouchableOpacity>
+        <TouchableOpacity>
+          <Text>Change your photo </Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={handleEdit} style={styles.btn_save}>
           <Text style={styles.save_text}>Save</Text>
         </TouchableOpacity>
