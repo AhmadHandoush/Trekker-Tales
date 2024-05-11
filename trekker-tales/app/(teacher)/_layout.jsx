@@ -30,12 +30,12 @@ const TabsLayout = () => {
       }}
     >
       <Tabs.Screen
-        name="chat"
+        name="home"
         options={{
-          tabBarLabel: "Chat",
-          title: "Chat",
+          tabBarLabel: "Home",
+          title: "Home",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="message" size={24} color={color} />
+            <AntDesign name="home" size={24} color={color} />
           ),
         }}
       />
@@ -51,32 +51,22 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="chats"
         options={{
-          tabBarLabel: "Profile",
-          title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="user" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="notifications"
-        options={{
-          tabBarLabel: "notifications",
-          title: "Notifications",
+          tabBarLabel: "Chat",
+          title: "Chat",
           tabBarIcon: ({ color }) => (
             <AntDesign name="bells" size={24} color={color} fontSize={30} />
           ),
         }}
       />
       <Tabs.Screen
-        name="more"
+        name="profile"
         options={{
-          tabBarLabel: "More",
-          title: "More",
+          tabBarLabel: "Profile",
+          title: "Profile",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="bars" size={24} color={color} fontSize={30} />
+            <AntDesign name="user" size={24} color={color} />
           ),
         }}
       />

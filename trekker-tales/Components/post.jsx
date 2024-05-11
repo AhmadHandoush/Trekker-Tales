@@ -15,7 +15,6 @@ const Post = ({ post, setSuccess }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
- 
 
   const [commentsCount, setCommentsCount] = useState(0);
 
@@ -23,7 +22,7 @@ const Post = ({ post, setSuccess }) => {
     const get_likes = async () => {
       const token = await AsyncStorage.getItem("token");
       try {
-        const response = await fetch(`${baseUrl}/api/likes/${id}`, {
+        const response = await fetch(`${BASE_URL}/api/likes/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,7 +38,7 @@ const Post = ({ post, setSuccess }) => {
     const get_comments_number = async () => {
       const token = await AsyncStorage.getItem("token");
       try {
-        const response = await fetch(`${baseUrl}/api/comments_number/${id}`, {
+        const response = await fetch(`${BASE_URL}/api/comments_number/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -77,7 +76,7 @@ const Post = ({ post, setSuccess }) => {
   const handleAddLike = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
-      const response = await fetch(`${baseUrl}/api/like/${id}`, {
+      const response = await fetch(`${BASE_URL}/api/like/${id}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -107,7 +106,10 @@ const Post = ({ post, setSuccess }) => {
         </View>
       </View>
       <Text style={styles.caption}>{caption}</Text>
-      <Image source={{ uri: `${baseUrl}/${image}` }} style={styles.postImage} />
+      <Image
+        source={{ uri: `${BASE_URL}/${image}` }}
+        style={styles.postImage}
+      />
       <View style={styles.info}>
         <Text style={styles.likes}> {likes} likes</Text>
         <Text style={styles.comments}> {commentsCount} comments</Text>
