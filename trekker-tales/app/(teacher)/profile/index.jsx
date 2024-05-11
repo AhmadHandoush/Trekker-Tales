@@ -21,6 +21,7 @@ const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const [edit, setEdit] = useState(false);
   const router = useRouter();
   const defaultUser = {
     name: "",
@@ -59,7 +60,7 @@ const Profile = () => {
 
   const { name, email, phone, address, user_image } = user || defaultUser;
   const update = () => {
-    console.log("update");
+    setEdit(true);
   };
   const handleLogout = async () => {
     const token = await AsyncStorage.getItem("token");
@@ -124,41 +125,6 @@ const Profile = () => {
             </View>
           </View>
         )}
-        <View>
-          <TouchableOpacity>
-            <Text>X</Text>
-          </TouchableOpacity>
-          <Text> Edit Profile</Text>
-          <View>
-            <TextInput
-              style={styles.inputfield}
-              placeholder="Add Trip Post"
-              // onChangeText={setCaption}
-              // value={caption}
-              selectionColor={"#E87A00"}
-              required
-            />
-            <TextInput
-              style={styles.inputfield}
-              placeholder="Add Trip Post"
-              // onChangeText={setCaption}
-              // value={caption}
-              selectionColor={"#E87A00"}
-              required
-            />
-            <TextInput
-              style={styles.inputfield}
-              placeholder="Add Trip Post"
-              // onChangeText={setCaption}
-              // value={caption}
-              selectionColor={"#E87A00"}
-              required
-            />
-            <TouchableOpacity onPress={handleEdit}>
-              <Text>Save</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
       </View>
     </ScrollView>
   );
