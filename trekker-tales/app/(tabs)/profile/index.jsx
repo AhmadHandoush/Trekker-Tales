@@ -88,7 +88,7 @@ const Profile = () => {
   const update = () => {
     console.log("update");
   };
-  const handleCLear = async () => {
+  const handleLogout = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
       await AsyncStorage.clear();
@@ -154,7 +154,7 @@ const Profile = () => {
             </View>
           </View>
         )}
-        <TouchableOpacity style={styles.button} onPress={handleCLear}>
+        <TouchableOpacity style={styles.button} onPress={handleLogout}>
           <Text style={styles.logout}>Log Out</Text>
         </TouchableOpacity>
       </View>

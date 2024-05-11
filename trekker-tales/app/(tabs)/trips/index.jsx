@@ -232,9 +232,9 @@ const Trips = () => {
             <View style={styles.myTripsView}>
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
               {!myTripsData && <Text> You didn't book any trip yet</Text>}
-              {myTripsData.map((item, index) => (
+              {/* {myTripsData.map((item, index) => (
                 <MyTrip item={item} key={index} />
-              ))}
+              ))} */}
             </View>
           </ScrollView>
         )
