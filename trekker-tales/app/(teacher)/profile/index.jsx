@@ -22,8 +22,9 @@ const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
   const router = useRouter();
+  const [success, setSuccess] = useState(false);
   const defaultUser = {
     name: "",
     email: "",
@@ -73,7 +74,7 @@ const Profile = () => {
     }
   };
   const handleEdit = () => {
-    console.log("Ahmad");
+    setEdit(true);
   };
   return (
     <>
@@ -138,7 +139,12 @@ const Profile = () => {
           )}
         </View>
       </ScrollView>
-      <EditProfile handleEdit={handleEdit} />
+      {edit && <EditProfile setEdit={setEdit} />}
+      {success && (
+        <View style={styles.success}>
+          <Text style={styles.successText}>Data updated successfully</Text>
+        </View>
+      )}
     </>
   );
 };
@@ -173,7 +179,7 @@ const styles = StyleSheet.create({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     zIndex: 1000,
   },
 
@@ -271,5 +277,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 10,
+  },
+  success: {
+    position: "absolute",
+    width: "60%",
+    padding: 10,
+    display: "flex",
+    justifyContent: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+    marginLeft: 80,
+    borderRadius: 8,
+    top: "20%",
+  },
+  successText: {
+    color: "green",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

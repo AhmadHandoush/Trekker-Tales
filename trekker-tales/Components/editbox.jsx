@@ -6,16 +6,77 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
+import * as ImagePicker from "expo-image-picker";
+import axios from "axios";
+import { BASE_URL } from "../app/utils/constants";
 
-const EditProfile = ({ handleEdit }) => {
+const EditProfile = ({ setEdit, setSuccess }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [image, setImage] = useState("");
+  const pickImage = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access the media library is required!");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      const selectedUri = result.assets[0].uri;
+      setImage(selectedUri);
+    }
+  };
+
+  const handleSave = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (!name || !phone || !address || !image) {
+      Alert.alert("All fields are required ");
+      return;
+    }
+    try {
+      const formData = new FormData();
+      formData.append("user_image", {
+        uri: image,
+        type: "image/jpeg",
+        name: "photo.jpg",
+      });
+      formData.append("name", name);
+      formData.append("address", address);
+      formData.append("phone", phone);
+
+      const response = await axios.post(
+        `${BASE_URL}/api/update_user`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 2000);
+
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <View style={styles.edit}>
       <View style={styles.closesection}>
-        <TouchableOpacity style={styles.btn_close}>
+        <TouchableOpacity
+          style={styles.btn_close}
+          onPress={() => setEdit(false)}
+        >
           <Text style={styles.close_text}>X</Text>
         </TouchableOpacity>
       </View>
@@ -48,10 +109,10 @@ const EditProfile = ({ handleEdit }) => {
           required
           placeholderTextColor="#808080"
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={pickImage}>
           <Text>Change your photo </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleEdit} style={styles.btn_save}>
+        <TouchableOpacity onPress={handleSave} style={styles.btn_save}>
           <Text style={styles.save_text}>Save</Text>
         </TouchableOpacity>
       </View>
@@ -72,7 +133,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 5,
-    top: "50%",
+    top: "40%",
     left: "50%",
     transform: [{ translateX: -150 }, { translateY: -50 }],
     zIndex: 2000,
@@ -122,7 +183,7 @@ const styles = StyleSheet.create({
     width: "50%",
     marginRight: "auto",
     marginLeft: "auto",
-    marginTop: 10,
+    marginTop: 15,
     borderRadius: 6,
     display: "flex",
     justifyContent: "center",

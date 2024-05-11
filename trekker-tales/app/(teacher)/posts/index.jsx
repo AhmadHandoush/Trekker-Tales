@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   success: {
     position: "absolute",
     width: "60%",
-    padding: 5,
+    padding: 10,
     display: "flex",
     justifyContent: "center",
     justifyContent: "center",
