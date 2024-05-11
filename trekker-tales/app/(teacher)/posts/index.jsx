@@ -18,14 +18,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
 
 const Posts = () => {
-  const [text, setText] = useState("");
+  const [caption, setCaption] = useState("");
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
-    const fetchTrips = async () => {
+    const get_posts = async () => {
       setLoading(true);
       try {
         const token = await AsyncStorage.getItem("token");
@@ -48,57 +49,13 @@ const Posts = () => {
         console.error("Error fetching data:", error);
       }
     };
-    fetchTrips();
+    get_posts();
   }, []);
 
-  // const posts = [
-  //   {
-  //     id: 1,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 2,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 3,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 4,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  // ];
-  //   const user = {
-  //     id: 22,
-  //     name: "louna",
-  //     email: "mouna@gmail.com",
-  //     email_verified_at: null,
-  //     address: null,
-  //     phone: null,
-  //     longitude: null,
-  //     latitude: null,
-  //     user_image: "1714600471.jpg",
-  //     created_at: "2024-05-01T21:25:25.000000Z",
-  //     updated_at: "2024-05-01T21:54:31.000000Z",
-  //     role: "parent",
-  //   };
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
+      allowsEditing: false,
       aspect: [4, 3],
       quality: 1,
     });
@@ -108,33 +65,36 @@ const Posts = () => {
     }
   };
   const handleSubmit = async () => {
+    if (!caption) {
+      Alert.alert("Error", "Please enter some text");
+      return;
+    }
+
     try {
       const formData = new FormData();
-      formData.append("text", text);
+      formData.append("caption", caption);
       formData.append("image", {
         uri: image.uri,
-        type: "image/jpeg",
-        name: "image.jpg",
+        type: image.type,
+        name: image.fileName || `photo-${Date.now()}.jpg`,
       });
 
-      const response = await fetch("YOUR_BACKEND_URL", {
+      const response = await fetch("your-backend-endpoint", {
         method: "POST",
         body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit data");
+      if (response.ok) {
+        Alert.alert("Success", "Trip post added successfully");
+
+        setText("");
+        setImage(null);
+      } else {
+        Alert.alert("Error", "Failed to add trip post");
       }
-
-      console.log("Data submitted successfully!");
-
-      setText("");
-      setImage(null);
     } catch (error) {
-      console.error("Error submitting data:", error.message);
+      console.error("Error:", error);
+      Alert.alert("Error", "Something went wrong. Please try again later");
     }
   };
 
@@ -153,8 +113,8 @@ const Posts = () => {
               <TextInput
                 style={styles.inputfield}
                 placeholder="Add Trip Post"
-                onChangeText={setText}
-                value={text}
+                onChangeText={setCaption}
+                value={caption}
                 selectionColor={"#E87A00"}
                 required
               />

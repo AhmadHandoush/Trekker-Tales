@@ -107,7 +107,7 @@ const Post = ({ post, setSuccess }) => {
       </View>
       <Text style={styles.caption}>{caption}</Text>
       <Image
-        source={{ uri: `${BASE_URL}/${image}` }}
+        source={{ uri: `${BASE_URL}/${post.image}` }}
         style={styles.postImage}
       />
       <View style={styles.info}>
