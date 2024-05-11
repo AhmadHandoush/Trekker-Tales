@@ -24,6 +24,7 @@ const EditProfile = ({ handleEdit }) => {
           // value={caption}
           selectionColor={"#E87A00"}
           required
+          placeholderTextColor="#808080"
         />
         <TextInput
           style={styles.inputfield}
@@ -32,6 +33,7 @@ const EditProfile = ({ handleEdit }) => {
           // value={caption}
           selectionColor={"#E87A00"}
           required
+          placeholderTextColor="#808080"
         />
         <TextInput
           style={styles.inputfield}
@@ -40,6 +42,7 @@ const EditProfile = ({ handleEdit }) => {
           // value={caption}
           selectionColor={"#E87A00"}
           required
+          placeholderTextColor="#808080"
         />
         <TouchableOpacity onPress={handleEdit} style={styles.btn_save}>
           <Text style={styles.save_text}>Save</Text>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
   btn_close: {
     width: 30,
     height: 30,
-    backgroundColor: "#d3d3d3",
+    backgroundColor: "black",
     borderRadius: 15,
     padding: 1,
     textAlign: "right",
@@ -91,9 +94,20 @@ const styles = StyleSheet.create({
   close_text: {
     fontWeight: "bold",
     fontSize: 20,
+    color: "white",
   },
-  title: {},
-  inputfield: {},
+  title: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  inputfield: {
+    padding: 5,
+    backgroundColor: "#d7d7d7",
+    width: "100%",
+    marginBottom: 10,
+    borderRadius: 5,
+  },
   btn_save: {},
   save_text: {},
 });
