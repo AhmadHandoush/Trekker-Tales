@@ -19,6 +19,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
 import Back from "../../../Components/back";
 import Topline from "../../../Components/topline";
+import ShowComments from "../../../Components/showcomments";
 
 const Posts = () => {
   const [caption, setCaption] = useState("");
@@ -243,14 +244,7 @@ const Posts = () => {
           </View>
         )}
       </View>
-      <View style={styles.comments}>
-        <Topline />
-        <Text>Comments</Text>
-        <Text>comment1</Text>
-        <Text>comment1</Text>
-        <Text>comment1</Text>
-        <Text>comment1</Text>
-      </View>
+      <ShowComments />
     </ScrollView>
   );
 };
