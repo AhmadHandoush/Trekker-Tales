@@ -10,13 +10,17 @@ import {
 import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import TakenTrip from "../../../Components/takenTrip";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, {
+  useAsyncStorage,
+} from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
+import { Redirect, useRouter } from "expo-router";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const defaultUser = {
     name: "",
     email: "",
@@ -84,7 +88,15 @@ const Profile = () => {
   const update = () => {
     console.log("update");
   };
-  const handleCLear = () => {};
+  const handleCLear = async () => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      await AsyncStorage.clear();
+      router.push("../../login");
+    } catch (error) {
+      console.error("Error clearing local storage:", error);
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
