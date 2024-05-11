@@ -1,14 +1,16 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import useBaseUrl from "./base_url";
 
 const MyTrip = ({ item }) => {
+  const baseUrl = useBaseUrl();
   return (
     <View style={styles.mine}>
       <View style={styles.mineimg}>
         <Image
           style={styles.mineimage}
-          source={require("../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
+          source={{ uri: `${baseUrl}/${item.trip.trip_image}` }}
         />
       </View>
       <View style={styles.mineinfo}>

@@ -38,7 +38,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(`${baseUrl}/api/user`, {
+          const response = await fetch(`http://192.168.0.103:8000/api/user`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -84,7 +84,7 @@ const Home = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(` ${baseUrl}/api/get_highest_rated`, {
+          const response = await fetch(`${baseUrl}/api/get_highest_rated`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
