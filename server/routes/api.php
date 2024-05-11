@@ -89,7 +89,7 @@ Route::group(["middleware" => "isUser"], function () {
 });
 
 Route::group(['middleware','isTeacher'],function (){
-
+        Route::post('update_user',[UserController::class,'update_user']);
         Route::post('create',[PostController::class,'create']);
         Route::get('posts',[PostController::class,'get_posts']);
         Route::get('user',[UserController::class,'user_data']);

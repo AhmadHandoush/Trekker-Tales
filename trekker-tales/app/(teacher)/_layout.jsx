@@ -46,7 +46,7 @@ const TabsLayout = () => {
           tabBarLabel: "Posts",
           title: "Posts",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="calendar" size={24} color={color} />
+            <AntDesign name="camerao" size={24} color={color} />
           ),
         }}
       />
@@ -56,7 +56,7 @@ const TabsLayout = () => {
           tabBarLabel: "Chat",
           title: "Chat",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="bells" size={24} color={color} fontSize={30} />
+            <AntDesign name="message1" size={24} color={color} fontSize={30} />
           ),
         }}
       />

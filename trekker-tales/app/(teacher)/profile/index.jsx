@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     paddingBottom: 20,
+    height: "100%",
   },
   profile: {
     backgroundColor: "white",
