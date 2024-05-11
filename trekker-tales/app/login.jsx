@@ -15,7 +15,9 @@ import Button from "../Components/button";
 import OrWith from "../Components/orwith";
 // import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import useURL from "../Components/base_url";
 import { useRouter } from "expo-router";
+const Base_URL = "http://192.168.0.103:8000";
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ const login = () => {
       password: password,
     };
 
-    fetch("http://192.168.0.102:8000/api/login", {
+    fetch(`${Base_URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
