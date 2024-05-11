@@ -15,8 +15,37 @@ const Post = ({ post, setSuccess }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [commentsCount, setCommentsCount] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(`${BASE_URL}/api/user`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setProfile(data.user);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const get_likes = async () => {
@@ -95,10 +124,12 @@ const Post = ({ post, setSuccess }) => {
     <View style={styles.post}>
       <View style={styles.top}>
         <View style={styles.img}>
-          <Image
-            source={require("../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-            style={styles.profile}
-          />
+          {profile && (
+            <Image
+              source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
+              style={styles.profile}
+            />
+          )}
         </View>
         <View style={styles.proinfo}>
           <Text style={styles.name}>Ahmad </Text>
