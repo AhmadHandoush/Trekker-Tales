@@ -8,7 +8,7 @@ import {
 import React from "react";
 import Topline from "./topline";
 
-const ShowComments = ({ setOpenComments }) => {
+const ShowComments = ({ setOpenComments, postComments }) => {
   const close = () => {
     setOpenComments(true);
   };
@@ -20,24 +20,11 @@ const ShowComments = ({ setOpenComments }) => {
       </TouchableOpacity>
       <Text style={styles.title}>Comments</Text>
       <ScrollView>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
-        <Text style={styles.comment}>Comments</Text>
+        {postComments.map((comment, index) => (
+          <Text style={styles.comment} key={index}>
+            {comment.comment}
+          </Text>
+        ))}
       </ScrollView>
     </View>
   );

@@ -11,7 +11,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
 
-const Post = ({ post, setSuccesscomment, setOpenComments }) => {
+const Post = ({
+  post,
+  setSuccesscomment,
+  setOpenComments,
+  get_post_comments,
+}) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
@@ -137,6 +142,7 @@ const Post = ({ post, setSuccesscomment, setOpenComments }) => {
   };
   const handleOpenComments = () => {
     setOpenComments(false);
+    get_post_comments(id);
   };
 
   return (

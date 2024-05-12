@@ -46,33 +46,56 @@ const Posts = () => {
 
     checkToken();
   }, []);
-  useEffect(() => {
-    const get_post_comments = async () => {
-      setLoading(true);
-      try {
-        const token = await AsyncStorage.getItem("token");
-        if (token) {
-          const response = await fetch(`${BASE_URL}/api/comments/21`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          if (!response.ok) {
-            throw new Error("Failed to fetch data");
-          }
-          const data = await response.json();
-
-          setPostComments(data.comments);
-          setLoading(false);
-        } else {
-          setLoading(true);
+  const get_post_comments = async (id) => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      if (token) {
+        const response = await fetch(`${BASE_URL}/api/comments/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
         }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        const data = await response.json();
+
+        setPostComments(data.comments);
+        setLoading(false);
+      } else {
+        setLoading(true);
       }
-    };
-    get_post_comments();
-  }, []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   const get_post_comments = async () => {
+  //     setLoading(true);
+  //     try {
+  //       if (token) {
+  //         const response = await fetch(`${BASE_URL}/api/comments/21`, {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         });
+  //         if (!response.ok) {
+  //           throw new Error("Failed to fetch data");
+  //         }
+  //         const data = await response.json();
+
+  //         setPostComments(data.comments);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(true);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   get_post_comments();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -261,6 +284,7 @@ const Posts = () => {
                   key={index}
                   setSuccesscomment={setSuccesscomment}
                   setOpenComments={setOpenComments}
+                  get_post_comments={get_post_comments}
                 />
               ))}
             </View>
@@ -279,7 +303,12 @@ const Posts = () => {
           )}
         </View>
       </ScrollView>
-      {!opencomments && <ShowComments setOpenComments={setOpenComments} />}
+      {!opencomments && (
+        <ShowComments
+          setOpenComments={setOpenComments}
+          postComments={postComments}
+        />
+      )}
     </>
   );
 };
