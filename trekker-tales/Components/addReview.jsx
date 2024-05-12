@@ -16,7 +16,7 @@ const AddReview = () => {
         <Text style={styles.text_close}>X</Text>
       </TouchableOpacity>
       <Text style={styles.title}>Add Review</Text>
-      <View>
+      <View style={styles.rate}>
         <Text>Rating</Text>
         <Picker
           //   selectedValue={value}
@@ -75,4 +75,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  title: {
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#e87a00",
+  },
+  rate: {},
 });
