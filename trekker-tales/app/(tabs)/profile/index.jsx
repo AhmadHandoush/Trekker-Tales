@@ -15,11 +15,14 @@ import AsyncStorage, {
 } from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
+import EditProfile from "../../../Components/editbox";
 
 const Profile = () => {
   // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [success, setSuccess] = useState(false);
   const router = useRouter();
   const defaultUser = {
     name: "",
@@ -92,73 +95,84 @@ const Profile = () => {
     const token = await AsyncStorage.getItem("token");
     try {
       await AsyncStorage.clear();
-      router.push("../../login");
+      router.replace("../../login");
     } catch (error) {
       console.error("Error clearing local storage:", error);
     }
   };
+  const handleEdit = () => {
+    setEdit(true);
+  };
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {user && (
-          <View style={styles.profile}>
-            <View style={styles.top}>
-              <View style={styles.image}>
-                <Image
-                  source={{
-                    uri: `${BASE_URL}/images/${user.user_image}`,
-                  }}
-                  style={styles.img}
-                />
-              </View>
-            </View>
-            <View style={styles.all}>
-              <View style={styles.topinfo}>
-                <Text style={styles.name}>{user.name}</Text>
-                <Text style={styles.email}>{email}</Text>
-              </View>
-              <View style={styles.info}>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons
-                    name="email-outline"
-                    size={28}
-                    color="grey"
+    <>
+      {edit && <View style={styles.overlay}></View>}
+      <ScrollView>
+        <View style={styles.container}>
+          {user && (
+            <View style={styles.profile}>
+              <View style={styles.top}>
+                <View style={styles.image}>
+                  <Image
+                    source={{
+                      uri: `${BASE_URL}/images/${user.user_image}`,
+                    }}
+                    style={styles.img}
                   />
-                  <Text style={styles.text}>{email}</Text>
-                </View>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons name="phone" size={28} color="grey" />
-                  <Text style={styles.text}>{user.phone}</Text>
-                </View>
-                <View style={styles.singleinfo}>
-                  <MaterialCommunityIcons
-                    name="map-marker-outline"
-                    size={28}
-                    color="grey"
-                  />
-                  <Text style={styles.text}>{address}</Text>
                 </View>
               </View>
-              <TouchableOpacity style={styles.button} onPress={update}>
-                <MaterialIcons name="border-color" size={24} color="white" />
-              </TouchableOpacity>
-              <View style={styles.taken}>
-                <Text style={styles.takentitle}>Taken Trips</Text>
+              <View style={styles.all}>
+                <View style={styles.topinfo}>
+                  <Text style={styles.name}>{user.name}</Text>
+                  <Text style={styles.email}>{email}</Text>
+                </View>
+                <View style={styles.info}>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="email-outline"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{email}</Text>
+                  </View>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="phone"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{user.phone}</Text>
+                  </View>
+                  <View style={styles.singleinfo}>
+                    <MaterialCommunityIcons
+                      name="map-marker-outline"
+                      size={28}
+                      color="grey"
+                    />
+                    <Text style={styles.text}>{address}</Text>
+                  </View>
+                </View>
+                <TouchableOpacity style={styles.button} onPress={handleEdit}>
+                  <MaterialIcons name="border-color" size={24} color="white" />
+                </TouchableOpacity>
+                <View style={styles.taken}>
+                  <Text style={styles.takentitle}>Taken Trips</Text>
 
-                <ScrollView style={styles.scroll}>
-                  {trips.map((trip) => (
-                    <TakenTrip trip={trip} key={trip.id} />
-                  ))}
-                </ScrollView>
+                  <ScrollView style={styles.scroll}>
+                    {trips.map((trip) => (
+                      <TakenTrip trip={trip} key={trip.id} />
+                    ))}
+                  </ScrollView>
+                </View>
               </View>
             </View>
-          </View>
-        )}
-        <TouchableOpacity style={styles.button} onPress={handleLogout}>
-          <Text style={styles.logout}>Log Out</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+          )}
+          <TouchableOpacity style={styles.button} onPress={handleLogout}>
+            <Text style={styles.logout}>Log Out</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
+    </>
   );
 };
 
@@ -169,6 +183,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     paddingBottom: 20,
+    position: "relative",
   },
   profile: {
     backgroundColor: "white",
@@ -188,6 +203,15 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
     position: "relative",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    zIndex: 500,
   },
   image: {
     position: "absolute",

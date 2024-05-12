@@ -59,7 +59,14 @@ class UserController extends Controller
             $image->move(public_path('images'), $imageName);
             $user->user_image = $imageName;
         }
-        $user->update($request->except('user_image'));
+        // $user->update($request->except('user_image'));
+        // $user->phone= $request->phone;
+        // $user->address= $request->address;
+        if($request->has('phone') && $request->has('address')){
+            $user->address= $request->address;
+            $user->phone= $request->phone;
+        }
+        $user->name= $request->name;
         return response()->json(["message"=>"info updated successfully",$user]);
 
 

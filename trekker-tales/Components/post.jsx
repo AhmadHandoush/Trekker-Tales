@@ -69,6 +69,8 @@ const Post = ({
       }
     };
     get_likes();
+  }, []);
+  useEffect(() => {
     const get_comments_number = async () => {
       const token = await AsyncStorage.getItem("token");
       try {
@@ -84,8 +86,9 @@ const Post = ({
         console.error("Error fetching comments count:", error);
       }
     };
+
     get_comments_number();
-  }, []);
+  }, [id]);
 
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");
@@ -157,7 +160,7 @@ const Post = ({
           )}
         </View>
         <View style={styles.proinfo}>
-          <Text style={styles.name}>Ahmad </Text>
+          <Text style={styles.name}>{profile.name} </Text>
           <Text style={styles.time}>{created_at.slice(0, 10)}</Text>
         </View>
       </View>
@@ -217,6 +220,7 @@ const styles = StyleSheet.create({
   },
   caption: {
     marginLeft: 10,
+    marginBottom: 5,
   },
   img: {
     width: 40,

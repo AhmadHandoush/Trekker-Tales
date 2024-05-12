@@ -174,11 +174,13 @@ const Posts = () => {
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.posts}>
-            {posts.map((post, index) => (
-              <Post post={post} key={index} setSuccess={setSuccess} />
-            ))}
-          </View>
+          {posts && (
+            <View style={styles.posts}>
+              {posts.map((post, index) => (
+                <Post post={post} key={index} setSuccess={setSuccess} />
+              ))}
+            </View>
+          )}
         </View>
       </View>
     </ScrollView>
