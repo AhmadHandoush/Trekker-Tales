@@ -3,11 +3,11 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Picker,
   TouchableOpacity,
 } from "react-native";
 import React from "react";
 // import RNPickerSelect from "react-native-picker-select";
+import { Picker } from "@react-native-picker/picker";
 
 const AddReview = () => {
   return (
@@ -19,8 +19,8 @@ const AddReview = () => {
       <View>
         <Text>Rating</Text>
         <Picker
-          selectedValue={value}
-          onValueChange={onValueChange}
+          //   selectedValue={value}
+          //   onValueChange={onValueChange}
           style={{ height: 50, width: 100 }}
         >
           <Picker.Item label="1" value={1} />
@@ -49,11 +49,13 @@ export default AddReview;
 const styles = StyleSheet.create({
   reviewBox: {
     position: "absolute",
-    top: 100,
-    left: 100,
+    top: "50%",
     width: 300,
     marginLeft: "auto",
     marginRight: "auto",
     backgroundColor: "green",
+    padding: 10,
+    transform: [{ translateX: 50 }, { translateY: 50 }],
+    borderRadius: 8,
   },
 });
