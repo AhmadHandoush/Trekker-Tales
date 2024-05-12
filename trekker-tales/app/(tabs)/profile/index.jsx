@@ -263,7 +263,13 @@ const Profile = () => {
         </View>
       </ScrollView>
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
-      {addreview && <AddReview setAddReview={setAddReview} tripid={tripid} />}
+      {addreview && (
+        <AddReview
+          setAddReview={setAddReview}
+          tripid={tripid}
+          setRatingSuccess={setRatingSuccess}
+        />
+      )}
       {ratingsuccess && (
         <View style={styles.successrating}>
           <Text style={styles.successratingText}>

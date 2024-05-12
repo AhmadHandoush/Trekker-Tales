@@ -9,8 +9,9 @@ import React, { useState } from "react";
 // import RNPickerSelect from "react-native-picker-select";
 import { Picker } from "@react-native-picker/picker";
 import { BASE_URL } from "../app/utils/constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const AddReview = ({ setAddReview, tripid }) => {
+const AddReview = ({ setAddReview, tripid, setRatingSuccess }) => {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);
   const handleAddReview = async () => {
@@ -31,7 +32,11 @@ const AddReview = ({ setAddReview, tripid }) => {
       });
 
       if (response.ok) {
-        console.log("Review added successfully");
+        setAddReview(false);
+        setRatingSuccess(true);
+        setTimeout(() => {
+          setRatingSuccess(false);
+        }, 2000);
       } else {
         console.error("Failed to add review");
       }
@@ -71,7 +76,7 @@ const AddReview = ({ setAddReview, tripid }) => {
           style={styles.input}
         />
       </View>
-      <TouchableOpacity style={styles.add}>
+      <TouchableOpacity style={styles.add} onPress={handleAddReview}>
         <Text style={styles.addText}>Add</Text>
       </TouchableOpacity>
     </View>
