@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
 import { useRoute } from "@react-navigation/native";
+import { firestore } from "@react-native-firebase/firestore";
 
 const Chat = () => {
   const route = useRoute();
@@ -26,10 +27,18 @@ const Chat = () => {
   const onSend = (messageArray) => {
     console.log(messageArray);
     const msg = messageArray[0];
-    const msMsg = { ...msg, senderId: 1, receiverId: 2 };
+    const myMsg = { ...msg, senderId: 1, receiverId: 2 };
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messageArray)
+      GiftedChat.append(previousMessages, myMsg)
     );
+    firestore()
+      .collection("chats")
+      .doc("12345")
+      .collection("messages")
+      .add({
+        ...myMsg,
+        createdAt: new Date(),
+      });
   };
 
   return (
