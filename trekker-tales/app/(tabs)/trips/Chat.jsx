@@ -7,6 +7,7 @@ const Chat = () => {
   const route = useRoute();
   const [messages, setMessages] = useState([]);
 
+  //   route.params.data.myId
   useEffect(() => {
     setMessages([
       {
@@ -14,7 +15,7 @@ const Chat = () => {
         text: "Hello developer",
         createdAt: new Date(),
         user: {
-          _id: route.params.data.myId,
+          _id: 1,
           name: "React Native",
           avatar: "https://placeimg.com/140/140/any",
         },
@@ -23,6 +24,9 @@ const Chat = () => {
   }, []);
 
   const onSend = (messageArray) => {
+    console.log(messageArray);
+    const msg = messageArray[0];
+    const msMsg = { ...msg, senderId: 1, receiverId: 2 };
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messageArray)
     );
