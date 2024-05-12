@@ -17,11 +17,11 @@ const AddReview = () => {
       </TouchableOpacity>
       <Text style={styles.title}>Add Review</Text>
       <View style={styles.rate}>
-        <Text>Rating</Text>
+        <Text style={styles.bold}>Rating</Text>
         <Picker
           //   selectedValue={value}
           //   onValueChange={onValueChange}
-          style={{ height: 50, width: 100 }}
+          style={styles.select}
         >
           <Picker.Item label="1" value={1} />
           <Picker.Item label="2" value={2} />
@@ -30,8 +30,8 @@ const AddReview = () => {
           <Picker.Item label="5" value={5} />
         </Picker>
       </View>
-      <View>
-        <Text>Content</Text>
+      <View style={styles.content}>
+        <Text style={styles.bold}>Content</Text>
         <TextInput
           // style={styles.input}
           // onChangeText={handleContentChange}
@@ -39,8 +39,12 @@ const AddReview = () => {
           // multiline={true}
           // numberOfLines={4}
           placeholder="Enter your feedback"
+          style={styles.input}
         />
       </View>
+      <TouchableOpacity style={styles.add}>
+        <Text style={styles.addText}>Add</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -81,5 +85,42 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#e87a00",
   },
-  rate: {},
+  rate: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    height: 30,
+    overflow: "hidden",
+    justifyContent: "space-between",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  select: {
+    height: 20,
+    width: 100,
+    backgroundColor: "#d7d7d7",
+    borderRadius: 6,
+    overflow: "hidden",
+  },
+  bold: {
+    fontWeight: "bold",
+  },
+  input: {
+    backgroundColor: "#d7d7d7",
+    padding: 5,
+    borderRadius: 6,
+    marginTop: 10,
+  },
+  add: {
+    marginTop: 10,
+    width: "50%",
+    padding: 10,
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "#e87a00",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 6,
+  },
 });
