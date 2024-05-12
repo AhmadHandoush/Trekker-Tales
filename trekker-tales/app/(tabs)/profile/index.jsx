@@ -20,6 +20,7 @@ import AddReview from "../../../Components/addReview";
 
 const Profile = () => {
   const [user, setUser] = useState();
+  const [ratingsuccess, setRatingSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [edit, setEdit] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -263,6 +264,13 @@ const Profile = () => {
       </ScrollView>
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
       {addreview && <AddReview setAddReview={setAddReview} tripid={tripid} />}
+      {ratingsuccess && (
+        <View style={styles.successrating}>
+          <Text style={styles.successratingText}>
+            Review Added successfully
+          </Text>
+        </View>
+      )}
     </>
   );
 };
@@ -378,5 +386,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     fontSize: 18,
+  },
+  successrating: {
+    position: "absolute",
+    top: "50%",
+    left: "10%",
+    transform: [{ translateX: 50 }, { translateY: 50 }],
+    backgroundColor: "black",
+    padding: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+  },
+  successratingText: {
+    color: "green",
+    fontWeight: "bold",
   },
 });
