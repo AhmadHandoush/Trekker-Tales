@@ -163,34 +163,12 @@ const Profile = () => {
         setLoading(true);
       });
   }, []);
+  const date = new Date();
+  const TakenTrips = myTripsData.filter(
+    (trip) => new Date(trip.trip.date) < date
+  );
 
   // const [taken, setTaken] = useState([]);
-  const trips = [
-    {
-      id: 1,
-      name: "Treepo",
-      date: "17-4-2024",
-      rating: "4.2",
-      fees: 40,
-      trip_image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-    },
-    {
-      id: 2,
-      name: "Adventures",
-      date: "12-3-2024",
-      rating: "4.7",
-      fees: 70,
-      trip_image: require("../../../assets/ChildrenAtAltitude.jpg"),
-    },
-    {
-      id: 3,
-      name: "Treepo",
-      date: "17-4-2024",
-      rating: "4.2",
-      fees: 40,
-      trip_image: require("../../../assets/brothers-hike-mountains-children-are-walking-along-mountain-trail-outdoor-activities-with-children-sibling-boy-with-his-brother-traveling_627829-12615.jpg"),
-    },
-  ];
 
   const { name, email, phone, address, user_image } = user || defaultUser;
   const update = () => {
@@ -263,7 +241,7 @@ const Profile = () => {
                   <Text style={styles.takentitle}>Taken Trips</Text>
 
                   <ScrollView style={styles.scroll}>
-                    {myTripsData.map((trip) => (
+                    {TakenTrips.map((trip) => (
                       <TakenTrip trip={trip} key={trip.id} />
                     ))}
                   </ScrollView>
