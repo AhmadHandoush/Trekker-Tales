@@ -231,6 +231,7 @@ const Posts = () => {
                   post={post}
                   key={index}
                   setSuccesscomment={setSuccesscomment}
+                  setOpenComments={setOpenComments}
                 />
               ))}
             </View>

@@ -11,7 +11,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
 
-const Post = ({ post, setSuccesscomment }) => {
+const Post = ({ post, setSuccesscomment, setOpenComments }) => {
   const { caption, image, created_at, id } = post;
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState(0);
@@ -135,6 +135,9 @@ const Post = ({ post, setSuccesscomment }) => {
       console.error("Error liking/disliking post:", error);
     }
   };
+  const handleOpenComments = () => {
+    setOpenComments(false);
+  };
 
   return (
     <View style={styles.post}>
@@ -159,7 +162,9 @@ const Post = ({ post, setSuccesscomment }) => {
       />
       <View style={styles.info}>
         <Text style={styles.likes}> {likes} likes</Text>
-        <Text style={styles.comments}> {commentsCount} comments</Text>
+        <TouchableOpacity onPress={handleOpenComments}>
+          <Text style={styles.comments}> {commentsCount} comments</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.bottom}>
         <TouchableOpacity onPress={handleAddLike}>

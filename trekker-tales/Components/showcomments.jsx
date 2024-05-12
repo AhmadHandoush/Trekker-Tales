@@ -78,8 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     top: 10,
     width: "20%",
-    height: 4,
+    height: 3,
     marginLeft: "auto",
     marginRight: "auto",
+    borderRadius: 20,
   },
 });
