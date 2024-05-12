@@ -12,8 +12,8 @@ import { Picker } from "@react-native-picker/picker";
 const AddReview = () => {
   return (
     <View style={styles.reviewBox}>
-      <TouchableOpacity>
-        <Text>X</Text>
+      <TouchableOpacity style={styles.btn_close}>
+        <Text style={styles.text_close}>X</Text>
       </TouchableOpacity>
       <Text style={styles.title}>Add Review</Text>
       <View>
@@ -57,5 +57,22 @@ const styles = StyleSheet.create({
     padding: 10,
     transform: [{ translateX: 50 }, { translateY: 50 }],
     borderRadius: 8,
+  },
+  btn_close: {
+    position: "absolute",
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: "black",
+    top: -15,
+    right: -10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text_close: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
