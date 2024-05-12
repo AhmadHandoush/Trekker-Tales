@@ -30,6 +30,7 @@ const Posts = () => {
   const [successComment, setSuccesscomment] = useState(false);
   const [image, setImage] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [opencomments, setOpenComments] = useState(true);
   useEffect(() => {
     const checkToken = async () => {
       try {
@@ -248,7 +249,7 @@ const Posts = () => {
           )}
         </View>
       </ScrollView>
-      <ShowComments />
+      {!opencomments && <ShowComments setOpenComments={setOpenComments} />}
     </>
   );
 };

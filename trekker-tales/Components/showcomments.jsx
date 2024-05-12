@@ -8,11 +8,14 @@ import {
 import React from "react";
 import Topline from "./topline";
 
-const ShowComments = ({ setCloseComments }) => {
+const ShowComments = ({ setOpenComments }) => {
+  const close = () => {
+    setOpenComments(true);
+  };
   return (
     <View style={styles.comments}>
       <View style={styles.topLine}></View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={close}>
         <Text style={styles.close}>X</Text>
       </TouchableOpacity>
       <Text style={styles.title}>Comments</Text>
