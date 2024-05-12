@@ -9,7 +9,8 @@ import React from "react";
 // import RNPickerSelect from "react-native-picker-select";
 import { Picker } from "@react-native-picker/picker";
 
-const AddReview = () => {
+const AddReview = ({ setAddReview }) => {
+    const handleclose = () =
   return (
     <View style={styles.reviewBox}>
       <TouchableOpacity style={styles.btn_close}>
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     padding: 10,
     transform: [{ translateX: 50 }, { translateY: 50 }],
     borderRadius: 8,
+    zIndex: 9999,
   },
   btn_close: {
     position: "absolute",
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     fontWeight: "bold",
-    color: "#e87a00",
+    color: "black",
   },
   rate: {
     display: "flex",
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   add: {
     marginTop: 10,
     width: "50%",
-    padding: 10,
+    padding: 7,
     marginLeft: "auto",
     marginRight: "auto",
     backgroundColor: "#e87a00",
@@ -122,5 +124,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 6,
+  },
+  addText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });

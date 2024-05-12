@@ -1,32 +1,44 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BASE_URL } from "../app/utils/constants";
 
-const TakenTrip = ({ trip }) => {
+const TakenTrip = ({ trip, setAddReview }) => {
   const { name, fees, date, trip_image } = trip.trip;
+  const handleOpenReview = () => {
+    setAddReview(true);
+  };
   return (
-    <View style={styles.card}>
-      <View style={styles.image}>
-        <Image
-          source={{ uri: `${BASE_URL}/${trip_image}` }}
-          style={styles.img}
-        />
-      </View>
-      <View style={styles.data}>
-        <View style={styles.topline}>
-          <Text style={styles.name}>{name}</Text>
-          <View style={styles.rate}>
-            <MaterialIcons name="star" size={16} color="gold" />
-            <Text style={styles.rating}>{2.2}</Text>
+    <TouchableOpacity onPress={handleOpenReview}>
+      <View style={styles.card}>
+        <View style={styles.image}>
+          <Image
+            source={{ uri: `${BASE_URL}/${trip_image}` }}
+            style={styles.img}
+          />
+        </View>
+        <View style={styles.data}>
+          <View style={styles.topline}>
+            <Text style={styles.name}>{name}</Text>
+            <View style={styles.rate}>
+              <MaterialIcons name="star" size={16} color="gold" />
+              <Text style={styles.rating}>{2.2}</Text>
+            </View>
+          </View>
+          <View style={styles.bottomline}>
+            <Text style={styles.date}>{date}</Text>
+            <Text style={styles.fees}>${parseInt(fees)}</Text>
           </View>
         </View>
-        <View style={styles.bottomline}>
-          <Text style={styles.date}>{date}</Text>
-          <Text style={styles.fees}>${parseInt(fees)}</Text>
-        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

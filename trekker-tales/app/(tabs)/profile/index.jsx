@@ -26,6 +26,7 @@ const Profile = () => {
   const router = useRouter();
   const [myTripsData, setMyTripsData] = useState(initial);
   const [mytakenTrips, setMytakenTrips] = useState([]);
+  const [addreview, setAddReview] = useState(false);
   const initial = [
     {
       id: 14,
@@ -184,6 +185,7 @@ const Profile = () => {
   return (
     <>
       {edit && <View style={styles.overlay}></View>}
+      {addreview && <View style={styles.overlay}></View>}
       <ScrollView>
         <View style={styles.container}>
           {user && (
@@ -238,7 +240,11 @@ const Profile = () => {
                   {myTripsData && (
                     <ScrollView style={styles.scroll}>
                       {myTripsData.map((trip) => (
-                        <TakenTrip trip={trip} key={trip.id} />
+                        <TakenTrip
+                          trip={trip}
+                          key={trip.id}
+                          setAddReview={setAddReview}
+                        />
                       ))}
                     </ScrollView>
                   )}
@@ -252,7 +258,7 @@ const Profile = () => {
         </View>
       </ScrollView>
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
-      <AddReview />
+      {addreview && <AddReview setAddReview={setAddReview} />}
     </>
   );
 };
