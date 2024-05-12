@@ -119,7 +119,11 @@ const Trips = () => {
             throw new Error("Failed to fetch data");
           }
           const data = await response.json();
-          setTrips(data.trips);
+          const date = new Date();
+          const upcoming = data.trips.filter(
+            (trip) => new Date(trip.date) > date
+          );
+          setTrips(upcoming);
           setLoading(false);
         } else {
           setLoading(true);
@@ -145,10 +149,10 @@ const Trips = () => {
       get_mytrips()
         .then((data) => {
           const date = new Date();
-          const upcoming = data.filter(
+          const myUpcoming = data.filter(
             (trip) => new Date(trip.trip.date) > date
           );
-          setMyTripsData(upcoming);
+          setMyTripsData(myUpcoming);
           setMyTripsLoading(false);
         })
         .catch((error) => {
