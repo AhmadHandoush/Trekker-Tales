@@ -144,7 +144,11 @@ const Trips = () => {
 
       get_mytrips()
         .then((data) => {
-          setMyTripsData(data);
+          const date = new Date();
+          const upcoming = data.filter(
+            (trip) => new Date(trip.trip.date) > date
+          );
+          setMyTripsData(upcoming);
           setMyTripsLoading(false);
         })
         .catch((error) => {
