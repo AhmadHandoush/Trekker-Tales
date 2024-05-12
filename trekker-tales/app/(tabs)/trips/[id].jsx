@@ -17,7 +17,6 @@ import TripCard from "../../../Components/TripCard";
 import { BASE_URL } from "../../utils/constants";
 
 const SingleTrip = () => {
-
   const [book, setBook] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -45,14 +44,11 @@ const SingleTrip = () => {
       try {
         const token = await AsyncStorage.getItem("token");
         if (token) {
-          const response = await fetch(
-            `${BASE_URL}/api/get_trip/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await fetch(`${BASE_URL}/api/get_trip/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch data");
           }
@@ -94,7 +90,7 @@ const SingleTrip = () => {
             <View style={styles.hero}>
               <ImageBackground
                 source={{
-                  uri: `${baseUrl}/${tripData.trip_image}`,
+                  uri: `${BASE_URL}/${tripData.trip_image}`,
                 }}
                 style={styles.image}
               ></ImageBackground>
@@ -159,7 +155,7 @@ const SingleTrip = () => {
             {message && (
               <View style={styles.message}>
                 <Text style={styles.msgText}>
-                  You booking successfully completed
+                  Your booking successfully completed
                 </Text>
               </View>
             )}

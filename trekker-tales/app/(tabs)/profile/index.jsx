@@ -16,6 +16,7 @@ import AsyncStorage, {
 import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
+import AddReview from "../../../Components/addReview";
 
 const Profile = () => {
   const [user, setUser] = useState();
@@ -167,9 +168,7 @@ const Profile = () => {
   }, []);
 
   const { name, email, phone, address, user_image } = user || defaultUser;
-  const update = () => {
-    console.log("update");
-  };
+
   const handleLogout = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -236,11 +235,13 @@ const Profile = () => {
                 <View style={styles.taken}>
                   <Text style={styles.takentitle}>Taken Trips</Text>
 
-                  <ScrollView style={styles.scroll}>
-                    {myTripsData.map((trip) => (
-                      <TakenTrip trip={trip} key={trip.id} />
-                    ))}
-                  </ScrollView>
+                  {myTripsData && (
+                    <ScrollView style={styles.scroll}>
+                      {myTripsData.map((trip) => (
+                        <TakenTrip trip={trip} key={trip.id} />
+                      ))}
+                    </ScrollView>
+                  )}
                 </View>
               </View>
             </View>
@@ -251,6 +252,7 @@ const Profile = () => {
         </View>
       </ScrollView>
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
+      <AddReview />
     </>
   );
 };
