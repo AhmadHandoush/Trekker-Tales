@@ -43,6 +43,9 @@ const MyTrip = ({ item }) => {
           </Text>
         )}
         {/* <Text>{currentDate}</Text> */}
+        <Link href="/(tabs)/trips/chat">
+          <Text>Chat</Text>
+        </Link>
       </View>
     </View>
   );
