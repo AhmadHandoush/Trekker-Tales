@@ -18,13 +18,13 @@ import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
 
 const Profile = () => {
-  // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [edit, setEdit] = useState(false);
   const [success, setSuccess] = useState(false);
   const router = useRouter();
   const [myTripsData, setMyTripsData] = useState(initial);
+  const [mytakenTrips, setMytakenTrips] = useState([]);
   const initial = [
     {
       id: 14,
@@ -155,7 +155,9 @@ const Profile = () => {
     };
     get_mytrips()
       .then((data) => {
-        setMyTripsData(data);
+        const date = new Date();
+        const filtered = data.filter((trip) => new Date(trip.trip.date) < date);
+        setMyTripsData(filtered);
         setLoading(false);
       })
       .catch((error) => {
@@ -163,12 +165,6 @@ const Profile = () => {
         setLoading(true);
       });
   }, []);
-  const date = new Date();
-  const TakenTrips = myTripsData.filter(
-    (trip) => new Date(trip.trip.date) < date
-  );
-
-  // const [taken, setTaken] = useState([]);
 
   const { name, email, phone, address, user_image } = user || defaultUser;
   const update = () => {
@@ -241,7 +237,7 @@ const Profile = () => {
                   <Text style={styles.takentitle}>Taken Trips</Text>
 
                   <ScrollView style={styles.scroll}>
-                    {TakenTrips.map((trip) => (
+                    {myTripsData.map((trip) => (
                       <TakenTrip trip={trip} key={trip.id} />
                     ))}
                   </ScrollView>
