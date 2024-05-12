@@ -1,16 +1,41 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import Topline from "./topline";
 
-const ShowComments = () => {
+const ShowComments = ({ setCloseComments }) => {
   return (
     <View style={styles.comments}>
-      <Text style={styles.close}>X</Text>
       <View style={styles.topLine}></View>
-      <Text style={styles.comment}>Comments</Text>
-      <Text style={styles.comment}>Comments</Text>
-      <Text style={styles.comment}>Comments</Text>
-      <Text style={styles.comment}>Comments</Text>
+      <TouchableOpacity>
+        <Text style={styles.close}>X</Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>Comments</Text>
+      <ScrollView>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+        <Text style={styles.comment}>Comments</Text>
+      </ScrollView>
     </View>
   );
 };
@@ -21,17 +46,37 @@ const styles = StyleSheet.create({
   comments: {
     width: "100%",
     padding: 10,
-    backgroundColor: "rgba(0,0,0,0.7)",
+    backgroundColor: "rgba(0,0,0,0.9)",
     position: "absolute",
     height: "100%",
     top: 100,
     left: 0,
+    borderTopEndRadius: 15,
+    borderTopStartRadius: 15,
   },
-  comment: {},
-  topLine: {
+  title: {
+    color: "#e87a00",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  close: {
     color: "white",
+    textAlign: "right",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  comment: {
+    color: "white",
+    marginBottom: 30,
+  },
+  topLine: {
+    backgroundColor: "white",
     top: 10,
-    width: "50%",
+    width: "20%",
     height: 4,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
