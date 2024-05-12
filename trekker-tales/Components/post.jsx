@@ -159,10 +159,12 @@ const Post = ({
             />
           )}
         </View>
-        <View style={styles.proinfo}>
-          <Text style={styles.name}>{profile.name} </Text>
-          <Text style={styles.time}>{created_at.slice(0, 10)}</Text>
-        </View>
+        {profile && (
+          <View style={styles.proinfo}>
+            <Text style={styles.name}>{profile.name} </Text>
+            <Text style={styles.time}>{created_at.slice(0, 10)}</Text>
+          </View>
+        )}
       </View>
       <Text style={styles.caption}>{caption}</Text>
       <Image
