@@ -243,7 +243,7 @@ const Trips = () => {
           </ScrollView>
         )
       ) : (
-        <ScrollView>
+        <ScrollView style={styles.postss}>
           <View style={styles.container}>
             {filteredTrips.map((trip, index) => (
               <View key={trip.id} style={index % 2 === 0 ? styles.row : null}>
@@ -271,6 +271,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     backgroundColor: "white",
   },
+
   color: {
     color: "white",
   },
@@ -283,6 +284,7 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     backgroundColor: "white",
     paddingBottom: 60,
+    paddingBottom: 150,
   },
   scroll: {
     backgroundColor: "white",

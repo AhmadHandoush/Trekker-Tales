@@ -24,33 +24,33 @@ const Post = ({
   const [loading, setLoading] = useState(false);
 
   const [commentsCount, setCommentsCount] = useState(0);
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const token = await AsyncStorage.getItem("token");
-        if (token) {
-          const response = await fetch(`${BASE_URL}/api/user`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          if (!response.ok) {
-            throw new Error("Failed to fetch data");
-          }
-          const data = await response.json();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     const token = await AsyncStorage.getItem("token");
+  //     try {
+  //       if (token) {
+  //         const response = await fetch(`${BASE_URL}/api/user`, {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         });
+  //         if (!response.ok) {
+  //           throw new Error("Failed to fetch data");
+  //         }
+  //         const data = await response.json();
 
-          setProfile(data.user);
-          setLoading(false);
-        } else {
-          setLoading(true);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  //         setProfile(data.user);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(true);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const get_likes = async () => {
@@ -160,7 +160,7 @@ const Post = ({
           )}
         </View>
         <View style={styles.proinfo}>
-          <Text style={styles.name}>{profile.name} </Text>
+          <Text style={styles.name}>Sidra </Text>
           <Text style={styles.time}>{created_at.slice(0, 10)}</Text>
         </View>
       </View>

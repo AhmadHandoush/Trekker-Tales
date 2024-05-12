@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   ScrollView,
   StyleSheet,
@@ -12,20 +13,155 @@ import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
 // import { Link } from "expo-router";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
+import Back from "../../../Components/back";
+import Topline from "../../../Components/topline";
+import ShowComments from "../../../Components/showcomments";
 
 const Posts = () => {
-  const [text, setText] = useState("");
+  const [caption, setCaption] = useState("");
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [successComment, setSuccesscomment] = useState(false);
+  const [image, setImage] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [opencomments, setOpenComments] = useState(true);
+  const [postComments, setPostComments] = useState([]);
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (!token) {
+          return <Redirect href={"../../login"} />;
+        }
+      } catch (error) {
+        console.error("Error checking token:", error);
+      }
+    };
+
+    checkToken();
+  }, []);
+  const get_post_comments = async (id) => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      if (token) {
+        const response = await fetch(`${BASE_URL}/api/comments/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+
+        setPostComments(data.comments);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   const get_post_comments = async () => {
+  //     setLoading(true);
+  //     try {
+  //       if (token) {
+  //         const response = await fetch(`${BASE_URL}/api/comments/21`, {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         });
+  //         if (!response.ok) {
+  //           throw new Error("Failed to fetch data");
+  //         }
+  //         const data = await response.json();
+
+  //         setPostComments(data.comments);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(true);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   get_post_comments();
+  // }, []);
 
   useEffect(() => {
-    const fetchTrips = async () => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(`${BASE_URL}/api/user`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setProfile(data.user);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const get_likes = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(`${BASE_URL}/api/likes/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        setLikes(data.likes);
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+    get_likes();
+    const get_comments_number = async () => {
+      const token = await AsyncStorage.getItem("token");
+      try {
+        const response = await fetch(`${BASE_URL}/api/comments_number/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        setCommentsCount(data.comments);
+      } catch (error) {
+        console.error("Error fetching comments count:", error);
+      }
+    };
+    get_comments_number();
+  }, []);
+
+  useEffect(() => {
+    const get_posts = async () => {
       setLoading(true);
       try {
         const token = await AsyncStorage.getItem("token");
@@ -48,55 +184,17 @@ const Posts = () => {
         console.error("Error fetching data:", error);
       }
     };
-    fetchTrips();
+    get_posts();
   }, []);
 
-  // const posts = [
-  //   {
-  //     id: 1,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 2,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 3,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  //   {
-  //     id: 4,
-  //     caption: "the best trip",
-  //     image: require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg"),
-  //     user_id: 12,
-  //     created_at: "2024-04-25T12:30:08.000000Z",
-  //   },
-  // ];
-  //   const user = {
-  //     id: 22,
-  //     name: "louna",
-  //     email: "mouna@gmail.com",
-  //     email_verified_at: null,
-  //     address: null,
-  //     phone: null,
-  //     longitude: null,
-  //     latitude: null,
-  //     user_image: "1714600471.jpg",
-  //     created_at: "2024-05-01T21:25:25.000000Z",
-  //     updated_at: "2024-05-01T21:54:31.000000Z",
-  //     role: "parent",
-  //   };
   const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access the media library is required!");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
@@ -104,86 +202,116 @@ const Posts = () => {
     });
 
     if (!result.canceled) {
-      setImage(result);
+      const selectedUri = result.assets[0].uri;
+      setImage(selectedUri);
     }
   };
+
   const handleSubmit = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (!caption || !image) {
+      Alert.alert("Image and caption are required");
+      return;
+    }
     try {
       const formData = new FormData();
-      formData.append("text", text);
       formData.append("image", {
-        uri: image.uri,
+        uri: image,
         type: "image/jpeg",
-        name: "image.jpg",
+        name: "photo.jpg",
       });
+      formData.append("caption", caption);
 
-      const response = await fetch("YOUR_BACKEND_URL", {
-        method: "POST",
-        body: formData,
+      const response = await axios.post(`${BASE_URL}/api/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
         },
       });
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 2000);
 
-      if (!response.ok) {
-        throw new Error("Failed to submit data");
-      }
-
-      console.log("Data submitted successfully!");
-
-      setText("");
-      setImage(null);
+      console.log("Response:", response.data);
     } catch (error) {
-      console.error("Error submitting data:", error.message);
+      console.error("Error:", error);
     }
   };
 
   return (
-    <ScrollView style={styles.scroll}>
-      <View style={styles.postsPage}>
-        <View style={styles.data}>
-          <View style={styles.add}>
-            <View style={styles.img}>
-              <Image
-                source={require("../../../assets/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg")}
-                style={styles.image}
-              />
-            </View>
-            <View style={styles.input}>
-              <TextInput
-                style={styles.inputfield}
-                placeholder="Add Trip Post"
-                onChangeText={setText}
-                value={text}
-                selectionColor={"#E87A00"}
-                required
-              />
-              <TouchableOpacity style={styles.btnAdd}>
-                <Text style={styles.btnText}>Add</Text>
+    <>
+      <ScrollView style={styles.scroll}>
+        <Back title="Posts" />
+        <View style={styles.postsPage}>
+          <View style={styles.data}>
+            <View style={styles.add}>
+              <View style={styles.img}>
+                {profile && (
+                  <Image
+                    source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
+                    style={styles.image}
+                  />
+                )}
+              </View>
+              <View style={styles.input}>
+                <TextInput
+                  style={styles.inputfield}
+                  placeholder="Add Trip Post"
+                  onChangeText={setCaption}
+                  value={caption}
+                  selectionColor={"#E87A00"}
+                  required
+                />
+                <TouchableOpacity style={styles.btnAdd} onPress={handleSubmit}>
+                  <Text style={styles.btnText}>Add</Text>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity
+                style={styles.fileInputButton}
+                onPress={pickImage}
+              >
+                <Icon
+                  name="camera"
+                  size={20}
+                  color="#808080"
+                  style={styles.camera}
+                />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={styles.fileInputButton}
-              onPress={pickImage}
-            >
-              <Icon
-                name="camera"
-                size={20}
-                color="#808080"
-                style={styles.camera}
-              />
-            </TouchableOpacity>
+            {posts && (
+              <View style={styles.posts}>
+                {posts.map((post, index) => (
+                  <Post
+                    post={post}
+                    key={index}
+                    setSuccesscomment={setSuccesscomment}
+                    setOpenComments={setOpenComments}
+                    get_post_comments={get_post_comments}
+                  />
+                ))}
+              </View>
+            )}
+            {success && (
+              <View style={styles.success}>
+                <Text style={styles.successText}>Post Added Successfully </Text>
+              </View>
+            )}
           </View>
-          {posts && (
-            <View style={styles.posts}>
-              {posts.map((post, index) => (
-                <Post post={post} key={index} setSuccess={setSuccess} />
-              ))}
+          {successComment && (
+            <View style={styles.success}>
+              <Text style={styles.successText}>
+                Comment Added Successfully{" "}
+              </Text>
             </View>
           )}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      {!opencomments && (
+        <ShowComments
+          setOpenComments={setOpenComments}
+          postComments={postComments}
+        />
+      )}
+    </>
   );
 };
 
@@ -193,12 +321,31 @@ const styles = StyleSheet.create({
   scroll: {
     flex: 1,
     position: "relative",
+    backgroundColor: "white",
+  },
+  success: {
+    position: "absolute",
+    width: "60%",
+    padding: 10,
+    display: "flex",
+    justifyContent: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+    marginLeft: 80,
+    borderRadius: 8,
+    top: "20%",
+  },
+  successText: {
+    color: "green",
+    fontWeight: "bold",
+    textAlign: "center",
   },
   data: {
     width: "93%",
     marginRight: "auto",
     marginLeft: "auto",
     flex: 1,
+    position: "relative",
   },
 
   postsPage: {

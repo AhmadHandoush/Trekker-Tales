@@ -73,6 +73,11 @@ class PostController extends Controller
         ], 200);
 
     }
+    public function post_owner_data()
+    {
+        $posts = Post::with('user')->get();
+        return response()->json($posts);
+    }
 
 
 }
