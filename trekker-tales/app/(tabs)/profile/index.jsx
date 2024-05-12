@@ -102,6 +102,8 @@ const Profile = () => {
       },
     },
   ];
+  const [tripid, setTripId] = useState(0);
+
   const defaultUser = {
     name: "",
     email: "",
@@ -182,6 +184,7 @@ const Profile = () => {
   const handleEdit = () => {
     setEdit(true);
   };
+  const add_review = () => {};
   return (
     <>
       {edit && <View style={styles.overlay}></View>}
@@ -244,6 +247,7 @@ const Profile = () => {
                           trip={trip}
                           key={trip.id}
                           setAddReview={setAddReview}
+                          setTripId={setTripId}
                         />
                       ))}
                     </ScrollView>
@@ -258,7 +262,7 @@ const Profile = () => {
         </View>
       </ScrollView>
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
-      {addreview && <AddReview setAddReview={setAddReview} />}
+      {addreview && <AddReview setAddReview={setAddReview} tripid={tripid} />}
     </>
   );
 };

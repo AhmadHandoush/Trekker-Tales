@@ -5,23 +5,54 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 // import RNPickerSelect from "react-native-picker-select";
 import { Picker } from "@react-native-picker/picker";
+import { BASE_URL } from "../app/utils/constants";
 
-const AddReview = ({ setAddReview }) => {
-    const handleclose = () =
+const AddReview = ({ setAddReview, tripid }) => {
+  const [content, setContent] = useState("");
+  const [rating, setRating] = useState(0);
+  const handleAddReview = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const reviewData = {
+        rating: rating,
+        content: content,
+      };
+
+      const response = await fetch(`${BASE_URL}/api/add_review/${tripid}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (response.ok) {
+        console.log("Review added successfully");
+      } else {
+        console.error("Failed to add review");
+      }
+    } catch (error) {
+      console.error("Error adding review:", error);
+    }
+  };
+  const handleclose = () => {
+    setAddReview(false);
+  };
   return (
     <View style={styles.reviewBox}>
-      <TouchableOpacity style={styles.btn_close}>
+      <TouchableOpacity style={styles.btn_close} onPress={handleclose}>
         <Text style={styles.text_close}>X</Text>
       </TouchableOpacity>
       <Text style={styles.title}>Add Review</Text>
       <View style={styles.rate}>
         <Text style={styles.bold}>Rating</Text>
         <Picker
-          //   selectedValue={value}
-          //   onValueChange={onValueChange}
+          selectedValue={rating}
+          onValueChange={(itemValue) => setRating(itemValue)}
           style={styles.select}
         >
           <Picker.Item label="1" value={1} />
@@ -34,12 +65,9 @@ const AddReview = ({ setAddReview }) => {
       <View style={styles.content}>
         <Text style={styles.bold}>Content</Text>
         <TextInput
-          // style={styles.input}
-          // onChangeText={handleContentChange}
-          // value={content}
-          // multiline={true}
-          // numberOfLines={4}
+          value={content}
           placeholder="Enter your feedback"
+          onChangeText={(text) => setContent(text)}
           style={styles.input}
         />
       </View>
@@ -58,7 +86,7 @@ const styles = StyleSheet.create({
     width: 300,
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "green",
+    backgroundColor: "white",
     padding: 10,
     transform: [{ translateX: 50 }, { translateY: 50 }],
     borderRadius: 8,

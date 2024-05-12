@@ -10,10 +10,11 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BASE_URL } from "../app/utils/constants";
 
-const TakenTrip = ({ trip, setAddReview }) => {
-  const { name, fees, date, trip_image } = trip.trip;
+const TakenTrip = ({ trip, setAddReview, setTripId }) => {
+  const { name, fees, date, trip_image, id } = trip.trip;
   const handleOpenReview = () => {
     setAddReview(true);
+    setTripId(id);
   };
   return (
     <TouchableOpacity onPress={handleOpenReview}>
