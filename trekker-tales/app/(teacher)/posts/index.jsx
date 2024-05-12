@@ -31,6 +31,7 @@ const Posts = () => {
   const [image, setImage] = useState(null);
   const [profile, setProfile] = useState(null);
   const [opencomments, setOpenComments] = useState(true);
+  const [postComments, setPostComments] = useState([]);
   useEffect(() => {
     const checkToken = async () => {
       try {
@@ -44,6 +45,33 @@ const Posts = () => {
     };
 
     checkToken();
+  }, []);
+  useEffect(() => {
+    const get_post_comments = async () => {
+      setLoading(true);
+      try {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+          const response = await fetch(`${BASE_URL}/api/comments/21`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const data = await response.json();
+
+          setPostComments(data.comments);
+          setLoading(false);
+        } else {
+          setLoading(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    get_post_comments();
   }, []);
 
   useEffect(() => {
@@ -185,6 +213,7 @@ const Posts = () => {
       console.error("Error:", error);
     }
   };
+
   return (
     <>
       <ScrollView style={styles.scroll}>
