@@ -51,15 +51,16 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="more"
         options={{
-          tabBarLabel: "Profile",
-          title: "Profile",
+          tabBarLabel: "Posts",
+          title: "Posts",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="user" size={24} color={color} />
+            <AntDesign name="camerao" size={24} color={color} fontSize={30} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="notifications"
         options={{
@@ -71,12 +72,12 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="more"
+        name="profile"
         options={{
-          tabBarLabel: "More",
-          title: "More",
+          tabBarLabel: "Profile",
+          title: "Profile",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="bars" size={24} color={color} fontSize={30} />
+            <AntDesign name="user" size={24} color={color} />
           ),
         }}
       />
