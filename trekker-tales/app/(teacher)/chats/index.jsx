@@ -7,23 +7,22 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import ChatCard from "../../../Components/chatone";
 
 const Chats = () => {
   return (
-    <TouchableOpacity>
-      <View>
-        <View style={styles.card}>
-          <Image
-            source={require("../../../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
-            style={styles.image}
-          />
-          <Text style={styles.name}>Name</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.chats}>
+      <ChatCard />
+    </View>
   );
 };
 
 export default Chats;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  chats: {
+    flex: 1,
+    paddingTop: 120,
+    padding: 10,
+  },
+});
