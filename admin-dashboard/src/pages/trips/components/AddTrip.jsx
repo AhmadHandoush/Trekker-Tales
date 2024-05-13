@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../../components/Base_url";
 
 const AddTrip = ({ setAdd }) => {
   const token = localStorage.getItem("token");
@@ -22,14 +23,11 @@ const AddTrip = ({ setAdd }) => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch(
-          "http://192.168.0.102:8000/api/get_locations",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/get_locations`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch locations");
         }
@@ -71,7 +69,7 @@ const AddTrip = ({ setAdd }) => {
       }
     });
     try {
-      const response = await fetch("http://192.168.0.102:8000/api/add_trip", {
+      const response = await fetch(`${BASE_URL}/api/add_trip`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

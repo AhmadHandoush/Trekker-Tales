@@ -14,7 +14,6 @@ import { BASE_URL } from "../../utils/constants";
 const All = () => {
   const [trips, setTrips] = useState([]);
 
-
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {

@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import "./login.css";
-import Base_url from "../../components/Base_url";
+import { BASE_URL } from "../../components/Base_url";
 
 function Login() {
-  const Base_URL = Base_url();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,7 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${Base_URL}/api/login`, {
+      const response = await fetch(`${BASE_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

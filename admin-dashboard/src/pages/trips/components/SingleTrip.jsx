@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../../components/Loader";
-import Base_url from "../../../components/Base_url";
+import { BASE_URL } from "../../../components/Base_url";
+
 
 function SingleTrip() {
   const { id } = useParams();
@@ -21,12 +22,12 @@ function SingleTrip() {
     status,
     trip_image,
   } = data;
-  const Base_URL = Base_url();
+  
   useEffect(() => {
     const get_trip = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_trip/${id}`, {
+        const response = await fetch(`${BASE_URL}/api/get_trip/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -54,7 +55,7 @@ function SingleTrip() {
         <div className="info flex">
           <div className="single-left">
             <img
-              src={`${Base_URL}/${trip_image}`}
+              src={`${BASE_URL}/${trip_image}`}
               alt={name}
               className="s-image"
             />

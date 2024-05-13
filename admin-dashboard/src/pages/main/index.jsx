@@ -3,10 +3,10 @@ import "./main.css";
 import TopCard from "./components/TopCard";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
-import Base_url from "../../components/Base_url";
+import { BASE_URL } from "../../components/Base_url";
+// import { BASE_URL } from "../../components/Base_url";
 
 function Main() {
-  const Base_URL = Base_url();
   const [tripsNumber, setTripsNumber] = useState(null);
   const [usersNumber, setUsersNumber] = useState(null);
   const [highest, setHighest] = useState([]);
@@ -19,7 +19,7 @@ function Main() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_trips_number`, {
+        const response = await fetch(`${BASE_URL}/api/get_trips_number`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,7 +39,7 @@ function Main() {
     const getUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_users_number`, {
+        const response = await fetch(`${BASE_URL}/api/get_users_number`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -59,7 +59,7 @@ function Main() {
     const getTeachers = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_teachers_number`, {
+        const response = await fetch(`${BASE_URL}/api/get_teachers_number`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -79,7 +79,7 @@ function Main() {
     const get_highest = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_highest_rated`, {
+        const response = await fetch(`${BASE_URL}/api/get_highest_rated`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

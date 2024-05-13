@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Base_url from "../../../components/Base_url";
+import { BASE_URL } from "../../../components/Base_url";
 
 function AddTeacher({ setAdd }) {
-  const Base_URL = Base_url();
+ 
   const [error, setError] = useState(false);
   const token = localStorage.getItem("token");
 
@@ -14,7 +14,7 @@ function AddTeacher({ setAdd }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${Base_URL}/api/add_teacher`, {
+      const response = await fetch(`${BASE_URL}/api/add_teacher`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -3,10 +3,9 @@ import Teacher from "./components/Teacher";
 import "./teachers.css";
 import AddTeacher from "./components/AddTeacher";
 import Update from "./components/Update";
-import Base_url from "../../components/Base_url";
+import { BASE_URL } from "../../components/Base_url";
 
 function Teachers() {
-  const Base_URL = Base_url();
   const [teachers, setTeachers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +17,7 @@ function Teachers() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${Base_URL}/api/get_teachers`, {
+        const response = await fetch(`${BASE_URL}/api/get_teachers`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +37,7 @@ function Teachers() {
   }, []);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`${Base_URL}/api/delete_user/${id}`, {
+      const response = await fetch(`${BASE_URL}/api/delete_user/${id}`, {
         method: "post",
         headers: {
           Authorization: `Bearer ${token}`,

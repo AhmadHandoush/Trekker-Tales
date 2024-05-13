@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Base_url from "../../../components/Base_url";
+import { BASE_URL } from "../../../components/Base_url";
 
 function Update({ setUpdate }) {
   const [error, setError] = useState(false);
   const token = localStorage.getItem("token");
-  const Base_URL = Base_url();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,7 +12,7 @@ function Update({ setUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${Base_URL}/api/update_teacher_info/5`, {
+      const response = await fetch(`${BASE_URL}/api/update_teacher_info/5`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

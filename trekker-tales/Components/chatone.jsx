@@ -8,9 +8,10 @@ const ChatCard = ({ user }) => {
   const navigation = useNavigation();
   const router = useRouter();
   const { id, name, user_image } = user;
+
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("chat", { name: name })}
+      onPress={() => navigation.navigate("chat", { name: name, id: id })}
     >
       <View style={styles.card}>
         <Image

@@ -121,7 +121,7 @@ const Trips = () => {
           const data = await response.json();
           const date = new Date();
           const upcoming = data.trips.filter(
-            (trip) => new Date(trip.date) > date
+            (trip) => new Date(trip.date) >= date
           );
           setTrips(upcoming);
           setLoading(false);

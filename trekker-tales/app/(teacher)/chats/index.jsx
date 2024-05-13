@@ -12,11 +12,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
 import Back from "../../../Components/back";
 
-const Chats = () => {
+const Chats = (route) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    const fetchTrips = async () => {
+    const get_data = async () => {
       setLoading(true);
       try {
         const token = await AsyncStorage.getItem("token");
@@ -40,14 +40,14 @@ const Chats = () => {
         console.error("Error fetching data:", error);
       }
     };
-    fetchTrips();
+    get_data();
   }, []);
   return (
     <>
       <Back title="Chats" />
       <View style={styles.chats}>
         {users.map((user) => (
-          <ChatCard user={user} key={user.id} />
+          <ChatCard user={user} key={user.id} route={route} />
         ))}
       </View>
     </>
