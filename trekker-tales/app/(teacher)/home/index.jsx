@@ -54,7 +54,10 @@ const TeacherConversations = () => {
         source={{ uri: `${BASE_URL}/images/${item.user_image}` }}
         style={styles.image}
       />
-      <Text style={styles.name}>{item.name}</Text>
+      <View>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.email}>{item.email}</Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -91,14 +94,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 20,
-    height: 100,
+    height: 70,
     borderRadius: 8,
-    elevation: 5,
+    elevation: 1,
+    paddingLeft: 10,
   },
   image: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     backgroundColor: "green",
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
