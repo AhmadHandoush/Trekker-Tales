@@ -4,6 +4,7 @@ import { Bubble, GiftedChat } from "react-native-gifted-chat";
 import { BASE_URL } from "../../utils/constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLocalSearchParams } from "expo-router";
+import firestore from "@react-native-firebase/firestore";
 
 const Chat = () => {
   const [user, setUser] = useState(null);
@@ -63,8 +64,10 @@ const Chat = () => {
       createdAt: new Date(),
     };
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages)
+      GiftedChat.append(previousMessages, myMsg)
     );
+    const docid = id > user.id ? user.id + "-" + id : id + "-" + user.id;
+    firestore().collection(chatrooms).doc(docid).collection("messages").add();
   };
   return (
     <View style={{ flex: 1 }}>
