@@ -1,15 +1,23 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
+import { BASE_URL } from "../app/utils/constants";
+import { useRouter } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
-const ChatCard = () => {
+const ChatCard = ({ user }) => {
+  const navigation = useNavigation();
+  const router = useRouter();
+  const { id, name, user_image } = user;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("chat", { name: name })}
+    >
       <View style={styles.card}>
         <Image
-          source={require("../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
+          source={{ uri: `${BASE_URL}/images/${user_image}` }}
           style={styles.image}
         />
-        <Text style={styles.name}>Name</Text>
+        <Text style={styles.name}>{name}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -21,7 +29,7 @@ const styles = StyleSheet.create({
   card: {
     widht: "100%",
     height: 80,
-    backgroundColor: "red",
+    backgroundColor: "white",
     overflow: "hidden",
     padding: 5,
     display: "flex",
@@ -29,6 +37,7 @@ const styles = StyleSheet.create({
     gap: 10,
     borderRadius: 10,
     alignItems: "center",
+    elevation: 5,
   },
   image: {
     width: 50,

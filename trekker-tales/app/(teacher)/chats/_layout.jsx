@@ -6,11 +6,15 @@ const _layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
-        headerTintColor: "white",
+        headerShown: true,
+        headerTintColor: "black",
       }}
     >
       <Stack.Screen name="index" />
+      <Stack.Screen
+        name="chat"
+        options={({ route }) => ({ title: route.params.name })}
+      />
     </Stack>
   );
 };

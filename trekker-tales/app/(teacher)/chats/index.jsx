@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import ChatCard from "../../../Components/chatone";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
+import Back from "../../../Components/back";
 
 const Chats = () => {
   const [users, setUsers] = useState([]);
@@ -42,15 +43,14 @@ const Chats = () => {
     fetchTrips();
   }, []);
   return (
-    <View>
-      {users && (
-        <View style={styles.chats}>
-          {users.map((user) => (
-            <ChatCard user={user} key={user.id} />
-          ))}
-        </View>
-      )}
-    </View>
+    <>
+      <Back title="Chats" />
+      <View style={styles.chats}>
+        {users.map((user) => (
+          <ChatCard user={user} key={user.id} />
+        ))}
+      </View>
+    </>
   );
 };
 
