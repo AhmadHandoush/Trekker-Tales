@@ -20,16 +20,19 @@ export default ChatCard;
 const styles = StyleSheet.create({
   card: {
     widht: "100%",
-    height: 100,
+    height: 80,
     backgroundColor: "red",
     overflow: "hidden",
-    padding: 10,
+    padding: 5,
     display: "flex",
     flexDirection: "row",
     gap: 10,
+    borderRadius: 10,
+    alignItems: "center",
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
 });
