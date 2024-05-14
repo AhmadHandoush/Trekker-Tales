@@ -1,16 +1,16 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
+import { getFirestore, collection } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyA9GC8RaDkUqIkzqU7B_MCl4L5S7qhnEIU",
-  authDomain: "trekker-tales-ba03d.firebaseapp.com",
-  projectId: "trekker-tales-ba03d",
-  storageBucket: "trekker-tales-ba03d.appspot.com",
-  messagingSenderId: "328755782587",
-  appId: "1:328755782587:web:9c914b0285eb4b112f1a9e",
-  measurementId: "G-1WV67E0WCE",
+  apiKey: "AIzaSyCbqDph0UstmArZHMRgo1h1AAp6j70wEvE",
+  authDomain: "trekker-chat.firebaseapp.com",
+  projectId: "trekker-chat",
+  storageBucket: "trekker-chat.appspot.com",
+  messagingSenderId: "297300669072",
+  appId: "1:297300669072:web:d7fa1a7b9ccc4af9649e15",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 export const db = getFirestore(app);
+export const roomref = collection(db, "rooms");

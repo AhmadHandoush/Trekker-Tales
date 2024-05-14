@@ -12,8 +12,8 @@ const _layout = () => {
     >
       <Stack.Screen name="index" />
       <Stack.Screen
-        name="chat"
-        options={({ route }) => ({ title: route.params.name })}
+        name="teacherChat"
+        // options={({ route }) => ({ title: route.params.name })}
       />
     </Stack>
   );

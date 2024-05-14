@@ -20,7 +20,6 @@ import EditProfile from "../../../Components/editbox";
 import Back from "../../../Components/back";
 
 const Profile = () => {
-  // const [user, setUser] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [edit, setEdit] = useState(false);

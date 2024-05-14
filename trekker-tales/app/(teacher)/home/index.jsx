@@ -1,112 +1,47 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-} from "react-native";
-import { firestore } from "../../firebase";
-import { BASE_URL } from "../../utils/constants";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useRouter } from "expo-router";
+// // GetDataPage.js
+// import React, { useEffect, useState } from "react";
+// import { View, Button, Alert } from "react-native";
+// import * as Location from "expo-location";
+// import firebase from "./firebase";
 
-const TeacherConversations = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+// const GetDataPage = () => {
+//   const [location, setLocation] = useState(null);
 
-  useEffect(() => {
-    const get_data = async () => {
-      setLoading(true);
-      try {
-        const token = await AsyncStorage.getItem("token");
-        if (token) {
-          const response = await fetch(`${BASE_URL}/api/get_parents`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          if (!response.ok) {
-            throw new Error("Failed to fetch data");
-          }
-          const data = await response.json();
+//   useEffect(() => {
+//     (async () => {
+//       let { status } = await Location.requestForegroundPermissionsAsync();
+//       if (status !== "granted") {
+//         Alert.alert(
+//           "Permission denied",
+//           "Please enable location services to continue."
+//         );
+//         return;
+//       }
 
-          setUsers(data.parents);
-          setLoading(false);
-        } else {
-          setLoading(true);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    get_data();
-  }, []);
+//       let location = await Location.getCurrentPositionAsync({});
+//       setLocation(location.coords);
+//     })();
+//   }, []);
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity
-      onPress={() => navigateToConversation(item.id, item.name)}
-      style={styles.conversation}
-    >
-      <Image
-        source={{ uri: `${BASE_URL}/images/${item.user_image}` }}
-        style={styles.image}
-      />
-      <View>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.email}>{item.email}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+//   const submitData = () => {
+//     if (location) {
+//       firebase.database().ref("location").set({
+//         latitude: location.latitude,
+//         longitude: location.longitude,
+//       });
+//     } else {
+//       Alert.alert(
+//         "Location not found",
+//         "Please make sure your location services are enabled and try again."
+//       );
+//     }
+//   };
 
-  const navigateToConversation = (parentId, parentName) => {
-    router.push("TeacherParentConversation", { parentId, parentName });
-  };
+//   return (
+//     <View>
+//       <Button title="Share Current Location" onPress={submitData} />
+//     </View>
+//   );
+// };
 
-  return (
-    <View style={{ flex: 1, paddingTop: 100, paddingLeft: 50 }}>
-      <FlatList
-        data={users}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        style={styles.list}
-      />
-    </View>
-  );
-};
-
-export default TeacherConversations;
-const styles = StyleSheet.create({
-  list: {
-    display: "flex",
-    flexDirection: "column",
-
-    width: "90%",
-    marginLeft: -8,
-    marginRight: "auto",
-  },
-  conversation: {
-    backgroundColor: "white",
-    marginBottom: 20,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 20,
-    height: 70,
-    borderRadius: 8,
-    elevation: 1,
-    paddingLeft: 10,
-  },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: "green",
-  },
-  name: {
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-});
+// export default GetDataPage;
