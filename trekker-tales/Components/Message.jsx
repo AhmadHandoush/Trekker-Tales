@@ -1,10 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import MessageItem from "./messageItem";
 
-const Message = () => {
+const Message = ({ messages, mine }) => {
   return (
+    // <ScrollView
+    // // showsVerticalScrollIndicator={false}
+    // // contentContainerStyle={{ padding: 10 }}
+    // >
+    //   {messages.map((message, index) => {
+    //     <Text>{message.userId}</Text>;
+    //   })}
+    // </ScrollView>
     <View>
-      <Text>Message</Text>
+      {messages.map((message, index) => (
+        <MessageItem message={message} mine={mine} key={index} />
+      ))}
     </View>
   );
 };

@@ -64,7 +64,7 @@ const Chat = () => {
   }, []);
   useEffect(() => {
     createRoomifnotExists();
-    let roomId = getroomId(mine.id, parent.id);
+    let roomId = getroomId(23, parent.id);
     const docRef = doc(db, "rooms", roomId);
     const messagesRef = collection(docRef, "messages");
     const q = query(messagesRef, orderBy("createdAt", "asc"));
@@ -72,12 +72,12 @@ const Chat = () => {
       let allMessages = snapshot.docs.map((doc) => {
         return doc.data();
       });
-      setMessages({ ...allMessages });
+      setMessages([...allMessages]);
     });
   }, []);
 
   let createRoomifnotExists = async () => {
-    let roomId = getroomId(mine.id, parent.id);
+    let roomId = getroomId(23, parent.id);
     await setDoc(doc(db, "rooms", roomId), {
       roomId,
       createdAt: Timestamp.fromDate(new Date()),
@@ -94,7 +94,7 @@ const Chat = () => {
       ref.current = "";
       if (inputRef) inputRef?.current?.clear();
       const newDoc = await addDoc(messagesRef, {
-        userId: mine.id,
+        userId: 23,
         text: message,
         senderName: mine.name,
         createdAt: Timestamp.fromDate(new Date()),
@@ -104,6 +104,7 @@ const Chat = () => {
       Alert.alert("Message", error.message);
     }
   };
+  console.log("messages", messages);
 
   return (
     <View
@@ -123,14 +124,12 @@ const Chat = () => {
           position: "relative",
         }}
       >
-        <View style={styles.messages}>
-          <ScrollView>
-            <Message messages={messages} />
-            <Message messages={messages} />
-            <Message messages={messages} />
-            <Message messages={messages} />
-          </ScrollView>
-        </View>
+        {messages && (
+          <View style={styles.messages}>
+            <Message messages={messages} mine={mine} />
+          </View>
+        )}
+
         <View style={styles.inp}>
           <TextInput
             ref={inputRef}
@@ -169,7 +168,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   messages: {
-    paddingLeft: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   send: {
     padding: 7,
