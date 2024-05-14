@@ -7,7 +7,7 @@ const _layout = () => {
     <Stack
       screenOptions={{
         headerShown: false,
-        headerTintColor: "white",
+        headerTintColor: "red",
       }}
     >
       <Stack.Screen name="index" />
