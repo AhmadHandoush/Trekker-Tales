@@ -120,7 +120,7 @@ const Chat = () => {
       <View
         style={{
           flex: 1,
-          backgroundColor: "red",
+          backgroundColor: "#d7d7d7",
           justifyContent: "space-between",
           paddingBottom: 10,
           paddingTop: 100,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   send: {
     padding: 7,
-    backgroundColor: "#d7d7d7",
+    backgroundColor: "#e87a00",
     borderRadius: 20,
     display: "flex",
     justifyContent: "center",
