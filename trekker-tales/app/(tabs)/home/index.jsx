@@ -144,7 +144,7 @@ const Home = () => {
       item.trip.name.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredTop(filteredTopData);
-    // Filter past trips based on search query
+
     const filteredTripsData = trips.filter((item) =>
       item.name.toLowerCase().includes(text.toLowerCase())
     );

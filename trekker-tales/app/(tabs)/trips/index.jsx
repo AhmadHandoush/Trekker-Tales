@@ -122,7 +122,7 @@ const Trips = () => {
           const date = new Date();
           date.setHours(0, 0, 0, 0);
           const upcoming = data.trips.filter(
-            (trip) => new Date(trip.date) >= date
+            (trip) => new Date(trip.date) > date
           );
           setTrips(upcoming);
           setLoading(false);
@@ -150,6 +150,7 @@ const Trips = () => {
       get_mytrips()
         .then((data) => {
           const date = new Date();
+          date.setHours(0, 0, 0, 0);
           const myUpcoming = data.filter(
             (trip) => new Date(trip.trip.date) > date
           );

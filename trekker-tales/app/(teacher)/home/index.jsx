@@ -20,18 +20,30 @@ const LocationScreen = () => {
 
         console.log("Location permission granted");
 
-        const location = await Location.getCurrentPositionAsync({});
+        const locationListener = await Location.watchPositionAsync(
+          { accuracy: Location.Accuracy.High, distanceInterval: 10 },
+          async (newLocation) => {
+            try {
+              const locationsCollectionRef = collection(db, "locations");
+              await addDoc(locationsCollectionRef, {
+                latitude: newLocation.coords.latitude,
+                longitude: newLocation.coords.longitude,
+                timestamp: serverTimestamp(),
+              });
+              console.log("Location updated successfully!");
+            } catch (error) {
+              setError("Error updating location: " + error.message);
+            }
+          }
+        );
 
-        // Add the location data to a new document in the 'locations' collection
-        const locationsCollectionRef = collection(db, "locations");
-        await addDoc(locationsCollectionRef, {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          timestamp: serverTimestamp(),
-        });
-
-        console.log("Location updated successfully!");
         setLoading(false);
+
+        return () => {
+          if (locationListener) {
+            locationListener.remove();
+          }
+        };
       } catch (error) {
         setError("Error getting location: " + error.message);
         setLoading(false);
