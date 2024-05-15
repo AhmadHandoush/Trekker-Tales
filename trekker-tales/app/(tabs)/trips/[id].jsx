@@ -81,7 +81,11 @@ const SingleTrip = () => {
   return (
     <View style={styles.page}>
       {loading ? (
-        <ActivityIndicator size="large" color="#e87a00" />
+        <ActivityIndicator
+          size="large"
+          color="#e87a00"
+          style={{ position: "absolute", top: 200, left: 170 }}
+        />
       ) : (
         <ScrollView style={styles.scroll}>
           <Back />
@@ -157,6 +161,7 @@ const SingleTrip = () => {
           </View>
         </ScrollView>
       )}
+
       {!loading && (
         <TouchableOpacity
           onPress={() => {
@@ -179,6 +184,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 5,
     position: "relative",
+    height: 1000,
   },
 
   scroll: {
