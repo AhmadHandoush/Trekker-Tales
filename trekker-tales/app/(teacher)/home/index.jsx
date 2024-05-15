@@ -19,7 +19,7 @@ const LocationUpdater = () => {
 
         console.log("Location updated successfully!");
       } catch (error) {
-        console.error("Error updating location: ", error);
+        console.error("Error updating  ", error);
       }
     };
 
