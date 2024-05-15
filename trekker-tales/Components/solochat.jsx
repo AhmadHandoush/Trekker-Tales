@@ -38,10 +38,12 @@ const Solo = ({ parent, router }) => {
     });
   };
   return (
-    <TouchableOpacity style={styles.conversation} onPress={handleChat}>
+    <TouchableOpacity onPress={handleChat}>
       <View style={styles.conversation}>
         <Image
-          source={require("../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
+          source={{
+            uri: `${BASE_URL}/images/${parent.user_image}`,
+          }}
           style={styles.image}
         />
         <View style={styles.info}>
@@ -65,9 +67,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     overflow: "hidden",
-    marginLeft: 10,
-
+    marginLeft: 5,
     gap: 10,
+
+    paddingBottom: 5,
   },
   image: {
     width: 50,

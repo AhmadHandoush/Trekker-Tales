@@ -7,6 +7,7 @@ import AsyncStorage, {
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import Solo from "../../../Components/solochat";
+import Back from "../../../Components/back";
 
 const Chats = () => {
   const [parentList, setParentList] = useState([]);
@@ -43,10 +44,14 @@ const Chats = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, paddingTop: 100 }}>
-      {parentList.map((parent) => (
-        <Solo key={parent.id} parent={parent} router={router} />
-      ))}
+    <View style={styles.page}>
+      <Back title="Chats" />
+      <View style={styles.top}></View>
+      <View style={{ flex: 1 }}>
+        {parentList.map((parent) => (
+          <Solo key={parent.id} parent={parent} router={router} />
+        ))}
+      </View>
     </View>
   );
 };
@@ -54,6 +59,10 @@ const Chats = () => {
 export default Chats;
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: "white",
+  },
   conversation: {
     padding: 10,
     marginBottom: 20,
@@ -61,5 +70,17 @@ const styles = StyleSheet.create({
     width: "80%",
     marginLeft: 1,
     marginRight: 10,
+  },
+  top: {
+    width: "100%",
+    height: 150,
+    borderBottomEndRadius: 20,
+    borderBottomStartRadius: 20,
+    backgroundColor: "#e87a00",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    paddingBottom: 10,
+    marginBottom: 20,
   },
 });

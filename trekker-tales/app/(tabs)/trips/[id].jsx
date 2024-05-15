@@ -143,14 +143,6 @@ const SingleTrip = () => {
                 <Text style={styles.hintname}>Hint:</Text> You can bring some
                 chocolate with you.
               </Text>
-              {/* <TouchableOpacity
-            onPress={() => {
-              setBook(true);
-            }}
-            style={styles.book}
-          >
-            <Text style={styles.viewmap}>Book Now</Text>
-          </TouchableOpacity> */}
             </View>
             {message && (
               <View style={styles.message}>
@@ -165,14 +157,16 @@ const SingleTrip = () => {
           </View>
         </ScrollView>
       )}
-      <TouchableOpacity
-        onPress={() => {
-          setBook(true);
-        }}
-        style={styles.book}
-      >
-        <Text style={styles.viewmap}>Book Now</Text>
-      </TouchableOpacity>
+      {!loading && (
+        <TouchableOpacity
+          onPress={() => {
+            setBook(true);
+          }}
+          style={styles.book}
+        >
+          <Text style={styles.viewmap}>Book Now</Text>
+        </TouchableOpacity>
+      )}
     </View>
     // <View>{tripData && <Text>{tripData.name}</Text>}</View>
   );
@@ -212,6 +206,7 @@ const styles = StyleSheet.create({
   overview: {
     fontWeight: "bold",
     fontSize: 20,
+    marginTop: 10,
   },
 
   viewmap: {
@@ -231,7 +226,7 @@ const styles = StyleSheet.create({
   important: {
     display: "flex",
     position: "absolute",
-    top: -50,
+    top: -100,
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 10,

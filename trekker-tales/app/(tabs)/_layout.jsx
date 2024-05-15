@@ -64,10 +64,10 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="notifications"
         options={{
-          tabBarLabel: "notifications",
+          tabBarLabel: "Chat",
           title: "Notifications",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="bells" size={24} color={color} fontSize={30} />
+            <AntDesign name="message1" size={24} color={color} fontSize={30} />
           ),
         }}
       />

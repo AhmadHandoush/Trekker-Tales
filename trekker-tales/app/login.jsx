@@ -58,7 +58,7 @@ const login = () => {
       .catch((error) => {
         setError("Credentials Error");
       });
-    console.log("ahmad");
+   
   };
   return (
     <View style={styles.container}>
@@ -81,7 +81,7 @@ const login = () => {
           required
           selectionColor={"#E87A00"}
         />
-        <Text style={styles.label}>password</Text>
+        <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your password"

@@ -14,6 +14,7 @@ const Back = ({ title }) => {
         <MaterialIcons name="keyboard-arrow-left" size={35} color="black" />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
+      <Text></Text>
     </View>
   );
 };

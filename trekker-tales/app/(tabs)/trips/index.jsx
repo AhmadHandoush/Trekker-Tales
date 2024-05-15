@@ -195,6 +195,7 @@ const Trips = () => {
 
   return (
     <View style={styles.trips}>
+      <Back title="Trips" />
       <View style={styles.header}>
         <TouchableOpacity
           style={[styles.button, !showMyTrips && styles.activeButton]}
@@ -213,7 +214,7 @@ const Trips = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <Back title="Trips" />
+
       <View style={[styles.search, focus && styles.focused]}>
         <Feather name="map-pin" size={20} color="#d7d7d7" />
         <TextInput
@@ -301,7 +302,7 @@ const styles = StyleSheet.create({
   search: {
     display: "flex",
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: 10,
     width: "80%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -326,6 +327,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 20,
     marginBottom: 20,
+    marginTop: 10,
   },
   button: {
     paddingHorizontal: 20,

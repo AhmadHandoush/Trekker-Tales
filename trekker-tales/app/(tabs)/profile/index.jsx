@@ -17,6 +17,7 @@ import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
 import AddReview from "../../../Components/addReview";
+import Back from "../../../Components/back";
 
 const Profile = () => {
   const [user, setUser] = useState();
@@ -188,80 +189,87 @@ const Profile = () => {
   const add_review = () => {};
   return (
     <>
+      <Back title={"Profile"} />
       {edit && <View style={styles.overlay}></View>}
       {addreview && <View style={styles.overlay}></View>}
-      <ScrollView>
-        <View style={styles.container}>
-          {user && (
-            <View style={styles.profile}>
-              <View style={styles.top}>
-                <View style={styles.image}>
-                  <Image
-                    source={{
-                      uri: `${BASE_URL}/images/${user.user_image}`,
-                    }}
-                    style={styles.img}
-                  />
-                </View>
-              </View>
-              <View style={styles.all}>
-                <View style={styles.topinfo}>
-                  <Text style={styles.name}>{user.name}</Text>
-                  <Text style={styles.email}>{email}</Text>
-                </View>
-                <View style={styles.info}>
-                  <View style={styles.singleinfo}>
-                    <MaterialCommunityIcons
-                      name="email-outline"
-                      size={28}
-                      color="grey"
+      {!loading && (
+        <ScrollView>
+          <View style={styles.container}>
+            {user && (
+              <View style={styles.profile}>
+                <View style={styles.top}>
+                  <View style={styles.image}>
+                    <Image
+                      source={{
+                        uri: `${BASE_URL}/images/${user.user_image}`,
+                      }}
+                      style={styles.img}
                     />
-                    <Text style={styles.text}>{email}</Text>
-                  </View>
-                  <View style={styles.singleinfo}>
-                    <MaterialCommunityIcons
-                      name="phone"
-                      size={28}
-                      color="grey"
-                    />
-                    <Text style={styles.text}>{user.phone}</Text>
-                  </View>
-                  <View style={styles.singleinfo}>
-                    <MaterialCommunityIcons
-                      name="map-marker-outline"
-                      size={28}
-                      color="grey"
-                    />
-                    <Text style={styles.text}>{address}</Text>
                   </View>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={handleEdit}>
-                  <MaterialIcons name="border-color" size={24} color="white" />
-                </TouchableOpacity>
-                <View style={styles.taken}>
-                  <Text style={styles.takentitle}>Taken Trips</Text>
+                <View style={styles.all}>
+                  <View style={styles.topinfo}>
+                    <Text style={styles.name}>{user.name}</Text>
+                    <Text style={styles.email}>{email}</Text>
+                  </View>
+                  <View style={styles.info}>
+                    <View style={styles.singleinfo}>
+                      <MaterialCommunityIcons
+                        name="email-outline"
+                        size={28}
+                        color="grey"
+                      />
+                      <Text style={styles.text}>{email}</Text>
+                    </View>
+                    <View style={styles.singleinfo}>
+                      <MaterialCommunityIcons
+                        name="phone"
+                        size={28}
+                        color="grey"
+                      />
+                      <Text style={styles.text}>{user.phone}</Text>
+                    </View>
+                    <View style={styles.singleinfo}>
+                      <MaterialCommunityIcons
+                        name="map-marker-outline"
+                        size={28}
+                        color="grey"
+                      />
+                      <Text style={styles.text}>{address}</Text>
+                    </View>
+                  </View>
+                  <TouchableOpacity style={styles.button} onPress={handleEdit}>
+                    <MaterialIcons
+                      name="border-color"
+                      size={24}
+                      color="white"
+                    />
+                  </TouchableOpacity>
+                  <View style={styles.taken}>
+                    <Text style={styles.takentitle}>Taken Trips</Text>
 
-                  {myTripsData && (
-                    <ScrollView style={styles.scroll}>
-                      {myTripsData.map((trip) => (
-                        <TakenTrip
-                          trip={trip}
-                          key={trip.id}
-                          setAddReview={setAddReview}
-                          setTripId={setTripId}
-                        />
-                      ))}
-                    </ScrollView>
-                  )}
+                    {myTripsData && (
+                      <ScrollView style={styles.scroll}>
+                        {myTripsData.map((trip) => (
+                          <TakenTrip
+                            trip={trip}
+                            key={trip.id}
+                            setAddReview={setAddReview}
+                            setTripId={setTripId}
+                          />
+                        ))}
+                      </ScrollView>
+                    )}
+                  </View>
                 </View>
               </View>
-            </View>
-          )}
-          <TouchableOpacity style={styles.button} onPress={handleLogout}>
-            <Text style={styles.logout}>Log Out</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            )}
+            <TouchableOpacity style={styles.button} onPress={handleLogout}>
+              <Text style={styles.logout}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      )}
       {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
       {addreview && (
         <AddReview

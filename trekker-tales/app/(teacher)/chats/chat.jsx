@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
   messages: {
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 50,
   },
   send: {
     padding: 7,

@@ -15,6 +15,7 @@ import { Feather } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
 import { getroomId } from "../../utils/common";
+
 import {
   Timestamp,
   addDoc,
@@ -74,6 +75,7 @@ const Chat = () => {
       });
       setMessages([...allMessages]);
     });
+
     return unssub;
   }, []);
 
@@ -87,7 +89,7 @@ const Chat = () => {
 
   const handleSendMessage = async () => {
     let message = ref.current.trim();
-    if (!message) return;
+    if (!message || !mine) return;
     try {
       let roomId = getroomId(28, parent.id);
       const docRef = doc(db, "rooms", roomId);
@@ -120,7 +122,7 @@ const Chat = () => {
       <View
         style={{
           flex: 1,
-          backgroundColor: "red",
+          backgroundColor: "#d3d3d3",
           justifyContent: "space-between",
           paddingBottom: 10,
           paddingTop: 100,
@@ -173,10 +175,11 @@ const styles = StyleSheet.create({
   messages: {
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 50,
   },
   send: {
     padding: 7,
-    backgroundColor: "#d7d7d7",
+    backgroundColor: "#e87a00",
     borderRadius: 20,
     display: "flex",
     justifyContent: "center",

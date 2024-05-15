@@ -28,9 +28,13 @@ const Home = () => {
   };
 
   const [top, setTop] = useState([]);
+  const [filteredTop, setFilteredTop] = useState([]);
 
   const [trips, setTrips] = useState([]);
+  const [filteredTrips, setFilteredTrips] = useState([]);
+
   const [hamada, setHamada] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -94,6 +98,7 @@ const Home = () => {
           const data = await response.json();
 
           setTop(data);
+          setFilteredTop(data); // Initialize filtered data with the fetched data
           setLoading(false);
           setHamada("hell owe are here ");
         } else {
@@ -120,7 +125,7 @@ const Home = () => {
           const data = await response.json();
 
           setTrips(data.trips);
-
+          setFilteredTrips(data.trips); // Initialize filtered data with the fetched data
           setLoading(false);
         } else {
           setLoading(true);
@@ -134,7 +139,18 @@ const Home = () => {
 
   const handleSearch = (text) => {
     setSearchQuery(text);
+    // Filter top trips based on search query
+    const filteredTopData = top.filter((item) =>
+      item.trip.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredTop(filteredTopData);
+    // Filter past trips based on search query
+    const filteredTripsData = trips.filter((item) =>
+      item.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredTrips(filteredTripsData);
   };
+
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image
@@ -145,6 +161,7 @@ const Home = () => {
       <Text style={styles.destination}>{item.trip.destination}</Text>
     </View>
   );
+
   const pastItem = ({ item }) => (
     <View style={styles.pastcard}>
       <Image
@@ -154,6 +171,7 @@ const Home = () => {
       <Text style={styles.pastname}>{item.name}</Text>
     </View>
   );
+
   return (
     <View style={styles.home}>
       <View style={styles.top}>
@@ -203,7 +221,7 @@ const Home = () => {
           <ActivityIndicator size="large" color="#e87a00" />
         ) : (
           <FlatList
-            data={top.slice(0, 2)}
+            data={filteredTop.slice(0, 2)} // Use filtered data here
             renderItem={renderItem}
             // keyExtractor={(item) => item.id.toString()}
             numColumns={2}
@@ -223,7 +241,7 @@ const Home = () => {
       </View>
       <View>
         <FlatList
-          data={trips.slice(0, 7)}
+          data={filteredTrips.slice(0, 7)} // Use filtered data here
           renderItem={pastItem}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}

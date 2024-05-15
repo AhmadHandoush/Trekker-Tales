@@ -1,47 +1,42 @@
-// // GetDataPage.js
-// import React, { useEffect, useState } from "react";
-// import { View, Button, Alert } from "react-native";
-// import * as Location from "expo-location";
-// import firebase from "./firebase";
+import React, { useEffect } from "react";
+import * as Location from "expo-location";
+import { collection, addDoc, serverTimestamp, doc } from "firebase/firestore";
+import { db } from "../../firebase"; // Import your Firebase configuration file
 
-// const GetDataPage = () => {
-//   const [location, setLocation] = useState(null);
+const LocationUpdater = () => {
+  useEffect(() => {
+    // Function to update location in Firestore
+    const updateLocation = async (location) => {
+      try {
+        // Get a reference to the user's location document in Firestore
+        const locationDocRef = doc(db, "locations", "user_location");
 
-//   useEffect(() => {
-//     (async () => {
-//       let { status } = await Location.requestForegroundPermissionsAsync();
-//       if (status !== "granted") {
-//         Alert.alert(
-//           "Permission denied",
-//           "Please enable location services to continue."
-//         );
-//         return;
-//       }
+        await setDoc(locationDocRef, {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          timestamp: serverTimestamp(),
+        });
 
-//       let location = await Location.getCurrentPositionAsync({});
-//       setLocation(location.coords);
-//     })();
-//   }, []);
+        console.log("Location updated successfully!");
+      } catch (error) {
+        console.error("Error updating location: ", error);
+      }
+    };
 
-//   const submitData = () => {
-//     if (location) {
-//       firebase.database().ref("location").set({
-//         latitude: location.latitude,
-//         longitude: location.longitude,
-//       });
-//     } else {
-//       Alert.alert(
-//         "Location not found",
-//         "Please make sure your location services are enabled and try again."
-//       );
-//     }
-//   };
+    const subscription = Location.watchPositionAsync(
+      {
+        accuracy: Location.Accuracy.High,
+        timeInterval: 1000,
+      },
+      (location) => {
+        updateLocation(location);
+      }
+    );
 
-//   return (
-//     <View>
-//       <Button title="Share Current Location" onPress={submitData} />
-//     </View>
-//   );
-// };
+    return () => subscription.remove();
+  }, []);
 
-// export default GetDataPage;
+  return null;
+};
+
+export default LocationUpdater;

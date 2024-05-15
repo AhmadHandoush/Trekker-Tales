@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const SoloParent = ({ parent, router }) => {
   const [mine, setMine] = useState(null);
@@ -39,8 +40,16 @@ const SoloParent = ({ parent, router }) => {
   };
   return (
     <TouchableOpacity style={styles.conversation} onPress={handleChat}>
-      <View>
-        <Text>{parent.name}</Text>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 10,
+          alignItems: "center",
+        }}
+      >
+        <Text style={styles.name}>Go Chat</Text>
+        <Icon name="angle-right" size={30} color="#e87a00" />
       </View>
     </TouchableOpacity>
   );
@@ -50,9 +59,24 @@ export default SoloParent;
 
 const styles = StyleSheet.create({
   conversation: {
-    backgroundColor: "red",
-    width: "50%",
-    height: 100,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "#e87a00",
+    width: "80%",
+    height: 50,
     marginBottom: 10,
+    borderRadius: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: -20,
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#e87a00",
+  },
+  mainName: {
+    fontWeight: "bold",
   },
 });

@@ -106,7 +106,7 @@ const Signup = () => {
         <View
           style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 10 }}
         >
-          <Text style={styles.label}>password</Text>
+          <Text style={styles.label}>Password</Text>
           <TextInput
             style={styles.input}
             placeholder="Enter your password"
