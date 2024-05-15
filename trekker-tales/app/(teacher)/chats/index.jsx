@@ -43,7 +43,7 @@ const Chats = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, paddingTop: 100, paddingLeft: 100 }}>
+    <View style={{ flex: 1, paddingTop: 100 }}>
       {parentList.map((parent) => (
         <Solo key={parent.id} parent={parent} router={router} />
       ))}

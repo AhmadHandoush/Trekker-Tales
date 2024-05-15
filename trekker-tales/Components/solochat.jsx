@@ -39,7 +39,7 @@ const Solo = ({ parent, router }) => {
   };
   return (
     <TouchableOpacity style={styles.conversation} onPress={handleChat}>
-      <View>
+      <View style={styles.conversation}>
         <Image
           source={require("../assets/360_F_113467839_JA7ZqfYTcIFQWAkwMf3mVmhqXr7ZOgEX.jpg")}
           style={styles.image}
@@ -57,9 +57,29 @@ export default Solo;
 
 const styles = StyleSheet.create({
   conversation: {
-    backgroundColor: "red",
-    width: "50%",
-    height: 100,
+    backgroundColor: "transparent",
+    width: "100%",
+    overflow: "hidden",
     marginBottom: 10,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    overflow: "hidden",
+    marginLeft: 10,
+
+    gap: 10,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  name: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  email: {
+    color: "#808080",
+    fontSize: 12,
   },
 });
