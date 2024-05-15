@@ -1,42 +1,88 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import * as Location from "expo-location";
-import { collection, addDoc, serverTimestamp, doc } from "firebase/firestore";
+import { addDoc, serverTimestamp, collection } from "firebase/firestore";
 import { db } from "../../firebase"; // Import your Firebase configuration file
 
-const LocationUpdater = () => {
-  useEffect(() => {
-    // Function to update location in Firestore
-    const updateLocation = async (location) => {
-      try {
-        // Get a reference to the user's location document in Firestore
-        const locationDocRef = doc(db, "locations", "user_location");
+const LocationScreen = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-        await setDoc(locationDocRef, {
+  useEffect(() => {
+    const requestLocationPermission = async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          setError("Permission to access location was denied");
+          setLoading(false);
+          return;
+        }
+
+        console.log("Location permission granted");
+
+        const location = await Location.getCurrentPositionAsync({});
+
+        // Add the location data to a new document in the 'locations' collection
+        const locationsCollectionRef = collection(db, "locations");
+        await addDoc(locationsCollectionRef, {
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           timestamp: serverTimestamp(),
         });
 
         console.log("Location updated successfully!");
+        setLoading(false);
       } catch (error) {
-        console.error("Error updating  ", error);
+        setError("Error getting location: " + error.message);
+        setLoading(false);
       }
     };
 
-    const subscription = Location.watchPositionAsync(
-      {
-        accuracy: Location.Accuracy.High,
-        timeInterval: 1000,
-      },
-      (location) => {
-        updateLocation(location);
-      }
-    );
-
-    return () => subscription.remove();
+    requestLocationPermission();
   }, []);
 
-  return null;
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text style={styles.text}>Getting your location...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.errorText}>{error}</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Location updated successfully!</Text>
+    </View>
+  );
 };
 
-export default LocationUpdater;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+  },
+  text: {
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 20,
+  },
+  errorText: {
+    fontSize: 20,
+    textAlign: "center",
+    color: "red",
+    marginTop: 20,
+  },
+});
+
+export default LocationScreen;

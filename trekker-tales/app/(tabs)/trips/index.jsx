@@ -120,6 +120,7 @@ const Trips = () => {
           }
           const data = await response.json();
           const date = new Date();
+          date.setHours(0, 0, 0, 0);
           const upcoming = data.trips.filter(
             (trip) => new Date(trip.date) >= date
           );

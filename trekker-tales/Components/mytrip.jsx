@@ -36,16 +36,12 @@ const MyTrip = ({ item }) => {
         </Text>
         {current && (
           <Text>
-            Active Now{" "}
             <Link href="/(tabs)/home/mine" style={{ color: "#e87a00" }}>
               Go Live
             </Link>
           </Text>
         )}
         {/* <Text>{currentDate}</Text> */}
-        <Link href="/(tabs)/trips/chat">
-          <Text>Chat</Text>
-        </Link>
       </View>
     </View>
   );

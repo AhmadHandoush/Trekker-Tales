@@ -38,6 +38,8 @@ const All = () => {
           }
           const data = await response.json();
           const currentDate = new Date();
+          currentDate.setHours(0, 0, 0, 0);
+          const tripDate = new Date();
           const pastTrips = data.trips.filter(
             (trip) => new Date(trip.date) < currentDate
           );
@@ -53,6 +55,7 @@ const All = () => {
     };
     fetchData();
   }, []);
+  console.log(new Date());
   return (
     <View style={styles.page}>
       <View style={styles.btn}>
