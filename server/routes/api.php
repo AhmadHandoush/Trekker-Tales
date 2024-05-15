@@ -52,6 +52,7 @@ Route::group(['middleware' => "isAdmin"], function () {
     Route::get('get_trips_number',[TripController::class,'get_trips_number']);
     Route::post('update_teacher_info/{teacher_id}',[UserController::class,'update_teacher_info']);
     Route::post('update_trip_status/{id}',[TripController::class,'update']);
+    Route::get('get_all',[UserController::class,'get_all']);
 
 });
 
@@ -79,6 +80,8 @@ Route::group(["middleware" => "isUser"], function () {
         Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
         Route::get('getBookingsByUser',[BookController::class,'getBookingsByUser']);
         Route::get('post_owner_data',[PostController::class,'post_owner_data']);
+        Route::get('get_all',[UserController::class,'get_all']);
+        Route::get('get_teachers',[UserController::class,'get_teachers']);
 
 
 
@@ -109,6 +112,7 @@ Route::group(['middleware','isTeacher'],function (){
         Route::get('get_trips',[TripController::class,'get_trips']);
         Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
         Route::get('get_parents',[UserController::class,'get_parents']);
+        Route::get('get_all',[UserController::class,'get_all']);
 
 
 

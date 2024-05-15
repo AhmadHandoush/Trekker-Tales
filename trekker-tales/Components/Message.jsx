@@ -12,11 +12,11 @@ const Message = ({ messages, mine }) => {
     //     <Text>{message.userId}</Text>;
     //   })}
     // </ScrollView>
-    <View>
+    <ScrollView>
       {messages.map((message, index) => (
         <MessageItem message={message} mine={mine} key={index} />
       ))}
-    </View>
+    </ScrollView>
   );
 };
 

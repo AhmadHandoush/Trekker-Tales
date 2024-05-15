@@ -4,11 +4,13 @@ import React from "react";
 const MessageItem = ({ message, mine }) => {
   return (
     <>
-      <View style={mine.id != message.userId ? styles.my : styles.received}>
-        <View style={mine.id != message.userId ? styles.se : styles.rec}>
-          <Text style={styles.sent}>{message.text}</Text>
+      {mine && (
+        <View style={mine.id == message.userId ? styles.my : styles.received}>
+          <View style={mine.id == message.userId ? styles.se : styles.rec}>
+            <Text style={styles.sent}>{message.text}</Text>
+          </View>
         </View>
-      </View>
+      )}
     </>
   );
 };

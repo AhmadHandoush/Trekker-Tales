@@ -117,6 +117,10 @@ class UserController extends Controller
 
         return response()->json(['messgae'=>'updated successfully',$user]);
     }
+    public function get_all(){
+        $users= User::all();
+        return response()->json($users);
+    }
 
 
 

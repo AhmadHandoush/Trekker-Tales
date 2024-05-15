@@ -33,7 +33,6 @@ const Chat = () => {
   const [mine, setMine] = useState(null);
 
   const parent = useLocalSearchParams();
-  console.log("okkk", parent.id);
 
   const router = useRouter();
 
@@ -63,10 +62,9 @@ const Chat = () => {
     };
     get_data();
   }, []);
-
   useEffect(() => {
     createRoomifnotExists();
-    let roomId = getroomId(23, parent.id);
+    let roomId = getroomId(28, parent.id);
     const docRef = doc(db, "rooms", roomId);
     const messagesRef = collection(docRef, "messages");
     const q = query(messagesRef, orderBy("createdAt", "asc"));
@@ -80,7 +78,7 @@ const Chat = () => {
   }, []);
 
   let createRoomifnotExists = async () => {
-    let roomId = getroomId(23, parent.id);
+    let roomId = getroomId(28, parent.id);
     await setDoc(doc(db, "rooms", roomId), {
       roomId,
       createdAt: Timestamp.fromDate(new Date()),
@@ -91,23 +89,25 @@ const Chat = () => {
     let message = ref.current.trim();
     if (!message) return;
     try {
-      let roomId = getroomId(mine.id, parent.id);
+      let roomId = getroomId(28, parent.id);
       const docRef = doc(db, "rooms", roomId);
       const messagesRef = collection(docRef, "messages");
       ref.current = "";
       if (inputRef) inputRef?.current?.clear();
       const newDoc = await addDoc(messagesRef, {
-        userId: 23,
+        userId: 28,
         text: message,
         senderName: mine.name,
         createdAt: Timestamp.fromDate(new Date()),
       });
+
       console.log("messaging", newDoc.id);
     } catch (error) {
       Alert.alert("Message", error.message);
     }
   };
-  console.log("messages", messages);
+
+  // console.log("messages", messages);
 
   return (
     <View
