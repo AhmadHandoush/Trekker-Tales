@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Alert,
   Image,
   ScrollView,
@@ -180,13 +181,16 @@ const Posts = () => {
     <>
       <ScrollView style={styles.scroll}>
         <Back title="Posts" />
+
         <View style={styles.postsPage}>
           <View style={styles.data}>
             <View style={styles.add}>
               <View style={styles.img}>
                 {profile && (
                   <Image
-                    source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
+                    source={{
+                      uri: `${BASE_URL}/images/${profile.user_image}`,
+                    }}
                     style={styles.image}
                   />
                 )}
@@ -216,17 +220,21 @@ const Posts = () => {
                 />
               </TouchableOpacity>
             </View>
-            <View style={styles.posts}>
-              {posts.map((post, index) => (
-                <Post
-                  post={post}
-                  key={index}
-                  setSuccesscomment={setSuccesscomment}
-                  setOpenComments={setOpenComments}
-                  get_post_comments={get_post_comments}
-                />
-              ))}
-            </View>
+            {loading ? (
+              <ActivityIndicator size="large" color="#e87a00" />
+            ) : (
+              <View style={styles.posts}>
+                {posts.map((post, index) => (
+                  <Post
+                    post={post}
+                    key={index}
+                    setSuccesscomment={setSuccesscomment}
+                    setOpenComments={setOpenComments}
+                    get_post_comments={get_post_comments}
+                  />
+                ))}
+              </View>
+            )}
             {success && (
               <View style={styles.success}>
                 <Text style={styles.successText}>Post Added Successfully </Text>
