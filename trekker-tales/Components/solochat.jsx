@@ -40,12 +40,20 @@ const Solo = ({ parent, router }) => {
   return (
     <TouchableOpacity onPress={handleChat}>
       <View style={styles.conversation}>
-        <Image
-          source={{
-            uri: `${BASE_URL}/images/${parent.user_image}`,
-          }}
-          style={styles.image}
-        />
+        {parent.user_image ? (
+          <Image
+            source={{
+              uri: `${BASE_URL}/images/${parent.user_image}`,
+            }}
+            style={styles.image}
+          />
+        ) : (
+          <Image
+            source={require("../assets/default-user-icon.webp")}
+            style={styles.image}
+          />
+        )}
+
         <View style={styles.info}>
           <Text style={styles.name}>{parent.name}</Text>
           <Text style={styles.email}>{parent.email}</Text>
