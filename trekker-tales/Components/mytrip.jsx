@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -24,24 +31,24 @@ const MyTrip = ({ item, setSuccess }) => {
   const handleCancel = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const response = await fetch(`${BASE_URL}/api/add_book/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ child_name: inputValue }),
-      });
+      const response = await fetch(
+        `${BASE_URL}/api/delete_booking/${item.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.ok) {
-        setBook(false);
-        setBooked(true);
-        setMessage("Your booking successfully completed");
+        setSuccess(true);
         setTimeout(() => {
-          setMessage("");
+          setSuccess(false);
         }, 3000);
       } else {
-        Alert.alert("Error", "Failed to send data");
+        Alert.alert("Error", "Failed to cancelled booking");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -74,6 +81,7 @@ const MyTrip = ({ item, setSuccess }) => {
             padding: 3,
             borderRadius: 5,
           }}
+          onPress={handleCancel}
         >
           <Text style={{ color: "white", fontWeight: "bold" }}>
             Cancel Booking

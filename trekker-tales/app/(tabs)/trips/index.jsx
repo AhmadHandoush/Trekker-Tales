@@ -242,30 +242,32 @@ const Trips = () => {
         ) : (
           <ScrollView style={styles.scroll}>
             <View style={styles.myTripsView}>
-              <View
-                style={{
-                  position: "absolute",
-                  top: 200,
-                  left: 80,
-                  zIndex: 1000,
-                  backgroundColor: "black",
-                  borderRadius: 5,
-                  padding: 10,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ color: "green", fontWeight: "bold" }}>
-                  Booking Cancelled Successfully
-                </Text>
-              </View>
+              {success && (
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 200,
+                    left: 80,
+                    zIndex: 1000,
+                    backgroundColor: "black",
+                    borderRadius: 5,
+                    padding: 10,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text style={{ color: "green", fontWeight: "bold" }}>
+                    Booking Cancelled Successfully
+                  </Text>
+                </View>
+              )}
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
               {!myTripsData && <Text> You didn't book any trip yet</Text>}
               {myTripsData && (
                 <View>
                   {myTripsData.map((item, index) => (
-                    <MyTrip item={item} key={index} />
+                    <MyTrip item={item} key={index} setSuccess={setSuccess} />
                   ))}
                 </View>
               )}
