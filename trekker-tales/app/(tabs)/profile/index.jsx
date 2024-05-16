@@ -247,7 +247,15 @@ const Profile = () => {
                         size={28}
                         color="grey"
                       />
-                      <Text style={styles.text}>{user.phone}</Text>
+                      <Text style={styles.text}>
+                        {!user.phone ? (
+                          <Text style={{ color: "#d7d7d7" }}>
+                            Doesn't exist
+                          </Text>
+                        ) : (
+                          <Text>{user.phone}</Text>
+                        )}
+                      </Text>
                     </View>
                     <View style={styles.singleinfo}>
                       <MaterialCommunityIcons
@@ -255,7 +263,15 @@ const Profile = () => {
                         size={28}
                         color="grey"
                       />
-                      <Text style={styles.text}>{address}</Text>
+                      <Text style={styles.text}>
+                        {!user.address ? (
+                          <Text style={{ color: "#d7d7d7" }}>
+                            Doesn't exist
+                          </Text>
+                        ) : (
+                          <Text>{user.address}</Text>
+                        )}
+                      </Text>
                     </View>
                   </View>
                   <TouchableOpacity style={styles.button} onPress={handleEdit}>
