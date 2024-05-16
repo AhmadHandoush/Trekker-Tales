@@ -88,7 +88,7 @@ const Post = ({
     };
 
     get_comments_number();
-  }, [id]);
+  }, []);
 
   const handleAddComment = async () => {
     const token = await AsyncStorage.getItem("token");

@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
-const BookCard = ({ setBook, setMessage, id }) => {
+const BookCard = ({ setBook, setMessage, id, setBooked }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async () => {
@@ -26,6 +26,7 @@ const BookCard = ({ setBook, setMessage, id }) => {
 
       if (response.ok) {
         setBook(false);
+        setBooked(true);
         setMessage("Your booking successfully completed");
         setTimeout(() => {
           setMessage("");
@@ -71,7 +72,7 @@ export default BookCard;
 const styles = StyleSheet.create({
   box: {
     position: "absolute",
-    zIndex: 20000,
+    zIndex: 200000,
     width: "80%",
     marginLeft: "auto",
     marginRight: "auto",

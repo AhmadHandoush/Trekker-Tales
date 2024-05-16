@@ -113,7 +113,7 @@ const EditProfile = ({ setEdit, setSuccess }) => {
           placeholderTextColor="#808080"
         />
         <TouchableOpacity onPress={pickImage}>
-          <Text>Change your photo </Text>
+          <Text style={styles.forImage}>Change your photo </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleSave} style={styles.btn_save}>
           <Text style={styles.save_text}>Save</Text>
@@ -141,6 +141,10 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -150 }, { translateY: -50 }],
     zIndex: 2000,
     borderRadius: 8,
+  },
+  forImage: {
+    color: "#e87a00",
+    textDecorationLine: "underline",
   },
   closesection: {
     display: "flex",

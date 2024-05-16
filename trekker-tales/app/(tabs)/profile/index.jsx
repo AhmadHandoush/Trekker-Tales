@@ -14,6 +14,7 @@ import AsyncStorage, {
   useAsyncStorage,
 } from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../../utils/constants";
+import { FontAwesome } from "@expo/vector-icons";
 import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
 import AddReview from "../../../Components/addReview";
@@ -198,6 +199,12 @@ const Profile = () => {
             {user && (
               <View style={styles.profile}>
                 <View style={styles.top}>
+                  <TouchableOpacity
+                    style={styles.btnLogout}
+                    onPress={handleLogout}
+                  >
+                    <FontAwesome name="sign-out" size={20} color="black" />
+                  </TouchableOpacity>
                   <View style={styles.image}>
                     <Image
                       source={{
@@ -210,7 +217,6 @@ const Profile = () => {
                 <View style={styles.all}>
                   <View style={styles.topinfo}>
                     <Text style={styles.name}>{user.name}</Text>
-                    <Text style={styles.email}>{email}</Text>
                   </View>
                   <View style={styles.info}>
                     <View style={styles.singleinfo}>
@@ -264,9 +270,6 @@ const Profile = () => {
                 </View>
               </View>
             )}
-            <TouchableOpacity style={styles.button} onPress={handleLogout}>
-              <Text style={styles.logout}>Log Out</Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
       )}
@@ -396,10 +399,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
+  btnLogout: {
+    position: "absolute",
+    right: 10,
+    top: 50,
+    backgroundColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 5,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderRadius: 10,
+  },
   logout: {
+    color: "#e87a00",
     fontWeight: "bold",
-    color: "white",
-    fontSize: 18,
   },
   successrating: {
     position: "absolute",

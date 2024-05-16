@@ -14,6 +14,7 @@ import TakenTrip from "../../../Components/takenTrip";
 import AsyncStorage, {
   useAsyncStorage,
 } from "@react-native-async-storage/async-storage";
+import { FontAwesome } from "@expo/vector-icons";
 import { BASE_URL } from "../../utils/constants";
 import { Redirect, useRouter } from "expo-router";
 import EditProfile from "../../../Components/editbox";
@@ -107,7 +108,7 @@ const Profile = () => {
                   style={styles.btnLogout}
                   onPress={handleLogout}
                 >
-                  <Text style={styles.logout}>Log Out</Text>
+                  <FontAwesome name="sign-out" size={20} color="black" />
                 </TouchableOpacity>
                 <View style={styles.image}>
                   <Image
@@ -121,7 +122,6 @@ const Profile = () => {
               <View style={styles.all}>
                 <View style={styles.topinfo}>
                   <Text style={styles.name}>{user.name}</Text>
-                  <Text style={styles.email}>{email}</Text>
                 </View>
                 <View style={styles.info}>
                   <View style={styles.singleinfo}>

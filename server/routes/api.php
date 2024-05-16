@@ -113,6 +113,7 @@ Route::group(['middleware','isTeacher'],function (){
         Route::get('get_trip/{trip_id}',[TripController::class,'get_trip']);
         Route::get('get_parents',[UserController::class,'get_parents']);
         Route::get('get_all',[UserController::class,'get_all']);
+        Route::get('post_owner_data',[PostController::class,'post_owner_data']);
 
 
 

@@ -229,6 +229,7 @@ const Posts = () => {
         },
       });
       setSuccess(true);
+      setCaption("");
       setTimeout(() => setSuccess(false), 2000);
 
       console.log("Response:", response.data);
