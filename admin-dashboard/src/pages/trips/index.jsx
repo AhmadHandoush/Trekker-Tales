@@ -65,6 +65,7 @@ function Trips() {
   return (
     <>
       {success && <SuccessMessage />}
+      {add && <div className="overlay"> </div>}
 
       <div className="trips">
         {add && <AddTrip setAdd={setAdd} />}

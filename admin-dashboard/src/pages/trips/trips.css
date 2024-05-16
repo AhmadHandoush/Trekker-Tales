@@ -43,15 +43,15 @@
 }
 
 .all-trips {
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
 }
 .trip-card {
-  width: 320px;
+  width: 350px;
   background-color: #d7d7d7;
   position: relative;
-  height: 200px;
+  height: 220px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -125,8 +125,8 @@
 
 /* add trip  */
 .add-trip-box {
-  border: 1px solid var(--main-color);
-  width: 40%;
+  /* border: 1px solid var(--main-color); */
+  width: 50%;
   border-radius: 6px;
   padding: 10px 20px 20px;
   z-index: 1000001;
@@ -134,8 +134,9 @@
   gap: 20px;
   position: absolute;
   top: 30%;
-  left: 50%;
+  left: 60%;
   transform: translate(-50%, -20%);
+  display: flex;
 }
 .add-trip-box h2 {
   text-align: center;
@@ -143,17 +144,22 @@
 }
 .add-trip-box form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
 }
 .add-trip-box form .input {
   gap: 5px;
+  width: 48%;
 }
 .add-trip-box form label {
   font-weight: bold;
 }
 .add-trip-box form .input input {
   padding: 5px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  height: 30px;
 }
 .add-trip-box form textarea {
   padding: 5px;
@@ -175,4 +181,9 @@
 }
 .success-created {
   color: green;
+}
+.btn_add_trip {
+  width: 30%;
+  height: 50px;
+  bottom: -20px;
 }

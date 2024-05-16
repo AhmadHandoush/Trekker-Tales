@@ -17,7 +17,7 @@ function Teacher({ teacher, handleDelete, setUpdate }) {
         <h4>Barsa Kura</h4>
       </div>
 
-      <FaEdit onClick={() => setUpdate(true)} />
+      <FaEdit onClick={() => setUpdate(true)} className="editing" />
 
       <div className="delete">
         <button onClick={() => handleDelete(id)}>Delete</button>

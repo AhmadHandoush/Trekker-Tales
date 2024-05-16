@@ -11,11 +11,7 @@ function TopCard({ trip, average_rating }) {
         <FaStar />
         {rating}
       </div>
-      <img
-        src={{ uri: `${BASE_URL}/images/${trip.trip_image}` }}
-        alt={name}
-        className="s-image"
-      />
+      <img src={`${BASE_URL}/${trip_image}`} alt={name} className="s-image" />
 
       <div className="bottom"></div>
       <h2>{name}</h2>

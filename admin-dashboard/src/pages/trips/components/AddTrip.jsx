@@ -228,7 +228,9 @@ const AddTrip = ({ setAdd }) => {
         </div>
         {success && <p className="success-created">{success}</p>}
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn_add_trip">
+          Submit
+        </button>
       </form>
     </div>
   );
