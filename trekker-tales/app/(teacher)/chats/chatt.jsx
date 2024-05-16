@@ -27,7 +27,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const Chat = () => {
+const Chatt = () => {
   const ref = useRef("");
   const inputRef = useRef(null);
   const [mine, setMine] = useState(null);
@@ -149,7 +149,7 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default Chatt;
 
 const styles = StyleSheet.create({
   inp: {

@@ -12,7 +12,7 @@ const _layout = () => {
     >
       <Stack.Screen name="index" />
       <Stack.Screen
-        name="chat"
+        name="chatt"
         // options={({ route }) => ({ title: route.params.name })}
       />
     </Stack>

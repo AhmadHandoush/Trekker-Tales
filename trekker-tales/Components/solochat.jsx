@@ -33,7 +33,7 @@ const Solo = ({ parent, router }) => {
   }, []);
   const handleChat = () => {
     router.push({
-      pathname: "/(teacher)/chats/chat",
+      pathname: "/(teacher)/chats/chatt",
       params: parent,
     });
   };
