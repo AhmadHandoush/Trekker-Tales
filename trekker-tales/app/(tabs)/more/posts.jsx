@@ -70,33 +70,6 @@ const Posts = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const get_post_comments = async () => {
-  //     setLoading(true);
-  //     try {
-  //       if (token) {
-  //         const response = await fetch(`${BASE_URL}/api/comments/21`, {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         });
-  //         if (!response.ok) {
-  //           throw new Error("Failed to fetch data");
-  //         }
-  //         const data = await response.json();
-
-  //         setPostComments(data.comments);
-  //         setLoading(false);
-  //       } else {
-  //         setLoading(true);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   get_post_comments();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -126,41 +99,6 @@ const Posts = () => {
   }, []);
 
   useEffect(() => {
-    const get_likes = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(`${BASE_URL}/api/likes/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-
-        setLikes(data.likes);
-      } catch (error) {
-        console.error("Error fetching likes:", error);
-      }
-    };
-    get_likes();
-    const get_comments_number = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(`${BASE_URL}/api/comments_number/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-
-        setCommentsCount(data.comments);
-      } catch (error) {
-        console.error("Error fetching comments count:", error);
-      }
-    };
-    get_comments_number();
-  }, []);
-
-  useEffect(() => {
     const get_posts = async () => {
       setLoading(true);
       try {
@@ -187,96 +125,12 @@ const Posts = () => {
     get_posts();
   }, []);
 
-  const pickImage = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== "granted") {
-      alert("Permission to access the media library is required!");
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      const selectedUri = result.assets[0].uri;
-      setImage(selectedUri);
-    }
-  };
-
-  const handleSubmit = async () => {
-    const token = await AsyncStorage.getItem("token");
-    if (!caption || !image) {
-      Alert.alert("Image and caption are required");
-      return;
-    }
-    try {
-      const formData = new FormData();
-      formData.append("image", {
-        uri: image,
-        type: "image/jpeg",
-        name: "photo.jpg",
-      });
-      formData.append("caption", caption);
-
-      const response = await axios.post(`${BASE_URL}/api/create`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 2000);
-
-      console.log("Response:", response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   return (
-    <>
+    <View style={{ flex: 1, paddingBottom: 5, backgroundColor: "white" }}>
       <ScrollView style={styles.scroll}>
         <Back title="Posts" />
         <View style={styles.postsPage}>
           <View style={styles.data}>
-            <View style={styles.add}>
-              <View style={styles.img}>
-                {profile && (
-                  <Image
-                    source={{ uri: `${BASE_URL}/images/${profile.user_image}` }}
-                    style={styles.image}
-                  />
-                )}
-              </View>
-              <View style={styles.input}>
-                <TextInput
-                  style={styles.inputfield}
-                  placeholder="Add Trip Post"
-                  onChangeText={setCaption}
-                  value={caption}
-                  selectionColor={"#E87A00"}
-                  required
-                />
-                <TouchableOpacity style={styles.btnAdd} onPress={handleSubmit}>
-                  <Text style={styles.btnText}>Add</Text>
-                </TouchableOpacity>
-              </View>
-              <TouchableOpacity
-                style={styles.fileInputButton}
-                onPress={pickImage}
-              >
-                <Icon
-                  name="camera"
-                  size={20}
-                  color="#808080"
-                  style={styles.camera}
-                />
-              </TouchableOpacity>
-            </View>
             {posts && (
               <View style={styles.posts}>
                 {posts.map((post, index) => (
@@ -311,7 +165,7 @@ const Posts = () => {
           postComments={postComments}
         />
       )}
-    </>
+    </View>
   );
 };
 
