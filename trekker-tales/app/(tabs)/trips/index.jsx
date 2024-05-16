@@ -28,6 +28,7 @@ const Trips = () => {
   const [showMyTrips, setShowMyTrips] = useState(false);
   const [myTripsData, setMyTripsData] = useState(initial);
   const [myTripsLoading, setMyTripsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const initial = [
     {
       id: 14,
@@ -241,6 +242,24 @@ const Trips = () => {
         ) : (
           <ScrollView style={styles.scroll}>
             <View style={styles.myTripsView}>
+              <View
+                style={{
+                  position: "absolute",
+                  top: 200,
+                  left: 80,
+                  zIndex: 1000,
+                  backgroundColor: "black",
+                  borderRadius: 5,
+                  padding: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ color: "green", fontWeight: "bold" }}>
+                  Booking Cancelled Successfully
+                </Text>
+              </View>
               <Text style={styles.mineTitle}>Upcoming Trips</Text>
               {!myTripsData && <Text> You didn't book any trip yet</Text>}
               {myTripsData && (

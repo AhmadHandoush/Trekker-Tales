@@ -5,8 +5,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Link } from "expo-router";
 import { BASE_URL } from "../app/utils/constants";
 import { Entypo } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const MyTrip = ({ item }) => {
+const MyTrip = ({ item, setSuccess }) => {
   const currentDate = new Date();
   const tripDate = new Date(item.trip.date);
   const [current, setCurrent] = useState(false);
@@ -18,7 +19,34 @@ const MyTrip = ({ item }) => {
     }
   }, []);
   const handleSetting = () => {
-    setSetting(true);
+    setSetting((setting) => !setting);
+  };
+  const handleCancel = async () => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      const response = await fetch(`${BASE_URL}/api/add_book/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ child_name: inputValue }),
+      });
+
+      if (response.ok) {
+        setBook(false);
+        setBooked(true);
+        setMessage("Your booking successfully completed");
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
+      } else {
+        Alert.alert("Error", "Failed to send data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      Alert.alert("Error", "Failed to send data");
+    }
   };
 
   return (
@@ -36,20 +64,22 @@ const MyTrip = ({ item }) => {
         <Entypo name="dots-three-vertical" size={16} color="black" />
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={{
-          position: "absolute",
-          right: 10,
-          top: 40,
-          backgroundColor: "#808080",
-          padding: 3,
-          borderRadius: 5,
-        }}
-      >
-        <Text style={{ color: "white", fontWeight: "bold" }}>
-          Cancel Booking
-        </Text>
-      </TouchableOpacity>
+      {setting && (
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            right: 10,
+            top: 40,
+            backgroundColor: "#808080",
+            padding: 3,
+            borderRadius: 5,
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold" }}>
+            Cancel Booking
+          </Text>
+        </TouchableOpacity>
+      )}
 
       <View style={styles.mineimg}>
         <Image
