@@ -31,12 +31,19 @@ const Chatt = () => {
   const ref = useRef("");
   const inputRef = useRef(null);
   const [mine, setMine] = useState(null);
+  const [myId, setMyId] = useState(0);
 
   const parent = useLocalSearchParams();
   console.log("okkk", parent.id);
 
   const router = useRouter();
-
+  useEffect(() => {
+    const get_id = async () => {
+      const id = await AsyncStorage.getItem("user_id");
+      setMyId(id);
+    };
+    get_id();
+  }, []);
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     const get_data = async () => {
@@ -65,22 +72,26 @@ const Chatt = () => {
   }, []);
 
   useEffect(() => {
-    createRoomifnotExists();
-    let roomId = getroomId(23, parent.id);
-    const docRef = doc(db, "rooms", roomId);
-    const messagesRef = collection(docRef, "messages");
-    const q = query(messagesRef, orderBy("createdAt", "asc"));
-    let unssub = onSnapshot(q, (snapshot) => {
-      let allMessages = snapshot.docs.map((doc) => {
-        return doc.data();
+    if (myId !== 0) {
+      createRoomifnotExists();
+      let roomId = getroomId(myId, parent.id);
+      const docRef = doc(db, "rooms", roomId);
+      const messagesRef = collection(docRef, "messages");
+      const q = query(messagesRef, orderBy("createdAt", "asc"));
+      let unssub = onSnapshot(q, (snapshot) => {
+        let allMessages = snapshot.docs.map((doc) => {
+          return doc.data();
+        });
+        setMessages([...allMessages]);
       });
-      setMessages([...allMessages]);
-    });
-    return unssub;
-  }, []);
+      return unssub;
+    } else {
+      console.log("id error");
+    }
+  }, [myId]);
 
   let createRoomifnotExists = async () => {
-    let roomId = getroomId(23, parent.id);
+    let roomId = getroomId(myId, parent.id);
     await setDoc(doc(db, "rooms", roomId), {
       roomId,
       createdAt: Timestamp.fromDate(new Date()),
@@ -91,13 +102,13 @@ const Chatt = () => {
     let message = ref.current.trim();
     if (!message) return;
     try {
-      let roomId = getroomId(mine.id, parent.id);
+      let roomId = getroomId(myId, parent.id);
       const docRef = doc(db, "rooms", roomId);
       const messagesRef = collection(docRef, "messages");
       ref.current = "";
       if (inputRef) inputRef?.current?.clear();
       const newDoc = await addDoc(messagesRef, {
-        userId: 23,
+        userId: myId,
         text: message,
         senderName: mine.name,
         createdAt: Timestamp.fromDate(new Date()),
