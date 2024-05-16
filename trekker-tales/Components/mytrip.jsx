@@ -1,22 +1,40 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import { Link } from "expo-router";
 import { BASE_URL } from "../app/utils/constants";
+import { Entypo } from "@expo/vector-icons";
 
 const MyTrip = ({ item }) => {
   const currentDate = new Date();
   const tripDate = new Date(item.trip.date);
   const [current, setCurrent] = useState(false);
+  const [setting, setSetting] = useState(false);
+
   useEffect(() => {
     if (tripDate.toDateString() === currentDate.toDateString()) {
       setCurrent(true);
     }
   }, []);
+  const handleSetting = () => {
+    setSetting(true);
+  };
 
   return (
     <View style={styles.mine}>
+      <TouchableOpacity
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          position: "absolute",
+          top: 10,
+          right: 10,
+        }}
+      >
+        <Entypo name="dots-three-vertical" size={16} color="black" />
+      </TouchableOpacity>
+      <View></View>
       <View style={styles.mineimg}>
         <Image
           style={styles.mineimage}
