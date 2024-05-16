@@ -31,10 +31,26 @@ const MyTrip = ({ item }) => {
           top: 10,
           right: 10,
         }}
+        onPress={handleSetting}
       >
         <Entypo name="dots-three-vertical" size={16} color="black" />
       </TouchableOpacity>
-      <View></View>
+
+      <TouchableOpacity
+        style={{
+          position: "absolute",
+          right: 10,
+          top: 40,
+          backgroundColor: "#808080",
+          padding: 3,
+          borderRadius: 5,
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: "bold" }}>
+          Cancel Booking
+        </Text>
+      </TouchableOpacity>
+
       <View style={styles.mineimg}>
         <Image
           style={styles.mineimage}
