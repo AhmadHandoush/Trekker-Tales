@@ -22,6 +22,7 @@ const Post = ({
   const [likes, setLikes] = useState(0);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   const [commentsCount, setCommentsCount] = useState(0);
   useEffect(() => {
@@ -126,16 +127,7 @@ const Post = ({
       const data = await response.json();
 
       if (response.ok) {
-        setLikes(likes + (data.liked ? 1 : -1));
-        if (!data.liked) {
-          await fetch(`${BASE_URL}/api/dislike/${id}`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ postId: post.id }),
-          });
-        }
+        setLikes(likes + 1);
       } else {
         console.error("Failed to like/dislike post");
       }
@@ -146,6 +138,19 @@ const Post = ({
   const handleOpenComments = () => {
     setOpenComments(false);
     get_post_comments(id);
+  };
+  const handleDislike = async () => {
+    const token = await AsyncStorage.getItem("token");
+    try {
+      await fetch(`${BASE_URL}/api/dislike/${id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.log("Error: Failed to dislike ");
+    }
   };
 
   return (
