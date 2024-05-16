@@ -54,11 +54,11 @@ const login = () => {
         }
 
         AsyncStorage.setItem("token", data.authorisation.token);
+        AsyncStorage.setItem("user_id", JSON.stringify(data.user.id));
       })
       .catch((error) => {
         setError("Credentials Error");
       });
-   
   };
   return (
     <View style={styles.container}>
