@@ -213,12 +213,19 @@ const Profile = () => {
                     <FontAwesome name="sign-out" size={20} color="black" />
                   </TouchableOpacity>
                   <View style={styles.image}>
-                    <Image
-                      source={{
-                        uri: `${BASE_URL}/images/${user.user_image}`,
-                      }}
-                      style={styles.img}
-                    />
+                    {user.user_image ? (
+                      <Image
+                        source={{
+                          uri: `${BASE_URL}/images/${user.user_image}`,
+                        }}
+                        style={styles.img}
+                      />
+                    ) : (
+                      <Image
+                        source={require("../../../assets/default-user-icon.webp")}
+                        style={styles.img}
+                      />
+                    )}
                   </View>
                 </View>
                 <View style={styles.all}>

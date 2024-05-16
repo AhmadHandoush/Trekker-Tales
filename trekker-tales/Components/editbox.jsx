@@ -12,7 +12,7 @@ import axios from "axios";
 import { BASE_URL } from "../app/utils/constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const EditProfile = ({ setEdit, setSuccess }) => {
+const EditProfile = ({ setEdit, setSuccess, updateProfileImage }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -34,6 +34,7 @@ const EditProfile = ({ setEdit, setSuccess }) => {
     if (!result.canceled) {
       const selectedUri = result.assets[0].uri;
       setImage(selectedUri);
+      updateProfileImage(selectedUri);
     }
   };
 
@@ -66,7 +67,7 @@ const EditProfile = ({ setEdit, setSuccess }) => {
       );
       setSuccess(true);
       setEdit(false);
-      updateProfileImage(selectedUri);
+
       setTimeout(() => setSuccess(false), 2000);
 
       console.log("Response:", response.data);

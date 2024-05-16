@@ -178,11 +178,14 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   send: {
-    padding: 7,
+    padding: 8,
+
     backgroundColor: "#e87a00",
     borderRadius: 20,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    height: 40,
+    width: 40,
   },
 });
