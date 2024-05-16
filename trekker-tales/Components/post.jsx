@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "../app/utils/constants";
+import { AntDesign } from "@expo/vector-icons";
 
 const Post = ({
   post,
@@ -122,12 +123,12 @@ const Post = ({
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ postId: post.id }),
       });
       const data = await response.json();
 
       if (response.ok) {
         setLikes(likes + 1);
+        setLiked(true);
       } else {
         console.error("Failed to like/dislike post");
       }
@@ -148,6 +149,9 @@ const Post = ({
           Authorization: `Bearer ${token}`,
         },
       });
+
+      setLiked(false);
+      setLikes(likes - 1);
     } catch (error) {
       console.log("Error: Failed to dislike ");
     }
@@ -183,13 +187,20 @@ const Post = ({
         </TouchableOpacity>
       </View>
       <View style={styles.bottom}>
-        <TouchableOpacity onPress={handleAddLike}>
-          <MaterialCommunityIcons
-            name="heart-outline"
-            size={32}
-            color="black"
-          />
-        </TouchableOpacity>
+        {!liked ? (
+          <TouchableOpacity onPress={handleAddLike}>
+            <MaterialCommunityIcons
+              name="heart-outline"
+              size={32}
+              color="black"
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={handleDislike}>
+            <AntDesign name="heart" size={32} color="red" />
+          </TouchableOpacity>
+        )}
+
         <View style={styles.addComment}>
           <TextInput
             placeholder="Add a comment"

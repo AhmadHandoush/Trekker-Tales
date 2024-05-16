@@ -56,7 +56,7 @@ const LocationScreen = () => {
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="#e87a00" />
         <Text style={styles.text}>Getting your location...</Text>
       </View>
     );

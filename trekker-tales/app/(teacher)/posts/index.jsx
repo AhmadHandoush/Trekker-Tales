@@ -70,33 +70,6 @@ const Posts = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const get_post_comments = async () => {
-  //     setLoading(true);
-  //     try {
-  //       if (token) {
-  //         const response = await fetch(`${BASE_URL}/api/comments/21`, {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         });
-  //         if (!response.ok) {
-  //           throw new Error("Failed to fetch data");
-  //         }
-  //         const data = await response.json();
-
-  //         setPostComments(data.comments);
-  //         setLoading(false);
-  //       } else {
-  //         setLoading(true);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   get_post_comments();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -123,41 +96,6 @@ const Posts = () => {
       }
     };
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    const get_likes = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(`${BASE_URL}/api/likes/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-
-        setLikes(data.likes);
-      } catch (error) {
-        console.error("Error fetching likes:", error);
-      }
-    };
-    get_likes();
-    const get_comments_number = async () => {
-      const token = await AsyncStorage.getItem("token");
-      try {
-        const response = await fetch(`${BASE_URL}/api/comments_number/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-
-        setCommentsCount(data.comments);
-      } catch (error) {
-        console.error("Error fetching comments count:", error);
-      }
-    };
-    get_comments_number();
   }, []);
 
   useEffect(() => {
