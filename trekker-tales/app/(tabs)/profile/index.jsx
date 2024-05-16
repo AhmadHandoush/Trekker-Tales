@@ -163,6 +163,7 @@ const Profile = () => {
     get_mytrips()
       .then((data) => {
         const date = new Date();
+        date.setHours(0, 0, 0, 0);
         const filtered = data.filter((trip) => new Date(trip.trip.date) < date);
         setMyTripsData(filtered);
         setLoading(false);
@@ -172,6 +173,12 @@ const Profile = () => {
         setLoading(true);
       });
   }, []);
+  const updateProfileImage = (newImageUri) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      user_image: newImageUri,
+    }));
+  };
 
   const { name, email, phone, address, user_image } = user || defaultUser;
 
@@ -273,7 +280,13 @@ const Profile = () => {
           </View>
         </ScrollView>
       )}
-      {edit && <EditProfile setEdit={setEdit} setSuccess={setSuccess} />}
+      {edit && (
+        <EditProfile
+          setEdit={setEdit}
+          setSuccess={setSuccess}
+          updateProfileImage={updateProfileImage}
+        />
+      )}
       {addreview && (
         <AddReview
           setAddReview={setAddReview}

@@ -66,6 +66,7 @@ const EditProfile = ({ setEdit, setSuccess }) => {
       );
       setSuccess(true);
       setEdit(false);
+      updateProfileImage(selectedUri);
       setTimeout(() => setSuccess(false), 2000);
 
       console.log("Response:", response.data);

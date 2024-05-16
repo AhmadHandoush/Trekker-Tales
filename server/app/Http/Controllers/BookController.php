@@ -39,9 +39,17 @@ class BookController extends Controller
         return response()->json(['child_names' => $childNames]);
 
 
+
+    }
+    public function delete_booking($id) {
+        $booking= Booking::findOrFail($id);
+        $booking->delete();
+        return response()->json(['message'=>'Booking cancelled successfully']);
+
     }
 
-    // get all the trips the a user booked
+
+    // get all the trips the user booked
     public function getBookingsByUser()
     {
         $userId = Auth::id();

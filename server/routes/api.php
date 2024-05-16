@@ -64,6 +64,7 @@ Route::group(["middleware" => "isUser"], function () {
         Route::post('update_user',[UserController::class,'update_user']);
         Route::get('posts',[PostController::class,'get_posts']);
         Route::post('dislike/{id}',[LikeController::class,'dislike']);
+        Route::post('delete_booking/{id}',[BookController::class,'delete_booking']);
         Route::post('like/{id}',[LikeController::class,'like']);
         Route::post('add_comment/{id}',[CommentController::class,'add_comment']);
         Route::post('update_comment/{id}',[CommentController::class,'update']);

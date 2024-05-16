@@ -16,7 +16,11 @@ const Main = () => {
       style={{ width: "100%", height: "100%" }}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>Welcome to TREKKER TALES</Text>
+        <View style={styles.top}>
+          <Text style={styles.text}>Welcome to </Text>
+          <Text style={styles.mainName}></Text>
+          <Text style={styles.name}>TREKKER TALES</Text>
+        </View>
 
         <Link href="/login" asChild style={styles.link}>
           <Pressable>
@@ -38,14 +42,24 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  top: {},
   text: {
     top: 50,
     color: "white",
+    fontSize: 20,
+    textAlign: "center",
+  },
+  mainName: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 32,
+  },
+  name: {
+    color: "white",
+    textAlign: "center",
+    marginTop: 10,
+    fontSize: 32,
     fontWeight: "bold",
-    fontSize: 26,
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
   link: {
     backgroundColor: "#E87A00",

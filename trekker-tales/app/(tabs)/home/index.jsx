@@ -241,10 +241,11 @@ const Home = () => {
       </View>
       <View>
         <FlatList
-          data={filteredTrips.slice(0, 7)} // Use filtered data here
+          data={filteredTrips.slice(0, 7)}
           renderItem={pastItem}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     </View>
