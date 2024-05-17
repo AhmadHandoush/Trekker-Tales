@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import * as Notifications from "expo-notifications";
 
 import { Link } from "expo-router";
 import { BASE_URL } from "../app/utils/constants";
@@ -19,6 +20,42 @@ const MyTrip = ({ item, setSuccess }) => {
   const tripDate = new Date(item.trip.date);
   const [current, setCurrent] = useState(false);
   const [setting, setSetting] = useState(false);
+  const [tripStartTime, setTripStartTime] = useState(item.trip.start_time);
+  const [notificationScheduled, setNotificationScheduled] = useState(false);
+
+  useEffect(() => {
+    setTripStartTime(item.trip.start_time);
+
+    if (!notificationScheduled) {
+      const timeUntilTripStart = calculateTimeUntilTripStart(tripStartTime);
+      if (timeUntilTripStart > 0) {
+        setTimeout(scheduleTripNotification, timeUntilTripStart);
+      }
+      setNotificationScheduled(true);
+    }
+  }, [tripStartTime, notificationScheduled]);
+
+  const calculateTimeUntilTripStart = (startTime) => {
+    const currentTime = new Date().getTime();
+    const tripStartTime = new Date(startTime).getTime();
+    return tripStartTime - currentTime;
+  };
+
+  const scheduleTripNotification = async () => {
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Trip Reminder",
+          body: "Your trip is about to begin!",
+        },
+        trigger: { seconds: 1 },
+      });
+
+      console.log("Trip notification scheduled successfully.");
+    } catch (error) {
+      console.error("Error scheduling trip notification:", error);
+    }
+  };
 
   useEffect(() => {
     if (tripDate.toDateString() === currentDate.toDateString()) {

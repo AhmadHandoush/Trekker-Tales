@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import Loader from "../../../components/Loader";
 import { BASE_URL } from "../../../components/Base_url";
 
-
 function SingleTrip() {
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -22,7 +21,7 @@ function SingleTrip() {
     status,
     trip_image,
   } = data;
-  
+
   useEffect(() => {
     const get_trip = async () => {
       try {
@@ -86,13 +85,16 @@ function SingleTrip() {
               <h5>Fee:</h5>
               <h2>$ {parseInt(fees)}</h2>
             </div>{" "}
-            <div className="flex-items flex-between">
-              <h5>Locations:</h5>
-              {/* <h2>
-              {setOk &&
-                locations.map((location) => <span>{location.name} </span>)}
-            </h2> */}
-            </div>
+            {locations && (
+              <div className="flex column ">
+                <h5>Locations:</h5>
+                <ul className="places">
+                  {locations.map((location, index) => (
+                    <li key={index}>{location.name}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="flex-items flex-between">
               <h5>Description:</h5>
               <p>{description}</p>
@@ -107,6 +109,7 @@ function SingleTrip() {
           </div>
         </div>
       )}
+      <section className="reviews"></section>
     </div>
   );
 }

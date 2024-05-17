@@ -27,7 +27,7 @@ class ReviewController extends Controller
     }
     public function get_reviews($trip_id){
         $reviews = Review::where('trip_id', $trip_id)->get();
-        return response()->json(['comments' => $reviews]);
+        return response()->json(['reviews' => $reviews]);
     }
 
     public function average_rating($trip_id)

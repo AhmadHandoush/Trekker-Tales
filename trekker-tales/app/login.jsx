@@ -100,13 +100,12 @@ const login = () => {
           Don’t have an account?{" "}
           <Link href={"/signup"}>
             <Text style={{ color: "#E87A00", fontWeight: "bold" }}>
-              {" "}
-              Sign Up{" "}
+              Sign Up
             </Text>
           </Link>
         </Text>
         {success && <Text style={styles.success}>Login Successfully...</Text>}
-        <OrWith />
+        {/* <OrWith /> */}
       </View>
     </View>
   );

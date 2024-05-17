@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./users.css";
 import Parent from "./components/Parent";
+import { BASE_URL } from "../../components/Base_url";
 
 function Users() {
   const [parents, setParents] = useState([]);
@@ -12,14 +13,11 @@ function Users() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          "http://192.168.1.16:8000/api/get_parents",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/get_parents`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
