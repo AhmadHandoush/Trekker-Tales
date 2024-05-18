@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   login: {
-    backgroundColor: "#F2F0F0",
+    backgroundColor: "#F8F8F8",
     width: "100%",
     height: "65%",
     borderTopEndRadius: 30,

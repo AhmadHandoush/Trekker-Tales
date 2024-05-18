@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   login: {
     paddingLeft: 10,
-    backgroundColor: "F8F8F8",
+    backgroundColor: "#F8F8F8",
   },
   input: {
     height: 45,
