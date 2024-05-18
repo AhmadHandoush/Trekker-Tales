@@ -69,7 +69,17 @@ ul li a svg {
 }
 ul li .active {
   color: var(--main-color);
+  position: relative;
 }
+ul li .active::before {
+  position: absolute;
+  content: "";
+  left: -10px;
+  height: 100%;
+  width: 3px;
+  background-color: #e87a00;
+}
+
 .menu {
   height: 90vh;
   justify-content: space-between;
