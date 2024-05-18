@@ -14,7 +14,7 @@ function Teacher({ teacher, handleDelete, setUpdate }) {
         <h4>{email}</h4>
       </div>
       <div className="address">
-        <h4>Barsa Kura</h4>
+        <h4>{address}</h4>
       </div>
 
       <FaEdit onClick={() => setUpdate(true)} className="editing" />

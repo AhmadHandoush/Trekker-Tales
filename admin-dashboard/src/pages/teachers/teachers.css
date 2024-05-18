@@ -28,6 +28,7 @@
   transform: translateX(-100px);
 }
 .titles .email {
+  transform: translateX(-30px);
 }
 .titles button {
   display: flex;
