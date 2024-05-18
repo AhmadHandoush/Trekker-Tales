@@ -25,8 +25,8 @@
   padding: 10px;
 }
 
-.titles .address {
-  transform: translateX(-100px);
+.teachers .titles .address {
+  transform: translateX(-50px);
 }
 .titles .email {
   transform: translateX(-30px);
