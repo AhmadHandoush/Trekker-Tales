@@ -54,9 +54,11 @@ function SingleTrip() {
         <div className="info flex">
           <img src={`${BASE_URL}/${trip_image}`} alt="" />
           <div className="single-overlay"></div>
-          <div className="infos flex">
-            <div className="name">{name}</div>
-            <div className="fees">{parseInt(fees)}</div>
+          <div className="infos flex column ">
+            <div className="first flex-between">
+              <div className="name">{name}</div>
+              <div className="fees">${parseInt(fees)}</div>
+            </div>
             <div className="date">{date}</div>
           </div>
         </div>

@@ -108,14 +108,19 @@
   position: relative;
   z-index: 1000;
   width: 100%;
-  align-items: flex-end;
-  padding: 20px;
+  justify-content: flex-end;
+  padding: 40px;
   padding-bottom: 50px;
 }
 .single .infos .name {
   color: white;
+  font-size: 40px;
+  font-weight: bold;
 }
 .single .infos .fees {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
 }
 .btn-update {
   display: flex;
