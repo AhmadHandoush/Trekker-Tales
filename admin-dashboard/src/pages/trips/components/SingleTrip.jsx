@@ -59,7 +59,10 @@ function SingleTrip() {
               <div className="name">{name}</div>
               <div className="fees">${parseInt(fees)}</div>
             </div>
-            <div className="date">{date}</div>
+            <div className="second flex-between">
+              <div className="date">{date}</div>
+              <div className="destination">{destination}</div>
+            </div>
           </div>
         </div>
       )}

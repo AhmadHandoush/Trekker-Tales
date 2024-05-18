@@ -11,9 +11,17 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Stories
 
-- As a user, I want to browse the track of the available trips, so I can find the best trip for my childrens.
-- As a user, I want to browse the facilities included in the trip, so I can choose according to my preferences.
-- As a user, I want to pay for booking through the app, so I can avoid sending money with my childrens.
+### Parents
+
+- As a Parent, I want to browse the track of the available trips, so I can find the best trip for my childrens.
+- As a Parent, I want to browse the facilities included in the trip, so I can choose according to my preferences.
+- As a Parent, I want to know the locations included in the trip and its main destination.
+
+### Admin
+
+- As an admin, I want to create a trip and know all the children booked in that trip and update its details.
+- As an admin, I want to add the coordinator of the trip to organize everyting trelated to it.
+- As an admin, I want to enhance the app's content by adding new places that users might find interesting.
 
 <br><br>
 
