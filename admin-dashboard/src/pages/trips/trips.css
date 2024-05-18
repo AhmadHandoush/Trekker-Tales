@@ -80,20 +80,19 @@
   padding: 2rem 100px;
 }
 .single .info {
-  border: 2px solid #808080;
+  border: 2px solid #d7d7d7;
   height: 80vh;
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
-.single-left {
-  width: 40%;
-  overflow: hidden;
-}
-.single-right {
-  width: 60%;
-  padding: 20px 20px;
-  gap: 17px;
+.single .info img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .btn-update {
   display: flex;
