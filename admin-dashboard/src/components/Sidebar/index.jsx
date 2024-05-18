@@ -25,7 +25,7 @@ function Sidebar() {
       <div className="top flex-items">
         <div className="logo">
           {" "}
-          <img src="./Borcelle (3).png" alt="" />
+          <img src="./logo.png" alt="logo" />
         </div>
         <h3 className="bold">Trekker Tales</h3>
       </div>
