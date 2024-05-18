@@ -150,8 +150,43 @@ npm install  npm@latest -g
 ### Backend(Laravel)
 
 1. Navigate to the server directory
-   `sh cd server `
+   ```sh
+   cd server
+   ```
 2. Install Composer dependencies
-   ``sh composer install `
+   ```sh
+    composer install
+   ```
+3. Generate the application key
 
-Now, you should be able to run Coffee Express locally and explore its features.
+```sh
+php artisan key:generate
+```
+
+4. Download Laravel dependencies
+
+```sh
+php artisan migrate
+```
+
+### Admin dashboard (React JS)
+
+1. Navigate to the admin dashboard directory
+
+```sh
+cd admin-dashboard
+```
+
+2.Install NPM packages
+
+```sh
+npm install
+```
+
+Now, the Trekker-tales, server, and admin-dashboard of Trekker Tales are set up. You can run them locally and explore their features.
+
+Feel free to explore and enjoy using Trekker Tales!
+
+```
+
+```
