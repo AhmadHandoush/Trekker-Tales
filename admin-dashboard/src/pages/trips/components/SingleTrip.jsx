@@ -57,6 +57,7 @@ function SingleTrip() {
           <div className="infos flex">
             <div className="name">{name}</div>
             <div className="fees">{parseInt(fees)}</div>
+            <div className="date">{date}</div>
           </div>
         </div>
       )}
