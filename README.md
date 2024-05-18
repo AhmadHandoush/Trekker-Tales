@@ -39,8 +39,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 - This project uses the [React Native expo app development framework](https://reactnative.dev/). React Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
 - For persistent storage (database), the app uses the [Async Storage](https://react-native-async-storage.github.io/async-storage/) allowing data to be stored locally on the device.
 - This Project uses Laravel framework for backend,Laravel serves as a backend framework for PHP web development, offering features and tools that streamline backend processes, such as routing, database management, authentication, and API development.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+  - Our app brings geographical contexts to life using the Google Maps SDK. This integration allows us to display detailed maps, complete with interactive markers for each destination.
 
 <br><br>
 
