@@ -49,4 +49,17 @@ class ReviewController extends Controller
 
         return response()->json($highestRatedTrips);
     }
+    public function get_highest_ra()
+    {
+        $highestRatedTrips = Review::with(['trip' => function ($query) {
+            $query->select('*');
+        }])
+            ->selectRaw('trip_id, AVG(rating) as average_rating')
+            ->groupBy('trip_id')
+            ->orderByDesc('average_rating')
+            ->limit(3)
+            ->get();
+
+        return response()->json($highestRatedTrips);
+    }
 }

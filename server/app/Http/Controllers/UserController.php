@@ -89,6 +89,11 @@ class UserController extends Controller
         $teachers=User::where('role','teacher')->get();
         return response()->json(['teachers' => $teachers]);
 
+    } 
+    public function get_teacherss(){
+        $teachers=User::where('role','teacher')->get();
+        return response()->json(['teachers' => $teachers]);
+
     }
     public function delete_user($id){
         $user=User::findOrFail($id);

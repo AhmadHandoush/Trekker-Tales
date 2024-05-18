@@ -1,4 +1,5 @@
 import { FaEdit } from "react-icons/fa";
+import { BASE_URL } from "../../../components/Base_url";
 function Parent({ parent, handleDelete }) {
   const { id, name, email, address, user_image } = parent;
 
@@ -6,11 +7,19 @@ function Parent({ parent, handleDelete }) {
     <li className="user flex-between flex-items">
       <div className="name flex">
         <div className="image">
-          <img
-            src={`http://127.0.0.1:8000/images/${user_image}`}
-            alt="name"
-            className="s-image"
-          />
+          {user_image ? (
+            <img
+              src={`${BASE_URL}/images/${user_image}`}
+              alt="name"
+              className="s-image"
+            />
+          ) : (
+            <img
+              src="./default-user-icon.webp"
+              alt="name"
+              className="s-image"
+            />
+          )}
         </div>
         <h2>{name}</h2>
       </div>

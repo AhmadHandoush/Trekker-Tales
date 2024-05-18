@@ -48,10 +48,10 @@ function Login() {
         <img src="./pexels-laup-10541175.jpg" alt="hero" />
       </div>
       <div className="rights  column">
-        <h2 className="title">
-          {" "}
-          Welcome to <span>Trekker Tales</span>{" "}
-        </h2>
+        <div>
+          <h2 className="title">Welcome to</h2>
+          <span className="main-title">Trekker Tales</span>
+        </div>
         <div className="login-card flex column">
           <div className="top-title flex-center">
             <h2>Login</h2>

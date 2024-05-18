@@ -17,7 +17,7 @@ function Teachers() {
     const getTrips = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${BASE_URL}/api/get_teachers`, {
+        const response = await fetch(`${BASE_URL}/api/get_teacherss`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

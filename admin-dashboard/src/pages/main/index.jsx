@@ -79,7 +79,7 @@ function Main() {
     const get_highest = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${BASE_URL}/api/get_highest_rated`, {
+        const response = await fetch(`${BASE_URL}/api/get_highest_ra`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
