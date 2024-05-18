@@ -52,9 +52,9 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Mockups
 
-| Login screen                   | Home Screen                 | Chat Screen                 |
-| ------------------------------ | --------------------------- | --------------------------- |
-| ![Landing](./readme/login.png) | ![fsdaf](./readme/home.png) | ![fsdaf](./readme/chat.png) |
+| Login screen                   | Home Screen                 | Chat Screen                  |
+| ------------------------------ | --------------------------- | ---------------------------- |
+| ![Landing](./readme/login.png) | ![fsdaf](./readme/home.png) | ![fsdaf](./readme/chatt.png) |
 
 <br><br>
 
