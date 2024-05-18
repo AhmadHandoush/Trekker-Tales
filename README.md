@@ -155,7 +155,7 @@ npm install  npm@latest -g
    ```
 2. Install Composer dependencies
    ```sh
-    composer install
+   composer install
    ```
 3. Generate the application key
 
@@ -164,7 +164,6 @@ npm install  npm@latest -g
    ```
 
 4. Download Laravel dependencies
-
    ```sh
    php artisan migrate
    ```
@@ -172,7 +171,6 @@ npm install  npm@latest -g
 ### Admin dashboard (React JS)
 
 1. Navigate to the admin dashboard directory
-
    ```sh
    cd admin-dashboard
    ```
