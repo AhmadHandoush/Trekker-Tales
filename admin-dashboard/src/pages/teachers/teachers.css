@@ -25,7 +25,9 @@
 }
 
 .titles .address {
-  transform: translateX(-60px);
+  transform: translateX(-100px);
+}
+.titles .email {
 }
 .titles button {
   display: flex;
