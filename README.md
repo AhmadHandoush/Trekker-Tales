@@ -70,7 +70,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Screens (Mobile)
 
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
+| Login screen                              | Register screen                         | Landing                                 |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | ![Landing](./readme/loginpage.mp4)        | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](./readme/loginpage.mp4)        |
 | Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
