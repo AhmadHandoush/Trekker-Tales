@@ -23,6 +23,12 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 - As an admin, I want to add the coordinator of the trip to organize everyting trelated to it.
 - As an admin, I want to enhance the app's content by adding new places that users might find interesting.
 
+### Teacher
+
+- As a teacher, i want to communicate with parents to organize everything relaetd to the trip.
+- As a teacher, i want to access my current location to be shown for the parents on the map.
+- As a teacher, i want to add posts about the trip's activities during the day whole day.
+
 <br><br>
 
 <!-- Tech stack -->
