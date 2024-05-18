@@ -80,7 +80,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 | Login screen                            | Main dashboard                        | Landing screen                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/adminLogin.PNG)     | ![fsdaf](./readme/Maindash.PNG)       | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/adminLogin.PNG)     | ![fsdaf](./readme/Maindash.PNG)       | ![fsdaf](./readme/trips.PNG)          |
 | Home screen                             | Menu Screen                           | Order Screen                          |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
