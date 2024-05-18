@@ -143,25 +143,28 @@ npm install  npm@latest -g
 ```
 
 4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
+
+```js
+const API_KEY = "ENTER YOUR API";
+```
 
 ### Backend(Laravel)
 
 1. Navigate to the server directory
-   ```sh
-   cd server
-   ```
+
+```sh
+cd server
+```
+
 2. Install Composer dependencies
    ```sh
    composer install
    ```
 3. Generate the application key
 
-   ```sh
-   php artisan key:generate
-   ```
+```sh
+php artisan key:generate
+```
 
 4. Download Laravel dependencies
    ```sh
@@ -171,9 +174,10 @@ npm install  npm@latest -g
 ### Admin dashboard (React JS)
 
 1. Navigate to the admin dashboard directory
-   ```sh
-   cd admin-dashboard
-   ```
+
+```sh
+cd admin-dashboard
+```
 
 2.Install NPM packages
 
