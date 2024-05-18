@@ -126,12 +126,14 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Frontend (React Native)
 
-`sh git clone https://github.com/AhmadHandoush/Trekker-Tales.git `
+```sh
+git clone https://github.com/AhmadHandoush/Trekker-Tales.git
+```
 
 1.Navigate to trekker-tales
 
 ```sh
-git cd trekker-tales
+ cd trekker-tales
 ```
 
 2. Install NPM packages
