@@ -118,12 +118,9 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+1. Install [Composer](https://getcomposer.org/download/)
+2. Install [npm &npm](https://nodejs.org/en/download/package-manager)
+3. Database server: Any Apache HTTP Server, MariaDB database server, recommended [XAMP](https://www.apachefriends.org/download.html)
 
 ### Installation
 
