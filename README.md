@@ -70,11 +70,11 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Screens (Mobile)
 
-| Onboarding Screen                         | Login screen                            | Register screen                         | Loading screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](./readme/onboarding.gif)       | ![fsdaf](./readme/login.gif)            | ![fsdaf](/readme/singup.gif)            | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| Onboarding Screen                   | Login screen                 | Register screen                         | Home screen                             |
+| ----------------------------------- | ---------------------------- | --------------------------------------- | --------------------------------------- |
+| ![Landing](./readme/onboarding.gif) | ![fsdaf](./readme/login.gif) | ![fsdaf](/readme/Register.gif)          | ![fsdaf](https://placehold.co/900x1600) |
+| Trips screen                        | Trips Screen                 | Order Screen                            | Checkout Screen                         |
+| ![Landing](/readme/Home.gif)        | ![fsdaf](/readme/trips.gif)  | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
 ### Admin Screens (Web)
 
