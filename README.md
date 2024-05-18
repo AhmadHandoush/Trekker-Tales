@@ -119,23 +119,32 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 ### Prerequisites
 
 1. Install [Composer](https://getcomposer.org/download/)
-2. Install [npm &npm](https://nodejs.org/en/download/package-manager)
+2. Install [Node & npm](https://nodejs.org/en/download/package-manager)
 3. Database server: Any Apache HTTP Server, MariaDB database server, recommended [XAMP](https://www.apachefriends.org/download.html)
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+### Frontend (React Native)
 
-1. Get a free API Key at [example](https://example.com)
-2. Clone the repo
-   git clone [github](https://github.com/your_username_/Project-Name.git)
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
+`sh git clone https://github.com/AhmadHandoush/Trekker-Tales.git `
+
+1.Navigate to trekker-tales
+`sh git cd trekker-tales ` 2. Install NPM packages
+
+```sh
+npm install  npm@latest -g
+```
+
 4. Enter your API in `config.js`
    ```js
    const API_KEY = "ENTER YOUR API";
    ```
+
+### Backend(Laravel)
+
+1. Navigate to the server directory
+   `sh cd server `
+2. Install Composer dependencies
+   ``sh composer install `
 
 Now, you should be able to run Coffee Express locally and explore its features.
