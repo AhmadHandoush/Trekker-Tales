@@ -5,7 +5,7 @@
   --bg-white: #ffffff;
   --bg-hover: #f7f7f7;
 }
-.teachers {
+.users {
   padding: 2rem 100px;
 }
 .table {
@@ -21,28 +21,15 @@
   padding: 10px;
 }
 
-.titles button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: white;
-  color: var(--main-color);
-  border-radius: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  border: 1px solid var(--main-color);
-}
 .titles button:hover {
   color: white;
   background-color: var(--main-color);
   border: 1px solid white;
 }
 .titles .user-email {
-  transform: translateX(-40px);
+  transform: translateX(-80px);
+}
+.users.address {
 }
 .second {
   padding: 10px;
@@ -51,15 +38,23 @@
   font-size: 25px;
 }
 
-.name {
+.user .name {
   gap: 10px;
   align-items: center;
+  width: 25%;
 }
 .name .image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+}
+.user .email {
+  transform: translateX(-30px);
+  width: 25%;
+}
+.user .address {
+  width: 25%;
 }
 .teachers-list {
   gap: 30px;

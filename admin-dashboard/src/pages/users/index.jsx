@@ -52,7 +52,7 @@ function Users() {
     }
   };
   return (
-    <div className="teachers">
+    <div className="users">
       <div className="table">
         <div className="titles flex-between  flex-items">
           <h2>Username</h2>
