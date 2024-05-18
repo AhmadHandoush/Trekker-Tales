@@ -27,7 +27,7 @@ function Parent({ parent, handleDelete }) {
         <h4>{email}</h4>
       </div>
       <div className="address">
-        <h4>Barsa Kura</h4>
+        <h4>{address || "Koura"}</h4>
       </div>
 
       <div className="delete">

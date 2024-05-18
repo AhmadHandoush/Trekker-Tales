@@ -56,8 +56,9 @@ function Users() {
       <div className="table">
         <div className="titles flex-between  flex-items">
           <h2>Username</h2>
-          <h2>Email</h2>
+          <h2 className="user-email">Email</h2>
           <h2 className="address">Address</h2>
+          <h2> </h2>
         </div>
         <div className="second">
           <ul className="teachers-list flex column">
