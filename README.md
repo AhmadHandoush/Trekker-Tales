@@ -157,9 +157,11 @@ cd server
 ```
 
 2. Install Composer dependencies
-   ```sh
-   composer install
-   ```
+
+```sh
+composer install
+```
+
 3. Generate the application key
 
 ```sh
@@ -167,9 +169,10 @@ php artisan key:generate
 ```
 
 4. Download Laravel dependencies
-   ```sh
-   php artisan migrate
-   ```
+
+```sh
+php artisan migrate
+```
 
 ### Admin dashboard (React JS)
 
