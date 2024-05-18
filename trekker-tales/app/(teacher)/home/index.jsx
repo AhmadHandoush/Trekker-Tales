@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { addDoc, serverTimestamp, collection } from "firebase/firestore";
 import { db } from "../../firebase"; // Import your Firebase configuration file
@@ -7,6 +8,7 @@ import { db } from "../../firebase"; // Import your Firebase configuration file
 const LocationScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
     const requestLocationPermission = async () => {
@@ -23,11 +25,14 @@ const LocationScreen = () => {
         const locationListener = await Location.watchPositionAsync(
           { accuracy: Location.Accuracy.High, distanceInterval: 10 },
           async (newLocation) => {
+            console.log("New location:", newLocation);
+            const { latitude, longitude } = newLocation.coords;
+            setLocation({ latitude, longitude });
             try {
               const locationsCollectionRef = collection(db, "locations");
               await addDoc(locationsCollectionRef, {
-                latitude: newLocation.coords.latitude,
-                longitude: newLocation.coords.longitude,
+                latitude,
+                longitude,
                 timestamp: serverTimestamp(),
               });
               console.log("Location updated successfully!");
@@ -72,7 +77,25 @@ const LocationScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Location updated successfully!</Text>
+      {location ? (
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }}
+        >
+          <Marker
+            coordinate={location}
+            title="Your Location"
+            description="This is where you are"
+          />
+        </MapView>
+      ) : (
+        <Text style={styles.text}>Location not available</Text>
+      )}
     </View>
   );
 };
@@ -94,6 +117,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "red",
     marginTop: 20,
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

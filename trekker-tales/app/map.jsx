@@ -10,6 +10,26 @@ const OtherUserLocationScreen = () => {
   const [error, setError] = useState(null);
   const [userLocations, setUserLocations] = useState([]);
 
+  // Define specific locations
+  const specificLocations = [
+    {
+      id: "specific1",
+      coordinate: {
+        latitude: 37.7749,
+        longitude: -122.4194,
+      },
+      title: "San Francisco",
+    },
+    {
+      id: "specific2",
+      coordinate: {
+        latitude: 34.0522,
+        longitude: -118.2437,
+      },
+      title: "Los Angeles",
+    },
+  ];
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "locations"),
@@ -44,8 +64,15 @@ const OtherUserLocationScreen = () => {
       <Back />
       {loading ? (
         <ActivityIndicator size="large" color="#e87a00" />
-      ) : userLocations.length > 0 ? (
+      ) : userLocations.length > 0 || specificLocations.length > 0 ? (
         <MapView style={styles.map}>
+          {specificLocations.map((location) => (
+            <Marker
+              key={location.id}
+              coordinate={location.coordinate}
+              title={location.title}
+            />
+          ))}
           {userLocations.map((location) => (
             <Marker
               key={location.id}

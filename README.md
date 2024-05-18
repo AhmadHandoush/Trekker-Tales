@@ -61,7 +61,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 <!-- Database Design -->
 <img src="./readme/title5.svg"/>
 
-![ER](./readme/ER.PNG)
+![ER](./readme/ER_Diagram.PNG)
 
 <br><br>
 
@@ -72,7 +72,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 | Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](./readme/loginpage.mp4)        |
 | Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
