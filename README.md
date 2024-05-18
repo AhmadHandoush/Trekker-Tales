@@ -72,7 +72,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 | Login screen                              | Register screen                         | Landing                                 |
 | ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](./readme/loginpage.mp4)        | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](./readme/loginpage.mp4)        |
+| ![Landing](./readme/loginpage.mp4)        | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |                                         |
 | Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
