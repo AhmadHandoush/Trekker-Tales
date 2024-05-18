@@ -105,7 +105,7 @@ const login = () => {
           </Link>
         </Text>
         {success && <Text style={styles.success}>Login Successfully...</Text>}
-        {/* <OrWith /> */}
+        <OrWith />
       </View>
     </View>
   );

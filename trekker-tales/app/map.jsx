@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../firebase";
-import Back from "../../../Components/back";
+import { db } from "./firebase";
+import Back from "../Components/back";
 
 const OtherUserLocationScreen = () => {
   const [loading, setLoading] = useState(true);

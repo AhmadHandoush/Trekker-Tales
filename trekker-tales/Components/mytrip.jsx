@@ -155,10 +155,7 @@ const MyTrip = ({ item, setSuccess }) => {
             }}
           >
             <Text>Active Now</Text>
-            <Link
-              href="/(tabs)/trips/mine"
-              style={{ color: "#e87a00", fontWeight: "bold" }}
-            >
+            <Link href="/map" style={{ color: "#e87a00", fontWeight: "bold" }}>
               Go Live
             </Link>
           </View>

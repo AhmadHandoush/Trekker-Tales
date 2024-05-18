@@ -201,7 +201,7 @@ const Profile = () => {
       {edit && <View style={styles.overlay}></View>}
       {addreview && <View style={styles.overlay}></View>}
       {!loading && (
-        <ScrollView>
+        <ScrollView style={styles.profilePage}>
           <View style={styles.container}>
             {user && (
               <View style={styles.profile}>
@@ -336,6 +336,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 20,
     position: "relative",
+  },
+  profilePage: {
+    backgroundColor: "white",
   },
   profile: {
     backgroundColor: "white",
