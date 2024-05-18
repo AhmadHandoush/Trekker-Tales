@@ -129,7 +129,12 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 `sh git clone https://github.com/AhmadHandoush/Trekker-Tales.git `
 
 1.Navigate to trekker-tales
-`sh git cd trekker-tales ` 2. Install NPM packages
+
+```sh
+git cd trekker-tales
+```
+
+2. Install NPM packages
 
 ```sh
 npm install  npm@latest -g
