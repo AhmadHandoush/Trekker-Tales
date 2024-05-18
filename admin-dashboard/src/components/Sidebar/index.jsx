@@ -24,8 +24,7 @@ function Sidebar() {
     <aside className="flex column">
       <div className="top flex-items">
         <div className="logo">
-          {" "}
-          <img src="./logo.png" alt="logo" />
+          <img src="./logoo.png" alt="logo" />
         </div>
         <h3 className="bold">Trekker Tales</h3>
       </div>

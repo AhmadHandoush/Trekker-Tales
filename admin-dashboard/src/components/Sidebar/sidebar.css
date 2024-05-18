@@ -20,7 +20,7 @@ aside {
 
 .top {
   height: 70px;
-  background-color: white;
+  background-color: black;
   gap: 20px;
   padding-left: 10px;
   padding-right: 5px;
@@ -38,7 +38,7 @@ aside {
 }
 .top h3 {
   font-size: 20px;
-  color: black;
+  color: white;
 }
 .menu {
   padding: 20px 0;
