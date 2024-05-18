@@ -159,23 +159,23 @@ npm install  npm@latest -g
    ```
 3. Generate the application key
 
-```sh
-php artisan key:generate
-```
+   ```sh
+   php artisan key:generate
+   ```
 
 4. Download Laravel dependencies
 
-```sh
-php artisan migrate
-```
+   ```sh
+   php artisan migrate
+   ```
 
 ### Admin dashboard (React JS)
 
 1. Navigate to the admin dashboard directory
 
-```sh
-cd admin-dashboard
-```
+   ```sh
+   cd admin-dashboard
+   ```
 
 2.Install NPM packages
 
