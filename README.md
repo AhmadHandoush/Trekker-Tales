@@ -78,11 +78,9 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Admin Screens (Web)
 
-| Login screen                            | Main dashboard                        | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/adminLogin.PNG)     | ![fsdaf](./readme/Maindash.PNG)       | ![fsdaf](./readme/trips.PNG)          |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen                        | Main dashboard                  | Trips screen                 |
+| ----------------------------------- | ------------------------------- | ---------------------------- |
+| ![Landing](./readme/adminLogin.PNG) | ![fsdaf](./readme/Maindash.PNG) | ![fsdaf](./readme/trips.PNG) |
 
 <br><br>
 
