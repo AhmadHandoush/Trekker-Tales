@@ -75,7 +75,7 @@ function Trips() {
             <IoMdAdd />
           </button>
         </div>
-        <div className="filters flex-between">
+        <div className="filters ">
           <select
             name=""
             id=""

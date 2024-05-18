@@ -30,6 +30,9 @@
 }
 .filters {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 .filters select {
   width: 320px;
