@@ -65,6 +65,8 @@ const MyTrip = ({ item, setSuccess }) => {
   const handleSetting = () => {
     setSetting((setting) => !setting);
   };
+
+  // cancel booking
   const handleCancel = async () => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -160,7 +162,6 @@ const MyTrip = ({ item, setSuccess }) => {
             </Link>
           </View>
         )}
-        {/* <Text>{currentDate}</Text> */}
       </View>
     </View>
   );

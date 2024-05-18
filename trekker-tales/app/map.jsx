@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
-import MapView, { Marker, Polyline } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase";
 import Back from "../Components/back";
@@ -46,17 +46,13 @@ const OtherUserLocationScreen = () => {
         <ActivityIndicator size="large" color="#e87a00" />
       ) : userLocations.length > 0 ? (
         <MapView style={styles.map}>
-          <Polyline
-            coordinates={userLocations.map((loc) => loc.coordinate)}
-            strokeColor="rgba(255,0,0,0.5)"
-            strokeWidth={4}
-          />
-          {userLocations.length > 0 && (
+          {userLocations.map((location) => (
             <Marker
-              coordinate={userLocations[userLocations.length - 1].coordinate}
-              title={`User Location`}
+              key={location.id}
+              coordinate={location.coordinate}
+              title={`Location ${location.id}`}
             />
-          )}
+          ))}
         </MapView>
       ) : (
         <Text>{error || "No user locations available"}</Text>
