@@ -116,7 +116,7 @@ function Main() {
         </InfoCard>
       </section>
       <section className="top-trips">
-        <h2>Highest Rating Trips:</h2>
+        <h2>Highest Rating Trips</h2>
         <div className="top-trips-cards flex">
           {isLoading ? (
             <Loader />
