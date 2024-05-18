@@ -76,10 +76,6 @@ function Trips() {
           </button>
         </div>
         <div className="filters flex-between">
-          <div className="fill flex ">
-            Filter
-            <FaFilter />
-          </div>
           <select
             name=""
             id=""
