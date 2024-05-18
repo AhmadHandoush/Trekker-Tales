@@ -63,8 +63,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Architecting Data Excellence: Innovative Database Design Strategies:
 
-| ---------|
-|![ER](./readme/ER.PNG)
+![ER](./readme/ER.PNG)
 
 <br><br>
 
