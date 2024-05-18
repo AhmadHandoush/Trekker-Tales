@@ -7,7 +7,7 @@
 
 ### Project Philosophy
 
-Trekker tales Application, the ultimate solution for organizing seamless and cooling adventures for children, teachers, and parents alike. FunTrip revolutionizes the way recreational excursions are planned and executed, empowering organizers to curate exciting itineraries while fostering transparent communication with parents every step of the way. Our platform offers a user-friendly interface where organizers can effortlessly coordinate trip logistics, from selecting destinations and activities to managing permissions and safety protocols. Meanwhile, parents can stay informed and involved through real-time updates, ensuring peace of mind as their children embark on thrilling journeys. With Trekker Tales, we aim to redefine the trip experience, promoting camaraderie, safety, and pure joy for all involved parties.
+Trekker tales Application, the ultimate solution for organizing seamless and cooling adventures for children, teachers, and parents alike. Trekker Tales offers a user-friendly interface where organizers can effortlessly coordinate trip logistics, from selecting destinations and activities to managing permissions and safety protocols. Meanwhile, parents can stay informed and involved through real-time updates, ensuring peace of mind as their children embark on thrilling journeys. With Trekker Tales, we aim to redefine the trip experience, promoting camaraderie, safety, and pure joy for all involved parties.
 
 ### User Stories
 
