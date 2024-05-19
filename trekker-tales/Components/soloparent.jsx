@@ -48,8 +48,7 @@ const SoloParent = ({ parent, router }) => {
           alignItems: "center",
         }}
       >
-        <Text style={styles.name}>Go Chat</Text>
-        <Icon name="angle-right" size={30} color="#e87a00" />
+        <Text style={styles.name}>Start Chat</Text>
       </View>
     </TouchableOpacity>
   );
@@ -59,9 +58,7 @@ export default SoloParent;
 
 const styles = StyleSheet.create({
   conversation: {
-    backgroundColor: "white",
-    borderWidth: 1,
-    borderColor: "#e87a00",
+    backgroundColor: "#e87a00",
     width: "80%",
     height: 50,
     marginBottom: 10,
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "#e87a00",
+    color: "white",
   },
   mainName: {
     fontWeight: "bold",

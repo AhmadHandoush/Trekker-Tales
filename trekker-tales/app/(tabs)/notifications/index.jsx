@@ -31,7 +31,6 @@ const Chats = () => {
             throw new Error("Failed to fetch data");
           }
           const data = await response.json();
-          // const filtered = data.filter((user) => user.role === "teacher");
 
           setParentList(data.teachers);
           setLoading(false);
@@ -52,8 +51,8 @@ const Chats = () => {
       <View style={styles.bottom}>
         <View style={styles.textsection}>
           <Text style={styles.text}>
-            Welcome to our Chat, <Text style={styles.mainName}>Sidra</Text> is
-            The Coordinator of all the trips, so if you have Any inquiry plz
+            Welcome to our chat, <Text style={styles.mainName}>Sidra</Text> is
+            the coordinator of all the trips, so if you have any inquiry plz
             don't hesitate to talk with her.
           </Text>
         </View>
@@ -81,6 +80,10 @@ const Chats = () => {
 export default Chats;
 
 const styles = StyleSheet.create({
+  page: {
+    backgroundColor: "white",
+    flex: 1,
+  },
   conversation: {
     padding: 10,
     marginBottom: 20,

@@ -121,8 +121,6 @@ const Chat = () => {
     }
   };
 
-  // console.log("messages", messages);
-
   return (
     <View
       style={{
@@ -134,7 +132,7 @@ const Chat = () => {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#d3d3d3",
+          backgroundColor: "#F8F8F8",
           justifyContent: "space-between",
           paddingBottom: 10,
           paddingTop: 100,
@@ -155,7 +153,7 @@ const Chat = () => {
             onChangeText={(value) => (ref.current = value)}
           />
           <TouchableOpacity style={styles.send} onPress={handleSendMessage}>
-            <Feather name="send" size={24} />
+            <Feather name="send" size={24} color={"white"} />
           </TouchableOpacity>
         </View>
       </View>
