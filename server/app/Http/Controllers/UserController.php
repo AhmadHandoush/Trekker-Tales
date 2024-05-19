@@ -14,13 +14,6 @@ class UserController extends Controller
     public function add_teacher(Request $request)
     {
 
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required|string|min:6',
-        // ]);
-
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -50,6 +43,7 @@ class UserController extends Controller
         }
 
     }
+
     public function update_user(Request $request){
         $user = Auth::user();
 
@@ -59,26 +53,22 @@ class UserController extends Controller
             $image->move(public_path('images'), $imageName);
             $user->user_image = $imageName;
         }
-        // // $user->phone= $request->phone;
-        // // $user->address= $request->address;
-        // if($request->has('phone') && $request->has('address')){
-        //     $user->address= $request->address;
-        //     $user->phone= $request->phone;
-        // }
-        // $user->name= $request->name;
+
         $user->update($request->except('user_image'));
         return response()->json(["message"=>"info updated successfully",$user]);
 
 
     }
+
+
     function getAllUsers()
     {
         $users = User::all();
-
         return response()->json([
             "users" => $users
         ]);
     }
+
     public function user_data(){
         $user = Auth::user();
         return response()->json([

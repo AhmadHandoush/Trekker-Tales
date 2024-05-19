@@ -98,7 +98,7 @@ const Home = () => {
           const data = await response.json();
 
           setTop(data);
-          setFilteredTop(data); // Initialize filtered data with the fetched data
+          setFilteredTop(data);
           setLoading(false);
           setHamada("hell owe are here ");
         } else {
@@ -125,7 +125,7 @@ const Home = () => {
           const data = await response.json();
 
           setTrips(data.trips);
-          setFilteredTrips(data.trips); // Initialize filtered data with the fetched data
+          setFilteredTrips(data.trips);
           setLoading(false);
         } else {
           setLoading(true);
@@ -221,9 +221,8 @@ const Home = () => {
           <ActivityIndicator size="large" color="#e87a00" />
         ) : (
           <FlatList
-            data={filteredTop.slice(0, 2)} // Use filtered data here
+            data={filteredTop.slice(0, 2)}
             renderItem={renderItem}
-            // keyExtractor={(item) => item.id.toString()}
             numColumns={2}
           />
         )}

@@ -4,7 +4,6 @@ import TopCard from "./components/TopCard";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
 import { BASE_URL } from "../../components/Base_url";
-// import { BASE_URL } from "../../components/Base_url";
 
 function Main() {
   const [tripsNumber, setTripsNumber] = useState(null);

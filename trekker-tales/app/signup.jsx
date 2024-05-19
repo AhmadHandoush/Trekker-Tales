@@ -13,9 +13,6 @@ import Topline from "../Components/topline";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BASE_URL } from "./utils/constants";
-// import Input from "../Components/input";
-// import Button from "../Components/button";
-// import OrWith from "../Components/orwith";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -24,20 +21,6 @@ const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const navigation = useNavigation();
-  // useEffect(() => {
-  //   const clearLocalStorage = async () => {
-  //     try {
-  //       await AsyncStorage.clear();
-  //       console.log("Local storage cleared successfully!");
-  //     } catch (error) {
-  //       console.error("Error clearing local storage:", error);
-  //     }
-  //   };
-
-  //   clearLocalStorage();
-
-  //   return () => {};
-  // }, []);
 
   const handleSignup = () => {
     const userData = {
@@ -117,7 +100,6 @@ const Signup = () => {
           />
         </View>
 
-        {/* <Button title="Sign Up" onPress={handleSignup} /> */}
         <TouchableOpacity style={styles.button} onPress={handleSignup}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
@@ -134,9 +116,6 @@ const Signup = () => {
         {success && (
           <Text style={styles.success}>Account created Successfully...</Text>
         )}
-        {/* <Link href={"/(tabs)/home"}>
-          <Text style={{ color: "#E87A00", fontWeight: "bold" }}> Home </Text>
-        </Link> */}
       </View>
     </View>
   );

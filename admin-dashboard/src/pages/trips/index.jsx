@@ -95,13 +95,13 @@ function Trips() {
             <option value="10">October</option>
             <option value="11">November</option>
             <option value="12">December</option>
-          </select>{" "}
+          </select>
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
             <option value="">Status</option>
             <option value="active">Active</option>
             <option value="pending">Pending</option>
             <option value="inactive">inactive</option>
-          </select>{" "}
+          </select>
         </div>
         <section className="trips-sec">
           <div className="filter"></div>

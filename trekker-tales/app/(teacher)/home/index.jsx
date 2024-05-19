@@ -3,7 +3,7 @@ import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { addDoc, serverTimestamp, collection } from "firebase/firestore";
-import { db } from "../../firebase"; // Import your Firebase configuration file
+import { db } from "../../firebase";
 
 const LocationScreen = () => {
   const [loading, setLoading] = useState(true);

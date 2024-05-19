@@ -12,9 +12,6 @@ class ReviewController extends Controller
     public function add_review(Request $req,$id){
         $userId=Auth::user()->id;
         $trip=Trip::find($id);
-        // $req->validate([
-        //     'content'=>'required|string'
-        // ]);
 
         $review= new Review();
         $review->user_id=$userId;
