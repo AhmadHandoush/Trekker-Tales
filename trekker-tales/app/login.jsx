@@ -21,6 +21,7 @@ import { BASE_URL } from "./utils/constants";
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -44,6 +45,7 @@ const login = () => {
         return response.json();
       })
       .then((data) => {
+        setSuccess(true);
         setTimeout(() => setSuccess(false), 2000);
         if (data.user.role == "teacher") {
           setTimeout(() => router.push("/(teacher)/home"), 1000);

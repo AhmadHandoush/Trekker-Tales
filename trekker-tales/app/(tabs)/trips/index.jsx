@@ -317,6 +317,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 60,
     paddingBottom: 150,
+    flex: 1,
   },
   scroll: {
     backgroundColor: "white",
