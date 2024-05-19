@@ -52,7 +52,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Mockups
 
-| Login screen                   | Home Screen                 | Chat Screen                                        |
+| Login screen                   | Home Screen                 | Profile Screen                                     |
 | ------------------------------ | --------------------------- | -------------------------------------------------- |
 | ![Landing](./readme/login.png) | ![fsdaf](./readme/home.png) | ![fsdaf](./readme/iPhone%2014%20Plus%20-%2031.png) |
 
