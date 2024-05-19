@@ -14,11 +14,11 @@ class UserController extends Controller
     public function add_teacher(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => 'required|string|min:6',
+        // ]);
 
 
         $user = new User();
@@ -89,7 +89,7 @@ class UserController extends Controller
         $teachers=User::where('role','teacher')->get();
         return response()->json(['teachers' => $teachers]);
 
-    } 
+    }
     public function get_teacherss(){
         $teachers=User::where('role','teacher')->get();
         return response()->json(['teachers' => $teachers]);
