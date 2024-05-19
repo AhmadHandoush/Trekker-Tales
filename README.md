@@ -72,7 +72,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 | Onboarding Screen     | Login screen        | Register screen               | Home screen                      |
 | --------------------- | ------------------- | ----------------------------- | -------------------------------- |
-| ![Landing](./readme/) | ![fsdaf](./readme/) | ![fsdaf](/readme/)            | ![fsdaf](</readme/home (1).gif>) |
+| ![Landing](./readme/) | ![fsdaf](./readme/) | ![fsdaf](/readme/)            | ![fsdaf](</readme/home (2).gif>) |
 | Trips screen          | Maps Screen         | Profile Screen                | Chat Screen                      |
 | ![Landing](/readme/)  | ![fsdaf](/readme/)  | ![fsdaf](/readme/profile.gif) | ![fsdaf]()                       |
 
