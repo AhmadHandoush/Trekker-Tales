@@ -74,7 +74,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 | -------------------------------- | ------------------------------ | ------------------------------ | -------------------------- |
 | ![Landing](./readme/onboard.gif) | ![fsdaf](./readme/login.gif)   | ![fsdaf](/readme/Register.gif) | ![fsdaf](/readme/Home.gif) |
 | Trips screen                     | Maps Screen                    | Profile Screen                 | Chat Screen                |
-| ![Landing](/readme/tripss.gif)   | ![fsdaf](/readme/the-maps.gif) | ![fsdaf](/readme/Chat.gif)     | ![fsdaf](/readme/Chat.gif) |
+| ![Landing](/readme/tripss.gif)   | ![fsdaf](/readme/the-maps.gif) | ![fsdaf](/readme/Chat.gif)     | ![fsdaf]()                 |
 
 ### Admin Screens (Web)
 
