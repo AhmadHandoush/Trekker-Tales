@@ -70,17 +70,17 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Screens (Mobile)
 
-| Onboarding Screen     | Login screen        | Register screen           | Home screen                      |
-| --------------------- | ------------------- | ------------------------- | -------------------------------- |
-| ![Landing](./readme/) | ![fsdaf](./readme/) | ![fsdaf](/readme/reg.gif) | ![fsdaf](</readme/home (2).gif>) |
-| Trips screen          | Maps Screen         | Profile Screen            | Chat Screen                      |
-| ![Landing](/readme/)  | ![fsdaf](/readme/)  | ![fsdaf](/readme/)        | ![fsdaf]()                       |
+| Login Screen                       | Login screen        | Register screen    | Home screen        |
+| ---------------------------------- | ------------------- | ------------------ | ------------------ |
+| ![Landing](./readme/final-log.gif) | ![fsdaf](./readme/) | ![fsdaf](/readme/) | ![fsdaf](/readme/) |
+| Trips screen                       | Maps Screen         | Profile Screen     | Chat Screen        |
+| ![Landing](/readme/)               | ![fsdaf](/readme/)  | ![fsdaf](/readme/) | ![fsdaf]()         |
 
 ### Admin Screens (Web)
 
-| Login screen                        | Main dashboard                  | Trips screen                 |
-| ----------------------------------- | ------------------------------- | ---------------------------- |
-| ![Landing](./readme/adminLogin.PNG) | ![fsdaf](./readme/Maindash.PNG) | ![fsdaf](./readme/trips.PNG) |
+| Login screen                        | Main dashboard                  | Trips screen        |
+| ----------------------------------- | ------------------------------- | ------------------- |
+| ![Landing](./readme/adminLogin.PNG) | ![fsdaf](./readme/Maindash.PNG) | ![fsdaf](./readme/) |
 
 <br><br>
 
