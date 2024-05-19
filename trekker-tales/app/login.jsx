@@ -21,10 +21,9 @@ import { BASE_URL } from "./utils/constants";
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  // const navigation = useNavigation();
+
   const handleLogin = () => {
     const userData = {
       email: email,
@@ -45,7 +44,6 @@ const login = () => {
         return response.json();
       })
       .then((data) => {
-        setSuccess(true);
         setTimeout(() => setSuccess(false), 2000);
         if (data.user.role == "teacher") {
           setTimeout(() => router.push("/(teacher)/home"), 1000);
@@ -104,7 +102,7 @@ const login = () => {
             </Text>
           </Link>
         </Text>
-        {success && <Text style={styles.success}>Login Successfully...</Text>}
+
         <OrWith />
       </View>
     </View>
@@ -169,7 +167,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   login: {
-    backgroundColor: "#F2F0F0",
+    backgroundColor: "#F8F8F8",
     width: "100%",
     height: "65%",
     borderTopEndRadius: 30,

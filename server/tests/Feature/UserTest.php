@@ -13,7 +13,7 @@ class UserTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_add_user(): void
     {
         $password = "1234562222";
         $hashedPassword = Hash::make($password);
