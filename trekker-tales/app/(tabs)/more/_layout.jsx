@@ -11,7 +11,7 @@ const _layout = () => {
       }}
     >
       <Stack.Screen name="posts" />
-      {/* <Stack.Screen name="single" /> */}
+      
     </Stack>
   );
 };

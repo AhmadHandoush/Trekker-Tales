@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../../../Components/post";
-// import { Link } from "expo-router";
 import { Redirect, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
@@ -32,6 +31,7 @@ const Posts = () => {
   const [profile, setProfile] = useState(null);
   const [opencomments, setOpenComments] = useState(true);
   const [postComments, setPostComments] = useState([]);
+  // Authenticatation checkout
   useEffect(() => {
     const checkToken = async () => {
       try {
@@ -46,6 +46,8 @@ const Posts = () => {
 
     checkToken();
   }, []);
+
+  // get the comments of a specific post
   const get_post_comments = async (id) => {
     const token = await AsyncStorage.getItem("token");
     try {
@@ -70,6 +72,7 @@ const Posts = () => {
     }
   };
 
+  // get user info
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -98,6 +101,7 @@ const Posts = () => {
     fetchData();
   }, []);
 
+  // get all the posts
   useEffect(() => {
     const get_posts = async () => {
       setLoading(true);
