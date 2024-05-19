@@ -18,27 +18,35 @@ class UserTest extends TestCase
         $password = "123456222";
         $hashedPassword = Hash::make($password);
         $user = User::create([
-            "name" => "mannessa",
-            "email" => "manessa@gmail.com",
+            "name" => "manneessa",
+            "email" => "maneessa@gmail.com",
             "password" => $hashedPassword
         ]);
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals("mannessa", $user->name);
-        $this->assertEquals("manessa@gmail.com", $user->email);
+        $this->assertEquals("manneessa", $user->name);
+        $this->assertEquals("maneessa@gmail.com", $user->email);
     }
-    // public function test_examples(): void
-    // {
-    //     $response = $this->post(
-    //         '/api/delete_user',
-    //         [
-    //             "id" => 64
-    //         ]
-    //     );
-
-    //     $response->assertStatus(200);
-    //     $response->assertJson([
-    //         "message" => "deleted successfully"
-    //     ]);
-    //     $this->assertTrue(true);
-    // }
+    public function test_get_all(): void
+    {
+        User::factory()->count(3)->create(['role' => 'parent']);
+        $response = $this->getJson('/api/get_parents');
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'parents' => [
+                '*' => [
+                    "id",
+                    "name",
+                    "email",
+                    "email_verified_at",
+                    "phone",
+                    "longitude",
+                    "latitude",
+                    "user_image",
+                    "created_at",
+                    "updated_at",
+                    "address",
+                ],
+            ],
+        ]);
+    }
 }
