@@ -15,16 +15,16 @@ class UserTest extends TestCase
      */
     public function test_example(): void
     {
-        $password = "123456222";
+        $password = "1234562222";
         $hashedPassword = Hash::make($password);
         $user = User::create([
-            "name" => "manneessa",
-            "email" => "maneessa@gmail.com",
+            "name" => "omar122",
+            "email" => "omar122@gmail.com",
             "password" => $hashedPassword
         ]);
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals("manneessa", $user->name);
-        $this->assertEquals("maneessa@gmail.com", $user->email);
+        $this->assertEquals("omar122", $user->name);
+        $this->assertEquals("omar122@gmail.com", $user->email);
     }
     public function test_get_all(): void
     {
@@ -49,4 +49,5 @@ class UserTest extends TestCase
             ],
         ]);
     }
+
 }
