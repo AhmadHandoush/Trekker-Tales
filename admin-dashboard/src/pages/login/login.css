@@ -120,7 +120,6 @@ h6 a {
 
 .login-card {
   padding: 15px 30px;
-  /* background-color: var(--bg-white); */
   width: 400px;
   position: relative;
   z-index: 1000;
@@ -137,10 +136,11 @@ h6 a {
   color: "white";
   font-size: 14px;
 }
-.login-card .input {
+.login-card form .input {
   display: flex;
   width: 100%;
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 .login-card .input input {
   width: 100%;
@@ -189,8 +189,11 @@ form button {
 }
 .login form button {
   background-color: var(--main-color);
+  margin-top: 10px;
 }
-
+.login form .input {
+  border-radius: 8px;
+}
 form button:hover {
   opacity: 0.7;
 }

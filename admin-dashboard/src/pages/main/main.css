@@ -14,23 +14,23 @@
   flex-wrap: wrap;
 }
 .info-card {
-  border: 2px solid #d7d7d7;
   padding: 20px;
   justify-content: center;
   width: 300px;
   gap: 10px;
   border-radius: 6px;
+  background-color: var(--main-color);
 }
 .info-card h1 {
   text-align: center;
-  color: black;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .info-card h2 {
   text-align: center;
-  color: black;
+  color: white;
 }
 .top-trips {
   margin-top: 120px;

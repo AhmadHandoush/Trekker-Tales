@@ -6,12 +6,33 @@ import { db } from "./firebase";
 import Back from "../Components/back";
 import { BASE_URL } from "./utils/constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { Audio } from "expo-av";
 
 const OtherUserLocationScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userLocations, setUserLocations] = useState([]);
   const [tripData, setTripData] = useState({});
+
+  const locations = [
+    {
+      id: 1,
+      coordinate: {
+        latitude: 34.3736218,
+        longitude: 35.7783809,
+      },
+      title: "Deddeh",
+    },
+    {
+      id: 2,
+      coordinate: {
+        latitude: 34.3583744,
+        longitude: 35.7302337,
+      },
+      title: "Anfeh",
+    },
+  ];
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -35,6 +56,8 @@ const OtherUserLocationScreen = () => {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError("Failed to fetch trip data");
+        setLoading(false);
       }
     };
     fetchTrips();
@@ -69,24 +92,70 @@ const OtherUserLocationScreen = () => {
     };
   }, []);
 
-  const locations = [
-    {
-      id: 1,
-      coordinate: {
-        latitude: 34.3736218,
-        longitude: 35.7783809,
-      },
-      title: "Deddeh",
-    },
-    {
-      id: 2,
-      coordinate: {
-        latitude: 34.3583744,
-        longitude: 35.7302337,
-      },
-      title: "Anfeh",
-    },
-  ];
+  const haversineDistance = (coords1, coords2) => {
+    const toRad = (x) => (x * Math.PI) / 180;
+    const R = 6371; // Earth radius in km
+
+    const dLat = toRad(coords2.latitude - coords1.latitude);
+    const dLon = toRad(coords2.longitude - coords1.longitude);
+    const lat1 = toRad(coords1.latitude);
+    const lat2 = toRad(coords2.latitude);
+
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  };
+
+  const fetchAndPlayTTS = async (text) => {
+    try {
+      const response = await axios.post(
+        "https://api.openai.com/v1/engines/davinci-codex/completions",
+        {
+          prompt: text,
+          max_tokens: 50,
+          n: 1,
+          stop: null,
+          temperature: 0.5,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${
+              sk - proj - WrJpfVMVVmX2gHFSp2B1T3BlbkFJVkMLkqNa6NuAQjh8jOYU
+            }`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync({ uri: response.data.audio_url });
+      await soundObject.playAsync();
+    } catch (error) {
+      console.error("Error fetching TTS:", error);
+    }
+  };
+
+  const checkProximity = () => {
+    userLocations.forEach((userLocation) => {
+      locations.forEach((location) => {
+        const distance = haversineDistance(
+          userLocation.coordinate,
+          location.coordinate
+        );
+        if (distance < 1) {
+          fetchAndPlayTTS(`User is within 1 kilometer of ${location.title}`);
+        }
+      });
+    });
+  };
+
+  useEffect(() => {
+    if (!loading && userLocations.length > 0) {
+      checkProximity();
+    }
+  }, [userLocations]);
 
   return (
     <View style={styles.container}>

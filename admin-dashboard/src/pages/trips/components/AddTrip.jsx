@@ -102,136 +102,138 @@ const AddTrip = ({ setAdd }) => {
 
   return (
     <div className="add-trip-box  flex column">
-      <div className="close">
-        {" "}
-        <span onClick={() => setAdd(false)}>X</span>
+      <div className="content flex column">
+        <span className="close" onClick={() => setAdd(false)}>
+          X
+        </span>
+
+        <h2>Add Trip</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="flex column input">
+            <label htmlFor="">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter the Trip name"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label> Destination</label>
+            <input
+              type="text"
+              name="destination"
+              value={formData.destination}
+              onChange={handleChange}
+              placeholder="Enter the Trip destination"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>Date</label>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              placeholder="Enter the Trip date"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>Start Time</label>
+            <input
+              type="time"
+              name="start_time"
+              value={formData.start_time}
+              onChange={handleChange}
+              placeholder="Enter the Trip start time"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>End Time</label>
+            <input
+              type="time"
+              name="end_time"
+              value={formData.end_time}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label> Total Seats</label>
+            <input
+              type="number"
+              name="total_seats"
+              value={formData.total_seats}
+              onChange={handleChange}
+              placeholder="Enter the total seats"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>Available Seats</label>
+            <input
+              type="number"
+              name="available_seats"
+              value={formData.available_seats}
+              onChange={handleChange}
+              placeholder="Enter the available"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>Fees</label>
+            <input
+              type="number"
+              name="fees"
+              value={formData.fees}
+              onChange={handleChange}
+              placeholder="Enter the trip fee"
+              required
+            />
+          </div>
+          <div className="flex column input">
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Enter the Trip description"
+              required
+            ></textarea>
+          </div>
+
+          <div className="flex column input">
+            <label>Trip Image</label>
+            <input type="file" name="trip_image" onChange={handleChange} />
+          </div>
+          <div>
+            <label> Select Locations</label>
+            <select
+              name="locations"
+              multiple
+              value={formData.selectedLocations}
+              onChange={handleLocationChange}
+              required
+            >
+              {locations.map((location) => (
+                <option key={location.id} value={location.id}>
+                  {location.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {success && <p className="success-created">{success}</p>}
+
+          <button type="submit" className="btn_add_trip">
+            Submit
+          </button>
+        </form>
       </div>
-      <h2>Add Trip</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="flex column input">
-          <label htmlFor="">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Enter the Trip name"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label> Destination</label>
-          <input
-            type="text"
-            name="destination"
-            value={formData.destination}
-            onChange={handleChange}
-            placeholder="Enter the Trip destination"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>Date</label>
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            placeholder="Enter the Trip date"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>Start Time</label>
-          <input
-            type="time"
-            name="start_time"
-            value={formData.start_time}
-            onChange={handleChange}
-            placeholder="Enter the Trip start time"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>End Time</label>
-          <input
-            type="time"
-            name="end_time"
-            value={formData.end_time}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label> Total Seats</label>
-          <input
-            type="number"
-            name="total_seats"
-            value={formData.total_seats}
-            onChange={handleChange}
-            placeholder="Enter the total seats"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>Available Seats</label>
-          <input
-            type="number"
-            name="available_seats"
-            value={formData.available_seats}
-            onChange={handleChange}
-            placeholder="Enter the available"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>Fees</label>
-          <input
-            type="number"
-            name="fees"
-            value={formData.fees}
-            onChange={handleChange}
-            placeholder="Enter the trip fee"
-            required
-          />
-        </div>
-        <div className="flex column input">
-          <label>Description</label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Enter the Trip description"
-            required
-          ></textarea>
-        </div>
-
-        <div className="flex column input">
-          <label>Trip Image</label>
-          <input type="file" name="trip_image" onChange={handleChange} />
-        </div>
-        <div>
-          <label> Select Locations</label>
-          <select
-            name="locations"
-            multiple
-            value={formData.selectedLocations}
-            onChange={handleLocationChange}
-            required
-          >
-            {locations.map((location) => (
-              <option key={location.id} value={location.id}>
-                {location.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        {success && <p className="success-created">{success}</p>}
-
-        <button type="submit" className="btn_add_trip">
-          Submit
-        </button>
-      </form>
     </div>
   );
 };

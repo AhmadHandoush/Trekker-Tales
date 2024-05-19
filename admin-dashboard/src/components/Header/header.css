@@ -9,7 +9,7 @@
 header {
   justify-content: space-between;
   background-color: black;
-  height: 70px;
+  height: 80px;
   width: 100%;
   padding-right: 100px;
   align-items: center;
@@ -29,22 +29,23 @@ header .menu {
 }
 .search {
   background-color: black;
-  width: 650px;
-  height: 50px;
+  width: 400px;
+  height: 40px;
   border-radius: 25px;
-  padding: 5px 10px;
+  padding: 5px 10px 5px 0;
   border: 1px solid white;
+  transform: translateX(300px);
 }
 .search input {
   border: none;
   outline: none;
-  padding-left: 10px;
-
+  padding-left: 15px;
   width: 100%;
   height: 100%;
   font-size: 20px;
   caret-color: var(--main-color);
   background-color: transparent;
+  color: white;
 }
 .search svg {
   font-weight: bold;
