@@ -14,7 +14,12 @@ const ShowComments = ({ setOpenComments, postComments }) => {
   };
   return (
     <View style={styles.comments}>
-      <View style={styles.topLine}></View>
+      <TouchableOpacity
+        style={{ marginBottom: 20 }}
+        onPress={() => setOpenComments(true)}
+      >
+        <View style={styles.topLine}></View>
+      </TouchableOpacity>
       <Text style={styles.title}>Comments</Text>
       <ScrollView>
         {postComments.map((comment, index) => (
