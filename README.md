@@ -70,11 +70,11 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Screens (Mobile)
 
-| Onboarding Screen                   | Login screen                 | Register screen                | Home screen                |
-| ----------------------------------- | ---------------------------- | ------------------------------ | -------------------------- |
-| ![Landing](./readme/onboarding.gif) | ![fsdaf](./readme/login.gif) | ![fsdaf](/readme/Register.gif) | ![fsdaf](/readme/Home.gif) |
-| Trips screen                        | Maps Screen                  | Chat Screen                    | Checkout Screen            |
-| ![Landing](/readme/tripss.gif)      | ![fsdaf](/readme/Maps.gif)   | ![fsdaf](/readme/Chat.gif)     | ![fsdaf](/readme/Chat.gif) |
+| Onboarding Screen                   | Login screen                       | Register screen                | Home screen                |
+| ----------------------------------- | ---------------------------------- | ------------------------------ | -------------------------- |
+| ![Landing](./readme/onboarding.gif) | ![fsdaf](./readme/login.gif)       | ![fsdaf](/readme/Register.gif) | ![fsdaf](/readme/Home.gif) |
+| Trips screen                        | Maps Screen                        | Chat Screen                    | Checkout Screen            |
+| ![Landing](/readme/tripss.gif)      | ![fsdaf](</readme/maps%20(1).gif>) | ![fsdaf](/readme/Chat.gif)     | ![fsdaf](/readme/Chat.gif) |
 
 ### Admin Screens (Web)
 
@@ -96,9 +96,14 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
 
-### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
+### By following these steps, we deployed the backend to Amazon Linux 202
 
-- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
+Step 1: Update Amazon Linux 2023 Packages
+
+````sh
+sudo yum update -y
+```
+Step 2:
 
 <br><br>
 
@@ -125,7 +130,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ```sh
 git clone https://github.com/AhmadHandoush/Trekker-Tales.git
-```
+````
 
 1.Navigate to trekker-tales
 
