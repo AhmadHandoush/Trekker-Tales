@@ -70,11 +70,11 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### User Screens (Mobile)
 
-| Login Screen                       | Login screen        | Register screen    | Home screen        |
-| ---------------------------------- | ------------------- | ------------------ | ------------------ |
-| ![Landing](./readme/final-log.gif) | ![fsdaf](./readme/) | ![fsdaf](/readme/) | ![fsdaf](/readme/) |
-| Trips screen                       | Maps Screen         | Profile Screen     | Chat Screen        |
-| ![Landing](/readme/)               | ![fsdaf](/readme/)  | ![fsdaf](/readme/) | ![fsdaf]()         |
+| Login Screen                       | Register screen                | Register screen    | Home screen        |
+| ---------------------------------- | ------------------------------ | ------------------ | ------------------ |
+| ![Landing](./readme/final-log.gif) | ![fsdaf](./readme/signups.gif) | ![fsdaf](/readme/) | ![fsdaf](/readme/) |
+| Trips screen                       | Maps Screen                    | Profile Screen     | Chat Screen        |
+| ![Landing](/readme/)               | ![fsdaf](/readme/)             | ![fsdaf](/readme/) | ![fsdaf]()         |
 
 ### Admin Screens (Web)
 
