@@ -97,11 +97,53 @@ Location and Data Integration: What sets our application apart is how these AI-g
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
 
-### By following these steps, we deployed the backend to Amazon Linux 202
+<img src="./readme/aws.PNG"/>
+
+### By following these steps, we deployed the backend to Amazon Linux 2023
 
 - Step 1: Update Amazon Linux 2023 Packages
 
-<br><br>
+```sh
+sudo yum update -y
+```
+
+- Step 2:Start and Enable Apache and MariaDB Services
+
+```sh
+sudo apt-get install apache2
+sudo apt-get install php-mysql
+```
+
+- Step 3: Install Composer
+
+```sh
+sudo apt install composer -y
+```
+
+- Step 3:Create virtual hosts file
+
+```sh
+sudo nano /etc/apache2/sites-available/laravel.conf
+```
+
+- Step 4:Create Laravel Environment Configuration
+
+```sh
+cp .env.example .env
+php artisan key:generate
+```
+
+- Step 5:Apache Configuration for Laravel App Configure your Apache settings to serve the Laravel application
+- Step 6: Access Laravel Demo Page Visit your server's public IP address in a web browser.
+- Step 7: Clone the Repository
+
+```sh
+git clone https://github.com/AhmadHandoush/Trekker-Tales.git
+```
+
+- Step 8: Install MySQL on your instance.
+- Step 9 : At the end Run it
+  <br><br>
 
 <!-- Unit Testing -->
 <img src="./readme/title9.svg"/>
