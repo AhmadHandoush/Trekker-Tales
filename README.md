@@ -78,9 +78,9 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Admin Screens (Web)
 
-| Login screen                        | Main dashboard                  | Trips screen        |
-| ----------------------------------- | ------------------------------- | ------------------- |
-| ![Landing](./readme/adminLogin.PNG) | ![fsdaf](./readme/Maindash.PNG) | ![fsdaf](./readme/) |
+| Login screen                        | Main dashboard                  | Trips screen                 |
+| ----------------------------------- | ------------------------------- | ---------------------------- |
+| ![Landing](./readme/adminLogin.PNG) | ![fsdaf](./readme/Maindash.PNG) | ![fsdaf](./readme/trips.PNG) |
 
 <br><br>
 
@@ -98,12 +98,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### By following these steps, we deployed the backend to Amazon Linux 202
 
-Step 1: Update Amazon Linux 2023 Packages
-
-````sh
-sudo yum update -y
-```
-Step 2:
+- Step 1: Update Amazon Linux 2023 Packages
 
 <br><br>
 
@@ -130,7 +125,7 @@ Step 2:
 
 ```sh
 git clone https://github.com/AhmadHandoush/Trekker-Tales.git
-````
+```
 
 1.Navigate to trekker-tales
 
