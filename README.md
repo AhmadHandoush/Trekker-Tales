@@ -89,7 +89,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 ### Mastering AI Interaction: Unveiling the Power of OpenAi:
 
-- Location and Data Integration: What sets our application apart is how these AI-generated responses are seamlessly integrated with the location-specific data and other relevant information from our app's database.
+Location and Data Integration: What sets our application apart is how these AI-generated responses are seamlessly integrated with the location-specific data and other relevant information from our app's database.
 
 <br><br>
 
