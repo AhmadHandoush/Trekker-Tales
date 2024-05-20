@@ -91,6 +91,7 @@ Trekker tales Application, the ultimate solution for organizing seamless and coo
 
 Location and Data Integration: What sets our application apart is how these AI-generated responses are seamlessly integrated with the location-specific data and other relevant information from our app's database.
 
+<img src="./readme/ai.PNG"/>
 <br><br>
 
 <!-- AWS Deployment -->

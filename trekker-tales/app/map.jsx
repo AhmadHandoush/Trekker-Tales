@@ -4,7 +4,7 @@ import MapView, { Marker, Circle } from "react-native-maps";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase";
 import Back from "../Components/back";
-import { BASE_URL } from "./utils/constants";
+import { BASE_URL, ai_key } from "./utils/constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { Audio } from "expo-av";
@@ -121,9 +121,7 @@ const OtherUserLocationScreen = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${
-              sk - proj - WrJpfVMVVmX2gHFSp2B1T3BlbkFJVkMLkqNa6NuAQjh8jOYU
-            }`,
+            Authorization: `Bearer ${ai_key}`,
             "Content-Type": "application/json",
           },
         }
